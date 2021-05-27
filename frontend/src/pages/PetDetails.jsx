@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { PetService } from '../services/pet.service.js'
 import { updatePet } from '../store/actions/petActions.js'
-import { removeComment , loadComments } from '../store/actions/reviewActions.js'
+import { removeComment, loadComments } from '../store/actions/reviewActions.js'
 import { CommnetsList } from '../cmps/CommentsList.jsx'
 
 
@@ -51,7 +51,9 @@ class _PetDetails extends Component {
     }
 
     render() {
-      const { }  
+        return (
+            <h1>hi</h1>
+        )
     }
 }
 
@@ -62,7 +64,6 @@ const mapStateToProps = state => {
         loggedInUser: state.userModule.loggedInUser
     }
 }
-
 
 const mapDispatchToProps = {
     updatePet
