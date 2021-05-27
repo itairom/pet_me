@@ -1,8 +1,8 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { updatePet } from '../store/actions/petActions.js'
-
-
+// import {  } from '../store/actions/petActions.js'
+import {petService} from '../services/petService.js'
 
 class _PetDetails extends Component {
     state = {
@@ -11,18 +11,23 @@ class _PetDetails extends Component {
     }
 
     componentDidMount() {
-        this.loadPet()
+        const petId = this.props.match.params.toyId
+        petService.getById(toyId).then(toy => {
+            this.setState({ toy })
+        })
+
+
         this.props.loadComments()
     }
 
     //get pets from petService
-    loadPet = () => {
-        const { petId } = this.props.match.params
-        petService.getById(petId)
-            .then(pet => {
-                this.setState({ pet })
-            })
-    }
+    // loadPet = () => {
+    //     const { petId } = this.props.match.params
+    //     petService.getById(petId)
+    //         .then(pet => {
+    //             this.setState({ pet })
+    //         })
+    // }
 
 
     handleChange = ({ target }) => {

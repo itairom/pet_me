@@ -1,54 +1,50 @@
-import { toysService } from '../../services/petService.js'
+import { petsService } from '..petService'
 
 
-export function loadToys(filterBy) { // Action Creator
+export function loadPets(filterBy) { // Action Creator
     return async dispatch => {
         try {
-            const toys = await toysService.query(filterBy)
-            dispatch({ type: 'SET_TOYS', toys })
+            const pets = await petsService.query(filterBy)
+            dispatch({ type: 'SET_pets', pets })
         }
         catch (err) {
-            console.log('unable to query toys', err);
+            console.log('unable to query pets', err);
         }
-
-    
     }
 }
-export function addToy(toy) { 
-    console.log("🚀 ~ file: toy.actions.js ~ line 16 ~ addToy ~ toy", toy)
+export function addPet(pet) {
+    console.log("🚀 ~ file: pet.actions.js ~ line 16 ~ addpet ~ pet", pet)
     return dispatch => {
-        return toysService.add(toy)
-            .then(toy => {
-                console.log("🚀 ~ file: toy.actions.js ~ line 20 ~ addToy ~ toy", toy)
-
+        return petsService.add(pet)
+            .then(pet => {
+                console.log("🚀 ~ file: pet.actions.js ~ line 20 ~ addpet ~ pet", pet)
                 const action = {
-                    type: 'ADD_TOY', toy
+                    type: 'ADD_PET', pet
                 }
                 dispatch(action)
             })
     }
 }
 
-export function updateToy(toy) { // Action Creator
-    console.log("🚀 ~ file: toy.actions.js ~ line 28 ~ updateToy ~ toy", toy)
+export function updatePet(pet) { // Action Creator
+    console.log("🚀 ~ file: pet.actions.js ~ line 28 ~ updatepet ~ pet", pet)
     return dispatch => {
-        return toysService.add(toy)
-            .then(toy => {
+        return petsService.add(pet)
+            .then(pet => {
                 const action = {
-                    type: 'UPDATE_TOY', toy
+                    type: 'UPDATE_PET', pet
                 }
                 dispatch(action)
             })
     }
 }
 
-export function removeToy(toyId) { // Action Creator
-
+export function removePet(petId) { // Action Creator
     return dispatch => {
-        return toysService.remove(toyId)
-            .then((toyId) => {
+        return petsService.remove(petId)
+            .then((petId) => {
                 const action = {
-                    type: 'REMOVE_TOY', toyId: toyId + ''
+                    type: 'REMOVE_PET', petId: petId + ''
                 }
                 dispatch(action)
             })
