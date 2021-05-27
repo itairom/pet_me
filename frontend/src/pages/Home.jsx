@@ -1,4 +1,4 @@
-import {petService} from '../services/petService.js'
+import { petService } from '../services/petService.js'
 
 
 export function Home() {
