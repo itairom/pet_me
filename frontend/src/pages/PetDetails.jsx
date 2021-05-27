@@ -1,10 +1,7 @@
 import { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { PetService } from '../services/pet.service.js'
 import { updatePet } from '../store/actions/petActions.js'
-import { removeComment, loadComments } from '../store/actions/reviewActions.js'
-import { CommnetsList } from '../cmps/CommentsList.jsx'
+
 
 
 class _PetDetails extends Component {

@@ -7,6 +7,7 @@ import { PetList } from './cmps/PetList'
 
 
 import { Header } from './cmps/Header'
+import { PetApp } from './pages/PetApp'
 
 
 export function App() {
@@ -17,7 +18,7 @@ export function App() {
         <main>
           <Switch>
             <Route component={PetList} path="/pet" />
-            <Route path="/" component={Home} />
+            <Route path="/" component={PetApp} />
           </Switch>
         </main>
         <footer>
