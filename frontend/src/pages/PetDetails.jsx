@@ -14,7 +14,7 @@ export class PetDetails extends Component {
     }
 
     componentDidMount() {
-        console.log('this.props', this.props.pet)
+        this.setState.pet = this.props.pet
         // this.loadPet()
         // this.props.loadComments()
     }
@@ -53,8 +53,21 @@ export class PetDetails extends Component {
     }
 
     render() {
+        const pet = this.state.pet
+        // const owner = this.state.pet.owner
         return (
-            <h1>hi</h1>
+            <section>
+                <header className="details-header">
+                    <div>
+                        <h1>{ pet.name }</h1>
+                        <h3>{ }</h3>
+                    </div>
+                    <div>
+                        <span className="share-pet">share</span>
+                        <span className="like-pet">like</span>
+                    </div>
+                </header>
+            </section>
         )
     }
 }
