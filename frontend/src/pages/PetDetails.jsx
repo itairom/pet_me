@@ -51,7 +51,7 @@ class _PetDetails extends Component {
     }
 
     render() {
-      const {}  
+      const { }  
     }
 }
 
