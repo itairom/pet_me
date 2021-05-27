@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { storageService } from './async-storage.service.js'
+import {storageService} from './asyncStorageService'
 // import { httpService } from './http.service'
 window.storageService = storageService;
 
@@ -56,7 +56,7 @@ export const petService = {
 }
 
 
-function query(filterBy) {
+function query(filterBy='') {
 
     const pets = storageService.query('pets')
     if (!pets || !pets.length) {
