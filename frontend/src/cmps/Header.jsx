@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
 
 export class Header extends Component {
     render() {
@@ -12,7 +11,6 @@ export class Header extends Component {
             </nav>
         </header>
     }
-
 }
 // const mapStateToProps = state => {
 //     return {

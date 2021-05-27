@@ -1,6 +1,3 @@
-import { petService } from '../services/petService'
-
-
 export function Home() {
 
 
