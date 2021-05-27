@@ -67,7 +67,11 @@ const gPets = [{
         "_id": "s101",
         "name": "happy farm",
         "imgUrl": "url",
-        "loc": "yafo"
+        "loc": {
+            "address": "yafo",
+            "lat": 21313123123,
+            "lng": 23132131221
+        }
     },
     "tags": [
         "fish",

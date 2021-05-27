@@ -1,7 +1,7 @@
 import React from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
-
+import { PetDetails } from './pages/PetDetails'
 import { Home } from './pages/Home'
 import { PetList } from './cmps/PetList'
 
