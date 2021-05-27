@@ -1,8 +1,8 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { updatePet } from '../store/actions/petActions.js'
-
-
+// import {  } from '../store/actions/petActions.js'
+import {petService} from '../services/petService.js'
 
 export class PetDetails extends Component {
     state = {
@@ -52,7 +52,7 @@ export class PetDetails extends Component {
 
     render() {
         const pet = this.state.pet
-        const { } = pet.owner
+        // const { } = pet.owner
         return (
             <section >
                 <header className="details-header">
