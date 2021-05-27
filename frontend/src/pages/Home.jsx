@@ -3,8 +3,7 @@ export function Home(){
         <section className="home">
             <h1>Home</h1>
         {/* list  */}
-            <List/>
-            <List/>
+
         </section>
     )
 }
