@@ -4,9 +4,9 @@ export function PetList({pets}) {
     console.log(pets);
     return (
         <section className="pet-list">
-            {/* {pets.map(pet => <PetPreview key={pet._id}
+            {pets.map(pet => <PetPreview key={pet._id}
                 pet={pet}
-            />)} */}
+            />)}
         </section>
     )
 }
