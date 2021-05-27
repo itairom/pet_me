@@ -1,8 +1,6 @@
 import { Component } from 'react'
-import { connect } from 'react-redux'
-import { updatePet } from '../store/actions/petActions.js'
-// import {  } from '../store/actions/petActions.js'
-import {petService} from '../services/petService.js'
+import { petService } from '../services/petService'
+
 
 export class PetDetails extends Component {
     state = {
@@ -11,10 +9,12 @@ export class PetDetails extends Component {
     }
 
     componentDidMount() {
-        this.setState.pet = this.props.pet
-        console.log(this.props.pet)
-        // this.loadPet()
-        // this.props.loadComments()
+        console.log('in',this.props.match);
+        const petId = this.props.match.params.petId
+        console.log(petId);
+        petService.getPetByid(petId).then(pet => {
+            this.setState({ pet })
+        })
     }
 
     //get pets from petService
@@ -51,14 +51,18 @@ export class PetDetails extends Component {
     }
 
     render() {
-        const pet = this.state.pet
+        const {pet }= this.state
         // const { } = pet.owner
+        if (!pet) return <h1>loading</h1>
+
+console.log(pet);
+
         return (
             <section >
                 <header className="details-header">
                     <div>
-                        {/* <h1>{ pet.name }</h1>
-                        <h3>{ pet.name }</h3> */}
+                        <h1>{ pet.name }</h1>
+                        <h3>{ pet.name }</h3>
                     </div>
                     <div>
                         <span className="share-pet">share</span>
