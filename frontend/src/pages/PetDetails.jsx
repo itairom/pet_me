@@ -52,13 +52,12 @@ export class PetDetails extends Component {
 
     render() {
         const pet = this.state.pet
-        const { } = pet.owner
         return (
             <section >
                 <header className="details-header">
                     <div>
-                        {/* <h1>{ pet.name }</h1>
-                        <h3>{ pet.name }</h3> */}
+                        <h1>{ pet.name }</h1>
+                        <h3>{ pet.name }</h3>
                     </div>
                     <div>
                         <span className="share-pet">share</span>
