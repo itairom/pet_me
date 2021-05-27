@@ -52,7 +52,7 @@ export class PetDetails extends Component {
 
     render() {
         const pet = this.state.pet
-        const { } = pet.owner
+        // const { } = pet.owner
         return (
             <section >
                 <header className="details-header">
