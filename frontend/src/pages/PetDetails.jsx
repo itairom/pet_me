@@ -2,7 +2,7 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 import { updatePet } from '../store/actions/petActions.js'
 // import {  } from '../store/actions/petActions.js'
-import {petService} from '../services/petService.js'
+import { petService } from '../services/petService.js'
 
 export class PetDetails extends Component {
     state = {
@@ -51,17 +51,14 @@ export class PetDetails extends Component {
     }
 
     render() {
-        const pet = this.state.pet
-<<<<<<< HEAD
-=======
-        // const { } = pet.owner
->>>>>>> f444520650add5f6f91b4dba5c6c7267f3cccd81
+        const pet = this.props.pet
+        const { address, lat, lng } = pet.owner.loc
         return (
             <section >
-                <header className="details-header">
+                <header className="details-header flex ">
                     <div>
                         <h1>{ pet.name }</h1>
-                        <h3>{ pet.name }</h3>
+                        <h3>{ address }</h3>
                     </div>
                     <div>
                         <span className="share-pet">share</span>
