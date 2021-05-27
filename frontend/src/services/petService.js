@@ -91,7 +91,10 @@ function remove(petId) {
 
 function getpetByid(petId) {
     // return httpService.get(`pet/${petId}`)
-
+    let pet = storageService.getpetByid(petId)
+        .then(pet => {
+            return pet
+        })
 }
 
 
