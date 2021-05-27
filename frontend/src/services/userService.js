@@ -1,4 +1,4 @@
-// import { storageService } from './asyncStorageService'
+import { storageService } from './asyncStorageService'
 import { httpService } from './httpService'
 const SCORE_FOR_REVIEW = 10
 
