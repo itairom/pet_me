@@ -1,10 +1,8 @@
 import React from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
-
+import { PetDetails } from './pages/PetDetails'
 import { Home } from './pages/Home'
-
-
 import { Header } from './cmps/Header'
 
 
@@ -15,7 +13,8 @@ export function App() {
         <Header />
         <main>
           <Switch>
-            <Route path="/" component={Home} />
+            <Route path="/details" component={ PetDetails } />
+            <Route path="/" component={ Home } />
           </Switch>
         </main>
         <footer>

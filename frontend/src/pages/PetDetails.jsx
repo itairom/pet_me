@@ -1,13 +1,13 @@
 import { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { PetService } from '../services/pet.service.js'
-import { updatePet } from '../store/actions/petActions.js'
-import { removeComment, loadComments } from '../store/actions/reviewActions.js'
-import { CommnetsList } from '../cmps/CommentsList.jsx'
+// import { Link } from 'react-router-dom'
+// import { connect } from 'react-redux'
+import { petService } from '../services/petService.js'
+// import { updatePet } from '../store/actions/petActions.js'
+// import { removeComment, loadComments } from '../store/actions/reviewActions.js'
+// import { CommnetsList } from '../cmps/CommentsList.jsx'
 
 
-class _PetDetails extends Component {
+export class PetDetails extends Component {
     state = {
         pet: null,
         isEditMode: false
@@ -21,10 +21,11 @@ class _PetDetails extends Component {
     //get pets from petService
     loadPet = () => {
         const { petId } = this.props.match.params
-        petService.getById(petId)
-            .then(pet => {
-                this.setState({ pet })
-            })
+        const pets = petService.query()
+        // .then(pets => {
+        console.log(pets)
+        // this.setState({ pet })
+        // })
     }
 
 
@@ -57,16 +58,16 @@ class _PetDetails extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        users: state.userModule.users,
-        pets: state.petModule.pets,
-        loggedInUser: state.userModule.loggedInUser
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         users: state.userModule.users,
+//         pets: state.petModule.pets,
+//         loggedInUser: state.userModule.loggedInUser
+//     }
+// }
 
-const mapDispatchToProps = {
-    updatePet
-}
+// const mapDispatchToProps = {
+//     updatePet
+// }
 
-export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
+// export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
