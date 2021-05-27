@@ -1,11 +1,10 @@
 import axios from 'axios'
 import { storageService } from './asyncStorageService'
-// import { httpService } from './http.service'
 window.storageService = storageService;
 
 
 export const petService = {
-    query, getpetByid, add, remove
+    query, getPetByid, add, remove
 }
 
 const gPets = [{
@@ -54,7 +53,7 @@ const gPets = [{
 {
     "_id": "123",
     "type": "cat",
-    "name": "Noble",
+    "name": "momo",
     "breed": "German Shepherd ",
     "title": "mati dog",
     "desc": "Nobleman is slower to warm up to new people and would do best in a home willing to work with him and understanding his need to come to people on his own terms. This includes letting him sniff a new person and letting him walk away until he is ready to interact with them.  Nobleman is house and crate trained. We are looking for a home that will continue with the training and socialization methods set in place by his amazing trainer and foster parents. He needs patience, structure.He would do best in a home without small children or cats. While Nobleman does get along with his foster pack he would prefer to be an only dog If you are looking for a giant loving soul who will give you his full devotion in exchange for continuing to help him gain his confidence Please apply below!",
@@ -141,12 +140,11 @@ function remove(petId) {
     //     .then(res => res.data)
 }
 
-function getpetByid(petId) {
+async function getPetByid(petId) {
+    
     // return httpService.get(`pet/${petId}`)
-    let pet = storageService.getpetByid(petId)
-        .then(pet => {
-            return pet
-        })
+    let pet = await storageService.get(STORAGE_KEY,petId)
+       return pet
 }
 
 

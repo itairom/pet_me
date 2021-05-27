@@ -1,26 +1,41 @@
+import { connect } from 'react-redux'
 import React from 'react'
 import { PetList } from '../cmps/PetList';
-import { PetDetails } from '../pages/PetDetails';
-import { petService } from '../services/petService'
-export class PetApp extends React.Component {
+import { loadPets,addPet } from '../store/actions/petActions'
+class _PetApp extends React.Component {
+
     state = {
         pets: null
     }
-    async componentDidMount() {
-        const pets = await petService.query();
-        this.setState({ pets }, () => console.log(this.state.pets))
+    componentDidMount() {
+        this.props.loadPets()
+        this.setState({ pets: this.props.pets })
     }
-    render() {
-        const { pets } = this.state
 
-        if (!this.state.pets) return <h1>loading</h1>
+    onAddPet=()=>{
+        
+    }
+
+    render() {
+        const { pets } = this.props
+        if (!pets) return <h1>loading</h1>
         return (
             <section>
-                < PetList pets={ pets } />
-                <PetDetails pet={ pets[0] } />
-                {this.state.pets[0].name }
+                < PetList pets={pets} />
             </section>
         )
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        pets: state.petModule.pets
+    }
+}
+
+
+const mapDispatchToProps = {
+    loadPets,addPet
+}
+
+export const PetApp = connect(mapStateToProps, mapDispatchToProps)(_PetApp)

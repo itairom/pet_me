@@ -5,7 +5,7 @@ export function loadPets(filterBy) { // Action Creator
     return async dispatch => {
         try {
             const pets = await petService.query(filterBy)
-            dispatch({ type: 'SET_pets', pets })
+            dispatch({ type: 'SET_PETS', pets })
         }
         catch (err) {
             console.log('unable to query pets', err);
