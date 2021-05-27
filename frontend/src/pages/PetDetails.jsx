@@ -12,19 +12,20 @@ export class PetDetails extends Component {
 
     componentDidMount() {
         this.setState.pet = this.props.pet
+        console.log(this.props.pet)
         // this.loadPet()
         // this.props.loadComments()
     }
 
     //get pets from petService
-    loadPet = () => {
-        const { petId } = this.props.match.params
-        const pets = petService.query()
-        // .then(pets => {
-        console.log(pets)
-        // this.setState({ pet })
-        // })
-    }
+    // loadPet = () => {
+    //     const { petId } = this.props.match.params
+    //     const pets = petService.query()
+    // .then(pets => {
+    // console.log(pets)
+    // this.setState({ pet })
+    // })
+    // }
 
 
     handleChange = ({ target }) => {
@@ -51,7 +52,7 @@ export class PetDetails extends Component {
 
     render() {
         const pet = this.state.pet
-        // const owner = this.state.pet.owner
+        const { } = pet.owner
         return (
             <section >
                 <header className="details-header">
