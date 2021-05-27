@@ -56,11 +56,11 @@ export class PetDetails extends Component {
         const pet = this.state.pet
         // const owner = this.state.pet.owner
         return (
-            <section>
+            <section >
                 <header className="details-header">
                     <div>
-                        <h1>{ pet.name }</h1>
-                        <h3>{ }</h3>
+                        {/* <h1>{ pet.name }</h1>
+                        <h3>{ pet.name }</h3> */}
                     </div>
                     <div>
                         <span className="share-pet">share</span>
@@ -72,16 +72,16 @@ export class PetDetails extends Component {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         users: state.userModule.users,
-//         pets: state.petModule.pets,
-//         loggedInUser: state.userModule.loggedInUser
-//     }
-// }
+    // const mapStateToProps = state => {
+    //     return {
+    //         users: state.userModule.users,
+    //         pets: state.petModule.pets,
+    //         loggedInUser: state.userModule.loggedInUser
+    //     }
+    // }
 
-// const mapDispatchToProps = {
-//     updatePet
-// }
+    // const mapDispatchToProps = {
+    //     updatePet
+    // }
 
-// export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
+    // export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
