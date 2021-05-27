@@ -14,8 +14,9 @@ export class PetDetails extends Component {
     }
 
     componentDidMount() {
-        this.loadPet()
-        this.props.loadComments()
+        console.log('this.props', this.props.pet)
+        // this.loadPet()
+        // this.props.loadComments()
     }
 
     //get pets from petService
