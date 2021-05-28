@@ -21,7 +21,6 @@ export function PetPreview({ pet }) {
                         <Heart className="preview-heart"/>
                         <span>{pet.likes}</span>
                     </div>
-
                 </div>
             </div>
         </section>
