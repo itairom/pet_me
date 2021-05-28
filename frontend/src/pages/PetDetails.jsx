@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { petService } from '../services/petService'
+import { connect } from 'react-redux'
 
 
 export class PetDetails extends Component {
@@ -9,7 +10,7 @@ export class PetDetails extends Component {
     }
 
     componentDidMount() {
-        console.log('in',this.props.match);
+        console.log('in', this.props.match);
         const petId = this.props.match.params.petId
         console.log(petId);
         petService.getPetByid(petId).then(pet => {
@@ -51,11 +52,11 @@ export class PetDetails extends Component {
     }
 
     render() {
-        const {pet }= this.state
+        const { pet } = this.state
         // const { } = pet.owner
         if (!pet) return <h1>loading</h1>
 
-console.log(pet);
+        console.log(pet);
 
         return (
             <section >
@@ -74,16 +75,17 @@ console.log(pet);
     }
 }
 
-    // const mapStateToProps = state => {
-    //     return {
-    //         users: state.userModule.users,
-    //         pets: state.petModule.pets,
-    //         loggedInUser: state.userModule.loggedInUser
-    //     }
-    // }
 
-    // const mapDispatchToProps = {
-    //     updatePet
-    // }
+// const mapStateToProps = state => {
+//     return {
+//         users: state.userModule.users,
+//         pets: state.petModule.pets,
+//         loggedInUser: state.userModule.loggedInUser
+//     }
+// }
 
-    // export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
+// const mapDispatchToProps = {
+//     // updatePet
+// }
+
+// export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
