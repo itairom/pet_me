@@ -1,3 +1,16 @@
 .main-header{
+    position: fixed;
+    width: 100vw;
     background-color: bisque;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+
+    & a{
+        // display: flex;
+        align-self: center;
+        padding:30px ;
+        // margin: 10px 0;
+
+    }
 }
