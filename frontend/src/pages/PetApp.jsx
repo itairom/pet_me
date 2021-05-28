@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import React from 'react'
-import { PetList } from '../cmps/PetList';
 import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
 
@@ -62,26 +61,77 @@ class _PetApp extends React.Component {
         const { pets } = this.props
         if (!pets) return <h1>loading</h1>
         return (
-            <section>
-                <section className="hero-main" ></section>
-                <img className="hero-img" src="https://c0.wallpaperflare.com/preview/33/261/178/tan-siberian-husky-on-snow-pathway.jpg" alt="Hero" />
-                <div className="type-cards">
-                    <h2>Find your next pet</h2>
+            <section className="main-container">
+                <section className="hero"></section>
+                <div className="type-cards container">
+                    <h2>Find your next friend</h2>
                     <div className="type-img">
-                        <Link to="/explore/dog" >
-                            <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184194/home/3_rhldud.jpg" alt="card" />
-                        </Link>
-                        <Link to="/explore/cat" >
-                            <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184190/home/2_psg3af.jpg" alt="card" />
-                        </Link>
-                        <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184188/home/4_wqosra.jpg" alt="card" />
-                        <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184185/home/1_l4db6a.jpg" alt="card" />
+                        <div>
+                            <Link to="/explore/dog" >
+                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622205405/dogs/dog3/frnach-dog3_npdovb.jpg" alt="card" />
+                                <h4>Dogs</h4>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to="/explore/cat" >
+                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622203804/petMe/cats/cat_nnrk1h.jpg" alt="card" />
+                                <h4>Cats</h4>
+                            </Link>
+                        </div>
+                        <div>
+                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622206572/petMe/rabbit/rrabit3/1_2_chadja.jpg" alt="card" />
+                            <h4>Rabbits</h4>
+                        </div>
+                        <div>
+                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622213930/petMe/parrot/1_3_s1zdqk.jpg" alt="card" />
+                            <h4>Parrots</h4>
+                        </div>
                     </div>
 
                 </div>
 
-                {/* < PetList pets={pets} /> */}
                 <button onClick={() => this.onAddPet()}>Add</button>
+                <div className="type-cards container">
+                    <h2>Find your next friend</h2>
+                    <div className="type-img">
+                        <div>
+                            <Link to="/explore/dog" >
+                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622206029/dogs/dog5/1_ys7agr.jpg" alt="card" />
+                                <h4>Dogs</h4>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to="/explore/cat" >
+                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622214651/petMe/cats/cat2_lekwe7.jpg" alt="card" />
+                                <h4>Cats</h4>
+                            </Link>
+                        </div>
+                        <div>
+                            <img src="http://res.cloudinary.com/dstqymucm/image/upload/v1622204506/dogs/dog4/1_ahnfd1.jpg" alt="card" />
+                            <h4>Dogs</h4>
+                        </div>
+                        <div>
+                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622144479/petMe/hamster/1_r0a5d5.jpg" alt="card" />
+                            <h4>Hammy</h4>
+                        </div>
+                    </div>
+                </div>
+                <section className="homepage-about">
+                    <div className="inner-container container flex">
+                        <div className="about-content">
+                            <h2>About as/vision.........................</h2>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
+                            <button>Join Us</button>
+                        </div>
+                        <div className="about_imgs">
+                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622209864/petMe/about-imgs/about1_rt4e2u.jpg" alt="card" />
+                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210087/petMe/about-imgs/about-cat_w78jtf.jpg" alt="card" />
+                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210260/petMe/about-imgs/boy-and-cat_hd5uqt.jpg" alt="card" />
+                        </div>
+                    </div>
+                </section>
             </section>
         )
     }
