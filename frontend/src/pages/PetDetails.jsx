@@ -10,10 +10,6 @@ export class PetDetails extends Component {
     }
 
     componentDidMount() {
-<<<<<<< HEAD
-        console.log('in', this.props.match);
-=======
->>>>>>> 1259b31402993de8fd7c6d88d2b536678a6b72bf
         const petId = this.props.match.params.petId
         console.log(petId);
         petService.getPetByid(petId).then(pet => {
