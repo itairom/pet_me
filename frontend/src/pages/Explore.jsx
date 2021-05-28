@@ -19,7 +19,7 @@ class _Explore extends React.Component {
         return (
             <section>
                 <h1>Explore</h1>
-                < PetList pets={pets} />
+                < PetList pets={ pets } />
             </section>
         )
     }
