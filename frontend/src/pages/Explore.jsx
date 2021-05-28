@@ -18,7 +18,7 @@ class _Explore extends React.Component {
         if (!pets) return <h1>loading...</h1>
         return (
             <section>
-                <h1>Explor</h1>
+                <h1>Explore</h1>
                 < PetList pets={pets} />
 
             </section>

@@ -4,7 +4,6 @@ import { PetDetails } from './pages/PetDetails'
 import { Header } from './cmps/Header'
 import { PetApp } from './pages/PetApp'
 import { Explore } from './pages/Explore'
-import { LoginSignup } from './pages/LoginSignupT'
 
 
 export function App() {
