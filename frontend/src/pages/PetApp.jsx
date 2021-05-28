@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import React from 'react'
-import { PetList } from '../cmps/PetList';
 import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
 
@@ -81,7 +80,7 @@ class _PetApp extends React.Component {
                 </div>
 
                 {/* < PetList pets={pets} /> */}
-                <button onClick={() => this.onAddPet()}>Add</button>
+                {/* <button onClick={() => this.onAddPet()}>Add</button> */}
             </section>
         )
     }

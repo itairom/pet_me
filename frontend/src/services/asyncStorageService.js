@@ -10,14 +10,16 @@ export const storageService = {
 }
 
 function query(entityType, filterBy) {
-    const { type } = filterBy
+    const { type, } = filterBy
 
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
+    console.log('type', type);
+
     if (type) {
-        entities.filter(entity => {
-            entity.type.include()
-        })
+        entities = entities.filter(entity => entity.type.includes(type))
     }
+
+
 
     return Promise.resolve(entities)
 }
@@ -31,6 +33,7 @@ function post(entityType, newEntity) {
     newEntity._id = _makeId()
     return query(entityType)
         .then(entities => {
+            console.log("🚀 ~ file: asyncStorageService.js ~ line 38 ~ query ~ entities", entities)
             entities.push(newEntity)
             save(entityType, entities)
             return newEntity
