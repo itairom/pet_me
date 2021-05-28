@@ -2,6 +2,8 @@ import { connect } from 'react-redux'
 import React from 'react'
 import { PetList } from '../cmps/PetList';
 import { loadPets, addPet } from '../store/actions/petActions'
+import { Link } from 'react-router-dom'
+
 class _PetApp extends React.Component {
 
     state = {
@@ -66,15 +68,19 @@ class _PetApp extends React.Component {
                 <div className="type-cards">
                     <h2>Find your next pet</h2>
                     <div className="type-img">
-                        <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184194/home/3_rhldud.jpg" alt="card" />
-                        <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184190/home/2_psg3af.jpg" alt="card" />
+                        <Link to="/explore/dog" >
+                            <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184194/home/3_rhldud.jpg" alt="card" />
+                        </Link>
+                        <Link to="/explore/cat" >
+                            <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184190/home/2_psg3af.jpg" alt="card" />
+                        </Link>
                         <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184188/home/4_wqosra.jpg" alt="card" />
                         <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184185/home/1_l4db6a.jpg" alt="card" />
                     </div>
 
                 </div>
 
-                < PetList pets={pets} />
+                {/* < PetList pets={pets} /> */}
                 <button onClick={() => this.onAddPet()}>Add</button>
             </section>
         )

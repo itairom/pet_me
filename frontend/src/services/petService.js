@@ -306,7 +306,8 @@ const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
 
-    let pets = await storageService.query()
+    let pets = await storageService.query(STORAGE_KEY,filterBy)
+    // console.log("🚀 ~ file: petService.js ~ line 310 ~ query ~ pets", pets)
 
     if (!pets || !pets.length) {
         console.log('in');

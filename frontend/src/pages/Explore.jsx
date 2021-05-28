@@ -8,19 +8,18 @@ class _Explore extends React.Component {
         pets: null
     }
     componentDidMount() {
-        this.props.loadPets()
+        // console.log(this.props.match.params.type);
+        this.props.loadPets(this.props.match.params)
         this.setState({ pets: this.props.pets })
     }
 
     render() {
         const { pets } = this.props
-        console.log(pets);
         if (!pets) return <h1>loading...</h1>
         return (
             <section>
                 <h1>Explor</h1>
                 < PetList pets={pets} />
-
             </section>
         )
     }
