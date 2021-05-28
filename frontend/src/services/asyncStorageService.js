@@ -9,8 +9,15 @@ export const storageService = {
     save
 }
 
-function query(entityType) {
+function query(entityType, filterBy) {
+    const { type } = filterBy
+
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
+    if (type) {
+        entities.filter(entity => {
+            entity.type.include()
+        })
+    }
 
     return Promise.resolve(entities)
 }

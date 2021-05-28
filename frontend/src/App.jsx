@@ -13,7 +13,8 @@ export function App() {
         <Header />
         <main>
           <Switch>
-            <Route path="/explore" component={Explore} />
+            <Route path="/explore/:type" component={Explore} />
+            <Route path="/explore/" component={Explore} />
             {/* <Route path="/login" component={LoginSignup} /> */}
             <Route path="/:petId" component={PetDetails} />
             <Route path="/" component={PetApp} />
