@@ -1,0 +1,32 @@
+.hero-main{
+
+}
+.hero-img{
+    
+    height: 90vh;
+    // object-fit: cover;
+}
+
+.type-cards{
+display: flex;
+flex-direction: column;
+// overflow-x: auto;
+// overflow-y: hidden;
+// flex-wrap: nowrap;
+
+.type-img{
+    display: flex;
+    justify-content: space-around;
+
+
+    & img{
+            // display: flex;
+            height: 300px;
+            width: 230px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+}
+
+}

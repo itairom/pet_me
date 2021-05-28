@@ -1,5 +1,19 @@
 import { storageService } from './asyncStorageService'
 import { httpService } from './httpService'
+
+const gUsers=[
+    {
+        "username":"yossef",
+        "fullname":"yossef123",
+        "password":"123",
+    },
+    {
+        "username":"benny",
+        "fullname":"benny123",
+        "password":"123",
+    }
+]
+
 const SCORE_FOR_REVIEW = 10
 
 export const userService = {
@@ -19,10 +33,21 @@ window.userService = userService
 // userService.signup({fullname: 'Puki Norma', username: 'user1', password:'123',score: 100, isAdmin: false})
 // userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 100, isAdmin: true})
 
-function getUsers() {
-    return storageService.query('user')
-    // return httpService.get(`user`)
+async function getUsers(filterBy = '') {
+    let users = await storageService.query()
+    if (!users || !users.length) {
+        console.log('in');
+        users = gUsers;
+        storageService.save('user', users);
+    }
+    return users;
 }
+
+
+// function getUsers() {
+//     return storageService.query('user')
+//     // return httpService.get(`user`)
+// }
 
 function getById(userId) {
     return storageService.get('user', userId)

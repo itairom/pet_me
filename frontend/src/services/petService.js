@@ -122,14 +122,17 @@ async function query(filterBy = '') {
 // }
 
 
-function add(pet) {
+async function add(pet) {
     if (pet._id) {
         // return httpService.post(pet)
         // return axios.put(BASE_URL + '/edit', pet)
         // .then(res => res.data)
     }
-    return axios.post(BASE_URL + '/edit', pet)
-        .then(res => res.data)
+    // return axios.post(BASE_URL + '/edit', pet)
+    //     .then(res => res.data)
+    let addPet = await storageService.post(STORAGE_KEY, pet)
+    return addPet
+
 }
 function remove(petId) {
     // return axios.delete(BASE_URL + `/${petId}`)
@@ -137,10 +140,10 @@ function remove(petId) {
 }
 
 async function getPetByid(petId) {
-    
+
     // return httpService.get(`pet/${petId}`)
-    let pet = await storageService.get(STORAGE_KEY,petId)
-       return pet
+    let pet = await storageService.get(STORAGE_KEY, petId)
+    return pet
 }
 
 

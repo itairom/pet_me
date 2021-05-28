@@ -1,8 +1,6 @@
 import { PetPreview } from '../cmps/PetPreview.jsx'
 
-
 export function PetList({pets}) {
-    // const pets = PetService.query()
     console.log(pets);
     return (
         <section className="pet-list">

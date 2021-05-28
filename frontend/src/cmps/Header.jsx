@@ -5,9 +5,9 @@ export class Header extends Component {
     render() {
         return <header className="main-header">
             <nav>
-                <NavLink to="/pet">Pets</NavLink>
                 <NavLink to="/login">Login</NavLink>
-                <NavLink exact to="/">Home</NavLink>
+                <NavLink to="/explore">Explore</NavLink>
+                <NavLink exact to="/">PetMe</NavLink>
             </nav>
         </header>
     }
