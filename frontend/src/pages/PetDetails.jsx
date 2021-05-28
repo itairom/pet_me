@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { petService } from '../services/petService'
+import { connect } from 'react-redux'
 
 
 export class PetDetails extends Component {
@@ -39,15 +40,15 @@ export class PetDetails extends Component {
     }
 
     render() {
-        const {pet }= this.state
+        const { pet } = this.state
         // const { } = pet.owner
         if (!pet) return <h1>loading</h1>
 
-console.log(pet);
+        console.log(pet);
 
         return (
             <section >
-                <header className="details-header">
+                <header className="details-header flex ">
                     <div>
                         <h1>{ pet.name }</h1>
                         <h3>{ pet.name }</h3>
@@ -62,16 +63,17 @@ console.log(pet);
     }
 }
 
-    // const mapStateToProps = state => {
-    //     return {
-    //         users: state.userModule.users,
-    //         pets: state.petModule.pets,
-    //         loggedInUser: state.userModule.loggedInUser
-    //     }
-    // }
 
-    // const mapDispatchToProps = {
-    //     updatePet
-    // }
+// const mapStateToProps = state => {
+//     return {
+//         users: state.userModule.users,
+//         pets: state.petModule.pets,
+//         loggedInUser: state.userModule.loggedInUser
+//     }
+// }
 
-    // export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
+// const mapDispatchToProps = {
+//     // updatePet
+// }
+
+// export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
