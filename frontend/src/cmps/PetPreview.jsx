@@ -1,12 +1,30 @@
-import { Link } from "react-router-dom";
+import { ReactComponent as Heart } from '../assets/fonts/svg/Preview/heart.svg'
+import { ReactComponent as Male } from '../assets/fonts/svg/Preview/mars.svg'
+import { ReactComponent as Female } from '../assets/fonts/svg/Preview/venus.svg'
 
-export function PetPreview({pet}) {
+export function PetPreview({ pet }) {
+    const gender = pet.gender === 'female' ? <Female />: <Male />
     return (
-        <section>
-            <img src="" alt="" />
-            <p>pet.name</p>
-            <Link to={`/${pet._id}`} className="primary-btn">Show details</Link>
+        <section className="pet-card-container">
+            <div className="img-container">
+                <img src={pet.imgUrls[0]} alt="" />
+            </div>
+            <div className="card-info">
+                <div className="pet-name-gender flex">
+                    <p>{pet.name}</p>
+                    <span>{gender}</span>
+                </div>
+                <p className="pet-title">{pet.title}</p>
+                <div className="pet-preview-host flex">
+                    <p>{pet.owner.name}</p>
+                    <div className="pet-preview-likes flex">
+                        <Heart className="preview-heart"/>
+                        <span>{pet.likes}</span>
+                    </div>
 
+                </div>
+            </div>
         </section>
     )
 }
+
