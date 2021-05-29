@@ -7,15 +7,12 @@
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 50px;
-    // position: relative;
+    position: relative;
 }
 
 .type-cards {
     display: flex;
     flex-direction: column;
-    // overflow-x: auto;
-    // overflow-y: hidden;
-    // flex-wrap: nowrap;
     & h2{
         margin-bottom: 10px;
     }

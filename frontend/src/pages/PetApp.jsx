@@ -4,6 +4,7 @@ import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
 // import { PetFilter } from '../cmps/PetFilter'
 import { PetFilter } from '../cmps/PetFilter'
+import { Header } from '../cmps/Header'
 
 
 class _PetApp extends React.Component {
@@ -64,12 +65,14 @@ class _PetApp extends React.Component {
         if (!pets) return <h1>loading</h1>
         return (
             <section className="main-container">
-                <section className="hero"></section>
+                <section className="hero">
+                    < PetFilter />
+                </section>
                 <div className="type-cards container">
                     <h2>Find your next friend</h2>
                     <div className="type-img">
                         <div>
-                            <Link to="/explore/dog" >
+                            <Link to={`/explore/?&filterBy=type=dog`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622205405/dogs/dog3/frnach-dog3_npdovb.jpg" alt="card" />
                                 <h4>Dogs</h4>
                             </Link>

@@ -11,7 +11,8 @@ class _Explore extends React.Component {
         pets: null
     }
     componentDidMount() {
-        // console.log(this.props.match.params.type);
+
+        console.log('filterBy',this.props.location.search);
         this.props.loadPets(this.props.match.params)
         this.setState({ pets: this.props.pets })
     }
