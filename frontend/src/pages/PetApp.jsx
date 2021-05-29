@@ -80,8 +80,8 @@ class _PetApp extends React.Component {
 
                 </div>
 
-                {/* < PetList pets={pets} /> */}
-                <button onClick={() => this.onAddPet()}>Add</button>
+                {/* < PetList pets={pets} /> */ }
+                <button onClick={ () => this.onAddPet() }>Add</button>
             </section>
         )
     }

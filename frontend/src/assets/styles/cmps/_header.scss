@@ -4,13 +4,22 @@
     background-color: bisque;
     display: flex;
     align-items: center;
-    padding: 20px;
-
+    
+    & .main-logo {
+        align-self: center;
+        padding:15px ;
+        & a{
+            font-size: 1.5rem;
+            font-family: sans-serif;
+            margin-left: 8px;
+            font-weight: bolder;
+        }
+    }
     & a{
         // display: flex;
         align-self: center;
-        padding:30px ;
+        padding:15px ;
         // margin: 10px 0;
-
+        
     }
 }

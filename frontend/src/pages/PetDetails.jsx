@@ -1,9 +1,9 @@
 import { Component } from 'react'
 import { petService } from '../services/petService'
 import { connect } from 'react-redux'
+import { addLike } from '../store/actions/petActions'
 
-
-export class PetDetails extends Component {
+export class _PetDetails extends Component {
     state = {
         pet: null,
         isEditMode: false
@@ -40,40 +40,57 @@ export class PetDetails extends Component {
     }
 
     render() {
+        const { pets } = this.props
+        //Yaara added:
+        const id = this.props.match.params.petId;
+        const p = pets.filter(pet => pet._id === id);
+        console.log("Pet: ", p);
+
         const { pet } = this.state
-        // const { } = pet.owner
+        // const { loc } = pet.owner
+
         if (!pet) return <h1>loading</h1>
-
         console.log(pet);
-
+        console.log(pet.imgUrls);
         return (
-            <section >
-                <header className="details-header flex ">
-                    <div>
-                        <h1>{ pet.name }</h1>
-                        <h3>{ pet.name }</h3>
+            <section className="pet-details-section">
+                <header className="details-header flex">
+                    <div className="details-title flex column">
+                        <h3 className="pet-name">{ pet.name }</h3>
+                        { <span className="pet-location">{ pet.name }</span> }
                     </div>
-                    <div>
+                    <div className="details-header-btns">
+                        {/* TODO: add icons +actions btns */ }
                         <span className="share-pet">share</span>
-                        <span className="like-pet">like</span>
+                        <span className="like-pet">
+                            <button onClick={ this.props.addLike }>like</button></span>
                     </div>
                 </header>
+                <div className="details-imgs-container grid">
+                    { pet.imgUrls.map((imgUrl) => {
+                        return <img src={ imgUrl } alt="skeleton" />
+                    }) }
+                </div>
             </section>
         )
     }
 }
 
 
-// const mapStateToProps = state => {
-//     return {
-//         users: state.userModule.users,
-//         pets: state.petModule.pets,
-//         loggedInUser: state.userModule.loggedInUser
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        users: state.userModule.users,
+        pets: state.petModule.pets,
+        loggedInUser: state.userModule.loggedInUser
+    }
+}
 
-// const mapDispatchToProps = {
-//     // updatePet
-// }
+const mapDispatchToProps = {
+    addLike
+    // updatePet
+}
 
-// export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
+export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
+
+//Yaara added:
+//actions: 

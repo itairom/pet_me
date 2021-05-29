@@ -3,11 +3,13 @@ import { NavLink } from 'react-router-dom'
 
 export class Header extends Component {
     render() {
-        return <header className="main-header">
-            <nav>
+        return <header className="main-header main-layout">
+            <nav className="main-nav flex">
+                <div className="main-logo">
+                    <NavLink exact to="/">PetMe.</NavLink>
+                </div>
                 <NavLink to="/login">Login</NavLink>
                 <NavLink to="/explore">Explore</NavLink>
-                <NavLink exact to="/">PetMe</NavLink>
             </nav>
         </header>
     }

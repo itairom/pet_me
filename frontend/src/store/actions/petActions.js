@@ -1,4 +1,4 @@
-import {petService} from '../../services/petService.js'
+import { petService } from '../../services/petService.js'
 // import {petService} from '../../services/'
 
 export function loadPets(filterBy) { // Action Creator
@@ -45,6 +45,19 @@ export function removePet(petId) { // Action Creator
             .then((petId) => {
                 const action = {
                     type: 'REMOVE_PET', petId: petId + ''
+                }
+                dispatch(action)
+            })
+    }
+}
+
+export function addLike(petId) { // Action Creator
+    return dispatch => {
+        return petService.addLike(petId)
+            .then((petId) => {
+                const action = {
+                    type: 'ADD_LIKE',
+                    petId: petId + ''
                 }
                 dispatch(action)
             })
