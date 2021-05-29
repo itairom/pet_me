@@ -2,6 +2,8 @@ import { Component } from 'react'
 import { petService } from '../services/petService'
 import { connect } from 'react-redux'
 import { addLike } from '../store/actions/petActions'
+import { LongTxt } from '../cmps/LongTxt'
+import { CommentsCmp } from '../cmps/CommentsCmp'
 
 export class _PetDetails extends Component {
     state = {
@@ -62,20 +64,42 @@ export class _PetDetails extends Component {
                     </div>
                     <div className="details-header-btns">
                         {/* TODO: add icons +actions btns */ }
-                        <span className="share-pet">share</span>
-                        <span className="like-pet">
+                        <span className="like-pet"> { pet.likes }
                             <button onClick={ () => this.props.addLike(pet._id) }>like</button></span>
                     </div>
+                    <span className="share-pet">share</span>
                 </header>
                 <div className="details-imgs-container grid">
                     { pet.imgUrls.map((imgUrl) => {
                         return <img src={ imgUrl } alt="skeleton" />
                     }) }
                 </div>
-                <div className="details-info-container">
-                    <div className="info-header">
-                    
+                <div className="details-main-section flex">
+
+                    <div className="details-info-container">
+                        <div className="info-header flex ">
+                            <h3>{ pet.name + ', owned by ' + pet.owner.name }</h3>
+                            <img src={ pet.owner.imgUrl } alt="" />
+                        </div>
+                        <div className="info-body">
+                            <LongTxt className="pet-desc" txt={ pet.desc } />
+                            {/* <p className="pet-desc">{ pet.desc }</p> */ }
+                            <ul className="pet-info-list">
+                                <li>Age: { (pet.age === 1) ? pet.age + ' year old' : pet.age + ' years old' }</li>
+                                <li>Gender: { pet.gender }</li>
+                                <li>Breed: { pet.breed }</li>
+                                <li>vaccinated: { pet.vaccine ? 'yes' : 'no' }</li>
+                                <li>Spayed/Neutered: { pet.neuterSpayed ? 'yes' : 'no' }</li>
+                                <li>trained: { pet.trained ? 'yes' : 'no' }</li>
+                            </ul>
+                        </div>
                     </div>
+                    <div className="adopt-modal-section">
+
+                    </div>
+                </div>
+                <div className="comments-section">
+                    <CommentsCmp pet={ pet } key={ pet._id } />
                 </div>
             </section>
         )
