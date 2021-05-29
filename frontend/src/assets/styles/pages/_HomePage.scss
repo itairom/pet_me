@@ -1,15 +1,28 @@
+<<<<<<< HEAD
 .hero-main {
 }
 .hero-img {
+=======
+.hero-main {}
+
+.hero {
+    background-image: url("https://res.cloudinary.com/dstqymucm/image/upload/v1622212628/petMe/hero-img/happy-dog_dhyjue.jpg");
+>>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb
     height: 90vh;
-    // object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // position: relative;
 }
 
+<<<<<<< HEAD
 .pet-filter {
     width: 500px;
     display: flex;
 }
 
+=======
+>>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb
 .type-cards {
     display: flex;
     flex-direction: column;
@@ -19,15 +32,78 @@
 
     .type-img {
         display: flex;
+<<<<<<< HEAD
         justify-content: space-around;
 
         & img {
             // display: flex;
+=======
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-block-end: 20px;
+
+        >*:not(:last-child) {
+            margin-inline-end: 15px;
+        }
+
+        & img {
+>>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb
             height: 300px;
             width: 230px;
             object-fit: cover;
             border-radius: 10px;
             cursor: pointer;
+            
+        }
+    }
+<<<<<<< HEAD
+}
+=======
+
+}
+
+.homepage-about {
+    background-color: $clr7;
+    color: white;
+
+    .inner-container {
+        flex: 1 1 50%;
+        padding: 40px 80px;
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin-inline-end: 20px;
+            h2{
+                margin-block-end: 15px;
+            }
+
+            p:not(:last-of-type){
+                margin-block-end: 10px;
+            }
+            p:nth-child(4) {
+                flex:1
+              }
+        }
+
+        .about_imgs {
+            flex: 1;
+            height: unset;
+            display: grid;
+            gap: 15px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 190px 190px;
+
+            >* {
+                border-radius: 20px;
+                object-fit:cover
+            }
+            :last-child{
+                grid-column: 1/span 2;    
+            }
+
         }
     }
 }
+>>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb
