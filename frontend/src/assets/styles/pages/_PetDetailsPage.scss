@@ -1,4 +1,6 @@
-
+.pet-details-section{
+    margin: 0 1rem;
+}
 
 .details-header{
 margin-top: 80px;
@@ -9,5 +11,36 @@ margin-top: 80px;
 }
 
 .details-imgs-container {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 165px 165px;
+    gap: 8px;
+    margin-bottom: 20px;
+
+    & img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
     
+    & :first-child{
+        grid-column: 1/span 2;
+        grid-row: 1/span 2;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    & :nth-child(3) {
+        border-top-right-radius: 10px;
+    }
+    
+    & :nth-child(5) {
+        border-bottom-right-radius: 10px;
+    }
+
 }

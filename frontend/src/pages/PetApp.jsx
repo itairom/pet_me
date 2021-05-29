@@ -90,10 +90,6 @@ class _PetApp extends React.Component {
 
                 </div>
 
-<<<<<<< HEAD
-                {/* < PetList pets={pets} /> */ }
-                <button onClick={ () => this.onAddPet() }>Add</button>
-=======
                 <button onClick={() => this.onAddPet()}>Add</button>
                 <div className="type-cards container">
                     <h2>Find your next friend</h2>
@@ -136,7 +132,6 @@ class _PetApp extends React.Component {
                         </div>
                     </div>
                 </section>
->>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb
             </section>
         )
     }

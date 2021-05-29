@@ -40,36 +40,42 @@ export class _PetDetails extends Component {
     }
 
     render() {
-        const { pets } = this.props
-        //Yaara added:
-        const id = this.props.match.params.petId;
-        const p = pets.filter(pet => pet._id === id);
-        console.log("Pet: ", p);
+        // const { pets } = this.props
+        // //Yaara added:
+        // const id = this.props.match.params.petId;
+        // const p = pets.filter(pet => pet._id === id);
+        // console.log("Pet: ", p);
+
 
         const { pet } = this.state
+        // const { pet: { owner } } = this.state
+        console.log(pet);
         // const { loc } = pet.owner
 
         if (!pet) return <h1>loading</h1>
-        console.log(pet);
-        console.log(pet.imgUrls);
         return (
             <section className="pet-details-section">
                 <header className="details-header flex">
                     <div className="details-title flex column">
                         <h3 className="pet-name">{ pet.name }</h3>
-                        { <span className="pet-location">{ pet.name }</span> }
+                        { <span className="pet-location">{ pet.owner.loc.address }</span> }
                     </div>
                     <div className="details-header-btns">
                         {/* TODO: add icons +actions btns */ }
                         <span className="share-pet">share</span>
                         <span className="like-pet">
-                            <button onClick={ this.props.addLike }>like</button></span>
+                            <button onClick={ () => this.props.addLike(pet._id) }>like</button></span>
                     </div>
                 </header>
                 <div className="details-imgs-container grid">
                     { pet.imgUrls.map((imgUrl) => {
                         return <img src={ imgUrl } alt="skeleton" />
                     }) }
+                </div>
+                <div className="details-info-container">
+                    <div className="info-header">
+                    
+                    </div>
                 </div>
             </section>
         )
