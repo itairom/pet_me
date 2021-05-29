@@ -3,7 +3,8 @@ if (sessionStorage.loggedinUser) localLoggedinUser = JSON.parse(sessionStorage.l
 
 const initialState = {
   loggedInUser: localLoggedinUser,
-  users: []
+  users: [],
+  pets: {} //userId => pets
 }
 
 export function userReducer(state = initialState, action = {}) {
@@ -17,6 +18,21 @@ export function userReducer(state = initialState, action = {}) {
       }
     case 'SET_USERS':
       return { ...state, users: action.users }
+    case 'ADOPT':
+      const user = state.users.find(user => user._id === action.userId)
+      const userPet = user.pets.find(pet => pet._id)
+      userPet.adoptQue.push({
+        userId: action.userId,
+        message: action.message,
+        //"chatId": "i11"
+      })
+      user.pets = userPet;
+      const idx = state.users.findIndex(user => user._id === action.userId)
+      state.users.splice(idx, 1, user)
+      return { ...state, users: action.users }
+
+      
+
     case 'SET_SCORE':
       return { ...state, loggedInUser: { ...state.loggedInUser, score: action.score } }
     default:

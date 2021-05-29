@@ -33,39 +33,22 @@
 
     display: flex;
     align-items: center;
-    & img {
-        width: 20px;
-        height: 20px;
-    }
-
-    & a {
-        padding: 15px;
-    }
-
-    & a:hover {
-        border-radius: 25px;
-        background-color: hsla(0, 0%, 88.6%, 0.363);
-    }
-}
-
-.search-bar {
-    background-color: green;
-}
-
-.login-profile {
-   border: 1px solid #DDDDDD ;
-    margin-left: 20px;
-    padding: 12px;
-    // padding:  5px 5px 5px 12px;
-    border-radius: 25px;
-    display: flex;
-    & > :first-child {
-        margin-right: 10px;
-    }
-    &:hover {
-        // background-color: hsla(0, 0%, 88.6%, 0.363);
-        box-shadow: 1px 1px 5px #dbdbdb;
-}
-
     
+    & .main-logo {
+        align-self: center;
+        padding:15px ;
+        & a{
+            font-size: 1.5rem;
+            font-family: sans-serif;
+            margin-left: 8px;
+            font-weight: bolder;
+        }
+    }
+    & a{
+        // display: flex;
+        align-self: center;
+        padding:15px ;
+        // margin: 10px 0;
+        
+    }
 }

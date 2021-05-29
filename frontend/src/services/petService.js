@@ -4,7 +4,11 @@ window.storageService = storageService;
 
 
 export const petService = {
-    query, getPetByid, add, remove
+    query,
+    getPetByid,
+    add,
+    remove,
+    addLike
 }
 
 const gPets = [
@@ -34,7 +38,11 @@ const gPets = [
             "_id": "s101",
             "name": "happy farm",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133335/dogs/dog3/owner_lwk54f.jpg",
-            "loc": "yafo"
+            "loc": {
+                "address": "yafo",
+                "lat": 21313123123,
+                "lng": 23132131221
+            }
         },
         "tags": [
             "dog",
@@ -202,7 +210,7 @@ const gPets = [
         "name": "Ribb",
         "breed": "Tree Frog",
         "title": "Coolest Frog ever",
-        "desc":"We got Ribb from a family who's kids weren't careful with him. He is awfully adorable but very fragile because he is so small. A person that has experience with raising reptiles is preferred. Ribb can't wait to find his forever home!",
+        "desc": "We got Ribb from a family who's kids weren't careful with him. He is awfully adorable but very fragile because he is so small. A person that has experience with raising reptiles is preferred. Ribb can't wait to find his forever home!",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/1_pamdrb.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/3_hjszko.jpg",
@@ -250,7 +258,7 @@ const gPets = [
         "name": "Hammy",
         "breed": "Golden Hamster",
         "title": "Sweet Hamster",
-        "desc":"Hammy is the funniest little hamster. He loves ham which is why we named him Hammy. Please don't feed him ham though, we don't feed it to him, but every time someone eats ham when they are around him, he goes straight to the hamster wheel!",
+        "desc": "Hammy is the funniest little hamster. He loves ham which is why we named him Hammy. Please don't feed him ham though, we don't feed it to him, but every time someone eats ham when they are around him, he goes straight to the hamster wheel!",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144480/petMe/hamster/3_yzwxm1.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144479/petMe/hamster/1_r0a5d5.jpg",
@@ -306,7 +314,7 @@ const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
 
-    let pets = await storageService.query(STORAGE_KEY,filterBy)
+    let pets = await storageService.query(STORAGE_KEY, filterBy)
     // console.log("🚀 ~ file: petService.js ~ line 310 ~ query ~ pets", pets)
 
     if (!pets || !pets.length) {
@@ -350,6 +358,7 @@ async function getPetByid(petId) {
     return pet
 }
 
-
-
-
+async function addLike(petId) {
+    //TODO: update the server
+    return Promise.resolve(petId)
+}
