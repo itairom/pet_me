@@ -1,16 +1,72 @@
-.main-header{
-    position: fixed;
-    width: 100vw;
-    background-color: bisque;
+.main-header {
+    
+    background-color: rgb(255, 255, 255);
+    width: 98vw;
+    font-family: avenir;
+
+    
+    & .main-container {
+        display: flex;
+        height: 70px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    & a {
+        align-self: center;
+        margin-left: 20px;
+        padding: 15px;
+        &:hover {
+            border-radius: 25px;
+            background-color: hsla(0, 0%, 88.6%, 0.363);
+        }
+    }
+    & > :last-of-type {
+        margin-right: 20px;
+    }
+}
+
+.header-logo {
+    font-weight: bolder;
+}
+
+.right-nav {
+
     display: flex;
     align-items: center;
-    padding: 20px;
-
-    & a{
-        // display: flex;
-        align-self: center;
-        padding:30px ;
-        // margin: 10px 0;
-
+    & img {
+        width: 20px;
+        height: 20px;
     }
+
+    & a {
+        padding: 15px;
+    }
+
+    & a:hover {
+        border-radius: 25px;
+        background-color: hsla(0, 0%, 88.6%, 0.363);
+    }
+}
+
+.search-bar {
+    background-color: green;
+}
+
+.login-profile {
+   border: 1px solid #DDDDDD ;
+    margin-left: 20px;
+    padding: 12px;
+    // padding:  5px 5px 5px 12px;
+    border-radius: 25px;
+    display: flex;
+    & > :first-child {
+        margin-right: 10px;
+    }
+    &:hover {
+        // background-color: hsla(0, 0%, 88.6%, 0.363);
+        box-shadow: 1px 1px 5px #dbdbdb;
+}
+
+    
 }

@@ -1,14 +1,17 @@
-import { ReactComponent as Heart } from '../assets/fonts/svg/Preview/heart.svg'
-import { ReactComponent as Male } from '../assets/fonts/svg/Preview/mars.svg'
-import { ReactComponent as Female } from '../assets/fonts/svg/Preview/venus.svg'
+import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
+import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
+import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
+import { Link } from 'react-router-dom'
 
 export function PetPreview({ pet }) {
-    const gender = pet.gender === 'female' ? <Female />: <Male />
+    const gender = pet.gender === 'female' ? <Female /> : <Male />
     return (
         <section className="pet-card-container">
-            <div className="img-container">
-                <img src={pet.imgUrls[0]} alt="" />
-            </div>
+            < Link to={`/${pet._id}`} >
+                <div className="img-container">
+                    <img src={pet.imgUrls[0]} alt="" />
+                </div>
+            </Link>
             <div className="card-info">
                 <div className="pet-name-gender flex">
                     <p>{pet.name}</p>
@@ -18,7 +21,7 @@ export function PetPreview({ pet }) {
                 <div className="pet-preview-host flex">
                     <p>{pet.owner.name}</p>
                     <div className="pet-preview-likes flex">
-                        <Heart className="preview-heart"/>
+                        <Heart className="preview-heart" />
                         <span>{pet.likes}</span>
                     </div>
                 </div>

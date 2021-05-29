@@ -2,6 +2,9 @@ import { connect } from 'react-redux'
 import React from 'react'
 import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
+// import { PetFilter } from '../cmps/PetFilter'
+import { PetFilter } from '../cmps/PetFilter'
+
 
 class _PetApp extends React.Component {
 
@@ -77,11 +80,12 @@ class _PetApp extends React.Component {
                         <img src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1622184185/home/1_l4db6a.jpg" alt="card" />
                     </div>
 
+                    {/* <PetFilter /> */}
                 </div>
-
                 {/* < PetList pets={pets} /> */}
                 {/* <button onClick={() => this.onAddPet()}>Add</button> */}
             </section>
+
         )
     }
 }

@@ -1,25 +1,27 @@
-.hero-main{
-
+.hero-main {
 }
-.hero-img{
-    
+.hero-img {
     height: 90vh;
     // object-fit: cover;
 }
 
-.type-cards{
-display: flex;
-flex-direction: column;
-// overflow-x: auto;
-// overflow-y: hidden;
-// flex-wrap: nowrap;
-
-.type-img{
+.pet-filter {
+    width: 500px;
     display: flex;
-    justify-content: space-around;
+}
 
+.type-cards {
+    display: flex;
+    flex-direction: column;
+    // overflow-x: auto;
+    // overflow-y: hidden;
+    // flex-wrap: nowrap;
 
-    & img{
+    .type-img {
+        display: flex;
+        justify-content: space-around;
+
+        & img {
             // display: flex;
             height: 300px;
             width: 230px;
@@ -27,6 +29,5 @@ flex-direction: column;
             border-radius: 10px;
             cursor: pointer;
         }
-}
-
+    }
 }
