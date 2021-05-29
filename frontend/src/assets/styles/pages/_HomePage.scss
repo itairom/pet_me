@@ -1,53 +1,38 @@
-<<<<<<< HEAD
-.hero-main {
-}
-.hero-img {
-=======
 .hero-main {}
 
 .hero {
     background-image: url("https://res.cloudinary.com/dstqymucm/image/upload/v1622212628/petMe/hero-img/happy-dog_dhyjue.jpg");
->>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb
     height: 90vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-bottom: 50px;
     // position: relative;
 }
 
-<<<<<<< HEAD
-.pet-filter {
-    width: 500px;
-    display: flex;
-}
-
-=======
->>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb
 .type-cards {
     display: flex;
     flex-direction: column;
     // overflow-x: auto;
     // overflow-y: hidden;
     // flex-wrap: nowrap;
+    & h2{
+        margin-bottom: 10px;
+    }
+
 
     .type-img {
         display: flex;
-<<<<<<< HEAD
-        justify-content: space-around;
-
-        & img {
-            // display: flex;
-=======
         justify-content: center;
         flex-wrap: wrap;
         margin-block-end: 20px;
+
 
         >*:not(:last-child) {
             margin-inline-end: 15px;
         }
 
         & img {
->>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb
             height: 300px;
             width: 230px;
             object-fit: cover;
@@ -56,9 +41,6 @@
             
         }
     }
-<<<<<<< HEAD
-}
-=======
 
 }
 
@@ -106,4 +88,3 @@
         }
     }
 }
->>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb

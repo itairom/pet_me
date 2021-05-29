@@ -58,7 +58,7 @@ export class PetFilter extends React.Component {
                     <label >location</label>
                     <input placeholder="location" type="text" />
                 </div>
-                <img src={magnifyingGlass} alt="" srcset="" />
+                <img src={magnifyingGlass} alt="glass" />
                 {/* <div className="age-select"></div>
                 <div className="pet-select"></div> */}
 

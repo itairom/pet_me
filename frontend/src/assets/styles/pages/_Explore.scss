@@ -1,0 +1,12 @@
+.main-container {
+
+    // display: flex;
+    // justify-content: center;
+    // flex-direction: column;
+     & >h1{
+        // justify-content: center;
+     }
+
+    &.card-list {
+    }
+}

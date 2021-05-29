@@ -56,7 +56,6 @@ class _PetApp extends React.Component {
                 }
             ]
         }
-        console.log('add');
         this.props.addPet(pet)
     }
 
@@ -82,23 +81,23 @@ class _PetApp extends React.Component {
                             </Link>
                         </div>
                         <div>
-                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622206572/petMe/rabbit/rrabit3/1_2_chadja.jpg" alt="card" />
-                            <h4>Rabbits</h4>
+                            <Link to="/explore/rabbit" >
+                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622206572/petMe/rabbit/rrabit3/1_2_chadja.jpg" alt="card" />
+                                <h4>Rabbits</h4>
+                            </Link>
                         </div>
                         <div>
+                        <Link to="/explore/parrot" >
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622213930/petMe/parrot/1_3_s1zdqk.jpg" alt="card" />
                             <h4>Parrots</h4>
+                            </Link>
                         </div>
                     </div>
 
                     {/* <PetFilter /> */}
                 </div>
-<<<<<<< HEAD
-                {/* < PetList pets={pets} /> */}
-                {/* <button onClick={() => this.onAddPet()}>Add</button> */}
-=======
 
-                <button onClick={() => this.onAddPet()}>Add</button>
+                {/* <button onClick={() => this.onAddPet()}>Add</button> */}
                 <div className="type-cards container">
                     <h2>Find your next friend</h2>
                     <div className="type-img">
@@ -140,7 +139,6 @@ class _PetApp extends React.Component {
                         </div>
                     </div>
                 </section>
->>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb
             </section>
 
         )
