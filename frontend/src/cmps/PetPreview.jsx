@@ -11,7 +11,7 @@ export function PetPreview({ pet }) {
     const gender = pet.gender === 'female' ? <Female /> : <Male />
     return (
         <section className="pet-card-container">
-            <Link to={ `/${pet._id}` }>
+            <Link key={ pet._id } to={ `/${pet._id}` }>
                 <div className="img-container">
                     <img src={ pet.imgUrls[0] } alt="" />
                 </div>
