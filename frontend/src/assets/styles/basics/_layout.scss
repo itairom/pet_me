@@ -12,21 +12,21 @@
 
 //     @include for-narrow-layout {
 //         grid-template-columns: 
-//             minmax(20px, 1fr)
+//             minmax(rem(16px), 1fr)
 //             minmax(auto, $mobile-breakpoint)
-//             minmax(20px, 1fr);
+//             minmax(rem(16px), 1fr);
 //     }
 //     @include for-normal-layout {
 //         grid-template-columns: 
-//             minmax(20px, 1fr)
+//             minmax(rem(16px), 1fr)
 //             minmax(auto, $narrow-breakpoint)
-//             minmax(20px, 1fr);
+//             minmax(rem(16px), 1fr);
 //     }
 //     @include for-wide-layout {
 //         grid-template-columns: 
-//             minmax(20px, 1fr)
+//             minmax(rem(16px), 1fr)
 //             minmax(auto, $normal-breakpoint)
-//             minmax(20px, 1fr);
+//             minmax(rem(16px), 1fr);
 //     }
 // }
 
@@ -34,6 +34,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 250px));
     gap: 30px 15px;
+<<<<<<< HEAD
 }
 
 
@@ -42,3 +43,6 @@
 //     align-items: center;
 //     grid-template-columns: minmax(1rem,1fr) minmax(auto,1100px) minmax(1rem,1fr);
 // }
+=======
+}
+>>>>>>> ccf3a28b9eb5f942314fd1e2926f54dc0b5b4beb
