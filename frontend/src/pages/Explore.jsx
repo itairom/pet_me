@@ -1,7 +1,10 @@
 import { connect } from 'react-redux'
 import React from 'react'
 import { PetList } from '../cmps/PetList';
+import { petService } from '../services/petService'
+
 import { loadPets } from '../store/actions/petActions'
+import userIcon from '../assets/img/loaders/1.gif' // relative path to image 
 class _Explore extends React.Component {
 
     state = {
@@ -13,17 +16,26 @@ class _Explore extends React.Component {
         this.setState({ pets: this.props.pets })
     }
 
+    // onLiking = (petId) => {
+    //     let pet = petService.getPetByid(petId)
+    //     console.log('pet liking',pet);
+    // }
+
     render() {
         const { pets } = this.props
-        if (!pets) return <h1>loading...</h1>
+
+
+        if (!pets) return <img src={userIcon} alt="loading" />
         return (
-            <section>
+            <section className="main-container">
                 <h1>Explore</h1>
-                < PetList pets={ pets } />
+                < PetList pets={pets} />
             </section>
         )
     }
 }
+
+
 
 function mapStateToProps(state) {
     return {

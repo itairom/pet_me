@@ -1,6 +1,9 @@
-import { ReactComponent as Heart } from '../assets/fonts/svg/Preview/heart.svg'
-import { ReactComponent as Male } from '../assets/fonts/svg/Preview/mars.svg'
-import { ReactComponent as Female } from '../assets/fonts/svg/Preview/venus.svg'
+// import { ReactComponent as Heart } from '../assets/fonts/svg/Preview/heart.svg'
+// import { ReactComponent as Male } from '../assets/fonts/svg/Preview/mars.svg'
+// import { ReactComponent as Female } from '../assets/fonts/svg/Preview/venus.svg'
+import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
+import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
+import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
 import { Link } from 'react-router-dom'
 
 

@@ -6,6 +6,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-bottom: 50px;
     // position: relative;
 }
 
@@ -15,12 +16,17 @@
     // overflow-x: auto;
     // overflow-y: hidden;
     // flex-wrap: nowrap;
+    & h2{
+        margin-bottom: 10px;
+    }
+
 
     .type-img {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         margin-block-end: 20px;
+
 
         >*:not(:last-child) {
             margin-inline-end: 15px;

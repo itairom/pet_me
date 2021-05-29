@@ -2,6 +2,9 @@ import { connect } from 'react-redux'
 import React from 'react'
 import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
+// import { PetFilter } from '../cmps/PetFilter'
+import { PetFilter } from '../cmps/PetFilter'
+
 
 class _PetApp extends React.Component {
 
@@ -53,7 +56,6 @@ class _PetApp extends React.Component {
                 }
             ]
         }
-        console.log('add');
         this.props.addPet(pet)
     }
 
@@ -79,18 +81,23 @@ class _PetApp extends React.Component {
                             </Link>
                         </div>
                         <div>
-                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622206572/petMe/rabbit/rrabit3/1_2_chadja.jpg" alt="card" />
-                            <h4>Rabbits</h4>
+                            <Link to="/explore/rabbit" >
+                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622206572/petMe/rabbit/rrabit3/1_2_chadja.jpg" alt="card" />
+                                <h4>Rabbits</h4>
+                            </Link>
                         </div>
                         <div>
+                        <Link to="/explore/parrot" >
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622213930/petMe/parrot/1_3_s1zdqk.jpg" alt="card" />
                             <h4>Parrots</h4>
+                            </Link>
                         </div>
                     </div>
 
+                    {/* <PetFilter /> */}
                 </div>
 
-                <button onClick={() => this.onAddPet()}>Add</button>
+                {/* <button onClick={() => this.onAddPet()}>Add</button> */}
                 <div className="type-cards container">
                     <h2>Find your next friend</h2>
                     <div className="type-img">
@@ -133,6 +140,7 @@ class _PetApp extends React.Component {
                     </div>
                 </section>
             </section>
+
         )
     }
 }
