@@ -267,7 +267,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144480/petMe/hamster/3_yzwxm1.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144479/petMe/hamster/1_r0a5d5.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144479/petMe/hamster/2_cl4fvq.jpg",
-            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/4_youmba.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144481/petMe/hamster/4_m9m8bd.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144480/petMe/hamster/5_slhx3j.jpg"
         ],
         "gender": "male",
@@ -477,7 +477,7 @@ const gPets = [
         "owner": {
             "_id": "s110",
             "name": "Joseph Gonzalez",
-            "imgUrl": "",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379525/petMe/rabbit/rrabit3/owner_4_tmarm0.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
@@ -575,7 +575,7 @@ const gPets = [
         "owner": {
             "_id": "s112",
             "name": "Joseph Gonzalez",
-            "imgUrl": "",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
@@ -621,8 +621,7 @@ async function query(filterBy = '') {
     let pets = await storageService.query(STORAGE_KEY, filterBy)
     console.log("🚀 ~ file: petService.js ~ line 622 ~ query ~ pets", pets)
 
-    if (!pets || []) {
-        console.log('in');
+    if (!pets || [] ) {
         pets = gPets;
         storageService.save(STORAGE_KEY, pets);
     }

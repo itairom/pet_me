@@ -16,8 +16,8 @@ class _Header extends Component {
         const { loggedInUser } =  this.props 
         // console.log( loggedInUser)
 
-        return <header className="main-header">
-            <nav className="main-container">
+        return <header className="main-header main-container">
+            <nav className="header-container">
                 <NavLink to="/">PetMe</NavLink>
                 {/* <div className="search-bar"></div> */}
                 <div className="right-nav">

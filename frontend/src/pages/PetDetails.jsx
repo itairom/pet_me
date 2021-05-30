@@ -69,7 +69,7 @@ class _PetDetails extends Component {
         if (!pet) return <h1>loading</h1>
 
         return (
-            <section className="pet-details-section">
+            <section className="pet-details-section main-container">
                 <header className="details-header flex">
                     <div className="details-title flex column">
                         <h3 className="pet-name">{ pet.name }</h3>
