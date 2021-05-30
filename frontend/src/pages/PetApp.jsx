@@ -2,9 +2,7 @@ import { connect } from 'react-redux'
 import React from 'react'
 import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
-// import { PetFilter } from '../cmps/PetFilter'
 import { PetFilter } from '../cmps/PetFilter'
-import { Header } from '../cmps/Header'
 
 
 class _PetApp extends React.Component {
