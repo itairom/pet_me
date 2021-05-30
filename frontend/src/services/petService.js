@@ -83,7 +83,7 @@ const gPets = [
         "trained": true,
         "vaccine": true,
         "owner": {
-            "_id": "s101",
+            "_id": "s102",
             "name": "Joseph Gonzalez",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133443/dogs/dog1/owner_hiazkr.jpg",
             "loc": {
@@ -132,7 +132,7 @@ const gPets = [
         "trained": false,
         "vaccine": false,
         "owner": {
-            "_id": "s101",
+            "_id": "s103",
             "name": "Joseph Gonzalez",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622144695/petMe/cats/cat1/houcine-ncib-B4TjXnI0Y2c-unsplash_xtt5d6.jpg",
             "loc": {
@@ -160,55 +160,6 @@ const gPets = [
     },
     {
         "_id": "p104",
-        "type": "rabbit",
-        "name": "Lily",
-        "breed": "Netherland Rabbit",
-        "title": "The sweetest bunny",
-        "desc": "Ever wanted to feel like a disney princess? Well adopt this cute litle bunny and you can! He is super energetic and very loving. He is obsessed with carrots, feed him a carrot and he will love you forever. You will be so happy with this little guy.",
-        "imgUrls": [
-            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144480/petMe/rabbit/rabbit1/1_pqadwd.jpg",
-            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144481/petMe/rabbit/rabbit1/5_fmknvz.jpg",
-            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/rabbit/rabbit1/4_g09b0s.jpg",
-            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144481/petMe/rabbit/rabbit1/2_t4cuxu.jpg",
-            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/rabbit/rabbit1/3_yljpts.jpg"
-        ],
-        "gender": "female",
-        "age": "adult",
-        "isAdopted": false,
-        "likes": "77",
-        "size": "Small",
-        "neuterSpayed": false,
-        "trained": false,
-        "vaccine": true,
-        "owner": {
-            "_id": "s101",
-            "name": "Joseph Gonzalez",
-            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
-            "loc": {
-                "address": "eilat",
-                "lat": 21313123123,
-                "lng": 23132131221
-            }
-        },
-        "tags": [
-            "rabbit",
-            "Small"
-        ],
-        "comments": [
-            {
-                "id": "rev101",
-                "txt": "lovely cat",
-                "created": 1622299786455,
-                "by": {
-                    "_id": "u102",
-                    "fullname": "mika ",
-                    "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133335/dogs/dog3/owner_lwk54f.jpg"
-                }
-            }
-        ]
-    },
-    {
-        "_id": "p105",
         "type": "Frog",
         "name": "Ribb",
         "breed": "Tree Frog",
@@ -230,7 +181,7 @@ const gPets = [
         "trained": false,
         "vaccine": true,
         "owner": {
-            "_id": "s101",
+            "_id": "s104",
             "name": "Joseph Gonzalez",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
             "loc": {
@@ -252,6 +203,55 @@ const gPets = [
                     "_id": "u102",
                     "fullname": "mika ",
                     "imgUrl": "/img/img2.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "p105",
+        "type": "rabbit",
+        "name": "Lily",
+        "breed": "Netherland Rabbit",
+        "title": "The sweetest bunny",
+        "desc": "Ever wanted to feel like a disney princess? Well adopt this cute litle bunny and you can! He is super energetic and very loving. He is obsessed with carrots, feed him a carrot and he will love you forever. You will be so happy with this little guy.",
+        "imgUrls": [
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144480/petMe/rabbit/rabbit1/1_pqadwd.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144481/petMe/rabbit/rabbit1/5_fmknvz.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/rabbit/rabbit1/4_g09b0s.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144481/petMe/rabbit/rabbit1/2_t4cuxu.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/rabbit/rabbit1/3_yljpts.jpg"
+        ],
+        "gender": "female",
+        "age": "adult",
+        "isAdopted": false,
+        "likes": "77",
+        "size": "Small",
+        "neuterSpayed": false,
+        "trained": false,
+        "vaccine": true,
+        "owner": {
+            "_id": "s105",
+            "name": "Joseph Gonzalez",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
+            "loc": {
+                "address": "eilat",
+                "lat": 21313123123,
+                "lng": 23132131221
+            }
+        },
+        "tags": [
+            "rabbit",
+            "Small"
+        ],
+        "comments": [
+            {
+                "id": "rev101",
+                "txt": "lovely cat",
+                "created": 1622299786455,
+                "by": {
+                    "_id": "u102",
+                    "fullname": "mika ",
+                    "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133335/dogs/dog3/owner_lwk54f.jpg"
                 }
             }
         ]
@@ -279,7 +279,7 @@ const gPets = [
         "trained": false,
         "vaccine": true,
         "owner": {
-            "_id": "s101",
+            "_id": "s106",
             "name": "Joseph Gonzalez",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
             "loc": {
@@ -289,7 +289,7 @@ const gPets = [
             }
         },
         "tags": [
-            "frog",
+            "hamster",
             "Small"
         ],
         "comments": [
@@ -301,6 +301,300 @@ const gPets = [
                     "_id": "u102",
                     "fullname": "mika ",
                     "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "p107",
+        "type": "Dog",
+        "name": "Rex",
+        "breed": "Akita",
+        "title": "Beautifully dog",
+        "desc": "",
+        "imgUrls": [
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622206109/dogs/dog5/3_bzucwm.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622206168/dogs/dog5/4_drxmwv.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622206216/dogs/dog5/5_tz8hhn.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622362244/dogs/dog5/1_ys7agr.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622206053/dogs/dog5/2_jhwvqt.jpg"
+        ],
+        "gender": "male",
+        "age": "senior",
+        "isAdopted": false,
+        "likes": "93",
+        "size": "Small",
+        "neuterSpayed": true,
+        "trained": true,
+        "vaccine": true,
+        "owner": {
+            "_id": "s107",
+            "name": "Joseph Gonzalez",
+            "imgUrl": "",
+            "loc": {
+                "address": "haifa",
+                "lat": 21313123123,
+                "lng": 23132131221
+            }
+        },
+        "tags": [
+            "dog",
+            "big"
+        ],
+        "comments": [
+            {
+                "id": "rev101",
+                "txt": "",
+                "created": 1622299786455,
+                "by": {
+                    "_id": "",
+                    "fullname": "",
+                    "imgUrl": ""
+                }
+            }
+        ]
+    },
+    {
+        "_id": "p108",
+        "type": "Cat",
+        "name": "Misty",
+        "breed": "white cat",
+        "title": "Fluffy cat",
+        "desc": "",
+        "imgUrls": [
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622363512/petMe/cats/cat2/2_2_tcoaxc.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622363849/petMe/cats/cat2/1_4_gude8u.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622363787/petMe/cats/cat2/5_2_e9qxds.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622363652/petMe/cats/cat2/4_2_vbqag1.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622363569/petMe/cats/cat2/3_2_ggwxo6.jpg"
+        ],
+        "gender": "female",
+        "age": "",
+        "isAdopted": false,
+        "likes": "93",
+        "size": "Small",
+        "neuterSpayed": true,
+        "trained": true,
+        "vaccine": true,
+        "owner": {
+            "_id": "s108",
+            "name": "Joseph Gonzalez",
+            "imgUrl": "",
+            "loc": {
+                "address": "haifa",
+                "lat": 21313123123,
+                "lng": 23132131221
+            }
+        },
+        "tags": [
+            "dog",
+            "big"
+        ],
+        "comments": [
+            {
+                "id": "rev101",
+                "txt": "",
+                "created": 1622299786455,
+                "by": {
+                    "_id": "",
+                    "fullname": "",
+                    "imgUrl": ""
+                }
+            }
+        ]
+    },
+    {
+        "_id": "p109",
+        "type": "Dog",
+        "name": "Ray",
+        "breed": "Basenji dog",
+        "title": "Smiling dog",
+        "desc": "",
+        "imgUrls": [
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622364484/dogs/dog4/4_3_iosbdd.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622364514/dogs/dog4/5_3_auyswq.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622131784/dogs/dog4/3_ytuoax.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622364436/dogs/dog4/2_3_jy8krb.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622204506/dogs/dog4/1_ahnfd1.jpg"
+        ],
+        "gender": "male",
+        "age": "",
+        "isAdopted": false,
+        "likes": "93",
+        "size": "Small",
+        "neuterSpayed": true,
+        "trained": true,
+        "vaccine": true,
+        "owner": {
+            "_id": "s109",
+            "name": "Joseph Gonzalez",
+            "imgUrl": "",
+            "loc": {
+                "address": "haifa",
+                "lat": 21313123123,
+                "lng": 23132131221
+            }
+        },
+        "tags": [
+            "dog",
+            "small"
+        ],
+        "comments": [
+            {
+                "id": "rev101",
+                "txt": "",
+                "created": 1622299786455,
+                "by": {
+                    "_id": "",
+                    "fullname": "",
+                    "imgUrl": ""
+                }
+            }
+        ]
+    },
+    {
+        "_id": "p110",
+        "type": "Rabbit",
+        "name": "Angel",
+        "breed": "Blanc de Hotot",
+        "title": "Someone to cuddle with ",
+        "desc": "",
+        "imgUrls": [
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622207016/petMe/rabbit/rrabit3/2_kno829.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622206852/petMe/rabbit/rrabit3/4_rqenct.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622206926/petMe/rabbit/rrabit3/5_z2ulci.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622206816/petMe/rabbit/rrabit3/3_r9is3t.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622206572/petMe/rabbit/rrabit3/1_2_chadja.jpg"
+        ],
+        "gender": "female",
+        "age": "",
+        "isAdopted": false,
+        "likes": "93",
+        "size": "Small",
+        "neuterSpayed": true,
+        "trained": true,
+        "vaccine": true,
+        "owner": {
+            "_id": "s110",
+            "name": "Joseph Gonzalez",
+            "imgUrl": "",
+            "loc": {
+                "address": "haifa",
+                "lat": 21313123123,
+                "lng": 23132131221
+            }
+        },
+        "tags": [
+            "dog",
+            "small"
+        ],
+        "comments": [
+            {
+                "id": "rev101",
+                "txt": "",
+                "created": 1622299786455,
+                "by": {
+                    "_id": "",
+                    "fullname": "",
+                    "imgUrl": ""
+                }
+            }
+        ]
+    },
+    {
+        "_id": "p111",
+        "type": "Parrot",
+        "name": "Jake",
+        "breed": "Lories",
+        "title": "A beautiful parrot",
+        "desc": "",
+        "imgUrls": [
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622364986/petMe/parrot/parrot1/3_3_xqin04.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622364955/petMe/parrot/parrot1/2_5_ejaipl.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622365084/petMe/parrot/parrot1/5_4_ztysd8.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622365049/petMe/parrot/parrot1/4_4_x2snno.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622365193/petMe/parrot/parrot1/1_6_sgu9j5.jpg"
+        ],
+        "gender": "male",
+        "age": "",
+        "isAdopted": false,
+        "likes": "93",
+        "size": "Small",
+        "neuterSpayed": true,
+        "trained": true,
+        "vaccine": true,
+        "owner": {
+            "_id": "s111",
+            "name": "Joseph Gonzalez",
+            "imgUrl": "",
+            "loc": {
+                "address": "haifa",
+                "lat": 21313123123,
+                "lng": 23132131221
+            }
+        },
+        "tags": [
+            "dog",
+            "small"
+        ],
+        "comments": [
+            {
+                "id": "rev101",
+                "txt": "",
+                "created": 1622299786455,
+                "by": {
+                    "_id": "",
+                    "fullname": "",
+                    "imgUrl": ""
+                }
+            }
+        ]
+    },
+    {
+        "_id": "p112",
+        "type": "Rabbit",
+        "name": "Mopsy",
+        "breed": "American Rabbit",
+        "title": "Just a sweet rabbit",
+        "desc": "",
+        "imgUrls": [
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622366729/petMe/rabbit/rabbit2/1_itx6fr.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622366679/petMe/rabbit/rabbit2/2_qlenwu.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622366644/petMe/rabbit/rabbit2/4_ruzd4e.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622366707/petMe/rabbit/rabbit2/5_kou7yn.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144481/petMe/rabbit/rabbit2/3_oti3h0.jpg"
+        ],
+        "gender": "male",
+        "age": "",
+        "isAdopted": false,
+        "likes": "93",
+        "size": "Small",
+        "neuterSpayed": true,
+        "trained": true,
+        "vaccine": true,
+        "owner": {
+            "_id": "s112",
+            "name": "Joseph Gonzalez",
+            "imgUrl": "",
+            "loc": {
+                "address": "haifa",
+                "lat": 21313123123,
+                "lng": 23132131221
+            }
+        },
+        "tags": [
+            "dog",
+            "small"
+        ],
+        "comments": [
+            {
+                "id": "rev101",
+                "txt": "",
+                "created": 1622299786455,
+                "by": {
+                    "_id": "",
+                    "fullname": "",
+                    "imgUrl": ""
                 }
             }
         ]
@@ -327,7 +621,7 @@ async function query(filterBy = '') {
     if (!pets  ) {
         console.log('in');
         pets = gPets;
-        storageService.save(STORAGE_KEY, pets);
+        // storageService.save(STORAGE_KEY, pets);
     }
     return pets;
 }
