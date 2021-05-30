@@ -618,10 +618,9 @@ async function query(filterBy = '') {
 
     let pets = await storageService.query(STORAGE_KEY, filterBy)
 
-    if (!pets  ) {
-        console.log('in');
+    if (!pets || [] ) {
         pets = gPets;
-        // storageService.save(STORAGE_KEY, pets);
+        storageService.save(STORAGE_KEY, pets);
     }
     return pets;
 }
