@@ -6,7 +6,8 @@ export const petService = {
     getPetByid,
     add,
     remove,
-    addLike
+    addLike,
+    // addComment
 }
 
 const gPets = [

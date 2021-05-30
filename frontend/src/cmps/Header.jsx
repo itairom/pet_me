@@ -1,6 +1,6 @@
 import userIcon from '../assets/img/header/user.svg' // relative path to image 
 import menuIcon from '../assets/img/header/menu.svg' // relative path to image 
-import React, { Component } from 'react'
+    import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 

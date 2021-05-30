@@ -12,11 +12,16 @@ export function petReducer(state = initialState, action) {
         case 'REMOVE_PET':
             return { ...state, pets: state.pets.filter(pet => pet._id !== action.petId) }
         case 'ADD_LIKE':
-            const pet = state.pets.find(pet => pet._id === action.petId)
-            pet.likes++
-            const idx = state.pets.findIndex(pet => pet._id === action.petId)
-            state.pets.splice(idx, 1, pet)
-            return { ...state, pets: state.pets }
+            return {
+                ...state,
+                pets: state.pets.map(pet => {
+                    if (pet._id === action.petId) {
+                        pet.likes++
+                        return pet;
+                    }
+                    return pet;
+                })
+            }
         default:
             return state
     }

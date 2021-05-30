@@ -64,3 +64,18 @@ export function addLike(petId) { // Action Creator
     }
 }
 
+export function addComment(petId, msg) { // Action Creator
+    return dispatch => {
+        return petService.addComment(petId, msg)
+            .then((msg) => {
+                const action = {
+                    type: 'ADD_COMMENT',
+                    msg: msg
+
+                }
+                dispatch(action)
+            })
+    }
+}
+
+
