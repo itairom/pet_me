@@ -47,7 +47,7 @@ class _PetDetails extends Component {
         this.setState({ pet: { ...this.state.pet, isAttend: !this.state.pet.isAttend } })
     }
 
-    onRemovePet=()=>{
+    onRemovePet = () => {
         petService.remove(this.state.pet._id)
         this.props.history.push('/')
     }
@@ -80,7 +80,6 @@ class _PetDetails extends Component {
                     </div>
                     <span className="share-pet" onClick={ () => this.onShare }>share
                         <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora voluptatem alias, ipsum deserunt veritatis dignissimos fugiat consequatur suscipit nostrum! Dolorum magnam odit soluta porro, error veniam officiis sit! Reprehenderit, earum!
                         </div>
                     </span>
                 </header>
@@ -120,7 +119,7 @@ class _PetDetails extends Component {
                 <div className="comments-section">
                     <CommentsCmp pet={ pet } key={ pet._id } />
                 </div>
-                <button onClick={()=>this.onRemovePet()}>Delete</button>
+                <button onClick={ () => this.onRemovePet() }>Delete</button>
 
             </section>
         )
