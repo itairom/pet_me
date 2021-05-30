@@ -8,13 +8,13 @@ import { connect } from 'react-redux'
 class _Header extends Component {
 
     componentDidMount(){
-        console.log(this.props);
+        // console.log(this.props);
     }
 
     render() {
 
         const { loggedInUser } =  this.props 
-        console.log( loggedInUser)
+        // console.log( loggedInUser)
 
         return <header className="main-header">
             <nav className="main-container">

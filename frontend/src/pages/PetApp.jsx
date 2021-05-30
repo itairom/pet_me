@@ -60,6 +60,7 @@ class _PetApp extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         const { pets } = this.props
         if (!pets) return <h1>loading</h1>
         return (

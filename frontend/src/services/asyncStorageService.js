@@ -14,7 +14,7 @@ function query(entityType, filterBy='') {
     
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
-    console.log("🚀 BEFOE", entities)
+    // console.log("🚀 BEFOE", entities)
     
     if (type) {
         entities = entities.filter(entity => entity.type.includes(type))

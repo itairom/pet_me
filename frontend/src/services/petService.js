@@ -608,7 +608,7 @@ const STORAGE_KEY = 'pets'
 async function query(filterBy = '') {
 
 
-    
+
     //  filterBy = {
     //     gender: 'female',
     //     type: '',
@@ -616,12 +616,15 @@ async function query(filterBy = '') {
     //     location: 'yafo'
     // }
 
-    let pets = await storageService.query(STORAGE_KEY, filterBy)
 
-    if (!pets  ) {
+
+    let pets = await storageService.query(STORAGE_KEY, filterBy)
+    console.log("🚀 ~ file: petService.js ~ line 622 ~ query ~ pets", pets)
+
+    if (!pets || []) {
         console.log('in');
         pets = gPets;
-        // storageService.save(STORAGE_KEY, pets);
+        storageService.save(STORAGE_KEY, pets);
     }
     return pets;
 }
