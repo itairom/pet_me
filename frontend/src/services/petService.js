@@ -8,7 +8,8 @@ export const petService = {
     getPetByid,
     add,
     remove,
-    addLike
+    addLike,
+    addComment
 }
 
 const gPets = [
@@ -365,6 +366,27 @@ async function getPetByid(petId) {
 }
 
 async function addLike(petId) {
-    //TODO: update the server
+    let pet = await storageService.get(STORAGE_KEY, petId)
+    pet.likes++;
+    await storageService.put(STORAGE_KEY, pet);
+    //TODO: update the server?
+    return Promise.resolve(petId)
+}
+
+async function addComment(petId, userId, msg) {
+    let pet = await storageService.get(STORAGE_KEY, petId)
+
+    // pet.comments.push({
+    //     "id": petId,
+    //     "txt": msg,
+    //     "created": Date.now(),
+    //     "by": {
+    //         "_id": userId,
+    //         // "fullname": "mika ",
+    //         // "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg"
+
+    //     })
+    await storageService.put(STORAGE_KEY, pet);
+    //TODO: update the server?
     return Promise.resolve(petId)
 }

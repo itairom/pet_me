@@ -8,6 +8,12 @@ margin-top: 80px;
     .details-title {
     flex: 1;
     }
+
+    .details-header-btns{
+        & span button {
+            cursor: pointer;
+        }
+    }
 }
 
 .details-imgs-container {
@@ -82,9 +88,6 @@ margin-top: 80px;
     max-width: 100%;
     flex-direction: row;
     gap: 20px;
-    border: 1px solid #d3d3d3;
-    border-radius: 12px;
-    padding: 24px;
     box-shadow: 0 6px 16px #0000001f;
     background-color: snow;
     color: #1e1e1e;

@@ -1,14 +1,15 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { petService } from '../services/petService'
 import { connect } from 'react-redux'
 import { addLike } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 
-export class _PetDetails extends Component {
+class _PetDetails extends Component {
     state = {
         pet: null,
-        isEditMode: false
+        isEditMode: false,
+        isOpanModal: false
     }
 
     componentDidMount() {
@@ -24,6 +25,11 @@ export class _PetDetails extends Component {
         const { value } = target
         this.setState({ pet: { ...this.state.pet, [name]: value } })
     }
+
+    onShare = () => {
+        this.setState({ isOpanModal: !this.state.isOpanModal })
+    }
+
 
     //owner only btn 
     onUpdatePet = () => {
@@ -42,14 +48,14 @@ export class _PetDetails extends Component {
     }
 
     render() {
-        // const { pets } = this.props
-        // //Yaara added:
-        // const id = this.props.match.params.petId;
-        // const p = pets.filter(pet => pet._id === id);
-        // console.log("Pet: ", p);
+        const { pets } = this.props
+        //Yaara added:
+        const id = this.props.match.params.petId;
+        const pet = pets.filter(pet => pet._id === id).pop();
+        console.log("Pet: ", pet);
 
 
-        const { pet } = this.state
+        // const { pet } = this.state
         // const { pet: { owner } } = this.state
         console.log(pet);
         // const { loc } = pet.owner
@@ -67,18 +73,26 @@ export class _PetDetails extends Component {
                         <span className="like-pet"> { pet.likes }
                             <button onClick={ () => this.props.addLike(pet._id) }>like</button></span>
                     </div>
-                    <span className="share-pet">share</span>
+                    <span className="share-pet" onClick={ () => this.onShare }>share
+                        <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora voluptatem alias, ipsum deserunt veritatis dignissimos fugiat consequatur suscipit nostrum! Dolorum magnam odit soluta porro, error veniam officiis sit! Reprehenderit, earum!
+                        </div>
+                    </span>
                 </header>
                 <div className="details-imgs-container grid">
-                    { pet.imgUrls.map((imgUrl) => {
-                        return <img src={ imgUrl } alt="skeleton" />
+                    { pet.imgUrls.map((imgUrl, idx) => {
+                        return <img key={ pet._id + idx } src={ imgUrl } alt="skeleton" />
                     }) }
                 </div>
                 <div className="details-main-section flex">
 
                     <div className="details-info-container">
                         <div className="info-header flex ">
-                            <h3>{ pet.name + ', owned by ' + pet.owner.name }</h3>
+                            <div className="flex column">
+                                <h3>{ pet.name + ', owned by ' + pet.owner.name }</h3>
+                                <span>{ pet.title }</span>
+
+                            </div>
                             <img src={ pet.owner.imgUrl } alt="" />
                         </div>
                         <div className="info-body">
@@ -116,11 +130,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addLike
+    addLike,
     // updatePet
 }
 
 export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
 
-//Yaara added:
-//actions: 
