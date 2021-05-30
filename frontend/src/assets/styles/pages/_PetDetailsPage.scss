@@ -1,12 +1,12 @@
-.pet-details-section{
+.pet-details-section {
     margin: 1rem;
 }
 
-.details-header{
-margin-top: 80px;
+.details-header {
+    margin-top: 80px;
 
     .details-title {
-    flex: 1;
+        flex: 1;
     }
 
     .details-header-btns{
@@ -33,8 +33,8 @@ margin-top: 80px;
         height: 100%;
     }
 
-    
-    & :first-child{
+
+    & :first-child {
         grid-column: 1/span 2;
         grid-row: 1/span 2;
         border-top-left-radius: 10px;
@@ -44,7 +44,7 @@ margin-top: 80px;
     & :nth-child(3) {
         border-top-right-radius: 10px;
     }
-    
+
     & :nth-child(5) {
         border-bottom-right-radius: 10px;
     }
@@ -75,13 +75,14 @@ margin-top: 80px;
             margin-bottom: 20px;
             color: #6b6a6a;
         }
+
         & .pet-info-list {
             border-bottom: 1px solid #d3d3d3;
             margin-bottom: 20px;
             padding-bottom: 10px;
         }
     }
-    
+
 }
 
 .adopt-modal-section {
@@ -100,6 +101,7 @@ margin-top: 80px;
     .details-main-section {
         flex-direction: column;
     }
+
     .adopt-modal-section {
         height: 50%;
         position: -webkit-sticky;

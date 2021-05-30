@@ -29,9 +29,3 @@
             minmax(rem(16px), 1fr);
     }
 }
-
-.card-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 250px));
-    gap: 30px 15px;
-}

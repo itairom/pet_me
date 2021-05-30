@@ -2,10 +2,10 @@
     display: flex;
     flex-direction: column;
 
-    
     .img-container {
         height: 160px;
         border-radius: 10px;
+        margin-block-end: 8px;
     }
     
     img {
@@ -31,7 +31,18 @@
 
     .pet-preview-host {
         justify-content: space-between;
+        p{
+            color:$clr8;
+        }
 
     }
-
+    .pet-preview-likes{
+        :first-child{
+            cursor: pointer;
+            margin-inline-end: 6px;
+        }
+        :last-child{
+            font-size: 1.125rem;
+        }
+    }
 }

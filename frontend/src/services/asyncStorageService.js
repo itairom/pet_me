@@ -14,7 +14,7 @@ function query(entityType, filterBy='') {
     
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
-    console.log("🚀 B", entities)
+    // console.log("🚀 BEFOE", entities)
     
     if (type) {
         entities = entities.filter(entity => entity.type.includes(type))
@@ -22,13 +22,13 @@ function query(entityType, filterBy='') {
     if (age) {
         entities = entities.filter(entity => entity.age.includes(age))
     }
-    // if (location) {
-    //     entities = entities.filter(entity => entity.type.includes(location))
-    // }
+    if (location) {
+        entities = entities.filter(entity => entity.owner.loc.address.includes(location))
+    }
     if (gender) {
         entities = entities.filter(entity => entity.gender.includes(gender))
     }
-    console.log("🚀 AFTER", entities)
+    // console.log("🚀 AFTER", entities)
 
 
     return Promise.resolve(entities)

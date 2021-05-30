@@ -2,9 +2,7 @@ import { connect } from 'react-redux'
 import React from 'react'
 import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
-// import { PetFilter } from '../cmps/PetFilter'
 import { PetFilter } from '../cmps/PetFilter'
-import { Header } from '../cmps/Header'
 
 
 class _PetApp extends React.Component {
@@ -12,6 +10,7 @@ class _PetApp extends React.Component {
     state = {
         pets: null
     }
+
     componentDidMount() {
         this.props.loadPets()
         this.setState({ pets: this.props.pets })
@@ -69,7 +68,7 @@ class _PetApp extends React.Component {
                     < PetFilter />
                 </section>
                 <div className="type-cards">
-                    <h2>Find your next friend</h2>
+                    <h2>Our pets types</h2>
                     <div className="type-img">
                         <div>
                             <Link to={`/explore/?&filterBy=type=dog`} >
@@ -90,9 +89,9 @@ class _PetApp extends React.Component {
                             </Link>
                         </div>
                         <div>
-                        <Link to="/explore/parrot" >
-                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622213930/petMe/parrot/1_3_s1zdqk.jpg" alt="card" />
-                            <h4>Parrots</h4>
+                            <Link to="/explore/parrot" >
+                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622213930/petMe/parrot/1_3_s1zdqk.jpg" alt="card" />
+                                <h4>Parrots</h4>
                             </Link>
                         </div>
                     </div>
@@ -103,35 +102,39 @@ class _PetApp extends React.Component {
                     <h2>Find your next friend</h2>
                     <div className="type-img">
                         <div>
-                            <Link to="/explore/dog" >
-                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622206029/dogs/dog5/1_ys7agr.jpg" alt="card" />
-                                <h4>Dogs</h4>
+                            <Link to="/p107" >
+                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622362244/dogs/dog5/1_ys7agr.jpg" alt="card" />
+                                <h4>Rex</h4>
                             </Link>
                         </div>
                         <div>
-                            <Link to="/explore/cat" >
+                            <Link to="/p108" >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622214651/petMe/cats/cat2_lekwe7.jpg" alt="card" />
-                                <h4>Cats</h4>
+                                <h4>Misty</h4>
                             </Link>
                         </div>
                         <div>
-                            <img src="http://res.cloudinary.com/dstqymucm/image/upload/v1622204506/dogs/dog4/1_ahnfd1.jpg" alt="card" />
-                            <h4>Dogs</h4>
+                            <Link to="/p109" >
+                                <img src="http://res.cloudinary.com/dstqymucm/image/upload/v1622204506/dogs/dog4/1_ahnfd1.jpg" alt="card" />
+                                <h4>Ray</h4>
+                            </Link>
+
                         </div>
                         <div>
-                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622144479/petMe/hamster/1_r0a5d5.jpg" alt="card" />
-                            <h4>Hammy</h4>
+                            <Link to="/p106" >
+                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622144479/petMe/hamster/1_r0a5d5.jpg" alt="card" />
+                                <h4>Hammy</h4>
+                            </Link>
                         </div>
                     </div>
                 </div>
                 <section className="homepage-about main-container full">
                     <div className="inner-container flex">
                         <div className="about-content">
-                            <h2>About as/vision.........................</h2>
+                            <h2>Our vision</h2>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
-                            <button>Join Us</button>
                         </div>
                         <div className="about_imgs">
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622209864/petMe/about-imgs/about1_rt4e2u.jpg" alt="card" />

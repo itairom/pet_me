@@ -2,11 +2,6 @@ import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-// import FormControl from '@material-ui/core/FormControl';
-// import Select from 'react-select';
-
-
-
 export class PetFilter extends React.Component {
 
     state = {
@@ -19,30 +14,26 @@ export class PetFilter extends React.Component {
     }
 
     handleChange = ({ target }) => {
-        console.log(this.state)
         const { name, value } = target
         const { filterBy } = this.state
-        this.setState({ filterBy: { ...filterBy, [name]: value } }, () => {
-            const { filterBy } = this.state
-            // this.props.onSetFilter(filterBy)
-        })
+        this.setState({ filterBy: { ...filterBy, [name]: value } })
     }
 
-    submitForm=()=>{
+    submitForm = () => {
 
     }
 
 
 
     render() {
-        const { gender, age, type, sortBy } = this.state
+        const { gender, age, type, location } = this.state
 
 
         return (
 
             <section className='pet-filter'>
                 <div className="filter-select gender-select">
-                    <label >gender</label>
+                    <label >Gender</label>
                     <form onSubmit={this.submitForm()}>
                         <label  >
                             <select className='gender-select' value={gender} onChange={this.handleChange} name="gender" >
@@ -54,7 +45,7 @@ export class PetFilter extends React.Component {
                     {/* <input placeholder="gender" type="text" /> */}
                 </div>
                 <div className="filter-select pet-select">
-                    <label >pet</label>
+                    <label >Pet</label>
                     <form onSubmit={this.submitForm()}>
                         <label  >
                             <select className='gender-select' value={type} onChange={this.handleChange} name="type" >
@@ -65,7 +56,7 @@ export class PetFilter extends React.Component {
                     </form>
                 </div>
                 <div className="filter-select age-select">
-                    <label >age</label>
+                    <label >Age</label>
                     <form onSubmit={this.submitForm()}>
                         <label  >
                             <select className='gender-select' value={age} onChange={this.handleChange} name="age" >
@@ -77,24 +68,14 @@ export class PetFilter extends React.Component {
                     </form>
                 </div>
                 <div className="filter-select location-select">
-                    <label >location</label>
-                    <form onSubmit={this.submitForm()}>
-                        <label  >
-                            <select className='gender-select' value={age} onChange={this.handleChange} name="age" >
-                                <option value="south">South District</option>
-                                <option value="center">Center District</option>
-                                <option value="north">North District</option>
-                            </select>
-                        </label>
-                    </form>
+                    <label >Location</label>
+                    <input className='gender-select' value={location} onChange={this.handleChange} name="location" ></input>
                 </div>
 
-                {/* <Link to={`/explore/${type}&${gender}`}>
-                    <img src={magnifyingGlass} alt="glass" />
-                </Link> */}
-
-                <Link  to={`/explore/?&${type}&${gender}`}>
-                    <img className="filter-search" src={magnifyingGlass} alt="glass" />
+                <Link to={`/explore/?&${type}&${gender}&${age}&${location}`}>
+                    <div className="search-btn">
+                        <img className="filter-search" src={magnifyingGlass} alt="glass" />
+                    </div>
                 </Link>
 
             </section>
