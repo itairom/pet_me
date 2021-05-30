@@ -7,7 +7,7 @@ export const petService = {
     add,
     remove,
     addLike,
-    // addComment
+
 }
 
 const gPets = [
@@ -601,7 +601,7 @@ const gPets = [
     }
 ]
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/pet' : 'http://localhost:3030/api/pet'
+// const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/pet' : 'http://localhost:3030/api/pet'
 
 const STORAGE_KEY = 'pets'
 
@@ -615,7 +615,6 @@ async function query(filterBy = '') {
     // }
 
     let pets = await storageService.query(STORAGE_KEY, filterBy)
-    console.log("🚀 ~ file: petService.js ~ line 622 ~ query ~ pets", pets)
 
     if (!pets || [] ) {
         pets = gPets;

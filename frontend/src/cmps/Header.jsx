@@ -11,6 +11,10 @@ class _Header extends Component {
         // console.log(this.props);
     }
 
+    toggleDropdown = () => {
+        // this.props.history.push('/login')
+    }
+
     render() {
 
         const { loggedInUser } = this.props
@@ -22,7 +26,7 @@ class _Header extends Component {
                 {/* <div className="search-bar"></div> */}
                 <div className="right-nav">
                     <NavLink to="/explore">Explore</NavLink>
-                    <div className="login-profile">
+                    <div onClick={() => this.toggleDropdown()} className="login-profile">
                         {/* <div className="user-dropdown">
                             <ul className="dropdown-list">
                                 <li>My Profile</li>
