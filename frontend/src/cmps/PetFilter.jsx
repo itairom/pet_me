@@ -2,8 +2,8 @@ import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-import FormControl from '@material-ui/core/FormControl';
-import Select from 'react-select';
+// import FormControl from '@material-ui/core/FormControl';
+// import Select from 'react-select';
 
 
 
