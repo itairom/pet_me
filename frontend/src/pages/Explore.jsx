@@ -11,20 +11,16 @@ class _Explore extends React.Component {
         pets: null
     }
     componentDidMount() {
-
-        console.log('filterBy',this.props.location.search);
+        console.log('mount');
+        // console.log('filterBy',this.props.location.search);
         this.props.loadPets(this.props.match.params)
         this.setState({ pets: this.props.pets })
     }
 
-    // onLiking = (petId) => {
-    //     let pet = petService.getPetByid(petId)
-    //     console.log('pet liking',pet);
-    // }
 
     render() {
         const { pets } = this.props
-
+        console.log("🚀 ~ file: Explore.jsx ~ line 23 ~ _Explore ~ render ~ pets", pets)
 
         if (!pets) return <img src={userIcon} alt="loading" />
         return (

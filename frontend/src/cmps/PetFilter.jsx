@@ -14,7 +14,7 @@ export class PetFilter extends React.Component {
             gender: '',
             type: '',
             age: '',
-            sortBy: ''
+            location: ''
         }
     }
 

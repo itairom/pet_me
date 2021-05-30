@@ -41,6 +41,11 @@ export class _PetDetails extends Component {
         this.setState({ pet: { ...this.state.pet, isAttend: !this.state.pet.isAttend } })
     }
 
+    onRemovePet=()=>{
+        petService.remove(this.state.pet._id)
+        this.props.history.push('/')
+    }
+
     render() {
         // const { pets } = this.props
         // //Yaara added:
@@ -101,6 +106,8 @@ export class _PetDetails extends Component {
                 <div className="comments-section">
                     <CommentsCmp pet={ pet } key={ pet._id } />
                 </div>
+                <button onClick={()=>this.onRemovePet()}>Delete</button>
+
             </section>
         )
     }

@@ -1,7 +1,5 @@
-
 import { storageService } from './asyncStorageService'
 window.storageService = storageService;
-
 
 export const petService = {
     query,
@@ -13,7 +11,7 @@ export const petService = {
 
 const gPets = [
     {
-        "_id": "456",
+        "_id": "p101",
         "type": "dog",
         "name": "Noble",
         "breed": "bulldog",
@@ -27,7 +25,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131770/dogs/dog3/1_sgcpoy.jpg"
         ],
         "gender": "male",
-        "age": 7,
+        "age": "senior",
         "isAdopted": false,
         "likes": "33",
         "size": "small",
@@ -62,7 +60,7 @@ const gPets = [
         ]
     },
     {
-        "_id": "123",
+        "_id": "p102",
         "type": "dog",
         "name": "Lenny",
         "breed": "Golden Retriever",
@@ -76,7 +74,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131750/dogs/dog1/4_rrqk12.jpg"
         ],
         "gender": "male",
-        "age": 8,
+        "age": "adult",
         "isAdopted": false,
         "likes": "50",
         "size": "Medium",
@@ -88,7 +86,7 @@ const gPets = [
             "name": "Joseph Gonzalez",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133443/dogs/dog1/owner_hiazkr.jpg",
             "loc": {
-                "address": "Tel-Aviv",
+                "address": "tel aviv",
                 "lat": 21313123123,
                 "lng": 23132131221
             }
@@ -111,7 +109,7 @@ const gPets = [
         ]
     },
     {
-        "_id": "124",
+        "_id": "p103",
         "type": "cat",
         "name": "Puki",
         "breed": "American Bobtail",
@@ -124,8 +122,8 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/cats/cat1/4_mtqmwa.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/cats/cat1/3_vt9wis.jpg"
         ],
-        "gender": "Female",
-        "age": 3,
+        "gender": "female",
+        "age": "young",
         "isAdopted": false,
         "likes": "50",
         "size": "Small",
@@ -137,7 +135,7 @@ const gPets = [
             "name": "Joseph Gonzalez",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622144695/petMe/cats/cat1/houcine-ncib-B4TjXnI0Y2c-unsplash_xtt5d6.jpg",
             "loc": {
-                "address": "Tel-Aviv",
+                "address": "tel aviv",
                 "lat": 21313123123,
                 "lng": 23132131221
             }
@@ -160,7 +158,7 @@ const gPets = [
         ]
     },
     {
-        "_id": "125",
+        "_id": "p104",
         "type": "rabbit",
         "name": "Lily",
         "breed": "Netherland Rabbit",
@@ -173,8 +171,8 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144481/petMe/rabbit/rabbit1/2_t4cuxu.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/rabbit/rabbit1/3_yljpts.jpg"
         ],
-        "gender": "male",
-        "age": 2,
+        "gender": "female",
+        "age": "adult",
         "isAdopted": false,
         "likes": "77",
         "size": "Small",
@@ -186,7 +184,7 @@ const gPets = [
             "name": "Joseph Gonzalez",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
             "loc": {
-                "address": "Tel-Aviv",
+                "address": "eilat",
                 "lat": 21313123123,
                 "lng": 23132131221
             }
@@ -209,7 +207,7 @@ const gPets = [
         ]
     },
     {
-        "_id": "129",
+        "_id": "p105",
         "type": "Frog",
         "name": "Ribb",
         "breed": "Tree Frog",
@@ -223,7 +221,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/2_wrlooo.jpg"
         ],
         "gender": "male",
-        "age": 2,
+        "age": "senior",
         "isAdopted": true,
         "likes": "87",
         "size": "Small",
@@ -235,7 +233,7 @@ const gPets = [
             "name": "Joseph Gonzalez",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
             "loc": {
-                "address": "Tel-Aviv",
+                "address": "haifa",
                 "lat": 21313123123,
                 "lng": 23132131221
             }
@@ -258,7 +256,7 @@ const gPets = [
         ]
     },
     {
-        "_id": "121",
+        "_id": "p106",
         "type": "Hamster",
         "name": "Hammy",
         "breed": "Golden Hamster",
@@ -272,7 +270,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144480/petMe/hamster/5_slhx3j.jpg"
         ],
         "gender": "male",
-        "age": 2,
+        "age": "senior",
         "isAdopted": true,
         "likes": "93",
         "size": "Small",
@@ -284,7 +282,7 @@ const gPets = [
             "name": "Joseph Gonzalez",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
             "loc": {
-                "address": "Tel-Aviv",
+                "address": "haifa",
                 "lat": 21313123123,
                 "lng": 23132131221
             }
@@ -308,63 +306,46 @@ const gPets = [
     }
 ]
 
-
-
-
 const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/pet' : 'http://localhost:3030/api/pet'
-console.log(BASE_URL)
 
 const STORAGE_KEY = 'pets'
 
-
-
 async function query(filterBy = '') {
 
+     filterBy = {
+        gender: 'female',
+        type: '',
+        age: '',
+        location: 'tel aviv'
+    }
+
     let pets = await storageService.query(STORAGE_KEY, filterBy)
-    // console.log("🚀 ~ file: petService.js ~ line 310 ~ query ~ pets", pets)
 
     if (!pets || !pets.length) {
         console.log('in');
-        // pets = JSON.parse(gPets);
         pets = gPets;
         storageService.save(STORAGE_KEY, pets);
     }
     return pets;
 }
 
-
-// function query(filterBy) {
-// return httpService.get('pet')
-// return axios.get(BASE_URL, { params: filterBy })
-//     .then(res => res.data)
-// }
-
-
 async function add(pet) {
     if (pet._id) {
-        // return httpService.post(pet)
-        // return axios.put(BASE_URL + '/edit', pet)
-        // .then(res => res.data)
     }
-    // return axios.post(BASE_URL + '/edit', pet)
-    //     .then(res => res.data)
     let addPet = await storageService.post(STORAGE_KEY, pet)
     return addPet
 
 }
 function remove(petId) {
-    // return axios.delete(BASE_URL + `/${petId}`)
-    //     .then(res => res.data)
+    console.log("🚀 ~ file: petService.js ~ line 356 ~ remove ~ petId", petId)
+    storageService.remove(STORAGE_KEY, petId)
 }
 
 async function getPetByid(petId) {
-
-    // return httpService.get(`pet/${petId}`)
     let pet = await storageService.get(STORAGE_KEY, petId)
     return pet
 }
 
 async function addLike(petId) {
-    //TODO: update the server
     return Promise.resolve(petId)
 }
