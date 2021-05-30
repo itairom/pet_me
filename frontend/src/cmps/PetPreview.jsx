@@ -1,14 +1,15 @@
-// import { ReactComponent as Heart } from '../assets/fonts/svg/Preview/heart.svg'
-// import { ReactComponent as Male } from '../assets/fonts/svg/Preview/mars.svg'
-// import { ReactComponent as Female } from '../assets/fonts/svg/Preview/venus.svg'
+
 import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
 import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
+// import Male  from '../assets/img/svg/mars.svg'
+// import Female  from '../assets/img/svg/venus.svg'
 import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
 import { Link } from 'react-router-dom'
 
 
 export function PetPreview({ pet }) {
-    const gender = pet.gender === 'female' ? <Female /> : <Male />
+    const gender = pet.gender === 'female' ? <Female className="gender"/> : <Male className="gender"/>
+    // const gender = pet.gender === 'female' ? Female : Male
     return (
         <section className="pet-card-container">
             <Link key={ pet._id } to={ `/${pet._id}` }>
@@ -19,7 +20,8 @@ export function PetPreview({ pet }) {
             <div className="card-info">
                 <div className="pet-name-gender flex">
                     <p>{ pet.name }</p>
-                    <span>{ gender }</span>
+                    {gender}
+                    {/* <img src={gender} alt="icon" /> */}
                 </div>
                 <p className="pet-title">{ pet.title }</p>
                 <div className="pet-preview-host flex">

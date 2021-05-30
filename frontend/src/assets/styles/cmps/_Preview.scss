@@ -23,6 +23,10 @@
 
     .pet-name-gender {
         justify-content: space-between;
+        .gender{
+            height: 24px;
+            width: 24px;
+        }
     }
 
     .pet-preview-host {

@@ -2,30 +2,50 @@
     display: flex;
     justify-self: center;
     height: 70px;
-    background-color: bisque;
-    // width: 500px;
-    border-radius: 45px;
+    background-color: snow;
+    width: 650px;
+    border-radius: 50px;
+    border: 1px solid #dadada;
+    transition: .3s ease-in-out;
+    box-shadow: 0 0 10px 0 #0000001c;
+    position: absolute;
+    top: 50px;
+    // right: 50px;
+    left: 50px;
+    // left: 0;
+    // right: 0;
+    // margin-right: auto;
+    // margin-left: auto;
 
+
+    // position: absolute;
     /* border: 1px solid #dadada; */
     // box-shadow: 0 1px 2px  rgb(0, 0, 0 / 18%);
     // box-shadow: 0 0 10px 0 rgb(0, 0, 0/20%);
 
-   
-
     // position: fixed;
     // left: 25vw;
 
-    & > img {
-        margin-left: 10px;
+    & > a {
         display: flex;
-        align-self: center;
-        width: 40px;
-        height: 40px;
-        padding: 10px;
+        background-color: aquamarine;
         border-radius: 50px;
-        background-color: rgb(50, 246, 246);
-        // width: 10%;
+        padding: 5px 0;
+        margin-right: 15px;
     }
+
+    & > a:hover {
+        background-color: aquamarine;
+        box-shadow: none;
+        border-radius: 50px;
+    }
+}
+
+.filter-search {
+    /* margin-left: 10px; */
+    display: flex;
+    align-self: center;
+    padding: 10px;
 }
 
 .filter-select {
@@ -34,38 +54,40 @@
     flex-direction: column;
     background-color: rgb(236, 236, 148);
     width: 100px;
-    // padding: 0 30px;
     padding: 10px 15px 10px 25px;
     border-radius: 50px;
-    
-    
+    color: #6b6a6a;
+    background-color: snow;
+
     & > label {
+        margin-top: 10px;
         padding: 0;
     }
+
     & > input {
         padding: 4px 0;
-        appearance: none;
-        border: none;
-        outline: none;
-        border: none;
     }
-    
+
     &:hover {
-        box-shadow: 0 0 10px 0 rgb(0, 0, 0/20%);
+        box-shadow: 0 0 10px 0 #0000001c;
     }
 }
 
 .gender-select {
-    width:25%
+    width: 22%;
+    appearance: none;
+    border: none;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    background-color: snow;
 }
 .age-select {
-    width:25%
+    width: 20%;
 }
 .pet-select {
-    width:25%
+    width: 20%;
 }
 .location-select {
-    // margin-left: 30px;
-    width:25%
+    width: 25%;
 }
-
