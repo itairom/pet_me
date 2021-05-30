@@ -12,7 +12,7 @@ class _Explore extends React.Component {
     }
     componentDidMount() {
 
-        console.log('filterBy',this.props.location.search);
+        console.log('filterBy', this.props.location.search);
         this.props.loadPets(this.props.match.params)
         this.setState({ pets: this.props.pets })
     }

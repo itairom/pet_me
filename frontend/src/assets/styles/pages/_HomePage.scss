@@ -13,29 +13,30 @@
 .type-cards {
     display: flex;
     flex-direction: column;
-    & h2{
+
+    & h2 {
         margin-bottom: 10px;
     }
 
 
     .type-img {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         flex-wrap: wrap;
         margin-block-end: 20px;
 
 
-        >*:not(:last-child) {
-            margin-inline-end: 15px;
-        }
+        // >*:not(:last-child) {
+        //     margin-inline-end: 15px;
+        // }
 
         & img {
             height: 300px;
-            width: 230px;
+            width: 250px;
             object-fit: cover;
             border-radius: 10px;
             cursor: pointer;
-            
+
         }
     }
 
@@ -47,23 +48,25 @@
 
     .inner-container {
         flex: 1 1 50%;
-        padding: 40px 80px;
+        padding: rem(40px) 0;
 
         .about-content {
             display: flex;
             flex-direction: column;
             flex: 1;
             margin-inline-end: 20px;
-            h2{
+
+            h2 {
                 margin-block-end: 15px;
             }
 
-            p:not(:last-of-type){
+            p:not(:last-of-type) {
                 margin-block-end: 10px;
             }
+
             p:nth-child(4) {
-                flex:1
-              }
+                flex: 1
+            }
         }
 
         .about_imgs {
@@ -76,10 +79,11 @@
 
             >* {
                 border-radius: 20px;
-                object-fit:cover
+                object-fit: cover
             }
-            :last-child{
-                grid-column: 1/span 2;    
+
+            :last-child {
+                grid-column: 1/span 2;
             }
 
         }

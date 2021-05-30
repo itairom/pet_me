@@ -65,10 +65,10 @@ class _PetApp extends React.Component {
         if (!pets) return <h1>loading</h1>
         return (
             <section className="main-container">
-                <section className="hero">
+                <section className="hero full">
                     < PetFilter />
                 </section>
-                <div className="type-cards container">
+                <div className="type-cards">
                     <h2>Find your next friend</h2>
                     <div className="type-img">
                         <div>
@@ -97,11 +97,9 @@ class _PetApp extends React.Component {
                         </div>
                     </div>
 
-                    {/* <PetFilter /> */}
                 </div>
 
-                {/* <button onClick={() => this.onAddPet()}>Add</button> */}
-                <div className="type-cards container">
+                <div className="type-cards">
                     <h2>Find your next friend</h2>
                     <div className="type-img">
                         <div>
@@ -126,8 +124,8 @@ class _PetApp extends React.Component {
                         </div>
                     </div>
                 </div>
-                <section className="homepage-about">
-                    <div className="inner-container container flex">
+                <section className="homepage-about main-container full">
+                    <div className="inner-container flex">
                         <div className="about-content">
                             <h2>About as/vision.........................</h2>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>

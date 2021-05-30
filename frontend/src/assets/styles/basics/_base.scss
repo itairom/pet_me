@@ -40,14 +40,13 @@ p {
     // max-width: 40ch;
 }
 
-section, main, footer {
-
-}
+section,
+main,
+footer {}
 
 img {
     width: 100%;
     height: 100%;
-
 }
 
 a {
@@ -56,5 +55,5 @@ a {
 }
 
 main {
-    flex:1;
+    flex: 1;
 }

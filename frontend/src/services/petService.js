@@ -124,7 +124,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/cats/cat1/4_mtqmwa.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/cats/cat1/3_vt9wis.jpg"
         ],
-        "gender": "Female",
+        "gender": "female",
         "age": 3,
         "isAdopted": false,
         "likes": "50",
@@ -173,7 +173,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144481/petMe/rabbit/rabbit1/2_t4cuxu.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/rabbit/rabbit1/3_yljpts.jpg"
         ],
-        "gender": "male",
+        "gender": "female",
         "age": 2,
         "isAdopted": false,
         "likes": "77",
