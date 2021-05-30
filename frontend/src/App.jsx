@@ -5,6 +5,7 @@ import { Header } from './cmps/Header'
 import { Footer } from './cmps/Footer'
 import { PetApp } from './pages/PetApp'
 import { Explore } from './pages/Explore'
+import { LoginSignup } from './pages/LoginSignup'
 
 
 export function App() {
@@ -17,7 +18,7 @@ export function App() {
             {/* <Route path="/explore/" component={ Explore } /> */}
             {/* <Route path="/explore/:type" component={ Explore } /> */}
             <Route path="/explore/" component={ Explore } />
-            {/* <Route path="/login" component={LoginSignup} /> */ }
+            <Route path="/login" component={LoginSignup} /> 
             <Route path="/:petId" component={ PetDetails } />
             <Route path="/" component={ PetApp } />
           </Switch>

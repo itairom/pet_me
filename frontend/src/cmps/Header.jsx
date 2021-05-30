@@ -2,21 +2,19 @@ import userIcon from '../assets/img/header/user.svg' // relative path to image
 import menuIcon from '../assets/img/header/menu.svg' // relative path to image 
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { PetFilter } from './PetFilter'
+import { connect } from 'react-redux'
 
-export class Header extends Component {
+
+class _Header extends Component {
+
+    componentDidMount(){
+        console.log(this.props);
+    }
+
     render() {
-        //         return <header className="main-header main-layout">
-        //             <nav className="main-nav flex">
-        //                 <div className="main-logo">
-        //                     <NavLink exact to="/">PetMe.</NavLink>
-        //                 </div>
-        //                 <NavLink to="/login">Login</NavLink>
-        //                 <NavLink to="/explore">Explore</NavLink>
-        //             </nav>
-        //         </header>
-        //     }
-        // }
+
+        const { loggedInUser } =  this.props 
+        console.log( loggedInUser)
 
         return <header className="main-header">
             <nav className="main-container">
@@ -26,7 +24,8 @@ export class Header extends Component {
                     <NavLink to="/explore">Explore</NavLink>
                     <div className="login-profile">
                         <img src={menuIcon} alt="icon" />
-                        <img src={userIcon} alt="icon" />
+                       { (!loggedInUser)&& <img src={userIcon} alt="icon" />}
+                       { (loggedInUser)&& <img className="profile-icon" src={loggedInUser.imgUrl} alt="icon" />}
                     </div>
                 </div>
             </nav>
@@ -35,12 +34,12 @@ export class Header extends Component {
 
 
 
-// const mapStateToProps = state => {
-//     return {
-//         loggedInUser: state.userModule.loggedInUser
-//     }
-// }
-// const mapDispatchToProps = {}
+const mapStateToProps = state => {
+    return {
+        loggedInUser: state.userModule.loggedInUser
+    }
+}
+const mapDispatchToProps = {}
 
 
-// export const Header = connect(mapStateToProps, mapDispatchToProps)(_Header)
+export const Header = connect(mapStateToProps, mapDispatchToProps)(_Header)

@@ -2,19 +2,51 @@ import { storageService } from './asyncStorageService'
 import { httpService } from './httpService'
 
 const gUsers=[
-    {
-        "username":"yossef",
-        "fullname":"yossef123",
+   {
+        "_id": "s101",
+        "username": "yossi",
+        "fullname":"yossef cohen",
         "password":"123",
-    },
-    {
-        "username":"benny",
-        "fullname":"benny123",
-        "password":"123",
-    }
+        "title": "pets lover",
+        "desc": "Hello evreybody! ",
+        "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
+        "isOwner":true,
+        "tags": [
+          "dogs",
+          "cows"
+        ],
+        "pets": [
+          {
+            "_id": "rev101",
+            "isAdopted":false,
+            "adoptQue": [
+              {
+                "userId": "123",
+                "message": "lolo",
+                "chatId": "i11"
+              },
+              {
+                "userId": "123",
+                "message": "i like to addopt",
+                "chatId": "ch23"
+                }
+              ]
+          }
+        ],
+        "reviews": [
+          {
+            "id": "rev101",
+            "txt": "great farm",
+            "rate": 4,
+            "by": {
+              "_id": "u102",
+              "fullname": "user2",
+              "imgUrl": "/img/img2.jpg"
+            }
+          }
+        ]
+      }
 ]
-
-const SCORE_FOR_REVIEW = 10
 
 export const userService = {
     login,
@@ -25,13 +57,9 @@ export const userService = {
     remove,
     update,
     getLoggedinUser,
-    increaseScore
 }
 
-window.userService = userService
-// Note: due to async, must run one by one...
-// userService.signup({fullname: 'Puki Norma', username: 'user1', password:'123',score: 100, isAdmin: false})
-// userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 100, isAdmin: true})
+// window.userService = userService
 
 async function getUsers(filterBy = '') {
     let users = await storageService.query()
@@ -65,12 +93,7 @@ async function update(user) {
     if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
 }
 
-async function increaseScore(by = SCORE_FOR_REVIEW) {
-    const user = getLoggedinUser()
-    user.score = user.score + by || by
-    await update(user)
-    return user.score
-}
+
 
 async function login(userCred) {
     const users = await storageService.query('user')
