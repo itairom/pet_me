@@ -13,8 +13,9 @@ class _PetDetails extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
+        console.log(this.state)
         const petId = this.props.match.params.petId
-        console.log(petId);
         petService.getPetByid(petId).then(pet => {
             this.setState({ pet })
         })
@@ -26,10 +27,15 @@ class _PetDetails extends Component {
         this.setState({ pet: { ...this.state.pet, [name]: value } })
     }
 
+    onLike = () => {
+        // if (this.state) {
+
+        // }
+    }
+
     onShare = () => {
         this.setState({ isOpanModal: !this.state.isOpanModal })
     }
-
 
     //owner only btn 
     onUpdatePet = () => {
@@ -53,17 +59,10 @@ class _PetDetails extends Component {
     }
 
     render() {
-        const { pets } = this.props
-        //Yaara added:
-        const id = this.props.match.params.petId;
-        const pet = pets.filter(pet => pet._id === id).pop();
+        const { pet } = this.state
         console.log("Pet: ", pet);
-
-
-        // const { pet } = this.state
-        // const { pet: { owner } } = this.state
-        console.log(pet);
-        // const { loc } = pet.owner
+        // const id = this.props.match.params.petId;
+        // const pet = pets.filter(pet => pet._id === id).pop();
 
         if (!pet) return <h1>loading</h1>
         return (
@@ -120,7 +119,6 @@ class _PetDetails extends Component {
                     <CommentsCmp pet={ pet } key={ pet._id } />
                 </div>
                 <button onClick={ () => this.onRemovePet() }>Delete</button>
-
             </section>
         )
     }

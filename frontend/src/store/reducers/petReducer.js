@@ -16,7 +16,19 @@ export function petReducer(state = initialState, action) {
                 ...state,
                 pets: state.pets.map(pet => {
                     if (pet._id === action.petId) {
+
                         pet.likes++
+                        return pet;
+                    }
+                    return pet;
+                })
+            }
+        case 'REMOVE_LIKE':
+            return {
+                ...state,
+                pets: state.pets.map(pet => {
+                    if (pet._id === action.petId) {
+                        pet.likes--
                         return pet;
                     }
                     return pet;
