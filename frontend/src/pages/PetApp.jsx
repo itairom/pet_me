@@ -72,7 +72,7 @@ class _PetApp extends React.Component {
                     <h2>Our pets types</h2>
                     <div className="type-img">
                         <div>
-                            <Link to={`/explore/?&filterBy=type=dog`} >
+                            <Link to={`/explore/dog`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622205405/dogs/dog3/frnach-dog3_npdovb.jpg" alt="card" />
                                 <h4>Dogs</h4>
                             </Link>

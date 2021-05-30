@@ -67,6 +67,21 @@
     }
 }
 
+.user-dropdown{
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    margin: 5px 0;
+    background-color: #fff;
+    border: 1px solid #ebeef5;
+    border-radius: 4px;
+    z-index: 100;
+    // box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+}
+
+
 .profile-icon {
     border-radius: 50%;
     object-fit: cover;

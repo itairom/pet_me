@@ -607,16 +607,12 @@ const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
 
-
-
     //  filterBy = {
     //     gender: 'female',
     //     type: '',
     //     age: '',
     //     location: 'yafo'
     // }
-
-
 
     let pets = await storageService.query(STORAGE_KEY, filterBy)
     console.log("🚀 ~ file: petService.js ~ line 622 ~ query ~ pets", pets)
