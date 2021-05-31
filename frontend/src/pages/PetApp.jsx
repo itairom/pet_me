@@ -68,9 +68,13 @@ class _PetApp extends React.Component {
             <section className="main-container">
                 <section className="hero full">
                     < PetFilter />
+                    <div className="hero-content">
+                        <h1>Find your</h1>
+                        <h1> best friend</h1>
+                    </div>
                 </section>
                 <div className="type-cards">
-                    <h2>Our pet types</h2>
+                    <h2>Our sweet pet types</h2>
                     <div className="type-img">
                         <div>
                             <Link to={`/explore/dog`} >
@@ -97,16 +101,61 @@ class _PetApp extends React.Component {
                             </Link>
                         </div>
                     </div>
-
                 </div>
-
+                <section className="homepage-section-info">
+                    <div className="content">
+                        <div>
+                            <h2> Filter down to your perfect fit </h2>
+                            <p> Personalize your search with filters like price range or a pool to get exactly what you want. </p>
+                        </div>
+                        <div>
+                            <h2>  Dig into the details</h2>
+                            <p>  Check out the photos. Then, read guest reviews from past reservations to learn what it’s like in person. </p>
+                        </div>
+                        <div>
+                            <h2> Book with peace of mind </h2>
+                            <p>  We keep your info safe and follow global security standards to process your payments. </p>
+                        </div>
+                        <div>
+                            <h2> Arrive and enjoy! </h2>
+                            <p> Personalize your search with filters—like price range or a pool to get exactly what you want. </p>
+                        </div>
+                    </div>
+                </section>
                 <section className="type-cards">
                     <h2>Waiting long time to adopt</h2>
-                    <div className="preview-images">
-                        <PetPreview pet={pets[0]} key={pets[0]._id} />
-                        <PetPreview pet={pets[1]} key={pets[1]._id} />
-                        <PetPreview pet={pets[2]} key={pets[2]._id} />
-                        <PetPreview pet={pets[3]} key={pets[3]._id} />
+                    <div className="preview-cards">
+                        <div>
+                            <PetPreview pet={pets[0]} key={pets[0]._id} />
+                        </div>
+                        <div>
+                            <PetPreview pet={pets[1]} key={pets[1]._id} />
+                        </div>
+                        <div>
+                            <PetPreview pet={pets[2]} key={pets[2]._id} />
+                        </div>
+                        <div>
+                            <PetPreview pet={pets[3]} key={pets[3]._id} />
+                        </div>
+
+                    </div>
+                </section>
+                <section className="type-cards">
+                    <h2>Most Liked Pets Available For Adoption</h2>
+                    <div className="preview-cards">
+                        <div>
+                            <PetPreview pet={pets[4]} key={pets[4]._id} />
+                        </div>
+                        <div>
+                            <PetPreview pet={pets[5]} key={pets[5]._id} />
+                        </div>
+                        <div>
+                            <PetPreview pet={pets[6]} key={pets[6]._id} />
+                        </div>
+                        <div>
+                            <PetPreview pet={pets[7]} key={pets[7]._id} />
+                        </div>
+
                     </div>
                 </section>
 
