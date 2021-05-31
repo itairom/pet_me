@@ -2,7 +2,7 @@
     display: flex;
     justify-self: center;
     height: 70px;
-    background-color: snow;
+    background-color: rgb(255, 255, 255);
     width: 650px;
     border-radius: 50px;
     border: 1px solid #dadada;
@@ -37,15 +37,14 @@
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    background-color: rgb(236, 236, 148);
     width: 100px;
     padding: 10px 15px 10px 25px;
     border-radius: 50px;
     color: #6b6a6a;
-    background-color: snow;
+    background-color: rgb(255, 255, 255);
 
     & > label {
-        margin-top: 10px;
+        // margin-top: 10px;
         padding: 0;
     }
 
@@ -59,15 +58,19 @@
     }
 }
 
-.gender-select {
-    width: 20%;
+.main-select{
+
     width: 120px;
     appearance: none;
     border: none;
     outline: none;
     border: none;
     font-size: 1rem;
-    background-color: snow;
+    background-color: rgb(255, 255, 255);
+}
+
+.gender-select {
+    width: 20%;
 }
 .age-select {
     width: 15%;
@@ -79,8 +82,11 @@
     width: 13%;
 }
 .location-select {
+    outline: none;
+    border: none;
     width: 60%;
     & > label {
+
         margin-top: -4px;
     }
 }
@@ -90,10 +96,3 @@ a {
         padding: 5px;
     }
 }
-
-// .any-placeholder {
-//     &> select {
-//         font-size: 10px;
-//         color: aqua;
-//     }
-// }

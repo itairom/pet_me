@@ -1,8 +1,5 @@
 import { userService } from '../../services/userService'
 
-
-
-
 // THUNK action creators
 // Work asynchronously with the service and dispatch actions to the reducers 
 
@@ -53,6 +50,7 @@ export function signup(userCreds) {
   }
 }
 export function logout() {
+  console.log('logout');
   return async dispatch => {
     try {
       await userService.logout()

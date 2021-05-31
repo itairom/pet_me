@@ -1,5 +1,4 @@
 import { petService } from '../../services/petService.js'
-// import {petService} from '../../services/'
 
 export function loadPets(filterBy) { // Action Creator
     return async dispatch => {
@@ -13,11 +12,9 @@ export function loadPets(filterBy) { // Action Creator
     }
 }
 export function addPet(pet) {
-    console.log("🚀 ~ file: pet.actions.js ~ line 16 ~ addpet ~ pet", pet)
     return dispatch => {
         return petService.add(pet)
             .then(pet => {
-                console.log("🚀 ~ file: pet.actions.js ~ line 20 ~ addpet ~ pet", pet)
                 const action = {
                     type: 'ADD_PET', pet
                 }
@@ -27,7 +24,6 @@ export function addPet(pet) {
 }
 
 export function updatePet(pet) { // Action Creator
-    console.log("🚀 ~ file: pet.actions.js ~ line 28 ~ updatepet ~ pet", pet)
     return dispatch => {
         return petService.add(pet)
             .then(pet => {
@@ -51,13 +47,17 @@ export function removePet(petId) { // Action Creator
     }
 }
 
-export function toggleLike(petId, act) { // Action Creator
+export function toggleLike(petId, userId, act, idx) { // Action Creator
+    console.log(petId, userId, act, idx)
     return dispatch => {
-        return petService.toggleLike(petId)
-            .then((petId) => {
+        return petService.toggleLike(petId, userId, act, idx)
+            .then((petId, newLikedBy) => {
+                console.log('newLikedBy', newLikedBy)
                 const action = {
-                    type: (act === 1) ? 'ADD_LIKE' : 'REMOVE_LiKE',
-                    petId: petId + ''
+                    type: (act === 1) ? 'ADD_LIKE' : 'REMOVE_LIKE',
+                    petId,
+                    userId,
+                    idx
                 }
                 dispatch(action)
             })

@@ -12,7 +12,7 @@ export const storageService = {
 function query(entityType, filterBy='') {
 
     
-    const { type,age,location,gender } = filterBy
+    const { type,age,location,gender,size } = filterBy
     
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
@@ -25,10 +25,13 @@ function query(entityType, filterBy='') {
         entities = entities.filter(entity => entity.age.includes(age))
     }
     if (location) {
-        entities = entities.filter(entity => entity.owner.loc.address.includes(location))
+        entities = entities.filter(entity => entity.owner.loc.address.toUpper().includes(location.toUpper()))
     }
     if (gender) {
         entities = entities.filter(entity => entity.gender.includes(gender))
+    }
+    if (size) {
+        entities = entities.filter(entity => entity.size.includes(size))
     }
     // console.log("🚀 AFTER", entities)
 

@@ -5,7 +5,7 @@ import {
   loadUsers,
   removeUser,
   login,
-  logout,
+  logout,  
   signup
 } from '../store/actions/userActions'
 

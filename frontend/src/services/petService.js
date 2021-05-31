@@ -246,7 +246,7 @@ const gPets = [
         "trained": false,
         "vaccine": true,
         "owner": {
-            "_id": "s105",
+            "_id": "s101",
             "name": "Harry Callum",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
             "loc": {
@@ -291,7 +291,8 @@ const gPets = [
         "isAdopted": true,
         "likes": "93",
         "likedBy": [
-            "s103"
+            "s103",
+
         ],
         "size": "medium",
         "neuterSpayed": false,
@@ -454,9 +455,9 @@ const gPets = [
         "trained": true,
         "vaccine": true,
         "owner": {
-            "_id": "s109",
-            "name": "Mia Barbara",
-            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622380260/dogs/dog4/owner_6_mxpeee.jpg",
+            "_id": "s101",
+            "name": "Mike York",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
@@ -506,14 +507,14 @@ const gPets = [
         "trained": true,
         "vaccine": true,
         "owner": {
-            "_id": "s110",
-            "name": "James Charlie",
-            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379525/petMe/rabbit/rrabit3/owner_4_tmarm0.jpg",
+            "_id": "s101",
+            "name": "Mike York",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
                 "lng": 23132131221
-            }
+              }
         },
         "tags": [
             "dog",
@@ -643,6 +644,7 @@ const gPets = [
 const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
+    console.log(filterBy)
 
     //  filterBy = {
     //     gender: 'female',
@@ -653,7 +655,7 @@ async function query(filterBy = '') {
 
     let pets = await storageService.query(STORAGE_KEY, filterBy)
 
-    if (!pets || [] ) {
+    if (!pets || []) {
         pets = gPets;
         storageService.save(STORAGE_KEY, pets);
     }
@@ -677,6 +679,19 @@ async function getPetByid(petId) {
     return pet
 }
 
-async function toggleLike(petId) {
-    return Promise.resolve(petId)
+async function toggleLike(petId, userId, act, idx) {
+    const petIdx = gPets.findIndex(pet => pet._id === petId)
+    // switch (act) {
+    //     case 1:
+    //         gPets[petIdx].likedBy.push(userId)
+    //         gPets[petIdx].likes++
+    //         break;
+    //     case -1:
+    //         gPets[petIdx].likedBy.splice(idx, 1)
+    //         gPets[petIdx].likes--
+    //         break;
+    //     default:
+    //         break;
+    // }
+    return Promise.resolve(petId, gPets[petIdx].likedBy)
 }

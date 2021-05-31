@@ -4,6 +4,7 @@ import { PetDetails } from './pages/PetDetails'
 import { Header } from './cmps/Header'
 import { Footer } from './cmps/Footer'
 import { PetApp } from './pages/PetApp'
+import { Profile } from './pages/Profile'
 import { Explore } from './pages/Explore'
 import { LoginSignup } from './pages/LoginSignup'
 
@@ -16,8 +17,11 @@ export function App() {
         <main className="main-layout">
           <Switch>
             {/* <Route path="/explore/" component={ Explore } /> */}
-            <Route path="/explore/:type" component={ Explore } />
+
+            {/* <Route path="/explore/&type&gender&age&size&location" component={ Explore } /> */}
+            <Route path="/explore/:type:gender:age:size:location" component={ Explore } />
             <Route path="/explore/" component={ Explore } />
+            <Route path="/profile" component={Profile} /> 
             <Route path="/login" component={LoginSignup} /> 
             <Route path="/:petId" component={ PetDetails } />
             <Route path="/" component={ PetApp } />
