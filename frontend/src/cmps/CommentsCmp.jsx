@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { LongTxt } from './LongTxt'
 import { addComment } from '../store/actions/petActions'
 import { connect } from 'react-redux'
+import { utilService } from '../services/utilService'
 
 class _CommentsCmp extends Component {
     render() {
         const { pet, loggedInUser } = this.props
-        console.log(loggedInUser)
+        // console.log(loggedInUser)
         return (
             <section className="comments-container" >
                 <div className="comments-btns flex">
@@ -23,7 +24,7 @@ class _CommentsCmp extends Component {
                                     <div className="flex column">
                                         <span className="commenter-name">{ comment.by.fullname }</span>
                                         {/* TODO: reconfigure date by fixed times */ }
-                                        <span className="comment-time">{ Date(comment.by.created) }</span>
+                                        <span className="comment-time">{ utilService.timeSince(comment.created) }</span>
                                     </div>
                                     <LongTxt className="comment-desc" txt={ comment.txt } />
                                 </div>
