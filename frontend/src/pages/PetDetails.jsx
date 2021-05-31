@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { petService } from '../services/petService'
 import { connect } from 'react-redux'
-import { addLike } from '../store/actions/petActions'
+import { toggleLike } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 
@@ -16,7 +16,6 @@ class _PetDetails extends Component {
     }
 
     componentDidMount() {
-
         const petId = this.props.match.params.petId
         petService.getPetByid(petId).then(pet => {
             this.setState({ pet })
@@ -29,10 +28,19 @@ class _PetDetails extends Component {
         this.setState({ pet: { ...this.state.pet, [name]: value } })
     }
 
-    onLike = () => {
-        // if (this.state) {
+    onLike = (petId) => {
+        console.log(this.props)
+        const { loggedInUser } = this.props
+        if (!loggedInUser) return console.log('you are in guest mode, please logging to like the pet')
+        const isLiked = this.state.pet.likedBy.find(userId => userId === loggedInUser._id)
+        console.log(loggedInUser._id, this.state.pet.likedBy)
+        console.log(isLiked)
+        debugger
+        if (!isLiked) {
+            toggleLike(1)
 
-        // }
+        }
+        toggleLike(-1)
     }
 
     onShare = () => {
@@ -61,6 +69,7 @@ class _PetDetails extends Component {
     }
 
     render() {
+        // console.log('this.state', this.state)
         const { pet } = this.state
         // const id = this.props.match.params.petId;
         // const pet = pets.filter(pet => pet._id === id).pop();
@@ -78,7 +87,7 @@ class _PetDetails extends Component {
                     <div className="details-header-btns">
                         {/* TODO: add icons +actions btns */ }
                         <span className="like-pet"> { pet.likes }
-                            <button onClick={ () => this.props.addLike(pet._id) }>like</button></span>
+                            <button onClick={ () => this.onLike(pet._id) }>like</button></span>
                     </div>
                     <span className="share-pet" onClick={ () => this.onShare }>share
                         <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
@@ -114,8 +123,8 @@ class _PetDetails extends Component {
                             </ul>
                         </div>
                     </div>
-                    <div className="adopt-modal-section">
-
+                    <div className="adopt-modal-container flex column align-center ">
+                        <button className="adopt-btn el-btn">Adopt Me</button>
                     </div>
                 </div>
                 <div className="comments-section">
@@ -137,7 +146,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addLike,loadPets
+    toggleLike,
+    loadPets
     // updatePet
 }
 

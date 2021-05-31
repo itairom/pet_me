@@ -6,8 +6,8 @@ export const petService = {
     getPetByid,
     add,
     remove,
-    addLike,
-
+    toggleLike,
+    // addComment
 }
 
 const gPets = [
@@ -29,6 +29,9 @@ const gPets = [
         "age": "senior",
         "isAdopted": false,
         "likes": "33",
+        "likedBy": [
+            "s103"
+        ],
         "size": "big",
         "neuterSpayed": true,
         "trained": false,
@@ -78,7 +81,10 @@ const gPets = [
         "age": "adult",
         "isAdopted": false,
         "likes": "50",
-        "size": "medium",
+        "likedBy": [
+            "s103"
+        ],
+        "size": "Medium",
         "neuterSpayed": true,
         "trained": true,
         "vaccine": true,
@@ -127,7 +133,10 @@ const gPets = [
         "age": "young",
         "isAdopted": false,
         "likes": "50",
-        "size": "small",
+        "likedBy": [
+            "s103"
+        ],
+        "size": "Small",
         "neuterSpayed": false,
         "trained": false,
         "vaccine": false,
@@ -176,7 +185,10 @@ const gPets = [
         "age": "senior",
         "isAdopted": true,
         "likes": "87",
-        "size": "small",
+        "likedBy": [
+            "s103"
+        ],
+        "size": "Small",
         "neuterSpayed": false,
         "trained": false,
         "vaccine": true,
@@ -225,7 +237,11 @@ const gPets = [
         "age": "adult",
         "isAdopted": false,
         "likes": "77",
-        "size": "small",
+        "likedBy": [
+            "s103",
+            "s101"
+        ],
+        "size": "Small",
         "neuterSpayed": false,
         "trained": false,
         "vaccine": true,
@@ -274,6 +290,9 @@ const gPets = [
         "age": "young",
         "isAdopted": true,
         "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
         "size": "medium",
         "neuterSpayed": false,
         "trained": false,
@@ -322,8 +341,11 @@ const gPets = [
         "gender": "male",
         "age": "senior",
         "isAdopted": false,
-        "likes": "70",
-        "size": "small",
+        "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
+        "size": "Small",
         "neuterSpayed": true,
         "trained": true,
         "vaccine": true,
@@ -371,8 +393,11 @@ const gPets = [
         "gender": "female",
         "age": "adult",
         "isAdopted": false,
-        "likes": "56",
-        "size": "small",
+        "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
+        "size": "Small",
         "neuterSpayed": true,
         "trained": true,
         "vaccine": true,
@@ -420,8 +445,11 @@ const gPets = [
         "gender": "male",
         "age": "senior",
         "isAdopted": false,
-        "likes": "105",
-        "size": "small",
+        "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
+        "size": "Small",
         "neuterSpayed": true,
         "trained": true,
         "vaccine": true,
@@ -469,8 +497,11 @@ const gPets = [
         "gender": "female",
         "age": "young",
         "isAdopted": false,
-        "likes": "97",
-        "size": "small",
+        "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
+        "size": "Small",
         "neuterSpayed": true,
         "trained": true,
         "vaccine": true,
@@ -518,8 +549,11 @@ const gPets = [
         "gender": "male",
         "age": "adult",
         "isAdopted": false,
-        "likes": "64",
-        "size": "small",
+        "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
+        "size": "Small",
         "neuterSpayed": true,
         "trained": true,
         "vaccine": true,
@@ -567,8 +601,11 @@ const gPets = [
         "gender": "male",
         "age": "senior",
         "isAdopted": false,
-        "likes": "62",
-        "size": "big",
+        "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
+        "size": "b",
         "neuterSpayed": true,
         "trained": true,
         "vaccine": true,
@@ -606,6 +643,7 @@ const gPets = [
 const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
+console.log( filterBy)
 
     //  filterBy = {
     //     gender: 'female',
@@ -640,6 +678,6 @@ async function getPetByid(petId) {
     return pet
 }
 
-async function addLike(petId) {
+async function toggleLike(petId) {
     return Promise.resolve(petId)
 }

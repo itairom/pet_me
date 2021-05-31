@@ -2,24 +2,36 @@ import userIcon from '../assets/img/header/user.svg' // relative path to image
 import menuIcon from '../assets/img/header/menu.svg' // relative path to image 
 import logo from '../assets/img/logo.png' // relative path to image 
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { logout } from '../store/actions/userActions'
 
 
 class _Header extends Component {
+
+    state = {
+        isProfileShown: false
+    }
 
     componentDidMount() {
         // console.log(this.props);
     }
 
     toggleDropdown = () => {
-        // this.props.history.push('/login')
+        this.setState({ isProfileShown: !this.state.isProfileShown })
     }
+
+    onLogout = () => {
+        this.props.logout()
+        // this.props.history.push('/')
+    }
+
+
 
     render() {
 
-        const { loggedInUser } = this.props
-        // console.log( loggedInUser)
+        const { loggedInUser, logout } = this.props
+        const { isProfileShown } = this.state
 
         return <header className="main-header main-container">
             <nav className="header-container">
@@ -31,20 +43,31 @@ class _Header extends Component {
                 <div className="right-nav">
                     <NavLink to="/explore">Explore</NavLink>
                     <div onClick={() => this.toggleDropdown()} className="login-profile">
-                        {/* <div className="user-dropdown">
-                            <ul className="dropdown-list">
-                                <li>My Profile</li>
-                                <li>Logout</li>
-                            </ul>
+                        {isProfileShown && <div className="user-dropdown">
+                            <div className="dropdown-list">
+                                <span>My Profile</span>
 
-                        </div> */}
+
+                                {(loggedInUser) &&
+                                    <span onClick={() => this.onLogout()}>Logout</span>
+                                }
+
+
+                                {(!loggedInUser) && <Link to='/login' >
+                                    <span>Login</span>
+                                </Link>}
+                            </div>
+
+                        </div>}
+
+
                         <img src={menuIcon} alt="icon" />
                         {(!loggedInUser) && <img src={userIcon} alt="icon" />}
                         {(loggedInUser) && <img className="profile-icon" src={loggedInUser.imgUrl} alt="icon" />}
                     </div>
                 </div>
             </nav>
-        </header>
+        </header >
     }
 }
 
@@ -55,7 +78,9 @@ const mapStateToProps = state => {
         loggedInUser: state.userModule.loggedInUser
     }
 }
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+    logout
+}
 
 
 export const Header = connect(mapStateToProps, mapDispatchToProps)(_Header)

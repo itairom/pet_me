@@ -16,7 +16,9 @@ export function App() {
         <main className="main-layout">
           <Switch>
             {/* <Route path="/explore/" component={ Explore } /> */}
-            <Route path="/explore/:type" component={ Explore } />
+
+            {/* <Route path="/explore/&type&gender&age&size&location" component={ Explore } /> */}
+            <Route path="/explore/:type:gender:age:size:location" component={ Explore } />
             <Route path="/explore/" component={ Explore } />
             <Route path="/login" component={LoginSignup} /> 
             <Route path="/:petId" component={ PetDetails } />

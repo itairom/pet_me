@@ -53,6 +53,7 @@ export function signup(userCreds) {
   }
 }
 export function logout() {
+  console.log('logout');
   return async dispatch => {
     try {
       await userService.logout()
