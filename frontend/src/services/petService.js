@@ -291,7 +291,8 @@ const gPets = [
         "isAdopted": true,
         "likes": "93",
         "likedBy": [
-            "s103"
+            "s103",
+
         ],
         "size": "medium",
         "neuterSpayed": false,
@@ -643,7 +644,7 @@ const gPets = [
 const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
-console.log( filterBy)
+    console.log(filterBy)
 
     //  filterBy = {
     //     gender: 'female',
@@ -654,7 +655,7 @@ console.log( filterBy)
 
     let pets = await storageService.query(STORAGE_KEY, filterBy)
 
-    if (!pets || [] ) {
+    if (!pets || []) {
         pets = gPets;
         storageService.save(STORAGE_KEY, pets);
     }
@@ -678,6 +679,19 @@ async function getPetByid(petId) {
     return pet
 }
 
-async function toggleLike(petId) {
-    return Promise.resolve(petId)
+async function toggleLike(petId, userId, act, idx) {
+    const petIdx = gPets.findIndex(pet => pet._id === petId)
+    // switch (act) {
+    //     case 1:
+    //         gPets[petIdx].likedBy.push(userId)
+    //         gPets[petIdx].likes++
+    //         break;
+    //     case -1:
+    //         gPets[petIdx].likedBy.splice(idx, 1)
+    //         gPets[petIdx].likes--
+    //         break;
+    //     default:
+    //         break;
+    // }
+    return Promise.resolve(petId, gPets[petIdx].likedBy)
 }
