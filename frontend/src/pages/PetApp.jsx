@@ -63,12 +63,11 @@ class _PetApp extends React.Component {
         const { pets } = this.props
         if (pets.length === 0) return <h1>loading</h1>
 
-        // console.log(this.props.pets);
         return (
             <section className="main-container">
                 <section className="hero full">
-                    < PetFilter />
                     <div className="hero-content">
+                        < PetFilter />
                         <h1>Find your</h1>
                         <h1> best friend</h1>
                     </div>
@@ -105,15 +104,16 @@ class _PetApp extends React.Component {
                 <section className="homepage-section-info">
                     <div className="content">
                         <div>
-                            <h2> Filter down to your perfect fit </h2>
-                            <p> Personalize your search with filters like price range or a pool to get exactly what you want. </p>
+                            <h2>Filter down to your perfect fit</h2>
+                            <p> Personalize your search with filters like gender, type, size or a pool to get exactly what you want. </p>
                         </div>
                         <div>
-                            <h2>  Dig into the details</h2>
+                            <h2>Dig into the details</h2>
                             <p>  Check out the photos. Then, read guest reviews from past reservations to learn what it’s like in person. </p>
                         </div>
                         <div>
                             <h2> Book with peace of mind </h2>
+
                             <p>  We keep your info safe and follow global security standards to process your payments. </p>
                         </div>
                         <div>
@@ -191,17 +191,18 @@ class _PetApp extends React.Component {
                 </div>  */}
                 <section className="homepage-about main-container full">
                     <div className="inner-container flex">
-                        <div className="about-content">
-                            <h2>Our vision</h2>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
-                        </div>
-                        <div className="about_imgs">
-                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622209864/petMe/about-imgs/about1_rt4e2u.jpg" alt="card" />
+
+                        {/* <div className="about_imgs"> */}
+                        {/* <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622209864/petMe/about-imgs/about1_rt4e2u.jpg" alt="card" />
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210087/petMe/about-imgs/about-cat_w78jtf.jpg" alt="card" />
-                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210260/petMe/about-imgs/boy-and-cat_hd5uqt.jpg" alt="card" />
-                        </div>
+                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210260/petMe/about-imgs/boy-and-cat_hd5uqt.jpg" alt="card" /> */}
+                        {/* </div> */}
+                    </div>
+                    <div className="about-content">
+                        <h2>Our vision</h2>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
                     </div>
                 </section>
             </section>
