@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import { toggleLike } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
+import { Male } from '../assets/img/svg/mars.svg'
+import { Female } from '../assets/img/svg/venus.svg'
+import { Heart } from '../assets/img/svg/heart.svg'
 
 import { loadPets } from '../store/actions/petActions'
 
@@ -87,7 +90,7 @@ class _PetDetails extends Component {
                     <div className="details-header-btns">
                         {/* TODO: add icons +actions btns */ }
                         <span className="like-pet"> { pet.likes }
-                            <button onClick={ () => this.onLike(pet._id) }>like</button></span>
+                            <button onClick={ () => this.onLike(pet._id) }><Heart className="preview-heart" /></button></span>
                     </div>
                     <span className="share-pet" onClick={ () => this.onShare }>share
                         <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
