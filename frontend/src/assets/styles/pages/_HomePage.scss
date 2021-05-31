@@ -83,3 +83,12 @@
         }
     }
 }
+
+.preview-container{
+    display: flex;
+    flex-direction: column;
+    &>.preview-images{
+display: flex;
+
+    }
+}

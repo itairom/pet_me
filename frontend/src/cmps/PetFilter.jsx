@@ -69,7 +69,7 @@ export class PetFilter extends React.Component {
                 </div>
                 <div className="filter-select location-select">
                     <label >Location</label>
-                    <input className='gender-select' value={location} onChange={this.handleChange} name="location" ></input>
+                    <input className='gender-select' value={location} onChange={this.handleChange} name="location"  ></input>
                 </div>
 
                 <Link to={`/explore/?&${type}&${gender}&${age}&${location}`}>

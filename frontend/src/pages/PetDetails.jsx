@@ -5,7 +5,7 @@ import { addLike } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 
-import { loadPets, addPet } from '../store/actions/petActions'
+import { loadPets } from '../store/actions/petActions'
 
 
 class _PetDetails extends Component {

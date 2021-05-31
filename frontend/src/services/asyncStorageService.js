@@ -10,6 +10,8 @@ export const storageService = {
 }
 
 function query(entityType, filterBy='') {
+
+    
     const { type,age,location,gender } = filterBy
     
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
