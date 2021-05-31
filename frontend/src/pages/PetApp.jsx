@@ -188,7 +188,7 @@ class _PetApp extends React.Component {
                             </Link>
                         </div>
                     </div>
-                </div> */}
+                </div>  */}
                 <section className="homepage-about main-container full">
                     <div className="inner-container flex">
                         <div className="about-content">

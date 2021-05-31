@@ -19,16 +19,14 @@
                 padding-left: rem(100px);
             }
         }
-        
     }
 }
 
 .type-cards {
     display: flex;
     flex-direction: column;
-
     & h2 {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     .type-img {

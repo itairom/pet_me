@@ -111,7 +111,7 @@ async function signup(userCred) {
 }
 async function logout() {
     sessionStorage.clear()
-    return await httpService.post('auth/logout')
+    // return await httpService.post('auth/logout')
 }
 function _saveLocalUser(user) {
     sessionStorage.setItem('loggedinUser', JSON.stringify(user))

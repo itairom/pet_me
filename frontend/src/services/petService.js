@@ -644,6 +644,7 @@ const gPets = [
 const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
+console.log( filterBy)
 
     //  filterBy = {
     //     gender: 'female',
