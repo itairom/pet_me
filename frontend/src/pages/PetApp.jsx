@@ -63,7 +63,7 @@ class _PetApp extends React.Component {
         const { pets } = this.props
         if (pets.length === 0) return <h1>loading</h1>
 
-        console.log(this.props.pets);
+        // console.log(this.props.pets);
         return (
             <section className="main-container">
                 <section className="hero full">
