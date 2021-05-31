@@ -10,12 +10,22 @@
     }
 
     .details-header-btns{
-        & span button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        & .pet-like-btn {
             cursor: pointer;
+            background-color: #ffffff;
         }
     }
 }
 
+.preview-heart-red {
+   fill: #FC3A3A;
+
+}
 .details-imgs-container {
     margin-top: 10px;
     width: 100%;

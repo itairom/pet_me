@@ -16,8 +16,8 @@ export function petReducer(state = initialState, action) {
                 ...state,
                 pets: state.pets.map(pet => {
                     if (pet._id === action.petId) {
-
                         pet.likes++
+                        pet.likedBy.push(action.userId)
                         return pet;
                     }
                     return pet;
@@ -29,6 +29,7 @@ export function petReducer(state = initialState, action) {
                 pets: state.pets.map(pet => {
                     if (pet._id === action.petId) {
                         pet.likes--
+                        pet.likedBy.splice(action.idx, 1)
                         return pet;
                     }
                     return pet;

@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 import { toggleLike } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
-import { Male } from '../assets/img/svg/mars.svg'
-import { Female } from '../assets/img/svg/venus.svg'
-import { Heart } from '../assets/img/svg/heart.svg'
+import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
+import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
+import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
+import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
 
 import { loadPets } from '../store/actions/petActions'
 
@@ -16,6 +17,7 @@ class _PetDetails extends Component {
         pet: null,
         isEditMode: false,
         isOpanModal: false,
+        isLiked: false
     }
 
     componentDidMount() {
@@ -33,17 +35,19 @@ class _PetDetails extends Component {
 
     onLike = (petId) => {
         console.log(this.props)
+        const { pet } = this.state
         const { loggedInUser } = this.props
         if (!loggedInUser) return console.log('you are in guest mode, please logging to like the pet')
-        const isLiked = this.state.pet.likedBy.find(userId => userId === loggedInUser._id)
-        console.log(loggedInUser._id, this.state.pet.likedBy)
-        console.log(isLiked)
-        debugger
-        if (!isLiked) {
-            toggleLike(1)
-
+        console.log('loggedInUser', loggedInUser)
+        const userId = pet.likedBy.find(userId => userId === loggedInUser._id)
+        const isLiked = userId ? true : false;
+        this.setState({ isLiked: !isLiked })
+        console.log(this.state.isLiked)
+        if (!isLiked) this.props.toggleLike(petId, loggedInUser._id, 1)
+        else {
+            const idx = pet.likedBy.findIndex(userId === loggedInUser._id)
+            this.props.toggleLike(petId, userId, -1, idx)
         }
-        toggleLike(-1)
     }
 
     onShare = () => {
@@ -73,7 +77,7 @@ class _PetDetails extends Component {
 
     render() {
         // console.log('this.state', this.state)
-        const { pet } = this.state
+        const { pet, isLiked } = this.state
         // const id = this.props.match.params.petId;
         // const pet = pets.filter(pet => pet._id === id).pop();
 
@@ -89,13 +93,17 @@ class _PetDetails extends Component {
                     </div>
                     <div className="details-header-btns">
                         {/* TODO: add icons +actions btns */ }
-                        <span className="like-pet"> { pet.likes }
-                            <button onClick={ () => this.onLike(pet._id) }><Heart className="preview-heart" /></button></span>
-                    </div>
-                    <span className="share-pet" onClick={ () => this.onShare }>share
+                        <span className="pet-likes">{ pet.likes }</span>
+                        <span className="pet-like-btn" onClick={ () => this.onLike(pet._id) }>
+                            <Heart className={ isLiked ? 'preview-heart-red' : 'preview-heart' } />
+                            {/* // (!isLiked) ? <Heart className="preview-heart" /> : <HeartFill className="preview-heart" /> */ }
+
+                        </span>
+                        <span className="share-pet" onClick={ () => this.onShare }>share
                         <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
-                        </div>
-                    </span>
+                            </div>
+                        </span>
+                    </div>
                 </header>
                 <div className="details-imgs-container grid">
                     { pet.imgUrls.map((imgUrl, idx) => {
