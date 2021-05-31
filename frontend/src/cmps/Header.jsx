@@ -45,11 +45,11 @@ class _Header extends Component {
                     <div onClick={() => this.toggleDropdown()} className="login-profile">
                         {isProfileShown && <div className="user-dropdown">
                             <div className="dropdown-list">
-                                <span>My Profile</span>
+                                <a>My Profile</a>
 
 
                                 {(loggedInUser) &&
-                                    <span onClick={() => this.onLogout()}>Logout</span>
+                                    <a onClick={() => this.onLogout()}>Logout</a>
                                 }
 
 
