@@ -57,13 +57,13 @@ class _PetApp extends React.Component {
                 }
             ]
         }
-        this.props.addPet(pet)
     }
 
     render() {
-        // console.log(this.props.pets);
         const { pets } = this.props
-        if (!pets) return <h1>loading</h1>
+        if (pets.length === 0) return <h1>loading</h1>
+
+        console.log(this.props.pets);
         return (
             <section className="main-container">
                 <section className="hero full">
@@ -100,15 +100,15 @@ class _PetApp extends React.Component {
 
                 </div>
 
-                {/* <section className="preview-container">
+                <section className="type-cards">
                     <h2>Waiting long time to adopt</h2>
                     <div className="preview-images">
                         <PetPreview pet={pets[0]} key={pets[0]._id} />
-                        <PetPreview pet={pets[0]} key={pets[0]._id} />
-                        <PetPreview pet={pets[0]} key={pets[0]._id} />
-                        <PetPreview pet={pets[0]} key={pets[0]._id} />
+                        <PetPreview pet={pets[1]} key={pets[1]._id} />
+                        <PetPreview pet={pets[2]} key={pets[2]._id} />
+                        <PetPreview pet={pets[3]} key={pets[3]._id} />
                     </div>
-                </section> */}
+                </section>
 
                 {/* <div className="type-cards">
                     <h2>Find your next friend</h2>
