@@ -8,6 +8,7 @@ import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
 import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
 import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
 import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
+import { ReactComponent as RedHeart } from '../assets/img/svg/red-heart.svg'
 
 import { loadPets } from '../store/actions/petActions'
 
@@ -95,7 +96,8 @@ class _PetDetails extends Component {
                         {/* TODO: add icons +actions btns */ }
                         <span className="pet-likes">{ pet.likes }</span>
                         <span className="pet-like-btn" onClick={ () => this.onLike(pet._id) }>
-                            <Heart className={ isLiked ? 'preview-heart-red' : 'preview-heart' } />
+                            {/* <HeartFill className={ isLiked ? 'preview-heart-red' : 'preview-heart' } /> */ }
+                            <RedHeart className="preview-heart" />
                             {/* // (!isLiked) ? <Heart className="preview-heart" /> : <HeartFill className="preview-heart" /> */ }
 
                         </span>

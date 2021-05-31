@@ -644,7 +644,7 @@ const gPets = [
 const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
-console.log( filterBy)
+    console.log(filterBy)
 
     //  filterBy = {
     //     gender: 'female',
@@ -679,15 +679,13 @@ async function getPetByid(petId) {
     return pet
 }
 
-async function toggleLike(petId, userId, act) {
-    const pet = gPets.find(pet => {
-        
-    })
+async function toggleLike(petId, userId, act, idx) {
+    const petIdx = gPets.findIndex(pet => pet._id === petId)
     switch (act) {
-        case 1:
-
-            return
-
+        case 1: gPets[petIdx].likedBy.push(userId)
+            break;
+        case -1: gPets[petIdx].likedBy.splice(idx, 1)
+            break;
         default:
             break;
     }
