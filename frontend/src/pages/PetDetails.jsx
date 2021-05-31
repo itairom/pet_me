@@ -5,15 +5,17 @@ import { toggleLike } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 
+import { loadPets } from '../store/actions/petActions'
+
+
 class _PetDetails extends Component {
     state = {
         pet: null,
         isEditMode: false,
-        isOpanModal: false
+        isOpanModal: false,
     }
 
     componentDidMount() {
-        // console.log(this.props)
         const petId = this.props.match.params.petId
         petService.getPetByid(petId).then(pet => {
             this.setState({ pet })
@@ -69,13 +71,14 @@ class _PetDetails extends Component {
     render() {
         // console.log('this.state', this.state)
         const { pet } = this.state
-        // console.log("Pet: ", pet);
         // const id = this.props.match.params.petId;
         // const pet = pets.filter(pet => pet._id === id).pop();
 
+        if (!this.props.pets) return <h1>loading pets</h1>
         if (!pet) return <h1>loading</h1>
+
         return (
-            <section className="pet-details-section">
+            <section className="pet-details-section main-container">
                 <header className="details-header flex">
                     <div className="details-title flex column">
                         <h3 className="pet-name">{ pet.name }</h3>
@@ -143,7 +146,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    toggleLike
+    toggleLike,
+    loadPets
     // updatePet
 }
 

@@ -7,7 +7,7 @@ export function PetList({ pets }) {
                 pet={pet}
             />)}
 
-            {(pets) && <div>
+            {(!pets) && <div>
                 No pets to show
             </div>}
         </section>

@@ -5,3 +5,35 @@
     margin-block-start: 20px;
     margin-block-end: 20px
 }
+
+.explore-search{
+    cursor: pointer;
+    // position: fixed;
+    top:4px;
+    left: 40%;
+    // right: 50%;
+    align-items: center;
+    display: flex;
+    padding: 0 0 0 1rem;
+    color: #1e1e1e;
+    font-size: .9rem;
+    font-weight: 700;
+    position: absolute;
+    z-index: 101;
+    border-radius: 200px;
+    line-height: 49px;
+    border :#dadada 1px solid; 
+
+
+    &>.search-btn{
+        background-color: #7fffd4;
+        border-radius: 50px;
+        margin: 10px 10px 10px 30px;
+        
+        &>img{
+            padding:10px ;
+            width: 40px;
+            height: 40px;
+        }
+    }
+}

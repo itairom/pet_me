@@ -1,6 +1,8 @@
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { Link } from 'react-router-dom'
 import React from 'react'
+import { loadPets } from '../store/actions/petActions'
+
 
 export class PetFilter extends React.Component {
 
@@ -9,6 +11,7 @@ export class PetFilter extends React.Component {
             gender: '',
             type: '',
             age: '',
+            size: '',
             location: ''
         }
     }
@@ -20,13 +23,16 @@ export class PetFilter extends React.Component {
     }
 
     submitForm = () => {
+        loadPets()
 
     }
 
 
 
+
+
     render() {
-        const { gender, age, type, location } = this.state
+        const { gender, age, type, location, size } = this.state
 
 
         return (
@@ -37,6 +43,7 @@ export class PetFilter extends React.Component {
                     <form onSubmit={this.submitForm()}>
                         <label  >
                             <select className='gender-select' value={gender} onChange={this.handleChange} name="gender" >
+                                <option className="any-placeholder" value="">Any</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
@@ -49,7 +56,11 @@ export class PetFilter extends React.Component {
                     <form onSubmit={this.submitForm()}>
                         <label  >
                             <select className='gender-select' value={type} onChange={this.handleChange} name="type" >
+                                <option className="any-placeholder" value="">Any</option>
                                 <option value="cat">Cat</option>
+                                <option value="dog">Dog</option>
+                                <option value="dog">Rabbit</option>
+                                <option value="dog">Parrot</option>
                                 <option value="dog">Dog</option>
                             </select>
                         </label>
@@ -60,6 +71,8 @@ export class PetFilter extends React.Component {
                     <form onSubmit={this.submitForm()}>
                         <label  >
                             <select className='gender-select' value={age} onChange={this.handleChange} name="age" >
+                                <option className="any-placeholder" value="">Any</option>
+
                                 <option value="young">Young</option>
                                 <option value="adult">Adult</option>
                                 <option value="senior">Senior</option>
@@ -67,9 +80,23 @@ export class PetFilter extends React.Component {
                         </label>
                     </form>
                 </div>
+                <div className="filter-select size-select">
+                    <label >Size</label>
+                    <form onSubmit={this.submitForm()}>
+                        <label  >
+                            <select className='gender-select' value={size} onChange={this.handleChange} name="size" >
+                                <option className="any-placeholder" value="">Any</option>
+
+                                <option value="small">Small</option>
+                                <option value="medium">Mediun</option>
+                                <option value="big">Big</option>
+                            </select>
+                        </label>
+                    </form>
+                </div>
                 <div className="filter-select location-select">
                     <label >Location</label>
-                    <input className='gender-select' value={location} onChange={this.handleChange} name="location" ></input>
+                    <input className='gender-select' value={location} onChange={this.handleChange} name="location"  ></input>
                 </div>
 
                 <Link to={`/explore/?&${type}&${gender}&${age}&${location}`}>

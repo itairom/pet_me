@@ -1,6 +1,5 @@
-
 .hero {
-    background-image: url("https://res.cloudinary.com/dstqymucm/image/upload/v1622212628/petMe/hero-img/happy-dog_dhyjue.jpg");
+    background-image: url("https://res.cloudinary.com/dstqymucm/image/upload/v1622383981/petMe/hero-img/6_ulbdue.jpg");
     height: 90vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -22,25 +21,14 @@
         flex-wrap: wrap;
         margin-block-end: 20px;
 
-        // display: grid;
-        // grid-template-columns: repeat(4,1fr);
-        // grid-template-rows: 300px;
-        // gap: 15px;
-
-        // >*:not(:last-child) {
-        //     margin-inline-end: 15px;
-        // }
-
         & img {
             height: 300px;
             width: 250px;
             object-fit: cover;
             border-radius: 10px;
             cursor: pointer;
-            
         }
     }
-
 }
 
 .homepage-about {
@@ -67,7 +55,7 @@
             }
 
             p:nth-child(4) {
-                flex: 1
+                flex: 1;
             }
         }
 
@@ -79,15 +67,22 @@
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 190px 190px;
 
-            >* {
+            > * {
                 border-radius: 20px;
-                object-fit: cover
+                object-fit: cover;
             }
 
             :last-child {
-                grid-column: 1/span 2;
+                grid-column: 1 / span 2;
             }
-
         }
+    }
+}
+
+.preview-container {
+    display: flex;
+    flex-direction: column;
+    & > .preview-images {
+        display: flex;
     }
 }

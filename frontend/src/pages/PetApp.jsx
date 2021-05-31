@@ -3,6 +3,7 @@ import React from 'react'
 import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
 import { PetFilter } from '../cmps/PetFilter'
+import { PetPreview } from '../cmps/PetPreview'
 
 
 class _PetApp extends React.Component {
@@ -56,22 +57,23 @@ class _PetApp extends React.Component {
                 }
             ]
         }
-        this.props.addPet(pet)
     }
 
     render() {
         const { pets } = this.props
-        if (!pets) return <h1>loading</h1>
+        if (pets.length === 0) return <h1>loading</h1>
+
+        // console.log(this.props.pets);
         return (
             <section className="main-container">
                 <section className="hero full">
                     < PetFilter />
                 </section>
                 <div className="type-cards">
-                    <h2>Our pets types</h2>
+                    <h2>Our pet types</h2>
                     <div className="type-img">
                         <div>
-                            <Link to={`/explore/?&filterBy=type=dog`} >
+                            <Link to={`/explore/dog`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622205405/dogs/dog3/frnach-dog3_npdovb.jpg" alt="card" />
                                 <h4>Dogs</h4>
                             </Link>
@@ -98,7 +100,17 @@ class _PetApp extends React.Component {
 
                 </div>
 
-                <div className="type-cards">
+                <section className="type-cards">
+                    <h2>Waiting long time to adopt</h2>
+                    <div className="preview-images">
+                        <PetPreview pet={pets[0]} key={pets[0]._id} />
+                        <PetPreview pet={pets[1]} key={pets[1]._id} />
+                        <PetPreview pet={pets[2]} key={pets[2]._id} />
+                        <PetPreview pet={pets[3]} key={pets[3]._id} />
+                    </div>
+                </section>
+
+                {/* <div className="type-cards">
                     <h2>Find your next friend</h2>
                     <div className="type-img">
                         <div>
@@ -127,7 +139,7 @@ class _PetApp extends React.Component {
                             </Link>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <section className="homepage-about main-container full">
                     <div className="inner-container flex">
                         <div className="about-content">

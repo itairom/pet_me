@@ -32,13 +32,13 @@ const gPets = [
         "likedBy": [
             "s103"
         ],
-        "size": "small",
+        "size": "big",
         "neuterSpayed": true,
         "trained": false,
         "vaccine": false,
         "owner": {
             "_id": "s101",
-            "name": "happy farm",
+            "name": "Charlotte Sarah",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133335/dogs/dog3/owner_lwk54f.jpg",
             "loc": {
                 "address": "yafo",
@@ -142,7 +142,7 @@ const gPets = [
         "vaccine": false,
         "owner": {
             "_id": "s103",
-            "name": "Joseph Gonzalez",
+            "name": "Madison Jessica",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622144695/petMe/cats/cat1/houcine-ncib-B4TjXnI0Y2c-unsplash_xtt5d6.jpg",
             "loc": {
                 "address": "tel aviv",
@@ -194,7 +194,7 @@ const gPets = [
         "vaccine": true,
         "owner": {
             "_id": "s104",
-            "name": "Joseph Gonzalez",
+            "name": "Jack Connor",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
             "loc": {
                 "address": "haifa",
@@ -247,7 +247,7 @@ const gPets = [
         "vaccine": true,
         "owner": {
             "_id": "s105",
-            "name": "Joseph Gonzalez",
+            "name": "Harry Callum",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
             "loc": {
                 "address": "eilat",
@@ -283,24 +283,24 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144480/petMe/hamster/3_yzwxm1.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144479/petMe/hamster/1_r0a5d5.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144479/petMe/hamster/2_cl4fvq.jpg",
-            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/4_youmba.jpg",
+            "https://res.cloudinary.com/dstqymucm/image/upload/v1622144481/petMe/hamster/4_m9m8bd.jpg",
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144480/petMe/hamster/5_slhx3j.jpg"
         ],
         "gender": "male",
-        "age": "senior",
+        "age": "young",
         "isAdopted": true,
         "likes": "93",
         "likedBy": [
             "s103"
         ],
-        "size": "Small",
+        "size": "medium",
         "neuterSpayed": false,
         "trained": false,
         "vaccine": true,
         "owner": {
             "_id": "s106",
-            "name": "Joseph Gonzalez",
-            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
+            "name": "Charlie Kyle",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622381042/petMe/hamster/owner_9_fhtzmn.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
@@ -351,8 +351,8 @@ const gPets = [
         "vaccine": true,
         "owner": {
             "_id": "s107",
-            "name": "Joseph Gonzalez",
-            "imgUrl": "",
+            "name": "Thomas	Joe",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622380429/dogs/dog5/owner_8_mcd1be.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
@@ -391,7 +391,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622363569/petMe/cats/cat2/3_2_ggwxo6.jpg"
         ],
         "gender": "female",
-        "age": "",
+        "age": "adult",
         "isAdopted": false,
         "likes": "93",
         "likedBy": [
@@ -403,8 +403,8 @@ const gPets = [
         "vaccine": true,
         "owner": {
             "_id": "s108",
-            "name": "Joseph Gonzalez",
-            "imgUrl": "",
+            "name": "George	Reece",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622380349/petMe/cats/cat2/owner_7_yhyw90.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
@@ -443,7 +443,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622204506/dogs/dog4/1_ahnfd1.jpg"
         ],
         "gender": "male",
-        "age": "",
+        "age": "senior",
         "isAdopted": false,
         "likes": "93",
         "likedBy": [
@@ -455,8 +455,8 @@ const gPets = [
         "vaccine": true,
         "owner": {
             "_id": "s109",
-            "name": "Joseph Gonzalez",
-            "imgUrl": "",
+            "name": "Mia Barbara",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622380260/dogs/dog4/owner_6_mxpeee.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
@@ -495,7 +495,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622206572/petMe/rabbit/rrabit3/1_2_chadja.jpg"
         ],
         "gender": "female",
-        "age": "",
+        "age": "young",
         "isAdopted": false,
         "likes": "93",
         "likedBy": [
@@ -507,8 +507,8 @@ const gPets = [
         "vaccine": true,
         "owner": {
             "_id": "s110",
-            "name": "Joseph Gonzalez",
-            "imgUrl": "",
+            "name": "James Charlie",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379525/petMe/rabbit/rrabit3/owner_4_tmarm0.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
@@ -547,7 +547,7 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622365193/petMe/parrot/parrot1/1_6_sgu9j5.jpg"
         ],
         "gender": "male",
-        "age": "",
+        "age": "adult",
         "isAdopted": false,
         "likes": "93",
         "likedBy": [
@@ -559,8 +559,8 @@ const gPets = [
         "vaccine": true,
         "owner": {
             "_id": "s111",
-            "name": "Joseph Gonzalez",
-            "imgUrl": "",
+            "name": "Sophie	Tracy",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379848/petMe/parrot/parrot1/owner_5_nofgky.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
@@ -599,20 +599,20 @@ const gPets = [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144481/petMe/rabbit/rabbit2/3_oti3h0.jpg"
         ],
         "gender": "male",
-        "age": "",
+        "age": "senior",
         "isAdopted": false,
         "likes": "93",
         "likedBy": [
             "s103"
         ],
-        "size": "Small",
+        "size": "b",
         "neuterSpayed": true,
         "trained": true,
         "vaccine": true,
         "owner": {
             "_id": "s112",
-            "name": "Joseph Gonzalez",
-            "imgUrl": "",
+            "name": "William Damian",
+            "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
                 "address": "haifa",
                 "lat": 21313123123,
@@ -638,13 +638,11 @@ const gPets = [
     }
 ]
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/pet' : 'http://localhost:3030/api/pet'
+// const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/pet' : 'http://localhost:3030/api/pet'
 
 const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
-
-
 
     //  filterBy = {
     //     gender: 'female',
@@ -655,8 +653,7 @@ async function query(filterBy = '') {
 
     let pets = await storageService.query(STORAGE_KEY, filterBy)
 
-    if (!pets || []) {
-        console.log('in');
+    if (!pets || [] ) {
         pets = gPets;
         storageService.save(STORAGE_KEY, pets);
     }
