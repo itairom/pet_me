@@ -70,7 +70,7 @@ class _PetApp extends React.Component {
                     < PetFilter />
                 </section>
                 <div className="type-cards">
-                    <h2>Our pets types</h2>
+                    <h2>Our pet types</h2>
                     <div className="type-img">
                         <div>
                             <Link to={`/explore/dog`} >
