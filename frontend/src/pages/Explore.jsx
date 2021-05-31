@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import React from 'react'
-import { PetList } from '../cmps/PetList'
 import { loadPets } from '../store/actions/petActions'
+import { PetList } from '../cmps/PetList'
 import userIcon from '../assets/img/loaders/1.gif' // relative path to image
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 
@@ -17,6 +17,8 @@ class _Explore extends React.Component {
 
     render() {
         const { pets } = this.props
+
+        console.log(pets);
 
         if (!pets) return <img src={userIcon} alt="loading" />
         return (
