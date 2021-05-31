@@ -24,7 +24,7 @@ class _CommentsCmp extends Component {
                                     <div className="flex column">
                                         <span className="commenter-name">{ comment.by.fullname }</span>
                                         {/* TODO: reconfigure date by fixed times */ }
-                                        <span className="comment-time">{ utilService.timeSince(comment.created) }</span>
+                                        <span className="comment-time">{ utilService.timeSince(comment.created, 'ago') }</span>
                                     </div>
                                     <LongTxt className="comment-desc" txt={ comment.txt } />
                                 </div>

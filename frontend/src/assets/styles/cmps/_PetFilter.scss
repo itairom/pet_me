@@ -8,9 +8,10 @@
     border: 1px solid #dadada;
     transition: 0.3s ease-in-out;
     box-shadow: 0 0 10px 0 #0000001c;
-    position: absolute;
-    top: 50px;
-    left: 50px;
+    margin-bottom: rem(100px);
+    // position: absolute;
+    // top: 50px;
+    // left: 50px;
 
     & > a {
         display: flex;

@@ -27,20 +27,20 @@ function makeId(length = 5) {
     return txt;
 }
 
-function timeSince(date) {
+function timeSince(date, addedStr = '') {
     var seconds = Math.floor((new Date() - date) / 1000);
-    if(Math.round(seconds/(60*60*24*365.25)) >= 2) return Math.round(seconds/(60*60*24*365.25)) + " years ago";
-    else if(Math.round(seconds/(60*60*24*365.25)) >= 1) return "1 year ago";
-    else if(Math.round(seconds/(60*60*24*30.4)) >= 2) return Math.round(seconds/(60*60*24*30.4)) + " months ago";
-    else if(Math.round(seconds/(60*60*24*30.4)) >= 1) return "1 month ago";
-    else if(Math.round(seconds/(60*60*24*7)) >= 2) return Math.round(seconds/(60*60*24*7)) + " weeks ago";
-    else if(Math.round(seconds/(60*60*24*7)) >= 1) return "1 week ago";
-    else if(Math.round(seconds/(60*60*24)) >= 2) return Math.round(seconds/(60*60*24)) + " days ago";
-    else if(Math.round(seconds/(60*60*24)) >= 1) return "1 day ago";
-    else if(Math.round(seconds/(60*60)) >= 2) return Math.round(seconds/(60*60)) + " hours ago";
-    else if(Math.round(seconds/(60*60)) >= 1) return "1 hour ago";
-    else if(Math.round(seconds/60) >= 2) return Math.round(seconds/60) + " minutes ago";
-    else if(Math.round(seconds/60) >= 1) return "1 minute ago";
-    else if(seconds >= 2)return seconds + " seconds ago";
-    else return seconds + "1 second ago";
+    if (Math.round(seconds / (60 * 60 * 24 * 365.25)) >= 2) return Math.round(seconds / (60 * 60 * 24 * 365.25)) + ' years ' + addedStr;
+    else if (Math.round(seconds / (60 * 60 * 24 * 365.25)) >= 1) return '1 year ' + addedStr;
+    else if (Math.round(seconds / (60 * 60 * 24 * 30.4)) >= 2) return Math.round(seconds / (60 * 60 * 24 * 30.4)) + ' months ' + addedStr;
+    else if (Math.round(seconds / (60 * 60 * 24 * 30.4)) >= 1) return '1 month ' + addedStr;
+    else if (Math.round(seconds / (60 * 60 * 24 * 7)) >= 2) return Math.round(seconds / (60 * 60 * 24 * 7)) + ' weeks ' + addedStr;
+    else if (Math.round(seconds / (60 * 60 * 24 * 7)) >= 1) return '1 week ' + addedStr;
+    else if (Math.round(seconds / (60 * 60 * 24)) >= 2) return Math.round(seconds / (60 * 60 * 24)) + ' days ' + addedStr;
+    else if (Math.round(seconds / (60 * 60 * 24)) >= 1) return '1 day ' + addedStr;
+    else if (Math.round(seconds / (60 * 60)) >= 2) return Math.round(seconds / (60 * 60)) + ' hours ' + addedStr;
+    else if (Math.round(seconds / (60 * 60)) >= 1) return '1 hour ' + addedStr;
+    else if (Math.round(seconds / 60) >= 2) return Math.round(seconds / 60) + ' minutes ' + addedStr;
+    else if (Math.round(seconds / 60) >= 1) return '1 minute ' + addedStr;
+    else if (seconds >= 2) return seconds + ' seconds ' + addedStr;
+    else return seconds + '1 second ' + addedStr;
 }

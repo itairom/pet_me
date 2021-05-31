@@ -6,18 +6,23 @@
     background-size: cover;
     margin-bottom: 50px;
     position: relative;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
 
     .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-block-start: rem(50px);
         color: aliceblue;
-        position: absolute;
-        left: 20%;
-        top: 35%;
+        // position: absolute;
+        left: 28%;
+        top: 4%;
         h1 {
             font-family: avenir-black;
             font-size: rem(100px);
-            &:last-child{
-                padding-left: rem(100px);
-            }
         }
     }
 }
@@ -29,25 +34,41 @@
         margin-bottom: 20px;
     }
 
+    
     .type-img {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
         flex-wrap: wrap;
         margin-block-end: 20px;
-
+        @include for-narrow-layout {
+            justify-content: space-evenly;
+        }
+        @include  for-wide-layout {
+            justify-content: space-between;
+        }
+       
+ 
         & img {
             height: 300px;
             width: 250px;
             object-fit: cover;
             border-radius: 10px;
             cursor: pointer;
+            @include for-narrow-layout {
+                height: 300px;
+                width: 225px;
+            }
+            @include for-normal-layout {
+                height: 300px;
+                width: 250px;
+            }  
         }
     }
 
     .preview-cards {
         display: flex;
         justify-content: space-between;
-        margin-block-end: 20px;
+        margin-block-end: 40px;
 
         >* {
             height: 250px;
@@ -57,33 +78,36 @@
 }
 
 .homepage-about {
-    background-color: $clr7;
+    // background-color: $clr7;
+    background-image: url(https://res.cloudinary.com/dstqymucm/image/upload/v1622467842/petMe/hero-img/boy-and-cat_xqeqwq.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // width: 100%;
     color: white;
-
+    filter: blur(1.5px);
+     
     .inner-container {
-        flex: 1 1 50%;
         padding: rem(40px) 0;
-
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            // justify-content: space-between;
-            flex: 1;
-            margin-inline-end: 20px;
-
-            h2 {
-                margin-block-end: 15px;
-            }
-
-            p:not(:last-of-type) {
-                margin-block-end: 10px;
-            }
-
-            p:nth-child(4) {
-                flex: 1;
-            }
-        }
-
+        // .about-content {
+        //     display: flex;
+        //     flex-direction: column;
+        //     // justify-content: space-between;
+        //     flex: 1;
+        //     margin-inline-end: 20px;
+            
+        //     h2 {
+        //         margin-block-end: 15px;
+        //     }
+            
+        //     p:not(:last-of-type) {
+        //         margin-block-end: 10px;
+        //     }
+        //     p:nth-child(4) {
+        //         flex: 1;
+        //     }
+        // }
+        
         .about_imgs {
             flex: 1;
             height: unset;
@@ -102,6 +126,11 @@
             }
         }
     }
+}
+
+.about-content{
+    position: relative;
+    bottom: 0;
 }
 
 .preview-container {
