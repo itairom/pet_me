@@ -59,8 +59,8 @@ export class PetFilter extends React.Component {
                                 <option className="any-placeholder" value="">Any</option>
                                 <option value="cat">Cat</option>
                                 <option value="dog">Dog</option>
-                                <option value="dog">Rabbit</option>
-                                <option value="dog">Parrot</option>
+                                <option value="rabbit">Rabbit</option>
+                                <option value="parrot">Parrot</option>
                                 <option value="dog">Dog</option>
                             </select>
                         </label>
