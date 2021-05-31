@@ -117,6 +117,14 @@
         color: #1e1e1e;
         justify-content: center;
         
+        & .adopt-sign {
+            font-size: 0.8rem;
+            text-align: left;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            // padding: 0px 10px;
+        }
+
         & .el-btn {
             display: inline-block;
             line-height: 1;
