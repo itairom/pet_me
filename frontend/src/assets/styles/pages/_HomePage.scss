@@ -6,6 +6,21 @@
     background-size: cover;
     margin-bottom: 50px;
     position: relative;
+
+    .hero-content {
+        color: aliceblue;
+        position: absolute;
+        left: 20%;
+        top: 35%;
+        h1 {
+            font-family: avenir-black;
+            font-size: rem(100px);
+            &:last-child{
+                padding-left: rem(100px);
+            }
+        }
+        
+    }
 }
 
 .type-cards {
@@ -15,6 +30,7 @@
     & h2 {
         margin-bottom: 10px;
     }
+
     .type-img {
         display: flex;
         justify-content: space-between;
@@ -27,6 +43,17 @@
             object-fit: cover;
             border-radius: 10px;
             cursor: pointer;
+        }
+    }
+
+    .preview-cards {
+        display: flex;
+        justify-content: space-between;
+        margin-block-end: 20px;
+
+        >* {
+            height: 250px;
+            width: 250px;
         }
     }
 }
@@ -67,7 +94,7 @@
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 190px 190px;
 
-            > * {
+            >* {
                 border-radius: 20px;
                 object-fit: cover;
             }
@@ -82,7 +109,28 @@
 .preview-container {
     display: flex;
     flex-direction: column;
-    & > .preview-images {
+
+    &>.preview-images {
         display: flex;
+    }
+}
+
+.homepage-section-info {
+
+    .content {
+        display: flex;
+        padding: 40px 0;
+
+        >* {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1 1 0;
+            min-width: auto;
+
+            &:not(:last-child) {
+                margin-inline-end: 18px;
+            }
+        }
     }
 }
