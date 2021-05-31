@@ -50,12 +50,13 @@ export function removePet(petId) { // Action Creator
 export function toggleLike(petId, userId, act, idx) { // Action Creator
     console.log(petId, userId, act, idx)
     return dispatch => {
-        return petService.toggleLike(petId, userId, act)
-            .then((petId) => {
+        return petService.toggleLike(petId, userId, act, idx)
+            .then((petId, newLikedBy) => {
+                console.log('newLikedBy', newLikedBy)
                 const action = {
-                    type: (act === 1) ? 'ADD_LIKE' : 'REMOVE_LiKE',
-                    petId: petId + '',
-                    userId: userId + '',
+                    type: (act === 1) ? 'ADD_LIKE' : 'REMOVE_LIKE',
+                    petId,
+                    userId,
                     idx
                 }
                 dispatch(action)

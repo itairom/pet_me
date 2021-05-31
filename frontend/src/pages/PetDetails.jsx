@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { petService } from '../services/petService'
 import { connect } from 'react-redux'
-import { toggleLike } from '../store/actions/petActions'
+import { toggleLike, loadPets } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
@@ -10,7 +10,6 @@ import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
 import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
 import { ReactComponent as RedHeart } from '../assets/img/svg/red-heart.svg'
 
-import { loadPets } from '../store/actions/petActions'
 
 
 class _PetDetails extends Component {
@@ -22,10 +21,14 @@ class _PetDetails extends Component {
     }
 
     componentDidMount() {
-        const petId = this.props.match.params.petId
-        petService.getPetByid(petId).then(pet => {
-            this.setState({ pet })
-        })
+        // const petId = this.props.match.params.petId
+        // petService.getPetByid(petId).then(pet => {
+        //     this.setState({ pet })
+        // })
+        const id = this.props.match.params.petId;
+        const pet = this.props.pets.find(pet => pet._id === id);
+        this.props.loadPets()
+        // console.log(pet)
     }
 
     handleChange = ({ target }) => {
@@ -35,18 +38,20 @@ class _PetDetails extends Component {
     }
 
     onLike = (petId) => {
-        console.log(this.props)
-        const { pet } = this.state
+        const id = this.props.match.params.petId;
+        const pet = this.props.pets.find(pet => pet._id === id)
         const { loggedInUser } = this.props
+
         if (!loggedInUser) return console.log('you are in guest mode, please logging to like the pet')
+
         console.log('loggedInUser', loggedInUser)
         const userId = pet.likedBy.find(userId => userId === loggedInUser._id)
-        const isLiked = userId ? true : false;
-        this.setState({ isLiked: !isLiked })
+        const isAlreadyLiked = userId ? true : false;
+        this.setState({ isLiked: !isAlreadyLiked })
         console.log(this.state.isLiked)
-        if (!isLiked) this.props.toggleLike(petId, loggedInUser._id, 1)
+        if (!isAlreadyLiked) this.props.toggleLike(petId, loggedInUser._id, 1)
         else {
-            const idx = pet.likedBy.findIndex(userId === loggedInUser._id)
+            const idx = pet.likedBy.findIndex(userId => userId === loggedInUser._id)
             this.props.toggleLike(petId, userId, -1, idx)
         }
     }
@@ -78,11 +83,9 @@ class _PetDetails extends Component {
 
     render() {
         // console.log('this.state', this.state)
-        const { pet, isLiked } = this.state
-        // const id = this.props.match.params.petId;
-        // const pet = pets.filter(pet => pet._id === id).pop();
-
-        if (!this.props.pets) return <h1>loading pets</h1>
+        const { isLiked } = this.state
+        const id = this.props.match.params.petId;
+        const pet = this.props.pets.find(pet => pet._id === id);
         if (!pet) return <h1>loading</h1>
 
         return (
@@ -143,7 +146,7 @@ class _PetDetails extends Component {
                 <div className="comments-section">
                     <CommentsCmp pet={ pet } key={ pet._id } />
                 </div>
-                <button onClick={ () => this.onRemovePet() }>Delete</button>
+                {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */ }
             </section>
         )
     }

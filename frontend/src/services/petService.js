@@ -681,13 +681,17 @@ async function getPetByid(petId) {
 
 async function toggleLike(petId, userId, act, idx) {
     const petIdx = gPets.findIndex(pet => pet._id === petId)
-    switch (act) {
-        case 1: gPets[petIdx].likedBy.push(userId)
-            break;
-        case -1: gPets[petIdx].likedBy.splice(idx, 1)
-            break;
-        default:
-            break;
-    }
-    return Promise.resolve(petId)
+    // switch (act) {
+    //     case 1:
+    //         gPets[petIdx].likedBy.push(userId)
+    //         gPets[petIdx].likes++
+    //         break;
+    //     case -1:
+    //         gPets[petIdx].likedBy.splice(idx, 1)
+    //         gPets[petIdx].likes--
+    //         break;
+    //     default:
+    //         break;
+    // }
+    return Promise.resolve(petId, gPets[petIdx].likedBy)
 }
