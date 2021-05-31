@@ -3,6 +3,7 @@ import React from 'react'
 import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
 import { PetFilter } from '../cmps/PetFilter'
+import { PetPreview } from '../cmps/PetPreview'
 
 
 class _PetApp extends React.Component {
@@ -60,7 +61,7 @@ class _PetApp extends React.Component {
     }
 
     render() {
-        // console.log(this.props);
+        // console.log(this.props.pets);
         const { pets } = this.props
         if (!pets) return <h1>loading</h1>
         return (
@@ -99,7 +100,17 @@ class _PetApp extends React.Component {
 
                 </div>
 
-                <div className="type-cards">
+                {/* <section className="preview-container">
+                    <h2>Waiting long time to adopt</h2>
+                    <div className="preview-images">
+                        <PetPreview pet={pets[0]} key={pets[0]._id} />
+                        <PetPreview pet={pets[0]} key={pets[0]._id} />
+                        <PetPreview pet={pets[0]} key={pets[0]._id} />
+                        <PetPreview pet={pets[0]} key={pets[0]._id} />
+                    </div>
+                </section> */}
+
+                {/* <div className="type-cards">
                     <h2>Find your next friend</h2>
                     <div className="type-img">
                         <div>
@@ -128,7 +139,7 @@ class _PetApp extends React.Component {
                             </Link>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <section className="homepage-about main-container full">
                     <div className="inner-container flex">
                         <div className="about-content">
