@@ -606,7 +606,7 @@ const gPets = [
         "likedBy": [
             "s103"
         ],
-        "size": "b",
+        "size": "big",
         "neuterSpayed": true,
         "trained": true,
         "vaccine": true,

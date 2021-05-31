@@ -20,7 +20,7 @@
     }
 
     & > a:hover {
-        background-color: #36baa0 ;
+        background-color: #36baa0;
         box-shadow: none;
         border-radius: 50px;
     }
@@ -57,8 +57,7 @@
     }
 }
 
-.main-select{
-
+.main-select {
     width: 120px;
     appearance: none;
     border: none;
@@ -83,9 +82,8 @@
 .location-select {
     outline: none;
     border: none;
-    width: 60%;
+    width: 78%;
     & > label {
-
         margin-top: -4px;
     }
 }

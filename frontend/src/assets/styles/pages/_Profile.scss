@@ -1,17 +1,77 @@
-.user-info {
+.main-profile {
+    margin-top: 50px;
+}
 
+.user-card {
+    position: absolute;
+    left: 50px;
+}
+
+.user-info {
+    left: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #d3d3d3; 
-    width: 200px;  
+    border: 1px solid #d3d3d3;
+    width: 200px;
     border-radius: 10px;
+    h1 {
+        margin-top: 10px;
+        font-family: avenir-black;
+    }
     img {
         margin: 10px;
         width: 100px;
-        height:  100px;
+        height: 100px;
         border-radius: 50%;
         object-fit: cover;
+    }
+}
+
+.location-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: rem(25px);
+    img {
+        margin: 0 1px 5px 0;
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.user-pets {
+    position: absolute;
+    background-color: rgb(209, 230, 230);
+    width: 600px;
+    right: 50px;
+}
+
+.adopt-card {
+    img {
+        height: 200px;
+        width: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+}
+
+.adopt-table {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.adopt-table {
+    img {
+        margin-right: 20px;
+    }
+}
+
+.table-body{
+    
+    tr {
+        background-color: aquamarine;
+        border-top: 1px solid #d3d3d3;
     }
 }
