@@ -1,0 +1,17 @@
+.user-info {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d3d3d3; 
+    width: 200px;  
+    border-radius: 10px;
+    img {
+        margin: 10px;
+        width: 100px;
+        height:  100px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}

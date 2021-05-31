@@ -21,6 +21,15 @@ export class PetFilter extends React.Component {
         const { filterBy } = this.state
         this.setState({ filterBy: { ...filterBy, [name]: value } })
     }
+    
+    // onSetFilter = () => {
+    //     loadPets(this.state.filterBy)
+    //     console.log();
+    // }
+
+
+
+
 
     render() {
         const { gender, age, type, location, size } = this.state.filterBy
@@ -31,19 +40,22 @@ export class PetFilter extends React.Component {
             <section className='pet-filter'>
                 <div className="filter-select gender-select">
                     <label >Gender</label>
+                    {/* <form onSubmit={this.onSetFilter()}> */}
                         <label  >
-                            <select className='main-select' value={gender} onChange={this.handleChange} name="gender" >
+                            <select className='gender-select' value={gender} onChange={this.handleChange} name="gender" >
                                 <option className="any-placeholder" value="">Both</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
                         </label>
+                    {/* </form> */}
                     {/* <input placeholder="gender" type="text" /> */}
                 </div>
                 <div className="filter-select pet-select">
                     <label >Pet</label>
+                    {/* <form onSubmit={this.onSetFilter()}> */}
                         <label  >
-                            <select className='main-select' value={type} onChange={this.handleChange} name="type" >
+                            <select className='gender-select' value={type} onChange={this.handleChange} name="type" >
                                 <option className="any-placeholder" value="">Any</option>
                                 <option value="cat">Cat</option>
                                 <option value="dog">Dog</option>
@@ -52,22 +64,26 @@ export class PetFilter extends React.Component {
                                 <option value="hamster">Hamster</option>
                             </select>
                         </label>
+                    {/* </form> */}
                 </div>
                 <div className="filter-select age-select">
                     <label >Age</label>
+                    {/* <form onSubmit={this.onSetFilter()}> */}
                         <label  >
-                            <select className='main-select' value={age} onChange={this.handleChange} name="age" >
+                            <select className='gender-select' value={age} onChange={this.handleChange} name="age" >
                                 <option className="any-placeholder" value="">Any</option>
                                 <option value="young">Young</option>
                                 <option value="adult">Adult</option>
                                 <option value="senior">Senior</option>
                             </select>
                         </label>
+                    {/* </form> */}
                 </div>
                 <div className="filter-select size-select">
                     <label >Size</label>
+                    {/* <form onSubmit={this.onSetFilter()}> */}
                         <label  >
-                            <select className='main-select' value={size} onChange={this.handleChange} name="size" >
+                            <select className='gender-select' value={size} onChange={this.handleChange} name="size" >
                                 <option className="any-placeholder" value="">Any</option>
 
                                 <option value="small">Small</option>
@@ -75,10 +91,11 @@ export class PetFilter extends React.Component {
                                 <option value="big">Big</option>
                             </select>
                         </label>
+                    {/* </form> */}
                 </div>
                 <div className="filter-select location-select">
                     <label >Location</label>
-                    <input placeholder="Enter location" className='location-select' value={location} onChange={this.handleChange} name="location"  ></input>
+                    <input className='gender-select' value={location} onChange={this.handleChange} name="location"  ></input>
                 </div>
                 
                 

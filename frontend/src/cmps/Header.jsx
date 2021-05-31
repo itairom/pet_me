@@ -41,11 +41,15 @@ class _Header extends Component {
 
                 {/* <div className="search-bar"></div> */}
                 <div className="right-nav">
-                    <NavLink to="/explore">Explore</NavLink>
+                    <NavLink className="explore-btn" to="/explore">Explore</NavLink>
                     <div onClick={() => this.toggleDropdown()} className="login-profile">
                         {isProfileShown && <div className="user-dropdown">
                             <div className="dropdown-list">
-                                <a>My Profile</a>
+                                
+                                
+                            <Link to='/profile' >
+                                    <span>Profile</span>
+                                </Link>
 
 
                                 {(loggedInUser) &&
