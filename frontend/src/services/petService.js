@@ -6,7 +6,7 @@ export const petService = {
     getPetByid,
     add,
     remove,
-    addLike,
+    toggleLike,
     // addComment
 }
 
@@ -29,6 +29,9 @@ const gPets = [
         "age": "senior",
         "isAdopted": false,
         "likes": "33",
+        "likedBy": [
+            "s103"
+        ],
         "size": "small",
         "neuterSpayed": true,
         "trained": false,
@@ -78,6 +81,9 @@ const gPets = [
         "age": "adult",
         "isAdopted": false,
         "likes": "50",
+        "likedBy": [
+            "s103"
+        ],
         "size": "Medium",
         "neuterSpayed": true,
         "trained": true,
@@ -127,6 +133,9 @@ const gPets = [
         "age": "young",
         "isAdopted": false,
         "likes": "50",
+        "likedBy": [
+            "s103"
+        ],
         "size": "Small",
         "neuterSpayed": false,
         "trained": false,
@@ -176,6 +185,9 @@ const gPets = [
         "age": "senior",
         "isAdopted": true,
         "likes": "87",
+        "likedBy": [
+            "s103"
+        ],
         "size": "Small",
         "neuterSpayed": false,
         "trained": false,
@@ -225,6 +237,10 @@ const gPets = [
         "age": "adult",
         "isAdopted": false,
         "likes": "77",
+        "likedBy": [
+            "s103",
+            "s101"
+        ],
         "size": "Small",
         "neuterSpayed": false,
         "trained": false,
@@ -274,6 +290,9 @@ const gPets = [
         "age": "senior",
         "isAdopted": true,
         "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
         "size": "Small",
         "neuterSpayed": false,
         "trained": false,
@@ -323,6 +342,9 @@ const gPets = [
         "age": "senior",
         "isAdopted": false,
         "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
         "size": "Small",
         "neuterSpayed": true,
         "trained": true,
@@ -372,6 +394,9 @@ const gPets = [
         "age": "",
         "isAdopted": false,
         "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
         "size": "Small",
         "neuterSpayed": true,
         "trained": true,
@@ -421,6 +446,9 @@ const gPets = [
         "age": "",
         "isAdopted": false,
         "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
         "size": "Small",
         "neuterSpayed": true,
         "trained": true,
@@ -470,6 +498,9 @@ const gPets = [
         "age": "",
         "isAdopted": false,
         "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
         "size": "Small",
         "neuterSpayed": true,
         "trained": true,
@@ -519,6 +550,9 @@ const gPets = [
         "age": "",
         "isAdopted": false,
         "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
         "size": "Small",
         "neuterSpayed": true,
         "trained": true,
@@ -568,6 +602,9 @@ const gPets = [
         "age": "",
         "isAdopted": false,
         "likes": "93",
+        "likedBy": [
+            "s103"
+        ],
         "size": "Small",
         "neuterSpayed": true,
         "trained": true,
@@ -608,7 +645,7 @@ const STORAGE_KEY = 'pets'
 async function query(filterBy = '') {
 
 
-    
+
     //  filterBy = {
     //     gender: 'female',
     //     type: '',
@@ -618,10 +655,10 @@ async function query(filterBy = '') {
 
     let pets = await storageService.query(STORAGE_KEY, filterBy)
 
-    if (!pets  ) {
+    if (!pets || []) {
         console.log('in');
         pets = gPets;
-        // storageService.save(STORAGE_KEY, pets);
+        storageService.save(STORAGE_KEY, pets);
     }
     return pets;
 }
@@ -643,6 +680,6 @@ async function getPetByid(petId) {
     return pet
 }
 
-async function addLike(petId) {
+async function toggleLike(petId) {
     return Promise.resolve(petId)
 }

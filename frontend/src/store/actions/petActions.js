@@ -51,12 +51,12 @@ export function removePet(petId) { // Action Creator
     }
 }
 
-export function addLike(petId) { // Action Creator
+export function toggleLike(petId, act) { // Action Creator
     return dispatch => {
-        return petService.addLike(petId)
+        return petService.toggleLike(petId)
             .then((petId) => {
                 const action = {
-                    type: 'ADD_LIKE',
+                    type: (act === 1) ? 'ADD_LIKE' : 'REMOVE_LiKE',
                     petId: petId + ''
                 }
                 dispatch(action)
