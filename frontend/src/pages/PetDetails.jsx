@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { petService } from '../services/petService'
+import { utilService } from '../services/utilService'
 import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
@@ -28,6 +29,7 @@ class _PetDetails extends Component {
         const id = this.props.match.params.petId;
         const pet = this.props.pets.find(pet => pet._id === id);
         this.props.loadPets()
+        // this.checkUserLike()
         // console.log(pet)
     }
 
@@ -35,6 +37,15 @@ class _PetDetails extends Component {
         const { name } = target
         const { value } = target
         this.setState({ pet: { ...this.state.pet, [name]: value } })
+    }
+
+    checkUserLike = () => {
+        const id = this.props.match.params.petId;
+        const pet = this.props.pets.find(pet => pet._id === id)
+        const { loggedInUser } = this.props
+        const userId = pet.likedBy.find(userId => userId === loggedInUser._id)
+        const isAlreadyLiked = userId ? true : false;
+        this.setState({ isLiked: !isAlreadyLiked })
     }
 
     onLike = (petId) => {
@@ -100,7 +111,7 @@ class _PetDetails extends Component {
                         <span className="pet-likes">{ pet.likes }</span>
                         <span className="pet-like-btn" onClick={ () => this.onLike(pet._id) }>
                             {/* <HeartFill className={ isLiked ? 'preview-heart-red' : 'preview-heart' } /> */ }
-                            <RedHeart className="preview-heart" />
+                            <RedHeart className={ isLiked ? 'heart' : 'heart fill' } />
                             {/* // (!isLiked) ? <Heart className="preview-heart" /> : <HeartFill className="preview-heart" /> */ }
 
                         </span>
@@ -139,8 +150,12 @@ class _PetDetails extends Component {
                             </ul>
                         </div>
                     </div>
-                    <div className="adopt-modal-container flex column align-center ">
+                    <div className="adopt-modal-container flex column">
+                        <span className="adoption-time adopt-sign">{ 'Looking for    a home for ' + utilService.timeSince(pet.addedAt) }</span>
+                        <span className="adoption-likes adopt-sign">{ 'Liked by ' + pet.likes + ' people!' }</span>
                         <button className="adopt-btn el-btn">Adopt Me</button>
+                        <span>{ pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com' }</span>
+                        <span>{ '054-2312993' }</span>
                     </div>
                 </div>
                 <div className="comments-section">
