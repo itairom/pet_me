@@ -64,14 +64,19 @@ export function toggleLike(petId, userId, act, idx) { // Action Creator
     }
 }
 
-export function addComment(petId, msg) { // Action Creator
+export function addComment(ev, newComment, petId) { // Action Creator
+    ev.preventDefault()
+    console.log('im in action')
+    // const { txt, petId, loggedInUser } = newComment
     return dispatch => {
-        return petService.addComment(petId, msg)
-            .then((msg) => {
+        console.log('dispatching commment')
+        return petService.addComment(newComment)
+            .then((newComment) => {
+                console.log('recived comment')
                 const action = {
                     type: 'ADD_COMMENT',
-                    msg: msg
-
+                    newComment,
+                    petId
                 }
                 dispatch(action)
             })

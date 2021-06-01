@@ -1,3 +1,4 @@
+// import { addComment } from '../store/actions/petActions';
 import { storageService } from './asyncStorageService'
 window.storageService = storageService;
 
@@ -6,7 +7,8 @@ export const petService = {
     getPetByid,
     add,
     remove,
-    toggleLike
+    toggleLike,
+    addComment
 }
 
 const gPets = [
@@ -523,7 +525,7 @@ const gPets = [
                 "address": "haifa",
                 "lat": 21313123123,
                 "lng": 23132131221
-              }
+            }
         },
         "tags": [
             "dog",
@@ -680,6 +682,13 @@ async function add(pet) {
     return addPet
 
 }
+
+async function addComment(newComment) {
+    console.log(newComment)
+    
+    return await storageService.postComment(STORAGE_KEY, newComment)
+}
+
 function remove(petId) {
     console.log("🚀 ~ file: petService.js ~ line 356 ~ remove ~ petId", petId)
     storageService.remove(STORAGE_KEY, petId)
@@ -692,17 +701,6 @@ async function getPetByid(petId) {
 
 async function toggleLike(petId, userId, act, idx) {
     const petIdx = gPets.findIndex(pet => pet._id === petId)
-    // switch (act) {
-    //     case 1:
-    //         gPets[petIdx].likedBy.push(userId)
-    //         gPets[petIdx].likes++
-    //         break;
-    //     case -1:
-    //         gPets[petIdx].likedBy.splice(idx, 1)
-    //         gPets[petIdx].likes--
-    //         break;
-    //     default:
-    //         break;
-    // }
+
     return Promise.resolve(petId, gPets[petIdx].likedBy)
 }
