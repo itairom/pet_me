@@ -78,7 +78,7 @@ class _PetApp extends React.Component {
                         </div>
                         <div>
                             <h2>Contact pet owners</h2>
-                            <p>  Once you have decided which pet you would like to adopt, contact the pet owners and keep your fingers crossed that the pet will be your next friend </p>
+                            <p>  Once you have decided which pet you would like to adopt, contact the pet owners and keep your fingers crossed.</p>
                         </div>
                         <div>
                             <h2>Adopt a friend!</h2>
@@ -155,7 +155,6 @@ class _PetApp extends React.Component {
                 </div>  */}
                 <section className="homepage-about main-container full">
                     {/* <div className="inner-container flex"> */}
-
                         {/* <div className="about_imgs"> */}
                         {/* <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622209864/petMe/about-imgs/about1_rt4e2u.jpg" alt="card" />
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210087/petMe/about-imgs/about-cat_w78jtf.jpg" alt="card" />
@@ -183,7 +182,8 @@ function mapStateToProps(state) {
 
 
 const mapDispatchToProps = {
-    loadPets, addPet
+    loadPets,
+     addPet
 }
 
 export const PetApp = connect(mapStateToProps, mapDispatchToProps)(_PetApp)
