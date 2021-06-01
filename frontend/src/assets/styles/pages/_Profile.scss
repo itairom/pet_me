@@ -68,10 +68,28 @@
     }
 }
 
-.table-body{
-    
+.table-head {
     tr {
-        background-color: aquamarine;
+        background-color: $clr9;
+        td {
+            padding-left: 10px;
+            &:first-child {
+                padding: 10px;
+                border-radius: 10px 0 0 0;
+            }
+            &:last-child {
+                border-radius: 0 10px 0 0;
+            }
+        }
+    }
+}
+
+.table-body {
+    tr {
         border-top: 1px solid #d3d3d3;
+        background-color: #d3d3d3;
+    }
+    td {
+        padding-left: 10px;
     }
 }

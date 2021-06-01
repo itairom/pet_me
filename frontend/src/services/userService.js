@@ -67,7 +67,137 @@ const gUsers = [
         }
       }
     ]
+  },
+  {
+    "_id": "s102",
+    "username": "JosephG",
+    "fullname": "Joseph Gonzalez",
+    "password": "123",
+    "title": "Pets lover!",
+    "desc": "Hello evreybody! ",
+    "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133443/dogs/dog1/owner_hiazkr.jpg",
+    "isOwner": true,
+    "tags": [
+      "dogs",
+      "cows"
+    ],
+    "loc": {
+      "address": "tel aviv",
+      "lat": 21313123123,
+      "lng": 23132131221
+    },
+    "pets": [
+      {
+        "_id": "p102",
+        "isAdopted": false,
+        "adoptQue": [
+          {
+            "userId": "123",
+            "message": "lolo",
+            "chatId": "i11"
+          },
+          {
+            "userId": "123",
+            "message": "i like to addopt",
+            "chatId": "ch23"
+          }
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "id": "rev101",
+        "txt": "great farm",
+        "rate": 4,
+        "by": {
+          "_id": "u102",
+          "fullname": "user2",
+          "imgUrl": "/img/img2.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "_id": "s103",
+    "username": "MadisonJ",
+    "fullname": "Madison Jessica",
+    "password": "123",
+    "title": "Pets lover!",
+    "desc": "Hello evreybody! ",
+    "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622144695/petMe/cats/cat1/houcine-ncib-B4TjXnI0Y2c-unsplash_xtt5d6.jpg",
+    "isOwner": true,
+    "tags": [
+      "dogs",
+      "cows"
+    ],
+    "loc": {
+      "address": "tel aviv",
+      "lat": 21313123123,
+      "lng": 23132131221
+  },
+    "pets": [
+      {
+        "_id": "p103",
+        "isAdopted": false,
+        "adoptQue": [
+        
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "id": "rev101",
+        "txt": "great farm",
+        "rate": 4,
+        "by": {
+          "_id": "u102",
+          "fullname": "user2",
+          "imgUrl": "/img/img2.jpg"
+        }
+      }
+    ]
+  },  {
+    "_id": "s104",
+    "username": "JackC",
+    "fullname": "Jack Connor",
+    "password": "123",
+    "title": "Pets lover!",
+    "desc": "Hello evreybody! ",
+    "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
+    "isOwner": true,
+    "tags": [
+      "dogs",
+      "cows"
+    ],
+    "loc": {
+      "address": "Haifa",
+      "lat": 21313123123,
+      "lng": 23132131221
+  },
+    "pets": [
+      {
+        "_id": "p104",
+        "isAdopted": false,
+        "adoptQue": [
+        
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "id": "rev101",
+        "txt": "great farm",
+        "rate": 5,
+        "by": {
+          "_id": "u102",
+          "fullname": "user2",
+          "imgUrl": "/img/img2.jpg"
+        }
+      }
+    ]
   }
+
+
 ]
 
 export const userService = {

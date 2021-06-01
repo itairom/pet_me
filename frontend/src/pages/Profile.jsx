@@ -74,7 +74,7 @@ class _Profile extends Component {
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622366729/petMe/rabbit/rabbit2/1_itx6fr.jpg"
                                 alt="" />
                             <table>
-                                <thead className=".table-head">
+                                <thead className="table-head">
                                     <tr>
                                         <td>Adopter Name</td>
                                         <td>Message</td>
