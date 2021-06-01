@@ -9,6 +9,7 @@
     background-attachment: fixed;
     display: flex;
     justify-content: center;
+    // @include aspect-ratio(100vh, 90vh)
     // align-items: center;
 
     .hero-content {
