@@ -19,8 +19,8 @@ class _PetApp extends React.Component {
         this.setState({ pets: this.props.pets })
     }
 
-    
-    
+
+
 
     render() {
         const { pets } = this.props
@@ -73,7 +73,7 @@ class _PetApp extends React.Component {
                         </div>
                         <div>
                             <h2>Dig into the details</h2>
-                            <p> Check out the photos and view pet information. 
+                            <p> Check out the photos and view pet information.
                                 Next, read user reviews and comments about the pet and its owner.</p>
                         </div>
                         <div>
@@ -155,17 +155,20 @@ class _PetApp extends React.Component {
                 </div>  */}
                 <section className="homepage-about main-container full">
                     {/* <div className="inner-container flex"> */}
-                        {/* <div className="about_imgs"> */}
-                        {/* <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622209864/petMe/about-imgs/about1_rt4e2u.jpg" alt="card" />
+                    {/* <div className="about_imgs"> */}
+                    {/* <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622209864/petMe/about-imgs/about1_rt4e2u.jpg" alt="card" />
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210087/petMe/about-imgs/about-cat_w78jtf.jpg" alt="card" />
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210260/petMe/about-imgs/boy-and-cat_hd5uqt.jpg" alt="card" /> */}
-                        {/* </div> */}
                     {/* </div> */}
-                    <div className="about-content">
-                        <h2>Our vision</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
+                    {/* </div> */}
+                    <div className="blur">
+
+                        <div className="about-content">
+                            <h2>Our vision</h2>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
+                        </div>
                     </div>
                 </section>
             </section>
@@ -183,7 +186,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
     loadPets,
-     addPet
+    addPet
 }
 
 export const PetApp = connect(mapStateToProps, mapDispatchToProps)(_PetApp)
