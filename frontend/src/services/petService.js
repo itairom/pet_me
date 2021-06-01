@@ -6,8 +6,7 @@ export const petService = {
     getPetByid,
     add,
     remove,
-    toggleLike,
-    // addComment
+    toggleLike
 }
 
 const gPets = [
@@ -201,7 +200,7 @@ const gPets = [
             "name": "Jack Connor",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
             "loc": {
-                "address": "haifa",
+                "address": "Haifa",
                 "lat": 21313123123,
                 "lng": 23132131221
             }

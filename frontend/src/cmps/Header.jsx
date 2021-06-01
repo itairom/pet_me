@@ -46,10 +46,9 @@ class _Header extends Component {
                         {isProfileShown && <div className="user-dropdown">
                             <div className="dropdown-list">
 
-
-                                <Link to='/profile' >
+                                {(loggedInUser) && <Link to='/profile' >
                                     <span>Profile</span>
-                                </Link>
+                                </Link>}
 
                                 {(loggedInUser) &&
                                     <a onClick={() => this.onLogout()}>Logout</a>

@@ -9,9 +9,6 @@
     transition: 0.3s ease-in-out;
     box-shadow: 0 0 10px 0 #0000001c;
     margin-bottom: rem(100px);
-    // position: absolute;
-    // top: 50px;
-    // left: 50px;
 
     & > a {
         display: flex;
@@ -55,11 +52,12 @@
 
     &:hover {
         box-shadow: 0 0 10px 0 #0000001c;
+        z-index: 10;
     }
 }
 
 .main-select {
-    width: 120px;
+    width: 70px;
     appearance: none;
     border: none;
     outline: none;
@@ -78,7 +76,7 @@
     width: 15%;
 }
 .size-select {
-    width: 13%;
+    width: 20%;
 }
 .location-select {
     outline: none;
@@ -93,4 +91,8 @@ a {
     & > .search-btn {
         padding: 5px;
     }
+}
+
+.search-btn{
+    border-radius: 50px;
 }

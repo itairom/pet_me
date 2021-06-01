@@ -1,6 +1,7 @@
 const initialState = {
     pets: [],
-    pet: null
+    pet: null,
+    filter: null
 }
 
 export function petReducer(state = initialState, action) {
@@ -35,6 +36,8 @@ export function petReducer(state = initialState, action) {
                     return pet;
                 })
             }
+        case 'SET_FILTER':
+            return { ...state, filter: action.filter }
         default:
             return state
     }
