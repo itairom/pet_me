@@ -5,6 +5,11 @@ import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import 'font-awesome/css/font-awesome.min.css';
+import { faEnvelope, faHeart, faShare } from '@fortawesome/free-solid-svg-icons'
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+
 import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
 import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
 import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
@@ -22,15 +27,16 @@ class _PetDetails extends Component {
     }
 
     componentDidMount() {
-        // const petId = this.props.match.params.petId
-        // petService.getPetByid(petId).then(pet => {
-        //     this.setState({ pet })
-        // })
+
         const id = this.props.match.params.petId;
-        const pet = this.props.pets.find(pet => pet._id === id);
         this.props.loadPets()
-        // this.checkUserLike()
-        // console.log(pet)
+            .then(() => {
+                const pet = this.props.pets.find(pet => pet._id === id)
+                this.setState({ pet })
+                this.checkUserLike(pet)
+            })
+
+        // console.log('pets', pets)
     }
 
     handleChange = ({ target }) => {
@@ -39,10 +45,13 @@ class _PetDetails extends Component {
         this.setState({ pet: { ...this.state.pet, [name]: value } })
     }
 
-    checkUserLike = () => {
-        const id = this.props.match.params.petId;
-        const pet = this.props.pets.find(pet => pet._id === id)
+    checkUserLike = (pet) => {
+        console.log(pet)
+        console.log(this.props)
+        // const id = this.props.match.params.petId;
+        // const pet = this.props.pets.find(pet => pet._id === petId)
         const { loggedInUser } = this.props
+        if (!loggedInUser) return
         const userId = pet.likedBy.find(userId => userId === loggedInUser._id)
         const isAlreadyLiked = userId ? true : false;
         this.setState({ isLiked: !isAlreadyLiked })
@@ -95,8 +104,9 @@ class _PetDetails extends Component {
     render() {
         // console.log('this.state', this.state)
         const { isLiked } = this.state
-        const id = this.props.match.params.petId;
-        const pet = this.props.pets.find(pet => pet._id === id);
+        // const id = this.props.match.params.petId;
+        // const pet = this.props.pets.find(pet => pet._id === id);
+        const { pet } = this.state
         if (!pet) return <h1>loading</h1>
 
         return (
@@ -110,13 +120,10 @@ class _PetDetails extends Component {
                         {/* TODO: add icons +actions btns */ }
                         <span className="pet-likes">{ pet.likes }</span>
                         <span className="pet-like-btn" onClick={ () => this.onLike(pet._id) }>
-                            {/* <HeartFill className={ isLiked ? 'preview-heart-red' : 'preview-heart' } /> */ }
-                            <RedHeart className={ isLiked ? 'heart' : 'heart fill' } />
-                            {/* // (!isLiked) ? <Heart className="preview-heart" /> : <HeartFill className="preview-heart" /> */ }
-
+                            <FontAwesomeIcon icon={ faHeart } className={ isLiked ? 'heart' : 'heart fill' } />
                         </span>
-                        <span className="share-pet" onClick={ () => this.onShare }>share
-                        <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
+                        <span className="share-pet" onClick={ () => this.onShare }><FontAwesomeIcon icon={ faShare } />
+                            <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
                             </div>
                         </span>
                     </div>
@@ -154,8 +161,8 @@ class _PetDetails extends Component {
                         <span className="adoption-time adopt-sign">{ 'Looking for    a home for ' + utilService.timeSince(pet.addedAt) }</span>
                         <span className="adoption-likes adopt-sign">{ 'Liked by ' + pet.likes + ' people!' }</span>
                         <button className="adopt-btn el-btn">Adopt Me</button>
-                        <span>{ pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com' }</span>
-                        <span>{ '054-2312993' }</span>
+                        <span><FontAwesomeIcon icon={ faEnvelope } /> { pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com' }</span>
+                        <span><FontAwesomeIcon icon={ faWhatsapp } /> 054-2312993</span>
                     </div>
                 </div>
                 <div className="comments-section">

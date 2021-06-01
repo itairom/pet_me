@@ -7,7 +7,7 @@ import { utilService } from '../services/utilService'
 class _CommentsCmp extends Component {
     render() {
         const { pet, loggedInUser } = this.props
-        // console.log(loggedInUser)
+        console.log(loggedInUser)
         return (
             <section className="comments-container" >
                 <div className="comments-btns flex">
