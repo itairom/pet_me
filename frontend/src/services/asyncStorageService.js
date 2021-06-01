@@ -12,14 +12,9 @@ export const storageService = {
 
 function query(entityType, filterBy = '') {
 
-<<<<<<< HEAD
-
-    const { type, age, location, gender, size } = filterBy
-=======
     const { type, age, location, gender, size } = filterBy
 
 
->>>>>>> 666f830f60c2605f5a550d2c1d68b194d3a6ef3e
 
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
