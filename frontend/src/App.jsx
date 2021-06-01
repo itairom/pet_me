@@ -16,15 +16,11 @@ export function App() {
         <Header />
         <main className="main-layout">
           <Switch>
-            {/* <Route path="/explore/" component={ Explore } /> */}
-
-            {/* <Route path="/explore/&type&gender&age&size&location" component={ Explore } /> */}
-            <Route path="/explore/:type:gender:age:size:location" component={ Explore } />
-            <Route path="/explore/" component={ Explore } />
-            <Route path="/profile" component={Profile} /> 
-            <Route path="/login" component={LoginSignup} /> 
-            <Route path="/:petId" component={ PetDetails } />
-            <Route path="/" component={ PetApp } />
+            <Route path="/explore" component={Explore} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/login" component={LoginSignup} />
+            <Route path="/:petId" component={PetDetails} />
+            <Route path="/" component={PetApp} />
           </Switch>
         </main>
         <Footer />

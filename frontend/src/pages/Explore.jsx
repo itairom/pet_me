@@ -11,16 +11,29 @@ import { PetFilter } from '../cmps/PetFilter'
 // })
 
 class _Explore extends React.Component {
-    
-    
+
+
     state = {
         pets: null,
-        isFilterShown: false
-        
+        isFilterShown: false,
+        filterBy: null
     }
     componentDidMount() {
+        this.onSetFilter()
         this.props.loadPets(this.props.match.params)
         this.setState({ pets: this.props.pets })
+    }
+
+    onSetFilter = () => {
+        const search = new URLSearchParams(this.props.location.search)
+        let filterBy = {
+            gender: search.get('gender'),
+            type: search.get('type'),
+            age: search.get('age'),
+            size: search.get('size'),
+            location: search.get('location')
+        }
+        this.setState({ filterBy })
     }
 
     onToggleFilter = () => {
@@ -31,8 +44,7 @@ class _Explore extends React.Component {
     render() {
         const { pets } = this.props
         const { isFilterShown } = this.state
-        console.log(pets);
-
+        console.log(this.state.filterBy);
         if (!pets) return <img src={userIcon} alt="loading" />
         return (
             <section className="main-container">
@@ -40,7 +52,6 @@ class _Explore extends React.Component {
                     <span onClick={() => this.onToggleFilter()} > Start your search</span>
 
                     {isFilterShown && <PetFilter />}
-
 
                     <div className="search-btn">
                         <img className="filter-search" src={magnifyingGlass} alt="glass" />
