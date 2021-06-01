@@ -523,7 +523,7 @@ const gPets = [
                 "address": "haifa",
                 "lat": 21313123123,
                 "lng": 23132131221
-              }
+            }
         },
         "tags": [
             "dog",
@@ -655,18 +655,10 @@ const gPets = [
 const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
-    console.log(filterBy)
-
-    //  filterBy = {
-    //     gender: 'female',
-    //     type: '',
-    //     age: '',
-    //     location: 'yafo'
-    // }
-
     let pets = await storageService.query(STORAGE_KEY, filterBy)
 
-    if (!pets || []) {
+    if (!pets || !pets.length) {
+        console.log('in');
         pets = gPets;
         storageService.save(STORAGE_KEY, pets);
     }
@@ -678,10 +670,8 @@ async function add(pet) {
     }
     let addPet = await storageService.post(STORAGE_KEY, pet)
     return addPet
-
 }
 function remove(petId) {
-    console.log("🚀 ~ file: petService.js ~ line 356 ~ remove ~ petId", petId)
     storageService.remove(STORAGE_KEY, petId)
 }
 

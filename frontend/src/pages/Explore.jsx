@@ -18,9 +18,10 @@ class _Explore extends React.Component {
         isFilterShown: false,
         filterBy: null
     }
-    componentDidMount() {
-        this.onSetFilter()
-        this.props.loadPets(this.props.match.params)
+    async componentDidMount() {
+        await this.onSetFilter()
+        console.log(this.state.filterBy)
+        this.props.loadPets(this.state.filterBy)
         this.setState({ pets: this.props.pets })
     }
 
@@ -37,15 +38,16 @@ class _Explore extends React.Component {
     }
 
     onToggleFilter = () => {
-        this.setState({ isFilterShown: !this.state.isFilterShown })
+        this.setState({ isFilterShown: !this.state.isFilterShown }
+        )
     }
 
 
     render() {
         const { pets } = this.props
-        const { isFilterShown } = this.state
-        console.log(this.state.filterBy);
+        const { isFilterShown, filterBy } = this.state
         if (!pets) return <img src={userIcon} alt="loading" />
+        console.log(filterBy?.type);
         return (
             <section className="main-container">
                 <div className="explore-search">
@@ -58,7 +60,8 @@ class _Explore extends React.Component {
                     </div>
                 </div>
 
-                <h1>Our pets</h1>
+                {!filterBy?.type && <h1>Our pets</h1>}
+                {filterBy?.type && <h1>Our <span> {filterBy.size} {filterBy.type}s</span></h1>}
                 < PetList pets={pets} />
             </section>
         )
