@@ -10,11 +10,19 @@ import 'font-awesome/css/font-awesome.min.css';
 import { faEnvelope, faHeart, faShare } from '@fortawesome/free-solid-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
+<<<<<<< HEAD
 import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
 import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
 import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
 import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
 import { ReactComponent as RedHeart } from '../assets/img/svg/red-heart.svg'
+=======
+// import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
+// import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
+// import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
+// import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
+// import { ReactComponent as RedHeart } from '../assets/img/svg/red-heart.svg'
+>>>>>>> 5284a87b065133f270b3a227eb62748bc13f8e0f
 
 
 
