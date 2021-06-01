@@ -4,13 +4,21 @@ import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
 import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
 import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
 import { Link } from 'react-router-dom'
-
-// import ImageGallery from 'react-image-gallery';
+// import "~slick-carousel/slick/slick.css";
+// import "~slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 
 export class PetPreview extends React.Component {
 
     render() {
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        };
         const { pet } = this.props
         if (!pet) <h1>Loading...</h1>
         const gender = pet.gender === 'female' ? <Female className="gender" /> : <Male className="gender" />
@@ -18,8 +26,11 @@ export class PetPreview extends React.Component {
             <section className="pet-card-container">
                 <Link key={pet._id} to={`/${pet._id}`}>
                     <div className="img-container">
-                        {/* <ImageGallery items={pet.imgUrls} />; */}
-                        <img src={pet.imgUrls[0]} alt="" />
+
+                        {/* <Slider {...settings}> */}
+                            <img src={pet.imgUrls[0]} alt="" />
+                        {/* </Slider> */}
+
                     </div>
                 </Link>
                 <div className="card-info">

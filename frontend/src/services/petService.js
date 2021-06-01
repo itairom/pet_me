@@ -16,7 +16,7 @@ const gPets = [
         "type": "dog",
         "name": "Noble",
         "breed": "bulldog",
-        "title": "Cool dog",
+        "title": "A pleasant and comfortable dog",
         "desc": "Nobleman is slower to warm up to new people and would do best in a home willing to work with him and understanding his need to come to people on his own terms. This includes letting him sniff a new person and letting him walk away until he is ready to interact with them.  Nobleman is house and crate trained. We are looking for a home that will continue with the training and socialization methods set in place by his amazing trainer and foster parents. He needs patience, structure.He would do best in a home without small children or cats. While Nobleman does get along with his foster pack he would prefer to be an only dog If you are looking for a giant loving soul who will give you his full devotion in exchange for continuing to help him gain his confidence Please apply below!",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622204892/dogs/dog3/2_hewutn.jpg",
@@ -69,7 +69,7 @@ const gPets = [
         "type": "dog",
         "name": "Lenny",
         "breed": "Golden Retriever",
-        "title": "Smart dog",
+        "title": "Cute Lenny is waiting for you",
         "desc": "Lenny was sadly given up by his owner to go into a nursing home. He is a very affectionate boy, and hopes to find a new home very soon. He is housebroken, and would love a new family. At the time, Lenny is heartworm positive, but will have his treatment provided by us and will be healthy again! Your new pet will require a refresher in house-training. K-9 Lifesavers strongly recommends all new adopters enroll their new pet into obedience training. This provides for an easier transition into a new home, ensures the dog remains well socialized, and helps form a bond between the dog and the new family.",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131751/dogs/dog1/1_otkf7t.jpg",
@@ -122,7 +122,7 @@ const gPets = [
         "type": "cat",
         "name": "Puki",
         "breed": "American Bobtail",
-        "title": "Cute cat",
+        "title": "The redhead wants a house",
         "desc": "Punk is the sweetest girl. She has so much energy, loves people and other animals too. She needs a lot of love and attention. Preferred a home with other pets and children!",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144482/petMe/cats/cat1/1_ufpynm.jpg",
@@ -175,7 +175,7 @@ const gPets = [
         "type": "Frog",
         "name": "Ribb",
         "breed": "Tree Frog",
-        "title": "Coolest Frog ever",
+        "title": "A charming green frog",
         "desc": "We got Ribb from a family who's kids weren't careful with him. He is awfully adorable but very fragile because he is so small. A person that has experience with raising reptiles is preferred. Ribb can't wait to find his forever home!",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/1_pamdrb.jpg",
@@ -228,7 +228,7 @@ const gPets = [
         "type": "rabbit",
         "name": "Lily",
         "breed": "Netherland Rabbit",
-        "title": "The sweetest bunny",
+        "title": "Lily the rabbit is quiet and calm",
         "desc": "Ever wanted to feel like a disney princess? Well adopt this cute litle bunny and you can! He is super energetic and very loving. He is obsessed with carrots, feed him a carrot and he will love you forever. You will be so happy with this little guy.",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144480/petMe/rabbit/rabbit1/1_pqadwd.jpg",
@@ -282,7 +282,7 @@ const gPets = [
         "type": "Hamster",
         "name": "Hammy",
         "breed": "Golden Hamster",
-        "title": "Sweet Hamster",
+        "title": "A sweet little hamster",
         "desc": "Hammy is the funniest little hamster. He loves ham which is why we named him Hammy. Please don't feed him ham though, we don't feed it to him, but every time someone eats ham when they are around him, he goes straight to the hamster wheel!",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144480/petMe/hamster/3_yzwxm1.jpg",
@@ -336,7 +336,7 @@ const gPets = [
         "type": "Dog",
         "name": "Rex",
         "breed": "Akita",
-        "title": "Beautifully dog",
+        "title": "Akita is a strong and brave dog",
         "desc": "",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622206109/dogs/dog5/3_bzucwm.jpg",
@@ -389,7 +389,7 @@ const gPets = [
         "type": "Cat",
         "name": "Misty",
         "breed": "white cat",
-        "title": "Fluffy cat",
+        "title": "Misty the White Cat loves to rest",
         "desc": "",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622363512/petMe/cats/cat2/2_2_tcoaxc.jpg",
@@ -442,7 +442,7 @@ const gPets = [
         "type": "Dog",
         "name": "Ray",
         "breed": "Basenji dog",
-        "title": "Smiling dog",
+        "title": "Ray loves to walk and sniff",
         "desc": "",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622364484/dogs/dog4/4_3_iosbdd.jpg",
@@ -495,7 +495,7 @@ const gPets = [
         "type": "Rabbit",
         "name": "Angel",
         "breed": "Blanc de Hotot",
-        "title": "Someone to cuddle with ",
+        "title": "An angelic and charming rabbit",
         "desc": "",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622207016/petMe/rabbit/rrabit3/2_kno829.jpg",
@@ -507,7 +507,7 @@ const gPets = [
         "gender": "female",
         "age": "young",
         "isAdopted": false,
-        "likes": "93",
+        "likes": "100",
         "likedBy": [
             "s103"
         ],
@@ -548,7 +548,7 @@ const gPets = [
         "type": "Parrot",
         "name": "Jake",
         "breed": "Lories",
-        "title": "A beautiful parrot",
+        "title": "The colorful parrot Jake",
         "desc": "",
         "imgUrls": [
             "https://res.cloudinary.com/dstqymucm/image/upload/v1622364986/petMe/parrot/parrot1/3_3_xqin04.jpg",
@@ -560,7 +560,7 @@ const gPets = [
         "gender": "male",
         "age": "adult",
         "isAdopted": false,
-        "likes": "93",
+        "likes": "95",
         "likedBy": [
             "s103"
         ],
@@ -613,7 +613,7 @@ const gPets = [
         "gender": "male",
         "age": "senior",
         "isAdopted": false,
-        "likes": "93",
+        "likes": "101",
         "likedBy": [
             "s103"
         ],
