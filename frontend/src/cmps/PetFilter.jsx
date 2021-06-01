@@ -1,7 +1,7 @@
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { Link } from 'react-router-dom'
 import React from 'react'
-import { loadPets } from '../store/actions/petActions'
+
 
 
 export class PetFilter extends React.Component {

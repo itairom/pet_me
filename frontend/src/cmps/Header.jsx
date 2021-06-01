@@ -30,7 +30,7 @@ class _Header extends Component {
 
     render() {
 
-        const { loggedInUser, logout } = this.props
+        const { loggedInUser } = this.props
         const { isProfileShown } = this.state
 
         return <header className="main-header main-container">
@@ -45,12 +45,11 @@ class _Header extends Component {
                     <div onClick={() => this.toggleDropdown()} className="login-profile">
                         {isProfileShown && <div className="user-dropdown">
                             <div className="dropdown-list">
-                                
-                                
-                            <Link to='/profile' >
+
+
+                                <Link to='/profile' >
                                     <span>Profile</span>
                                 </Link>
-
 
                                 {(loggedInUser) &&
                                     <a onClick={() => this.onLogout()}>Logout</a>
@@ -63,7 +62,6 @@ class _Header extends Component {
                             </div>
 
                         </div>}
-
 
                         <img src={menuIcon} alt="icon" />
                         {(!loggedInUser) && <img src={userIcon} alt="icon" />}
