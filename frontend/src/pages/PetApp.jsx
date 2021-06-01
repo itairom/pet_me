@@ -4,6 +4,8 @@ import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
 import { PetFilter } from '../cmps/PetFilter'
 import { PetPreview } from '../cmps/PetPreview'
+// import { ReactComponent as Glass } from '../assets/img/svg/magnifying-glass.svg'
+
 
 
 class _PetApp extends React.Component {
@@ -17,47 +19,8 @@ class _PetApp extends React.Component {
         this.setState({ pets: this.props.pets })
     }
 
-    onAddPet = () => {
-        let pet = {
-            "_id": "456",
-            "type": "dog",
-            "name": "Noble",
-            "breed": "German Shepherd ",
-            "title": "Noble dog",
-            "desc": "Nobleman is slower to warm up to new people and would do best in a home willing to work with him and understanding his need to come to people on his own terms. This includes letting him sniff a new person and letting him walk away until he is ready to interact with them.  Nobleman is house and crate trained. We are looking for a home that will continue with the training and socialization methods set in place by his amazing trainer and foster parents. He needs patience, structure.He would do best in a home without small children or cats. While Nobleman does get along with his foster pack he would prefer to be an only dog If you are looking for a giant loving soul who will give you his full devotion in exchange for continuing to help him gain his confidence Please apply below!",
-            "imgUrl": "url",
-            "gender": "male",
-            "age": 7,
-            "isAdopted": false,
-            "likes": "33",
-            "size": "small",
-            "neuterSpayed": true,
-            "trained": false,
-            "vaccine": false,
-            "owner": {
-                "_id": "s101",
-                "name": "happy farm",
-                "imgUrl": "url",
-                "loc": "yafo"
-            },
-            "tags": [
-                "fish",
-                "pet",
-                "small"
-            ],
-            "comments": [
-                {
-                    "id": "rev101",
-                    "txt": "lovely cat",
-                    "by": {
-                        "_id": "u102",
-                        "fullname": "mika ",
-                        "imgUrl": "/img/img2.jpg"
-                    }
-                }
-            ]
-        }
-    }
+    
+    
 
     render() {
         const { pets } = this.props
@@ -65,7 +28,7 @@ class _PetApp extends React.Component {
 
         return (
             <section className="main-container">
-                <section className="hero full">
+                <section className="hero full ">
                     <div className="hero-content">
                         < PetFilter />
                         <h1>Find your</h1>
@@ -105,24 +68,25 @@ class _PetApp extends React.Component {
                     <div className="content">
                         <div>
                             <h2>Filter down to your perfect fit</h2>
-                            <p> Personalize your search with filters like gender, type, size or a pool to get exactly what you want. </p>
+                            <p> Personalize your search with filters like gender,
+                                 type, size or a pool to get exactly what you want. </p>
                         </div>
                         <div>
                             <h2>Dig into the details</h2>
-                            <p>  Check out the photos. Then, read guest reviews from past reservations to learn what it’s like in person. </p>
+                            <p> Check out the photos and view pet information. 
+                                Next, read user reviews and comments about the pet and its owner.</p>
                         </div>
                         <div>
-                            <h2> Book with peace of mind </h2>
-
-                            <p>  We keep your info safe and follow global security standards to process your payments. </p>
+                            <h2>Contact pet owners</h2>
+                            <p>  Once you have decided which pet you would like to adopt, contact the pet owners and keep your fingers crossed that the pet will be your next friend </p>
                         </div>
                         <div>
-                            <h2> Arrive and enjoy! </h2>
-                            <p> Personalize your search with filters—like price range or a pool to get exactly what you want. </p>
+                            <h2>Adopt a friend!</h2>
+                            <p> In a quick and easy process you can adopt a pet that will become your new friend for life. </p>
                         </div>
                     </div>
                 </section>
-                <section className="type-cards">
+                <section className="type-cards preview-homepage">
                     <h2>Waiting long time to adopt</h2>
                     <div className="preview-cards">
                         <div>
@@ -140,7 +104,7 @@ class _PetApp extends React.Component {
 
                     </div>
                 </section>
-                <section className="type-cards">
+                <section className="type-cards preview-homepage">
                     <h2>Most Liked Pets Available For Adoption</h2>
                     <div className="preview-cards">
                         <div>
@@ -190,14 +154,14 @@ class _PetApp extends React.Component {
                     </div>
                 </div>  */}
                 <section className="homepage-about main-container full">
-                    <div className="inner-container flex">
+                    {/* <div className="inner-container flex"> */}
 
                         {/* <div className="about_imgs"> */}
                         {/* <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622209864/petMe/about-imgs/about1_rt4e2u.jpg" alt="card" />
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210087/petMe/about-imgs/about-cat_w78jtf.jpg" alt="card" />
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210260/petMe/about-imgs/boy-and-cat_hd5uqt.jpg" alt="card" /> */}
                         {/* </div> */}
-                    </div>
+                    {/* </div> */}
                     <div className="about-content">
                         <h2>Our vision</h2>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>

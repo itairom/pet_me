@@ -1,5 +1,5 @@
 import { storageService } from './asyncStorageService'
-import { httpService } from './httpService'
+
 
 
 const gUsers = [
@@ -17,7 +17,7 @@ const gUsers = [
       "cows"
     ],
     "loc": {
-      "address": "haifa",
+      "address": "Haifa",
       "lat": 21313123123,
       "lng": 23132131221
     },

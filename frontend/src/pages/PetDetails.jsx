@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
+<<<<<<< HEAD
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.min.css';
 import { faEnvelope, faHeart, faShare } from '@fortawesome/free-solid-svg-icons'
@@ -14,6 +15,12 @@ import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
 import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
 import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
 import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
+=======
+// import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
+// import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
+// import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
+// import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
+>>>>>>> 58f9ce4040d4e2f54a456fdb82be8c19292b40f0
 import { ReactComponent as RedHeart } from '../assets/img/svg/red-heart.svg'
 
 
