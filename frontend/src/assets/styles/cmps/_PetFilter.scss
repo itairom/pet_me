@@ -66,7 +66,6 @@
 
     & > input {
         padding: 4px 0;
-        width: 60px;
     }
 
     &:hover {
@@ -76,7 +75,7 @@
 }
 
 .main-select {
-    width: 70px;
+    width: 66px;
     appearance: none;
     border: none;
     outline: none;
@@ -95,12 +94,13 @@
     width: 15%;
 }
 .size-select {
-    width: 20%;
+    width: 60%;
 }
 .location-select {
+    width: 130px;
     outline: none;
     border: none;
-    width: 78%;
+    width: 100%;
     & > label {
         margin-top: -4px;
     }
@@ -112,6 +112,6 @@ a {
     }
 }
 
-.search-btn{
+.search-btn {
     border-radius: 50px;
 }

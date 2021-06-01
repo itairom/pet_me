@@ -21,7 +21,7 @@ export class PetPreview extends React.Component {
         };
         const { pet } = this.props
         if (!pet) <h1>Loading...</h1>
-        const gender = pet.gender === 'female' ? <Female className="gender" /> : <Male className="gender" />
+        const gender = pet?.gender === 'female' ? <Female className="gender" /> : <Male className="gender" />
         return (
             <section className="pet-card-container">
                 <Link key={ pet._id } to={ `/${pet._id}` }>

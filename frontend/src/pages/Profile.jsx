@@ -32,11 +32,7 @@ class _Profile extends Component {
                 .then(petItem => {
                     pets.push(petItem)
                 })
-
-
         )
-        // console.log('pets', pets);
-
         this.setState({ userPets: pets })
     }
 
@@ -98,15 +94,14 @@ class _Profile extends Component {
                     </div>
 
 
-
-                    {/* {userPets.map( pet => {
-                            // return <h1>{pet.name}</h1>
-                             return  ( <div>
-                                    <h1>{pet.name}</h1>
-                                    <h1>{pet.type}</h1>
-                                    <h1>{pet.breed}</h1>
-                                </div>)
-                        })} */}
+                    {userPets.map(pet => {
+                        return (
+                            <div>
+                                <h1>{pet?.name}</h1>
+                                <h1>{pet?.type}</h1>
+                                <h1>{pet?.breed}</h1>
+                            </div>)
+                    })}
 
 
                 </section>
