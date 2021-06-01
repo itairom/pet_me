@@ -10,26 +10,6 @@ import 'font-awesome/css/font-awesome.min.css';
 import { faEnvelope, faHeart, faShare } from '@fortawesome/free-solid-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 666f830f60c2605f5a550d2c1d68b194d3a6ef3e
-import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
-import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
-import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
-import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
-import { ReactComponent as RedHeart } from '../assets/img/svg/red-heart.svg'
-<<<<<<< HEAD
-=======
-=======
-// import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
-// import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
-// import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
-// import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
-// import { ReactComponent as RedHeart } from '../assets/img/svg/red-heart.svg'
->>>>>>> 5284a87b065133f270b3a227eb62748bc13f8e0f
->>>>>>> 666f830f60c2605f5a550d2c1d68b194d3a6ef3e
-
 
 
 class _PetDetails extends Component {
