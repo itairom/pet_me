@@ -1,3 +1,6 @@
+// .main-container{
+//     background-color: black;
+// }
 
 .pet-card-container {
     display: flex;
@@ -7,7 +10,7 @@
         height: 160px;
         margin-block-end: 8px;
     }
-    
+
     img {
         height: 165px;
         border-radius: 10px;
@@ -17,11 +20,15 @@
 
     .card-info {
         padding: 5px 0 0;
+        .pet-title {
+            color: $clr8;
+        }
     }
 
     .pet-name-gender {
         justify-content: space-between;
-        .gender{
+
+        .gender {
             height: 24px;
             width: 24px;
         }
@@ -29,17 +36,20 @@
 
     .pet-preview-host {
         justify-content: space-between;
-        p{
-            color:$clr8;
+
+        p {
+            color: $clr10;
         }
 
     }
-    .pet-preview-likes{
-        :first-child{
+
+    .pet-preview-likes {
+        :first-child {
             cursor: pointer;
             margin-inline-end: 6px;
         }
-        :last-child{
+
+        :last-child {
             font-size: 1.125rem;
         }
     }

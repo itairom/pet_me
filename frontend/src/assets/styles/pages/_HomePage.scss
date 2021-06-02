@@ -10,58 +10,83 @@
     display: flex;
     justify-content: center;
     // align-items: center;
-
+  
     .hero-content {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-block-start: rem(50px);
         color: aliceblue;
+
         // position: absolute;
         // left: 28%;
         // top: 4%;
         h1 {
             font-family: avenir-black;
             font-size: rem(100px);
+            @include for-mobile-layout {
+                font-size: rem(55px);   
+            }
+        }
+
+        :last-child::after {
+            content: '.';
+            color: $clr9;
         }
     }
 }
 
 .type-cards {
-    display: flex;
-    flex-direction: column;
-    & h2 {
+    // display: flex;
+    // flex-direction: column;
+
+    .type-cards-title{
         margin-bottom: 20px;
+        @include for-normal-layout {
+            margin-inline-start: 73px;
+            background-color: green;
+        }
+
     }
 
-    
     .type-img {
         display: flex;
         // justify-content: space-between;
         flex-wrap: wrap;
         margin-block-end: 20px;
+
+        @include for-mobile-layout {
+            justify-content: space-evenly;
+        }
         @include for-narrow-layout {
             justify-content: space-evenly;
         }
-        @include  for-wide-layout {
+
+        @include for-wide-layout {
             justify-content: space-between;
         }
-       
- 
+
+
         & img {
             height: 300px;
             width: 250px;
             object-fit: cover;
             border-radius: 10px;
             cursor: pointer;
+
+            @include for-mobile-layout {
+                height: 300px;
+                width: 225px;
+            }
             @include for-narrow-layout {
                 height: 300px;
                 width: 225px;
             }
+            
             @include for-normal-layout {
                 height: 300px;
                 width: 250px;
-            }  
+            }
         }
     }
     
@@ -69,10 +94,31 @@
         display: flex;
         justify-content: space-between;
         margin-block-end: 40px;
-
+        flex-wrap: wrap;
+        @include for-mobile-layout {
+            justify-content: space-between;
+            background-color: red;
+        }
+        @include for-narrow-layout {
+            justify-content: space-between;
+            background-color: blue;
+        }
+        @include for-normal-layout {
+            justify-content: space-evenly;
+            background-color: green;
+        }
+        @include for-wide-layout {
+            justify-content: space-between;
+            background-color: yellow;
+        }
+        
         >* {
             height: 250px;
-            width: 250px; 
+            width: 250px;   
+            @include for-mobile-layout {
+                height: 250px;
+                width: 211px;   
+            }
         }
     }
 }
@@ -87,58 +133,66 @@
     height: 500px;
     // color: white;
     // filter: blur(1.5px);
-    
+
     // .inner-container {
     //     padding: rem(40px) 0;
-        // .about-content {
-        //     display: flex;
-        //     flex-direction: column;
-        //     // justify-content: space-between;
-        //     flex: 1;
-        //     margin-inline-end: 20px;
-            
-        //     h2 {
-        //         margin-block-end: 15px;
-        //     }
-            
-        //     p:not(:last-of-type) {
-        //         margin-block-end: 10px;
-        //     }
-        //     p:nth-child(4) {
-        //         flex: 1;
-        //     }
-        // }
-        
-        .about_imgs {
-            flex: 1;
-            height: unset;
-            display: grid;
-            gap: 15px;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 190px 190px;
+    // .about-content {
+    //     display: flex;
+    //     flex-direction: column;
+    //     // justify-content: space-between;
+    //     flex: 1;
+    //     margin-inline-end: 20px;
 
-            >* {
-                border-radius: 20px;
-                object-fit: cover;
-            }
-            :last-child {
-                grid-column: 1 / span 2;
-            }
+    //     h2 {
+    //         margin-block-end: 15px;
+    //     }
+
+    //     p:not(:last-of-type) {
+    //         margin-block-end: 10px;
+    //     }
+    //     p:nth-child(4) {
+    //         flex: 1;
+    //     }
+    // }
+
+    .about_imgs {
+        flex: 1;
+        height: unset;
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 190px 190px;
+
+        >* {
+            border-radius: 20px;
+            object-fit: cover;
         }
-        .blur{
-            // background-color:black;
-            backdrop-filter: blur(5px);
-            width: 100%;
-            height: 100%;
-            .about-content {
-            position: relative;
-            bottom: 0;
-            color: white;
-        }
+
+        :last-child {
+            grid-column: 1 / span 2;
         }
     }
 
+    .blur {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(5px);
+        width: 100%;
+        height: 100%;
 
+        .about-content {
+            position: relative;
+            bottom: 0;
+            color: white;
+            margin: 0 25% 0;
+
+            >* {
+                margin-block-end: 10px;
+            }
+        }
+    }
+}
 
 
 .preview-container {
@@ -156,19 +210,46 @@
         display: flex;
         padding: 40px 0;
 
+        .info-title-icon {
+            display: flex;
+            justify-content: space-between;
+
+            .info-icons {
+                width: 32px;
+                height: 32px;
+
+                &:first-of-type {
+                    padding-top: 3px;
+                }
+            }
+
+        }
+        .arrow-icons {
+            height: 50px;
+            width: 60px;
+            align-self: center;
+        }
+
         >* {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             flex: 1 1 0;
             min-width: auto;
-            p:not(:last-of-type){
+
+            p:not(:last-of-type) {
                 padding-inline-end: 5px;
             }
 
             &:not(:last-child) {
                 margin-inline-end: 20px;
+                @include for-mobile-layout{
+                    margin-inline-end: 0px;
+                }
             }
+        }
+        @include for-mobile-layout{
+            flex-direction: column;
         }
     }
 }
