@@ -53,7 +53,7 @@ class _Explore extends React.Component {
 
                     {isFilterShown && <PetFilter />}
 
-                    <div className="search-btn">
+                    <div className="search-btn-explore">
                         <img className="filter-search" src={magnifyingGlass} alt="glass" />
                     </div>
                 </div>

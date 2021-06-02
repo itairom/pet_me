@@ -100,7 +100,7 @@ class _PetApp extends React.Component {
                                 <img className="info-icons" src={ paw } alt="glass" />
                             </div>
                             <p> In a quick and easy process you can adopt a pet that will become your new friend for life. </p>
-                            {/* <RightArrow className="arrow-icons" /> */ }
+                            {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                     </div>
                 </section>
@@ -108,51 +108,21 @@ class _PetApp extends React.Component {
                     <h2 className="type-cards-title">Waiting long time to adopt</h2>
                     <div className="preview-cards">
                         <PetPreview pet={pets[9]} key={pets[9]._id} />
-                        {/* <PetPreview pet={pets[13]} key={pets[13]._id} /> */}
+                        <PetPreview pet={pets[13]} key={pets[13]._id} />
                         <PetPreview pet={pets[1]} key={pets[1]._id} />
-                        {/* <PetPreview pet={pets[14]} key={pets[14]._id} /> */}
+                        <PetPreview pet={pets[14]} key={pets[14]._id} />
                     </div>
                 </section>
                 <section className="type-cards preview-homepage">
                     <h2 className="type-cards-title">Most Liked Pets Available For Adoption</h2>
                     <div className="preview-cards">
-                        <PetPreview pet={pets[4]} key={pets[4]?._id} />
-                        <PetPreview pet={pets[5]} key={pets[5]?._id} />
-                        <PetPreview pet={pets[6]} key={pets[6]?._id} />
-                        <PetPreview pet={pets[7]} key={pets[7]?._id} />
+                        <PetPreview pet={pets[4]} key={pets[4]._id} />
+                        <PetPreview pet={pets[5]} key={pets[5]._id} />
+                        <PetPreview pet={pets[6]} key={pets[6]._id} />
+                        <PetPreview pet={pets[7]} key={pets[7]._id} />
                     </div>
                 </section>
 
-                {/* <div className="type-cards">
-                    <h2>Find your next friend</h2>
-                    <div className="type-img">
-                        <div>
-                            <Link to="/p107" >
-                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622362244/dogs/dog5/1_ys7agr.jpg" alt="card" />
-                                <h4>Rex</h4>
-                            </Link>
-                        </div>
-                        <div>
-                            <Link to="/p108" >
-                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622214651/petMe/cats/cat2_lekwe7.jpg" alt="card" />
-                                <h4>Misty</h4>
-                            </Link>
-                        </div>
-                        <div>
-                            <Link to="/p109" >
-                                <img src="http://res.cloudinary.com/dstqymucm/image/upload/v1622204506/dogs/dog4/1_ahnfd1.jpg" alt="card" />
-                                <h4>Ray</h4>
-                            </Link>
-
-                        </div>
-                        <div>
-                            <Link to="/p106" >
-                                <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622144479/petMe/hamster/1_r0a5d5.jpg" alt="card" />
-                                <h4>Hammy</h4>
-                            </Link>
-                        </div>
-                    </div>
-                </div>  */}
                 <section className="homepage-about main-container full">
                     {/* <div className="inner-container flex"> */ }
                     {/* <div className="about_imgs"> */ }

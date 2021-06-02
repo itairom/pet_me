@@ -1,5 +1,8 @@
 .main-header {
     background-color: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 1;
+    width: 100%;
 
     & .header-container {
         display: flex;
