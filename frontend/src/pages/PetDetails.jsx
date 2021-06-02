@@ -162,10 +162,11 @@ class _PetDetails extends Component {
                 </div>
                 <div className="comments-section">
                     <CommentsCmp pet={ pet } key={ pet._id } />
-                </div>
+               </div>
                 {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */ }
                 <section className="google-map section">
                     <h3 className="pet-loc">Where to find me</h3>
+                    {/* <span>{ pet.owner.loc.address }</span> */ }
                     <GoogleMap loc={ pet.owner.loc } />
                 </section>
             </section>

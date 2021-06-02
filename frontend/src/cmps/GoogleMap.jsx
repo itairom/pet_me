@@ -6,6 +6,7 @@ import PersonPinCircleIcon from '@material-ui/icons/PersonPinCircle';
 
 const AnyReactComponent = ({ text }) => (
   <div>
+    {/* <div className="map-txt">{ text }</div> */ }
     < div className="map-pin" ><PersonPinCircleIcon /></div>
 
 
@@ -21,7 +22,7 @@ class _GoogleMap extends Component {
       lat: 59.95,
       lng: 30.33
     },
-    zoom: 13
+    zoom: 15
   };
 
 
