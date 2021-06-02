@@ -1,16 +1,3 @@
-// import { addComment } from '../store/actions/petActions';
-import { storageService } from './asyncStorageService'
-import { httpService } from '../services/httpService'
-window.storageService = storageService;
-
-export const petService = {
-    query,
-    getPetByid,
-    add,
-    remove,
-    toggleLike,
-    addComment
-}
 
 // const gPets = [
 //     {
@@ -44,9 +31,9 @@ export const petService = {
 //             "name": "Charlotte Sarah",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133335/dogs/dog3/owner_lwk54f.jpg",
 //             "loc": {
-//                 "address": "yafo",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "address": "Yaffo",
+//                 "lat": 32.073582,
+//                 "lng": 34.788052
 //             }
 //         },
 //         "tags": [
@@ -75,11 +62,11 @@ export const petService = {
 //         "title": "Cute Lenny is waiting for you",
 //         "desc": "Lenny was sadly given up by his owner to go into a nursing home. He is a very affectionate boy, and hopes to find a new home very soon. He is housebroken, and would love a new family. At the time, Lenny is heartworm positive, but will have his treatment provided by us and will be healthy again! Your new pet will require a refresher in house-training. K-9 Lifesavers strongly recommends all new adopters enroll their new pet into obedience training. This provides for an easier transition into a new home, ensures the dog remains well socialized, and helps form a bond between the dog and the new family.",
 //         "imgUrls": [
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131750/dogs/dog1/4_rrqk12.jpg",
 //             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131751/dogs/dog1/1_otkf7t.jpg",
 //             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131753/dogs/dog1/2_prj6tx.jpg",
 //             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131774/dogs/dog1/5_xvsq88.jpg",
-//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131781/dogs/dog1/3_oalikj.jpg",
-//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131750/dogs/dog1/4_rrqk12.jpg"
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131781/dogs/dog1/3_oalikj.jpg"
 //         ],
 //         "gender": "male",
 //         "age": "adult",
@@ -97,9 +84,9 @@ export const petService = {
 //             "name": "Joseph Gonzalez",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133443/dogs/dog1/owner_hiazkr.jpg",
 //             "loc": {
-//                 "address": "tel aviv",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "address": "Tel Aviv",
+//                 "lat": 32.085300,
+//                 "lng": 34.781769
 //             }
 //         },
 //         "tags": [
@@ -150,9 +137,9 @@ export const petService = {
 //             "name": "Madison Jessica",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622144695/petMe/cats/cat1/houcine-ncib-B4TjXnI0Y2c-unsplash_xtt5d6.jpg",
 //             "loc": {
-//                 "address": "tel aviv",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "address": "Ramat Gan",
+//                 "lat": 32.068424,
+//                 "lng": 34.824783
 //             }
 //         },
 //         "tags": [
@@ -181,10 +168,10 @@ export const petService = {
 //         "title": "A charming green frog",
 //         "desc": "We got Ribb from a family who's kids weren't careful with him. He is awfully adorable but very fragile because he is so small. A person that has experience with raising reptiles is preferred. Ribb can't wait to find his forever home!",
 //         "imgUrls": [
-//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/1_pamdrb.jpg",
-//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/3_hjszko.jpg",
-//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144484/petMe/frogs/frog1/5_g1ma7k.jpg",
 //             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/4_youmba.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622569802/petMe/frogs/frog1/4_5_mm9uxu.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144484/petMe/frogs/frog1/5_g1ma7k.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/3_hjszko.jpg",
 //             "https://res.cloudinary.com/dstqymucm/image/upload/v1622144483/petMe/frogs/frog1/2_wrlooo.jpg"
 //         ],
 //         "gender": "male",
@@ -204,8 +191,8 @@ export const petService = {
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
 //             "loc": {
 //                 "address": "Haifa",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "lat": 32.794044,
+//                 "lng": 34.989571
 //             }
 //         },
 //         "tags": [
@@ -243,7 +230,7 @@ export const petService = {
 //         "gender": "female",
 //         "age": "adult",
 //         "isAdopted": false,
-//         "likes": "77",
+//         "likes": "100",
 //         "likedBy": [
 //             "s103",
 //             "s101"
@@ -257,9 +244,9 @@ export const petService = {
 //             "name": "Harry Callum",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
 //             "loc": {
-//                 "address": "eilat",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "address": "Eilat",
+//                 "lat": 29.557669,
+//                 "lng": 34.951923
 //             }
 //         },
 //         "tags": [
@@ -297,7 +284,7 @@ export const petService = {
 //         "gender": "male",
 //         "age": "young",
 //         "isAdopted": true,
-//         "likes": "93",
+//         "likes": "103",
 //         "likedBy": [
 //             "s103",
 
@@ -311,9 +298,9 @@ export const petService = {
 //             "name": "Charlie Kyle",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622381042/petMe/hamster/owner_9_fhtzmn.jpg",
 //             "loc": {
-//                 "address": "haifa",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "address": "Hadera",
+//                 "lat": 32.437408,
+//                 "lng": 34.925621
 //             }
 //         },
 //         "tags": [
@@ -345,13 +332,13 @@ export const petService = {
 //             "https://res.cloudinary.com/dstqymucm/image/upload/v1622206109/dogs/dog5/3_bzucwm.jpg",
 //             "https://res.cloudinary.com/dstqymucm/image/upload/v1622206168/dogs/dog5/4_drxmwv.jpg",
 //             "https://res.cloudinary.com/dstqymucm/image/upload/v1622206216/dogs/dog5/5_tz8hhn.jpg",
-//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622362244/dogs/dog5/1_ys7agr.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622572048/dogs/dog5/photo-1509119993276-d691aff73209_dz4gzb.jpg",
 //             "https://res.cloudinary.com/dstqymucm/image/upload/v1622206053/dogs/dog5/2_jhwvqt.jpg"
 //         ],
 //         "gender": "male",
 //         "age": "senior",
 //         "isAdopted": false,
-//         "likes": "93",
+//         "likes": "99",
 //         "likedBy": [
 //             "s103"
 //         ],
@@ -364,9 +351,9 @@ export const petService = {
 //             "name": "Thomas	Joe",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622380429/dogs/dog5/owner_8_mcd1be.jpg",
 //             "loc": {
-//                 "address": "haifa",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "address": "Beer Sheva",
+//                 "lat": 31.252974,
+//                 "lng": 34.791462
 //             }
 //         },
 //         "tags": [
@@ -404,7 +391,7 @@ export const petService = {
 //         "gender": "female",
 //         "age": "adult",
 //         "isAdopted": false,
-//         "likes": "93",
+//         "likes": "89",
 //         "likedBy": [
 //             "s103"
 //         ],
@@ -417,9 +404,9 @@ export const petService = {
 //             "name": "George	Reece",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622380349/petMe/cats/cat2/owner_7_yhyw90.jpg",
 //             "loc": {
-//                 "address": "haifa",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "address": "Modiin",
+//                 "lat": 31.936850,
+//                 "lng": 35.038509
 //             }
 //         },
 //         "tags": [
@@ -470,9 +457,9 @@ export const petService = {
 //             "name": "Mike York",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
 //             "loc": {
-//                 "address": "haifa",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "address": "Jerusalem",
+//                 "lat": 31.768318,
+//                 "lng": 35.213711
 //             }
 //         },
 //         "tags": [
@@ -523,9 +510,9 @@ export const petService = {
 //             "name": "Mike York",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
 //             "loc": {
-//                 "address": "haifa",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "address": "Netanya",
+//                 "lat": 32.329369,
+//                 "lng": 34.856541
 //             }
 //         },
 //         "tags": [
@@ -576,9 +563,9 @@ export const petService = {
 //             "name": "Sophie	Tracy",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379848/petMe/parrot/parrot1/owner_5_nofgky.jpg",
 //             "loc": {
-//                 "address": "haifa",
-//                 "lat": 21313123123,
-//                 "lng": 23132131221
+//                 "address": "Ramat Havadiv",
+//                 "lat": 32.060500,
+//                 "lng": 34.808120
 //             }
 //         },
 //         "tags": [
@@ -629,6 +616,59 @@ export const petService = {
 //             "name": "William Damian",
 //             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
 //             "loc": {
+//                 "address": "Ramat Hasharon",
+//                 "lat": 32.136749,
+//                 "lng": 34.841042
+//             }
+//         },
+//         "tags": [
+//             "dog",
+//             "small"
+//         ],
+//         "comments": [
+//             {
+//                 "id": "rev101",
+//                 "txt": "",
+//                 "created": 1622299786455,
+//                 "by": {
+//                     "_id": "",
+//                     "fullname": "",
+//                     "imgUrl": ""
+//                 }
+//             }
+//         ]
+//     },
+//     {
+//         "_id": "p113",
+//         "addedAt": 1622299586455,
+//         "type": "Dog",
+//         "name": "Tiny",
+//         "breed": "Blue Nose Pitbull",
+//         "title": "The cutest puppy ever",
+//         "desc": "Tiny is just such a delight. All of his brothers and sisters have gotten adopted, and he is the last one that needs his furrever home too! He is sweet, ridiculously adorable, and loves to play. He will give you endless cuddles.",
+//         "imgUrls": [
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622570533/dogs/dog6/tiny1.10249ee3_fjtzjx.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622570712/dogs/dog6/tiny2.19078e9e_rxlafj.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622570533/dogs/dog6/tiny4.9463dac7_1_vz0kfn.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622570533/dogs/dog6/tiny3.4a48540e_m7eufk.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622570533/dogs/dog6/tiny5.0929a23c_izxtzs.jpg"
+//         ],
+//         "gender": "male",
+//         "age": "senior",
+//         "isAdopted": false,
+//         "likes": "101",
+//         "likedBy": [
+//             "s103"
+//         ],
+//         "size": "big",
+//         "neuterSpayed": true,
+//         "trained": true,
+//         "vaccine": true,
+//         "owner": {
+//             "_id": "s112",
+//             "name": "William Damian",
+//             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
+//             "loc": {
 //                 "address": "haifa",
 //                 "lat": 21313123123,
 //                 "lng": 23132131221
@@ -650,51 +690,376 @@ export const petService = {
 //                 }
 //             }
 //         ]
+//     },
+//     {
+//         "_id": "p114",
+//         "addedAt": 1622299586455,
+//         "type": "Cat",
+//         "name": "Punk",
+//         "breed": "Blue Nose Pitbull",
+//         "title": "The most adorable little kitten",
+//         "desc": "Punk is the sweetest girl. She has so much energy, loves people and other animals too. She needs a lot of love and attention. Preferred a home with other pets and children!",
+//         "imgUrls": [
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622570968/petMe/cats/cat3/punk1.2468fdbc_ofmisc.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622570981/petMe/cats/cat3/punk2.337c10f5_egznz2.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622570986/petMe/cats/cat3/punk3.556cf428_drahwj.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622570995/petMe/cats/cat3/punk4.224b6896_kuy6zb.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571005/petMe/cats/cat3/punk5.94ba5e53_pfuxun.jpg"
+//         ],
+//         "gender": "female",
+//         "age": "young",
+//         "isAdopted": false,
+//         "likes": "91",
+//         "likedBy": [
+//             "s103"
+//         ],
+//         "size": "small",
+//         "neuterSpayed": true,
+//         "trained": false,
+//         "vaccine": false,
+//         "owner": {
+//             "_id": "s112",
+//             "name": "William Damian",
+//             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
+//             "loc": {
+//                 "address": "haifa",
+//                 "lat": 21313123123,
+//                 "lng": 23132131221
+//             }
+//         },
+//         "tags": [
+//             "cat",
+//             "small"
+//         ],
+//         "comments": [
+//             {
+//                 "id": "rev101",
+//                 "txt": "",
+//                 "created": 1622299786455,
+//                 "by": {
+//                     "_id": "",
+//                     "fullname": "",
+//                     "imgUrl": ""
+//                 }
+//             }
+//         ]
+//     },
+//     {
+//         "_id": "p115",
+//         "addedAt": 1622299586455,
+//         "type": "Horse",
+//         "name": "Baby",
+//         "breed": " Quarter",
+//         "title": "The sweetest and funniest horse",
+//         "desc": "Baby was a great riding horse in the past, but is done competing. Her owner wants to find her a great home, where she can eat all day, get lots of love, and maybe have another horse friend.",
+//         "imgUrls": [
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571315/petMe/horses/horse1/baby1.eba50d82_lcpelm.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571357/petMe/horses/horse1/baby3.1f0eb5e6_r0t9aw.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571345/petMe/horses/horse1/baby5.ba9796a7_wrj4px.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571334/petMe/horses/horse1/baby4.e3c37934_byd0ub.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571325/petMe/horses/horse1/baby2.f90cc376_wip114.jpg"
+//         ],
+//         "gender": "female",
+//         "age": "young",
+//         "isAdopted": false,
+//         "likes": "71",
+//         "likedBy": [
+//             "s103"
+//         ],
+//         "size": "big",
+//         "neuterSpayed": true,
+//         "trained": true,
+//         "vaccine": true,
+//         "owner": {
+//             "_id": "s112",
+//             "name": "William Damian",
+//             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
+//             "loc": {
+//                 "address": "haifa",
+//                 "lat": 21313123123,
+//                 "lng": 23132131221
+//             }
+//         },
+//         "tags": [
+//             "horse",
+//             "big"
+//         ],
+//         "comments": [
+//             {
+//                 "id": "rev101",
+//                 "txt": "",
+//                 "created": 1622299786455,
+//                 "by": {
+//                     "_id": "",
+//                     "fullname": "",
+//                     "imgUrl": ""
+//                 }
+//             }
+//         ]
+//     },
+//     {
+//         "_id": "p116",
+//         "addedAt": 1622299586455,
+//         "type": "Horse",
+//         "name": "Maika",
+//         "breed": " Quarter",
+//         "title": "Active and happy horse",
+//         "desc": "Maika was a great riding horse in the past, but is done competing. Her owner wants to find her a great home, where she can eat all day, get lots of love, and maybe have another horse friend.",
+//         "imgUrls": [
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571869/petMe/horses/horse2/photo-1559784649-d03eea83d082_fnpzca.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571602/petMe/horses/horse2/photo-1504310977373-186d29f99322_wwdudy.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571643/petMe/horses/horse2/photo-1563443807158-f47f7d4d7bfe_k9l5ui.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571620/petMe/horses/horse2/photo-1518713337836-f828c91becc0_biwtmm.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622571669/petMe/horses/horse2/photo-1563443803769-a5c44bd91e39_flaejn.jpg"
+//         ],
+//         "gender": "female",
+//         "age": "senior",
+//         "isAdopted": false,
+//         "likes": "54",
+//         "likedBy": [
+//             "s103"
+//         ],
+//         "size": "big",
+//         "neuterSpayed": true,
+//         "trained": true,
+//         "vaccine": true,
+//         "owner": {
+//             "_id": "s112",
+//             "name": "William Damian",
+//             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
+//             "loc": {
+//                 "address": "haifa",
+//                 "lat": 21313123123,
+//                 "lng": 23132131221
+//             }
+//         },
+//         "tags": [
+//             "horse",
+//             "big"
+//         ],
+//         "comments": [
+//             {
+//                 "id": "rev101",
+//                 "txt": "",
+//                 "created": 1622299786455,
+//                 "by": {
+//                     "_id": "",
+//                     "fullname": "",
+//                     "imgUrl": ""
+//                 }
+//             }
+//         ]
+//     },
+//     {
+//         "_id": "p117",
+//         "addedAt": 1622299586455,
+//         "type": "Dog",
+//         "name": "Lucifer",
+//         "breed": "australian shepherd",
+//         "title": "Calm and brave young dog",
+//         "desc": "",
+//         "imgUrls": [
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131782/dogs/dog2/5_bobpe3.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131768/dogs/dog2/4_dp68qr.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131759/dogs/dog2/1_vchrdh.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131779/dogs/dog2/2_agvwlb.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622131764/dogs/dog2/3_wcyiul.jpg"
+//         ],
+//         "gender": "male",
+//         "age": "young",
+//         "isAdopted": false,
+//         "likes": "78",
+//         "likedBy": [
+//             "s103"
+//         ],
+//         "size": "small",
+//         "neuterSpayed": true,
+//         "trained": false,
+//         "vaccine": true,
+//         "owner": {
+//             "_id": "s112",
+//             "name": "William Damian",
+//             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
+//             "loc": {
+//                 "address": "haifa",
+//                 "lat": 21313123123,
+//                 "lng": 23132131221
+//             }
+//         },
+//         "tags": [
+//             "dog",
+//             "small"
+//         ],
+//         "comments": [
+//             {
+//                 "id": "rev101",
+//                 "txt": "",
+//                 "created": 1622299786455,
+//                 "by": {
+//                     "_id": "",
+//                     "fullname": "",
+//                     "imgUrl": ""
+//                 }
+//             }
+//         ]
+//     },
+//     {
+//         "_id": "p118",
+//         "addedAt": 1622299586455,
+//         "type": "Parrot",
+//         "name": "Moon",
+//         "breed": "australian shepherd",
+//         "title": "Beautiful and wonderful friend",
+//         "desc": "Moon is a very sweet bird that will step up onto your hand or a towel. He loves greet people every time they come to visit and will thoroughly enjoy any head scratch offered. He enjoys the outdoors on a nice day in company of his best friend Nikko. His loves to play with wood, foam, cardboard and if he has a box to destroy will be extremely happy. He is a shy guy, but once he gets to know you, he is a great bird. He loves to sit on your shoulder while you are doing your chores.",
+//         "imgUrls": [
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622574376/petMe/parrot/parrot2/terra-roro-qS_d1WcvUVg-unsplash_rckmzi_d3zluq.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622574384/petMe/parrot/parrot2/ray-aucott-s0ncfzQb2yI-unsplash_e2bmy9_tjakek.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622574354/petMe/parrot/parrot2/max-smith-fYLQhZxE2Ys-unsplash_dpmoew_um9ywr.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622574351/petMe/parrot/parrot2/manny-moreno-H0CtXTt15A0-unsplash_uehb9j_y82vik.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622574369/petMe/parrot/parrot2/gilles-rolland-monnet-xdd1_AD8whk-unsplash_fcuu3s_w31cjm.jpg"
+//         ],
+//         "gender": "male",
+//         "age": "senior",
+//         "isAdopted": false,
+//         "likes": "69",
+//         "likedBy": [
+//             "s103"
+//         ],
+//         "size": "small",
+//         "neuterSpayed": true,
+//         "trained": true,
+//         "vaccine": true,
+//         "owner": {
+//             "_id": "s112",
+//             "name": "William Damian",
+//             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
+//             "loc": {
+//                 "address": "haifa",
+//                 "lat": 21313123123,
+//                 "lng": 23132131221
+//             }
+//         },
+//         "tags": [
+//             "parrot",
+//             "small"
+//         ],
+//         "comments": [
+//             {
+//                 "id": "rev101",
+//                 "txt": "",
+//                 "created": 1622299786455,
+//                 "by": {
+//                     "_id": "",
+//                     "fullname": "",
+//                     "imgUrl": ""
+//                 }
+//             }
+//         ]
+//     },
+//     {
+//         "_id": "p119",
+//         "addedAt": 1622299586455,
+//         "type": "Parrot",
+//         "name": "Loyd",
+//         "breed": "australian shepherd",
+//         "title": "Incredibly social guy",
+//         "desc": "Loyd is incredibly social and loves to be out of his cage hanging out with his people. He likes to have his head scratched, but he also loves to run around on a table and explore. Like a typical kid, everything he encounters goes in his mouth, so he needs to be supervised closely. He is bold and busy. He prefers to eat when he is around his people. He eats pellets like a champ and loves nutriberries and seeds as treats.",
+//         "imgUrls": [
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622574834/petMe/parrot/parrot3/lilian-dibbern-ftwDuke2UgA-unsplash_lpfmip_hbkaqy.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622574838/petMe/parrot/parrot3/thomas-millot-vg6PZkjL1io-unsplash_dchkbm_w2xl2m.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622574844/petMe/parrot/parrot3/hannah-dickens-cdSg4nPkucA-unsplash_rtbbfx_ykiuxm.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622574849/petMe/parrot/parrot3/ovidiu-creanga-EXqgBm93ho4-unsplash_syc9nl_xvrsi1.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622574857/petMe/parrot/parrot3/jana-sabeth-Bg2AtXNmEHI-unsplash_1_sgkfdo_jyed6p.jpg"
+//         ],
+//         "gender": "male",
+//         "age": "adult",
+//         "isAdopted": false,
+//         "likes": "49",
+//         "likedBy": [
+//             "s103"
+//         ],
+//         "size": "small",
+//         "neuterSpayed": false,
+//         "trained": false,
+//         "vaccine": false,
+//         "owner": {
+//             "_id": "s112",
+//             "name": "William Damian",
+//             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
+//             "loc": {
+//                 "address": "haifa",
+//                 "lat": 21313123123,
+//                 "lng": 23132131221
+//             }
+//         },
+//         "tags": [
+//             "parrot",
+//             "small"
+//         ],
+//         "comments": [
+//             {
+//                 "id": "rev101",
+//                 "txt": "",
+//                 "created": 1622299786455,
+//                 "by": {
+//                     "_id": "",
+//                     "fullname": "",
+//                     "imgUrl": ""
+//                 }
+//             }
+//         ]
+//     },
+//     {
+//         "_id": "p120",
+//         "addedAt": 1622299586455,
+//         "type": "Cat",
+//         "name": "Murka",
+//         "breed": "australian shepherd",
+//         "title": "Beatiful large female cat",
+//         "desc": "A cute fluffy cat that loves eating and sleeping for 21 hours",
+//         "imgUrls": [
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622575123/petMe/cats/cat4/photo-1552944249-481c99e23e97_y73yc5.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622575114/petMe/cats/cat4/photo-1552944150-6dd1180e5999_tsrlj7.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622575166/petMe/cats/cat4/photo-1467213787150-b124b42f0dd8_hkpljk.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622575151/petMe/cats/cat4/photo-1565593478738-eba687e8dab6_ewp9kq.jpg",
+//             "https://res.cloudinary.com/dstqymucm/image/upload/v1622575135/petMe/cats/cat4/photo-1549458452-964cbc892864_pfzqgm.jpg"
+//         ],
+//         "gender": "female",
+//         "age": "adult",
+//         "isAdopted": false,
+//         "likes": "99",
+//         "likedBy": [
+//             "s103"
+//         ],
+//         "size": "small",
+//         "neuterSpayed": false,
+//         "trained": false,
+//         "vaccine": false,
+//         "owner": {
+//             "_id": "s112",
+//             "name": "William Damian",
+//             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
+//             "loc": {
+//                 "address": "haifa",
+//                 "lat": 21313123123,
+//                 "lng": 23132131221
+//             }
+//         },
+//         "tags": [
+//             "cat",
+//             "small"
+//         ],
+//         "comments": [
+//             {
+//                 "id": "rev101",
+//                 "txt": "",
+//                 "created": 1622299786455,
+//                 "by": {
+//                     "_id": "",
+//                     "fullname": "",
+//                     "imgUrl": ""
+//                 }
+//             }
+//         ]
 //     }
 // ]
-
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/pet' : 'http://localhost:3030/api/pet'
-let gPets=[]
-
-
-const STORAGE_KEY = 'pets'
-
-async function query(filterBy = '') {
-    var queryStr = (!filterBy) ? '' : `?gender=${filterBy.gender}&age=${filterBy.age}&type=${filterBy.type}&location=${filterBy.location}&size=${filterBy.size}`
-    try {
-        return httpService.get(`pet${queryStr}`)
-    } catch (err) {
-        throw err
-    }
-}
-
-async function add(pet) {
-    if (pet._id) {
-    }
-    let addPet = await storageService.post(STORAGE_KEY, pet)
-    return addPet
-
-    
-}
-
-async function addComment(newComment) {
-    console.log(newComment)
-
-    return await storageService.postComment(STORAGE_KEY, newComment)
-}
-
-function remove(petId) {
-    storageService.remove(STORAGE_KEY, petId)
-}
-
-async function getPetByid(petId) {
-
-    let pet = await httpService.get(`pet/${petId}`)
-    return pet
-}
-
-async function toggleLike(petId, userId, act, idx) {
-    const petIdx = gPets.findIndex(pet => pet._id === petId)
-
-    return Promise.resolve(petId, gPets[petIdx].likedBy)
-}

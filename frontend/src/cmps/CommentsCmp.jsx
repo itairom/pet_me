@@ -57,8 +57,8 @@ class _CommentsCmp extends Component {
                 <h3 className="comments-head">Comments</h3>
                 <div className="comments-body">
                     <ul className="comments-list clean-list">
-                        { pet.comments.map(comment =>
-                            <div key={ comment.id }>
+                        { pet.comments.map((comment, idx) =>
+                            <div key={ comment.id + idx }>
                                 <li className="comment-preview-card flex column">
                                     <div className="comment-header flex">
                                         <img src={ comment.by.imgUrl } alt="skeleton" />
@@ -84,9 +84,9 @@ class _CommentsCmp extends Component {
                                 onChange={ this.handleChange }
                                 value={ this.state.commentToEdit.txt }
                                 placeholder="comment your heart!"
-                                autocomplete="off">
+                                autoComplete="off">
                             </textarea>
-                            <div class="modal-btns flex">
+                            <div className="modal-btns flex">
                                 <button className="close-modal">close</button>
                                 <button className="post-comment">post</button>
                             </div>
