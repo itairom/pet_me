@@ -108,9 +108,9 @@ class _PetApp extends React.Component {
                     <h2 className="type-cards-title">Waiting long time to adopt</h2>
                     <div className="preview-cards">
                         <PetPreview pet={pets[9]} key={pets[9]._id} />
-                        {/* <PetPreview pet={pets[13]} key={pets[13]._id} /> */}
+                        <PetPreview pet={pets[13]} key={pets[13]._id} />
                         <PetPreview pet={pets[1]} key={pets[1]._id} />
-                        {/* <PetPreview pet={pets[14]} key={pets[14]._id} /> */}
+                        <PetPreview pet={pets[14]} key={pets[14]._id} />
                     </div>
                 </section>
                 <section className="type-cards preview-homepage">

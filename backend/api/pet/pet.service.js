@@ -1,39 +1,58 @@
-const fs = require('fs')
-const gPets = require('../../data/pet.json')
+const dbService = require('../../services/db.service')
+const logger = require('../../services/logger.service')
+const ObjectId = require('mongodb').ObjectId
 
-async function query(entityType, filterBy = '') {
+// const fs = require('fs')
+// const gPets = require('../../data/pet.json')
 
+// async function query(entityType, filterBy = '') {
+
+//     const { type, age, location, gender, size } = filterBy
+
+//     try {
+//         const entities = await gPets// JSON.parse(localStorage.getItem(entityType)) || []
+
+//         // if (type) {
+//         //     entities = entities.filter(entity => entity.type.includes(type))
+//         // }
+//         // if (age) {
+//         //     entities = entities.filter(entity => entity.age.includes(age))
+//         // }
+//         // if (location) {
+//         //     entities = entities.filter(entity => entity.owner.loc.address.toUpperCase().includes(location.toUpperCase()))
+//         // }
+//         // if (gender) {
+//         //     entities = entities.filter(entity => entity.gender === gender)
+//         // }
+//         // if (size) {
+//         //     entities = entities.filter(entity => entity.size.toUpperCase().includes(size.toUpperCase()))
+//         // }
+//         // // save(entityType, entities)
+
+//         return entities
+//     }
+
+//     catch {
+//         logger.error('cannot find pets', err)
+//         throw err
+//     }
+
+// }
+async function query(filterBy = '') {
     const { type, age, location, gender, size } = filterBy
-
+    // const criteria = _buildCriteria(filterBy)
+    
     try {
-        const entities = await gPets// JSON.parse(localStorage.getItem(entityType)) || []
-
-        // if (type) {
-        //     entities = entities.filter(entity => entity.type.includes(type))
-        // }
-        // if (age) {
-        //     entities = entities.filter(entity => entity.age.includes(age))
-        // }
-        // if (location) {
-        //     entities = entities.filter(entity => entity.owner.loc.address.toUpperCase().includes(location.toUpperCase()))
-        // }
-        // if (gender) {
-        //     entities = entities.filter(entity => entity.gender === gender)
-        // }
-        // if (size) {
-        //     entities = entities.filter(entity => entity.size.toUpperCase().includes(size.toUpperCase()))
-        // }
-        // // save(entityType, entities)
-
-        return entities
-    }
-
-    catch {
+        const collection = await dbService.getCollection('pet')
+        const pets = await collection.find({}).toArray()
+        return pets
+    } catch (err) {
         logger.error('cannot find pets', err)
         throw err
     }
-
 }
+
+
 
 function get(entityType, entityId) {
     return query(entityType)
@@ -85,7 +104,18 @@ function _makeId(length = 5) {
     return text
 }
 
+function _buildCriteria(filterBy) {
+    const { type, age, location, gender, size } = filterBy
 
+    const criteria = {}
+    if (filterBy.type === type ) {
+        criteria.type = { $regex: filterBy.type, $options: 'i' }
+        // criteria.type=type
+        criteria.or()
+    }
+   
+    return criteria
+}
 
 module.exports = {
     query, get

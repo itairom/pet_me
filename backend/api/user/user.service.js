@@ -1,8 +1,8 @@
 
 const dbService = require('../../services/db.service')
-// const logger = require('../../services/logger.service')
+const logger = require('../../services/logger.service')
 const reviewService = require('../review/review.service')
-const gUsers = require('../../data/user.json')
+// const gUsers = require('../../data/user.json')
 
 
 module.exports = {
@@ -15,15 +15,21 @@ module.exports = {
     updateRequest
 }
 
-async function query() {
-
+async function query(filterBy = {}) {
+    // const criteria = _buildCriteria(filterBy)
     try {
-        const entities = await gUsers
-        return entities
-    }
-
-    catch (err) {
-        logger.error('cannot find userz', err)
+        const collection = await dbService.getCollection('user')
+        var users = await collection.find({}).toArray()
+        users = users.map(user => {
+            delete user.password
+            // user.createdAt = ObjectId(user._id).getTimestamp()
+            // Returning fake fresh data
+            // user.createdAt = Date.now() - (1000 * 60 * 60 * 24 * 3) // 3 days ago
+            return user
+        })
+        return users
+    } catch (err) {
+        logger.error('cannot find users', err)
         throw err
     }
 }
@@ -31,26 +37,21 @@ async function query() {
 async function getById(userId) {
     try {
         const collection = await dbService.getCollection('user')
-        const user = await collection.findOne({ '_id': ObjectId(userId) })
+        // const user = await collection.findOne({ '_id': ObjectId(userId) })
+        const user = await collection.findOne(userId)
         delete user.password
-
-        user.givenReviews = await reviewService.query({ byUserId: ObjectId(user._id) })
-        user.givenReviews = user.givenReviews.map(review => {
-            delete review.byUser
-            return review
-        })
-
         return user
     } catch (err) {
         logger.error(`while finding user ${userId}`, err)
         throw err
     }
 }
-async function getByUsername(username) {
-    const entities = await gUsers
-    try {
-        return entities.find(entity => entity.username === username)
 
+async function getByUsername(username) {
+    try {
+        const collection = await dbService.getCollection('user')
+        const user = await collection.findOne({ username })
+        return user
     } catch (err) {
         logger.error(`while finding user ${username}`, err)
         throw err
@@ -69,14 +70,14 @@ async function remove(userId) {
 
 async function updateRequest(request) {
     try {
-    const entities = await gUsers
-    // let user = entities.find(user => user._id === request.userId)
-    // console.log("🚀 ~ file: user.service.js ~ line 75 ~ updateRequest ~ user", user)
-    // user.pets.find((pet)=> {pet._id===petId})
+        const entities = await gUsers
+        // let user = entities.find(user => user._id === request.userId)
+        // console.log("🚀 ~ file: user.service.js ~ line 75 ~ updateRequest ~ user", user)
+        // user.pets.find((pet)=> {pet._id===petId})
 
-    return request
+        return request
     }
-    catch(err){
+    catch (err) {
         logger.error(`cannot add req `, err)
         throw err
     }

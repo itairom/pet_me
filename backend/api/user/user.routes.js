@@ -8,7 +8,6 @@ const router = express.Router()
 
 router.get('/', getUsers)
 router.post('/login', getUser)
-router.post('/login', getUser)
 router.put('/request', updateRequest)
 
 module.exports = router
