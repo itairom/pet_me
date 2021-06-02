@@ -6,7 +6,8 @@ export const storageService = {
     post,
     put,
     remove,
-    save
+    save,
+    postComment
 }
 
 function query(entityType, filterBy = '') {
@@ -53,6 +54,32 @@ function post(entityType, newEntity) {
             entities.push(newEntity)
             save(entityType, entities)
             return newEntity
+        })
+}
+
+function postComment(entityType, newComment) {
+    const { txt, petId, loggedInUser } = newComment
+    console.log('im in storageService')
+
+    return query(entityType)
+        .then(entities => {
+            console.log("🚀 ~ file: asyncStorageService.js ~ line 38 ~ query ~ entities", entities)
+            const pet = entities.find((entity) => entity._id === petId)
+            const newComment = {
+                "id": petId,
+                "txt": txt,
+                "created": Date.now(),
+                "by": {
+                    "_id": loggedInUser._id,
+                    "fullname": loggedInUser.fullname,
+                    "imgUrl": loggedInUser.imgUrl
+                }
+            }
+            pet.comments.push(newComment)
+            const idx = entities.findIndex(entity => entity._id === petId)
+            entities.splice(idx, 1, pet)
+            save(entityType, entities)
+            return newComment
         })
 }
 
