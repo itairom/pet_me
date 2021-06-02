@@ -3,6 +3,7 @@ import { petService } from '../services/petService'
 import { utilService } from '../services/utilService'
 import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
+import { adoptRequest } from '../store/actions/userActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 import { GoogleMap } from '../cmps/GoogleMap';
@@ -39,8 +40,18 @@ class _PetDetails extends Component {
                 this.setState({ pet })
                 this.checkUserLike(pet)
             })
+    }
 
-        // console.log('pets', pets)
+    onAdoptRequest = () => {
+        const request = {
+            fullname: this.props.loggedInUser.fullname,
+            userId: this.props.loggedInUser._id,
+            date: Date.now(),
+            message: 'Im intrested to adopt your pet.. call me up',
+            petId: this.state.pet._id
+        }
+
+        this.props.adoptRequest(request)
     }
 
     handleChange = ({ target }) => {
@@ -50,8 +61,6 @@ class _PetDetails extends Component {
     }
 
     checkUserLike = (pet) => {
-        console.log(pet)
-        console.log(this.props)
         // const id = this.props.match.params.petId;
         // const pet = this.props.pets.find(pet => pet._id === petId)
         const { loggedInUser } = this.props
@@ -223,8 +232,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     toggleLike,
-    loadPets
-    // updatePet
+    loadPets,
+    adoptRequest
 }
 
 export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)

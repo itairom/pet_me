@@ -1,204 +1,10 @@
 import { storageService } from './asyncStorageService'
+import { httpService } from '../services/httpService'
 
 
 
-const gUsers = [
-  {
-    "_id": "s101",
-    "username": "mikeY",
-    "fullname": "Mike York",
-    "password": "123",
-    "title": "pets lover",
-    "desc": "Hello evreybody! ",
-    "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
-    "isOwner": true,
-    "tags": [
-      "dogs",
-      "cows"
-    ],
-    "loc": {
-      "address": "Haifa",
-      "lat": 21313123123,
-      "lng": 23132131221
-    },
-    "pets": [
-      {
-        "_id": "p109",
-        "isAdopted": false,
-        "adoptQue": [
-          {
-            "userId": "123",
-            "message": "lolo",
-            "chatId": "i11"
-          },
-          {
-            "userId": "123",
-            "message": "i like to addopt",
-            "chatId": "ch23"
-          }
-        ]
-      },
-      {
-        "_id": "p110",
-        "isAdopted": false,
-        "adoptQue": [
-          {
-            "userId": "s102",
-            "message": "Would love to addopt your rabbit!!",
-            "chatId": "i11"
-          },
-          {
-            "userId": "s104",
-            "message": "i like to addopt",
-            "chatId": "ch23"
-          }
-        ]
-      }
-    ],
-    "reviews": [
-      {
-        "id": "rev101",
-        "txt": "great farm",
-        "rate": 4,
-        "by": {
-          "_id": "u102",
-          "fullname": "user2",
-          "imgUrl": "/img/img2.jpg"
-        }
-      }
-    ]
-  },
-  {
-    "_id": "s102",
-    "username": "JosephG",
-    "fullname": "Joseph Gonzalez",
-    "password": "123",
-    "title": "Pets lover!",
-    "desc": "Hello evreybody! ",
-    "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133443/dogs/dog1/owner_hiazkr.jpg",
-    "isOwner": true,
-    "tags": [
-      "dogs",
-      "cows"
-    ],
-    "loc": {
-      "address": "tel aviv",
-      "lat": 21313123123,
-      "lng": 23132131221
-    },
-    "pets": [
-      {
-        "_id": "p102",
-        "isAdopted": false,
-        "adoptQue": [
-          {
-            "userId": "123",
-            "message": "lolo",
-            "chatId": "i11"
-          },
-          {
-            "userId": "123",
-            "message": "i like to addopt",
-            "chatId": "ch23"
-          }
-        ]
-      }
-    ],
-    "reviews": [
-      {
-        "id": "rev101",
-        "txt": "great farm",
-        "rate": 4,
-        "by": {
-          "_id": "u102",
-          "fullname": "user2",
-          "imgUrl": "/img/img2.jpg"
-        }
-      }
-    ]
-  },
-  {
-    "_id": "s103",
-    "username": "MadisonJ",
-    "fullname": "Madison Jessica",
-    "password": "123",
-    "title": "Pets lover!",
-    "desc": "Hello evreybody! ",
-    "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622144695/petMe/cats/cat1/houcine-ncib-B4TjXnI0Y2c-unsplash_xtt5d6.jpg",
-    "isOwner": true,
-    "tags": [
-      "dogs",
-      "cows"
-    ],
-    "loc": {
-      "address": "tel aviv",
-      "lat": 21313123123,
-      "lng": 23132131221
-  },
-    "pets": [
-      {
-        "_id": "p103",
-        "isAdopted": false,
-        "adoptQue": [
-        
-        ]
-      }
-    ],
-    "reviews": [
-      {
-        "id": "rev101",
-        "txt": "great farm",
-        "rate": 4,
-        "by": {
-          "_id": "u102",
-          "fullname": "user2",
-          "imgUrl": "/img/img2.jpg"
-        }
-      }
-    ]
-  },  {
-    "_id": "s104",
-    "username": "JackC",
-    "fullname": "Jack Connor",
-    "password": "123",
-    "title": "Pets lover!",
-    "desc": "Hello evreybody! ",
-    "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
-    "isOwner": true,
-    "tags": [
-      "dogs",
-      "cows"
-    ],
-    "loc": {
-      "address": "Haifa",
-      "lat": 21313123123,
-      "lng": 23132131221
-  },
-    "pets": [
-      {
-        "_id": "p104",
-        "isAdopted": false,
-        "adoptQue": [
-        
-        ]
-      }
-    ],
-    "reviews": [
-      {
-        "id": "rev101",
-        "txt": "great farm",
-        "rate": 5,
-        "by": {
-          "_id": "u102",
-          "fullname": "user2",
-          "imgUrl": "/img/img2.jpg"
-        }
-      }
-    ]
-  }
 
-
-]
+// ]
 
 export const userService = {
   login,
@@ -209,29 +15,29 @@ export const userService = {
   remove,
   update,
   getLoggedinUser,
+  adoptRequest
 }
 
 // window.userService = userService
 
-async function getUsers(filterBy = '') {
-  let users = await storageService.query()
-  if (!users || !users.length) {
-    console.log('in');
-    users = gUsers;
-    storageService.save('user', users);
-  }
-  return users;
-}
-
-
-// function getUsers() {
-//     return storageService.query('user')
-//     // return httpService.get(`user`)
+// async function getUsers(filterBy = '') {
+//   let users = await storageService.query()
+//   if (!users || !users.length) {
+//     console.log('in');
+//     users = gUsers;
+//     storageService.save('user', users);
+//   }
+//   return users;
 // }
 
+
+function getUsers() {
+    return httpService.get(`user`)
+}
+
 function getById(userId) {
-  return storageService.get('user', userId)
-  // return httpService.get(`user/${userId}`)
+  // return storageService.get('user', userId)
+  return httpService.get(`user/${userId}`)
 }
 function remove(userId) {
   return storageService.remove('user', userId)
@@ -245,15 +51,24 @@ async function update(user) {
   if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
 }
 
+async function adoptRequest(request){
+  // return storageService.put('user/req', user)
+  return httpService.put('user/request', request)
+  // Handle case in which admin updates other user's details
+  // if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
+}
+
+
+
 
 
 async function login(userCred) {
-  const users = await storageService.query('user')
-  const user = users.find(user => user.username === userCred.username)
-  return _saveLocalUser(user)
+  // const users = await storageService.query('user')
+  // const user = users.find(user => user.username === userCred.username)
+  // return _saveLocalUser(user)
 
-  // const user = await httpService.post('auth/login', userCred)
-  // if (user) return _saveLocalUser(user)
+  const user = await httpService.post('user/login', userCred)
+  if (user) return _saveLocalUser(user)
 }
 async function signup(userCred) {
   const user = await storageService.post('user', userCred)

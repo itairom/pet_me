@@ -47,11 +47,12 @@
 .user-pets {
     position: absolute;
     background-color: rgb(209, 230, 230);
-    width: 600px;
+    width: 700px;
     right: 50px;
 }
 
 .adopt-card {
+    margin-top: 40px;
     img {
         height: 200px;
         width: 150px;
@@ -68,6 +69,9 @@
 .adopt-table {
     img {
         margin-right: 20px;
+    }
+    td{
+        padding: 10px;
     }
 }
 

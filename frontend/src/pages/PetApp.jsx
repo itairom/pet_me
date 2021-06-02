@@ -30,7 +30,7 @@ class _PetApp extends React.Component {
             <section className="main-container">
                 <section className="hero full ">
                     <div className="hero-content">
-                        {/* < PetFilter /> */}
+                        < PetFilter />
                         <h1>Find your</h1>
                         <h1> best friend</h1>
                     </div>
@@ -108,27 +108,18 @@ class _PetApp extends React.Component {
                     <h2 className="type-cards-title">Waiting long time to adopt</h2>
                     <div className="preview-cards">
                         <PetPreview pet={pets[9]} key={pets[9]._id} />
-                        <PetPreview pet={pets[13]} key={pets[13]._id} />
+                        {/* <PetPreview pet={pets[13]} key={pets[13]._id} /> */}
                         <PetPreview pet={pets[1]} key={pets[1]._id} />
-                        <PetPreview pet={pets[14]} key={pets[14]._id} />
+                        {/* <PetPreview pet={pets[14]} key={pets[14]._id} /> */}
                     </div>
                 </section>
                 <section className="type-cards preview-homepage">
                     <h2 className="type-cards-title">Most Liked Pets Available For Adoption</h2>
                     <div className="preview-cards">
-                        <div>
-                            <PetPreview pet={pets[4]} key={pets[4]?._id} />
-                        </div>
-                        <div>
-                            <PetPreview pet={pets[5]} key={pets[5]?._id} />
-                        </div>
-                        <div>
-                            <PetPreview pet={pets[6]} key={pets[6]?._id} />
-                        </div>
-                        <div>
-                            <PetPreview pet={pets[7]} key={pets[7]?._id} />
-                        </div>
-
+                        <PetPreview pet={pets[4]} key={pets[4]?._id} />
+                        <PetPreview pet={pets[5]} key={pets[5]?._id} />
+                        <PetPreview pet={pets[6]} key={pets[6]?._id} />
+                        <PetPreview pet={pets[7]} key={pets[7]?._id} />
                     </div>
                 </section>
 
