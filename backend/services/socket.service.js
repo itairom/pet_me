@@ -33,6 +33,16 @@ function connectSockets(http, session) {
             // logger.debug('Session ID is', socket.handshake.sessionID)
             socket.myTopic = topic
         })
+        socket.on('adopt-request', topic => {
+            console.log('backend -adopting')
+            if (socket.myTopic === topic) return;
+            if (socket.myTopic) {
+                socket.leave(socket.myTopic)
+            }
+            socket.join(topic)
+            // logger.debug('Session ID is', socket.handshake.sessionID)
+            socket.myTopic = topic
+        })
         socket.on('chat newMsg', msg => {
             console.log('Msg', msg);
             // emits to all sockets:
@@ -40,9 +50,20 @@ function connectSockets(http, session) {
             // emits only to sockets in the same room
             gIo.to(socket.myTopic).emit('chat addMsg', msg)
         })
+        socket.on('yuval', msg => {
+            console.log('Msg yuval', msg);
+            // emits to all sockets:
+            // gIo.emit('chat addMsg', msg)
+            // emits only to sockets in the same room
+            gIo.to(socket.myTopic).emit('eyal', msg)
+        })
         socket.on('user-watch', userId => {
             socket.join(userId)
         })
+        // socket.on('adopt-request', data => {
+        //     console.log(data)
+        //     // io.emit(data)
+        // })
 
     })
 }

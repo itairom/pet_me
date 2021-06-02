@@ -6,6 +6,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../store/actions/userActions'
 import { socketService } from '../services/socketService'
+import { store } from 'react-notifications-component';
 
 
 
@@ -18,10 +19,23 @@ class _Header extends Component {
 
     componentDidMount() {
         // console.log(this.props);
-        socketService.on(socketService.SOCKET_EVENT_ADOPT_REQUEST, (data) => {
+        socketService.on('eyal', (data) => {
+            this.setState({ isRequested: true })
             console.log(data)
             console.log('requested from socket')
-            this.setState({ isRequested: true })
+            store.addNotification({
+                title: "Wonderful!",
+                message: data.message,
+                type: "info",
+                insert: "top-right",
+                container: "bottom-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                    duration: 5000,
+                    onScreen: true
+                }
+            });
         })
 
     }
@@ -48,7 +62,7 @@ class _Header extends Component {
                     <img className="header-logo" src={ logo } alt="PetMe" />
                 </NavLink>
                 <div>
-                    <span>{ (this.state.isRequested) ? 'requests' : '' }</span>
+                    {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */ }
 
                 </div>
 

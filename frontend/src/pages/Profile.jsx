@@ -4,6 +4,8 @@ import Loader from '../assets/img/loaders/loader_3.svg' // relative path to imag
 import Pin from '../assets/img/svg/pin.svg' // relative path to image 
 import { petService } from '../services/petService'
 import { utilService } from '../services/utilService'
+import { socketService } from '../services/socketService'
+import { store } from 'react-notifications-component';
 
 
 import {
@@ -17,12 +19,30 @@ import {
 class _Profile extends Component {
     state = {
         userPets: []
-
     }
 
     componentDidMount() {
         this.onLoadPets()
         this.props.loadUsers()
+        console.log(this.props.loggedInUser)
+        // socketService.on('yuval', (data) => {
+        //     console.log('data recived', data)
+        //     console.log('requested from socket')
+        //     console.log('loggedninuser', this.props.loggedInUser)
+        //     store.addNotification({
+        //         title: "Wonderful!",
+        //         message: data.message,
+        //         type: "info",
+        //         insert: "top-right",
+        //         container: "bottom-right",
+        //         animationIn: ["animate__animated", "animate__fadeIn"],
+        //         animationOut: ["animate__animated", "animate__fadeOut"],
+        //         dismiss: {
+        //             duration: 5000,
+        //             onScreen: true
+        //         }
+        //     });
+        // })
     }
 
     onLoadPets = () => {
@@ -41,32 +61,32 @@ class _Profile extends Component {
 
         const { loggedInUser } = this.props
         const { userPets } = this.state
-        if (!loggedInUser) return <img src={Loader} alt="loadnig" />
-        if (!userPets) return <img src={Loader} alt="loadnig" />
+        if (!loggedInUser) return <img src={ Loader } alt="loadnig" />
+        if (!userPets) return <img src={ Loader } alt="loadnig" />
         console.log("🚀 ~ file: Profile.jsx ~ line 45 ~ _Profile ~ render ~ userPets", userPets)
         return (
             <section className="main-profile">
                 <section className="user-card">
                     <section className="user-info">
-                        <h1>{loggedInUser.fullname}</h1>
-                        <img src={loggedInUser.imgUrl} alt="img" />
+                        <h1>{ loggedInUser.fullname }</h1>
+                        <img src={ loggedInUser.imgUrl } alt="img" />
                         <div className="location-info">
-                            <img src={Pin} alt="location info" />
-                            <div>{loggedInUser.loc.address}</div>
+                            <img src={ Pin } alt="location info" />
+                            <div>{ loggedInUser.loc.address }</div>
                         </div>
                     </section>
                 </section>
 
                 <section className="user-pets">
                     <h1>Your pets</h1>
-                    {userPets.map((pet, idx) => {
+                    { userPets.map((pet, idx) => {
                         return (
 
                             <div className="adopt-card">
-                                <h2>{pet.name}</h2>
+                                <h2>{ pet.name }</h2>
 
                                 <section className="adopt-table">
-                                    <img src={pet.imgUrls[0]}
+                                    <img src={ pet.imgUrls[0] }
                                         alt="pet" />
                                     <table>
                                         <thead className="table-head">
@@ -77,21 +97,21 @@ class _Profile extends Component {
                                             </tr>
                                         </thead>
                                         <tbody className="table-body">
-                                            {loggedInUser.pets[idx]
+                                            { loggedInUser.pets[idx]
                                                 .adoptQue.map(pet => {
                                                     return (<tr>
-                                                        <td>{pet.fullname}</td>
-                                                        <td>{pet.message}</td>
-                                                        <td>{ utilService.timeSince(pet.date,'ago') }</td>
+                                                        <td>{ pet.fullname }</td>
+                                                        <td>{ pet.message }</td>
+                                                        <td>{ utilService.timeSince(pet.date, 'ago') }</td>
                                                     </tr>)
-                                                })}
+                                                }) }
                                         </tbody>
                                     </table>
                                 </section>
                             </div>
 
                         )
-                    })}
+                    }) }
 
                 </section>
 

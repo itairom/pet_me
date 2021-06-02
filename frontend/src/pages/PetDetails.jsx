@@ -28,8 +28,13 @@ class _PetDetails extends Component {
     }
 
     componentDidMount() {
-
         const id = this.props.match.params.petId;
+        socketService.setup()
+        socketService.emit('adopt-request', id)
+        socketService.on('eyal', () => {
+            console.log('im on!')
+        })
+
         this.props.loadPets()
             .then(() => {
                 const pet = this.props.pets.find(pet => pet._id === id)
@@ -64,20 +69,21 @@ class _PetDetails extends Component {
 
     onAdopt = () => {
         const { pet, owner, loggedInUser } = this.state
-        console.log('pet, owner, loggedInUser', pet, owner, loggedInUser)
-        if (!loggedInUser) return alert('Please login in order to adopt this pet')
+        // console.log('pet, owner, loggedInUser', pet, owner, loggedInUser)
+        if (!loggedInUser) return alert('Please login in order to adopt this pet ')
         if (loggedInUser.pets.find(loggedInUserPet => loggedInUserPet._id === pet._id)) return alert('You cannot adopt you own pet')
         this.setState({ isAttend: true })
         //new
         const data = {
             userId: loggedInUser._id,
             date: Date.now(),
-            message: `${loggedInUser.fullname} would like to adopt ${pet.name}`,
+            message: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click to view`,
             fullname: loggedInUser.fullname
         }
         // AdoptAction()
-        socketService.emit(socketService.SOCKET_EVENT_ADOPT_REQUEST, data)
+        socketService.emit('yuval', data)
     }
+
 
     // {
     //     "_id": "p102",
