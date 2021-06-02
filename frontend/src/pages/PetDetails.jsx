@@ -1,34 +1,30 @@
 import React, { Component } from 'react'
 import { petService } from '../services/petService'
 import { utilService } from '../services/utilService'
+import { socketService } from '../services/socketService'
 import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
-import { adoptRequest } from '../store/actions/userActions'
+import { loadUsers, AdoptAction } from '../store/actions/userActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
+import { HeartLike } from '../cmps/HeartLike'
 import { GoogleMap } from '../cmps/GoogleMap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.min.css';
-import { faEnvelope, faHeart, faShare, faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faShare, faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 // import TodayIcon from '@material-ui/icons/Today';
 import SportsIcon from '@material-ui/icons/Sports';
-
-// import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
-// import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
-// import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
-// import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
-// import { ReactComponent as RedHeart } from '../assets/img/svg/red-heart.svg'
-
-import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 class _PetDetails extends Component {
     state = {
         pet: null,
+        owner: null,
+        loggedInUser: null,
         isEditMode: false,
         isOpanModal: false,
-        isLiked: false
+        isAttend: false
     }
 
     componentDidMount() {
@@ -37,56 +33,18 @@ class _PetDetails extends Component {
         this.props.loadPets()
             .then(() => {
                 const pet = this.props.pets.find(pet => pet._id === id)
-                this.setState({ pet })
-                this.checkUserLike(pet)
+                this.props.loadUsers()
+                    .then(() => {
+                        const user = this.props.users.find(user => user._id === pet.owner._id)
+                        this.setState({ pet, owner: user, loggedInUser: this.props.loggedInUser })
+                    })
             })
-    }
-
-    onAdoptRequest = () => {
-        const request = {
-            fullname: this.props.loggedInUser.fullname,
-            userId: this.props.loggedInUser._id,
-            date: Date.now(),
-            message: 'Im intrested to adopt your pet.. call me up',
-            petId: this.state.pet._id
-        }
-
-        this.props.adoptRequest(request)
     }
 
     handleChange = ({ target }) => {
         const { name } = target
         const { value } = target
         this.setState({ pet: { ...this.state.pet, [name]: value } })
-    }
-
-    checkUserLike = (pet) => {
-        // const id = this.props.match.params.petId;
-        // const pet = this.props.pets.find(pet => pet._id === petId)
-        const { loggedInUser } = this.props
-        if (!loggedInUser) return
-        const userId = pet.likedBy.find(userId => userId === loggedInUser._id)
-        const isAlreadyLiked = userId ? true : false;
-        this.setState({ isLiked: !isAlreadyLiked })
-    }
-
-    onLike = (petId) => {
-        const id = this.props.match.params.petId;
-        const pet = this.props.pets.find(pet => pet._id === id)
-        const { loggedInUser } = this.props
-
-        if (!loggedInUser) return console.log('you are in guest mode, please logging to like the pet')
-
-        console.log('loggedInUser', loggedInUser)
-        const userId = pet.likedBy.find(userId => userId === loggedInUser._id)
-        const isAlreadyLiked = userId ? true : false;
-        this.setState({ isLiked: !isAlreadyLiked })
-        console.log(this.state.isLiked)
-        if (!isAlreadyLiked) this.props.toggleLike(petId, loggedInUser._id, 1)
-        else {
-            const idx = pet.likedBy.findIndex(userId => userId === loggedInUser._id)
-            this.props.toggleLike(petId, userId, -1, idx)
-        }
     }
 
     onShare = () => {
@@ -104,9 +62,42 @@ class _PetDetails extends Component {
         this.setState({ isEditMode: !this.state.isEditMode })
     }
 
+    onAdopt = () => {
+        const { pet, owner, loggedInUser } = this.state
+        console.log('pet, owner, loggedInUser', pet, owner, loggedInUser)
+        if (!loggedInUser) return alert('Please login in order to adopt this pet')
+        if (loggedInUser.pets.find(loggedInUserPet => loggedInUserPet._id === pet._id)) return alert('You cannot adopt you own pet')
+        this.setState({ isAttend: true })
+        //new
+        const data = {
+            userId: loggedInUser._id,
+            date: Date.now(),
+            message: `${loggedInUser.fullname} would like to adopt ${pet.name}`,
+            fullname: loggedInUser.fullname
+        }
+        // AdoptAction()
+        socketService.emit(socketService.SOCKET_EVENT_ADOPT_REQUEST, data)
+    }
+
+    // {
+    //     "_id": "p102",
+    //     "isAdopted": false,
+    //     "adoptQue": [
+    //       {
+    //         "userId": "123",
+    //         "message": "lolo",
+    //         "chatId": "i11"
+    //       },
+    //       {
+    //         "userId": "123",
+    //         "message": "i like to addopt",
+    //         "chatId": "ch23"
+    //       }
+
+
     //if the user clicked attend let the user reclick to undo
     toggleAdopted = () => {
-        this.setState({ pet: { ...this.state.pet, isAttend: !this.state.pet.isAttend } })
+        this.setState({ isAttend: true })
     }
 
     onRemovePet = () => {
@@ -115,10 +106,6 @@ class _PetDetails extends Component {
     }
 
     render() {
-        // console.log('this.state', this.state)
-        const { isLiked } = this.state
-        // const id = this.props.match.params.petId;
-        // const pet = this.props.pets.find(pet => pet._id === id);
         const { pet } = this.state
         if (!pet) return <h1>loading</h1>
 
@@ -126,25 +113,24 @@ class _PetDetails extends Component {
             <section className="pet-details-section main-container">
                 <header className="details-header flex column">
                     <div className="details-title flex column">
-                        <h3 className="pet-name">{pet.name}</h3>
-                        {<span className="pet-location">{pet.owner.loc.address}</span>}
+                        <h3 className="pet-name">{ pet.name }</h3>
+                        { <span className="pet-location">{ pet.owner.loc.address }</span> }
                     </div>
                     <div className="details-header-btns">
                         {/* TODO: add icons +actions btns */ }
                         <span className="pet-likes">{ pet.likes }</span>
-                        <span className="pet-like-btn" onClick={ () => this.onLike(pet._id) }>
-                            <FavoriteIcon className={ !isLiked ? 'heart heart-empty' : 'heart heartfill' } />
-                        </span>
-                        <span className="share-pet" onClick={() => this.onShare}><FontAwesomeIcon icon={faShare} />
-                            <div className={'share-modal' + this.state.isOpanModal ? 'hide' : ''}>
+                        <HeartLike pet={ pet } />
+
+                        <span className="share-pet" onClick={ () => this.onShare }><FontAwesomeIcon icon={ faShare } />
+                            <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
                             </div>
                         </span>
                     </div>
                 </header>
                 <div className="details-imgs-container grid">
-                    {pet.imgUrls.map((imgUrl, idx) => {
-                        return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
-                    })}
+                    { pet.imgUrls.map((imgUrl, idx) => {
+                        return <img key={ pet._id + idx } src={ imgUrl } alt="skeleton" />
+                    }) }
                 </div>
                 <div className="details-main-section flex">
 
@@ -155,65 +141,66 @@ class _PetDetails extends Component {
                                 <span>{ pet.title }</span>
 
                             </div>
-                            <img src={pet.owner.imgUrl} alt="" />
+                            <img src={ pet.owner.imgUrl } alt="" />
                         </div>
                         <div className="info-body">
-                            <LongTxt className="pet-desc" txt={pet.desc} />
-                            {/* <p className="pet-desc">{ pet.desc }</p> */}
+                            <LongTxt className="pet-desc" txt={ pet.desc } />
+                            {/* <p className="pet-desc">{ pet.desc }</p> */ }
                             <ul className="pet-info-list clean-list">
                                 <li className="flex align-center">
-                                    <FontAwesomeIcon icon={faCalendar} />
+                                    <FontAwesomeIcon icon={ faCalendar } />
                                     <p>
-                                        Age: {(pet.age === 1) ? pet.age + ' year old' : pet.age + ' years old'}
+                                        Age: { (pet.age === 1) ? pet.age + ' year old' : pet.age + ' years old' }
                                     </p>
                                 </li>
                                 <li className="flex align-center">
-                                    <FontAwesomeIcon icon={faVenusMars} />
+                                    <FontAwesomeIcon icon={ faVenusMars } />
                                     <p>
-                                        Gender: {pet.gender}
+                                        Gender: { pet.gender }
                                     </p>
                                 </li>
                                 <li className="flex align-center">
-                                    <FontAwesomeIcon icon={faCat} />
+                                    <FontAwesomeIcon icon={ faCat } />
                                     <p>
-                                        Breed: {pet.breed}
+                                        Breed: { pet.breed }
                                     </p>
                                 </li>
                                 <li className="flex align-center">
-                                    <FontAwesomeIcon icon={faSyringe} />
+                                    <FontAwesomeIcon icon={ faSyringe } />
                                     <p>
-                                        vaccinated: {pet.vaccine ? 'yes' : 'no'}
+                                        vaccinated: { pet.vaccine ? 'yes' : 'no' }
                                     </p>
                                 </li>
                                 <li className="flex align-center">
-                                    <FontAwesomeIcon icon={faStethoscope} />
+                                    <FontAwesomeIcon icon={ faStethoscope } />
                                     <p>
-                                        Spayed/Neutered: {pet.neuterSpayed ? 'yes' : 'no'}
+                                        Spayed/Neutered: { pet.neuterSpayed ? 'yes' : 'no' }
                                     </p>
                                 </li>
                                 <li className="flex align-center">
                                     <SportsIcon />
                                     <p>
-                                        trained: {pet.trained ? 'yes' : 'no'}
+                                        trained: { pet.trained ? 'yes' : 'no' }
                                     </p>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div className="adopt-modal-container flex column">
-                        <span className="adoption-time adopt-sign">{'Looking for    a home for ' + utilService.timeSince(pet.addedAt)}</span>
-                        <span className="adoption-likes adopt-sign">{'Liked by ' + pet.likes + ' people!'}</span>
-                        <button className="adopt-btn el-btn">Adopt Me</button>
-                        <span><FontAwesomeIcon icon={faEnvelope} /> {pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com'}</span>
-                        <span><FontAwesomeIcon icon={faWhatsapp} /> 054-2312993</span>
+                        <span className="adoption-time adopt-sign">{ 'Looking for    a home for ' + utilService.timeSince(pet.addedAt) }</span>
+                        <span className="adoption-likes adopt-sign">{ 'Liked by ' + pet.likes + ' people!' }</span>
+                        <button className="adopt-btn el-btn" onClick={ () => this.onAdopt() }>{ (this.state.isAttend) ? 'Request sent' : 'Adopt Me' }</button>
+                        <span><FontAwesomeIcon icon={ faEnvelope } /> { pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com' }</span>
+                        <span><FontAwesomeIcon icon={ faWhatsapp } /> 054-2312993</span>
                     </div>
                 </div>
                 <div className="comments-section">
-                    <CommentsCmp pet={pet} key={pet._id} />
+                    <CommentsCmp pet={ pet } key={ pet._id } />
                 </div>
                 {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */ }
                 <section className="google-map section">
                     <h3 className="pet-loc">Where to find me</h3>
+                    {/* <span>{ pet.owner.loc.address }</span> */ }
                     <GoogleMap loc={ pet.owner.loc } />
                 </section>
             </section>
@@ -233,7 +220,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     toggleLike,
     loadPets,
-    adoptRequest
+    loadUsers,
+    // adoptRequest
+    // updatePet
 }
 
 export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)

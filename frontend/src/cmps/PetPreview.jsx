@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 // import "~slick-carousel/slick/slick-theme.css";
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";
+import { HeartLike } from './HeartLike'
 
 import Slider from "react-slick";
 
@@ -28,11 +29,9 @@ export class PetPreview extends React.Component {
         return (
             <section className="pet-card-container">
                 <Link key={ pet._id } to={ `/${pet._id}` }>
-
                         <Slider {...settings}>
                             {pet.imgUrls.map(imgUrl => <img src={imgUrl} alt="" key={pet._id}/>)}
                         </Slider>
-
                 </Link>
                 <div className="card-info">
                     <div className="pet-name-gender flex">
@@ -43,7 +42,7 @@ export class PetPreview extends React.Component {
                     <div className="pet-preview-host flex">
                         <p>{ pet.owner.name }</p>
                         <div className="pet-preview-likes flex">
-                            <Heart className="preview-heart" />
+                            <HeartLike pet={ pet } />
                             <span>{ pet.likes }</span>
                         </div>
                     </div>
