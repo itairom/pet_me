@@ -42,25 +42,25 @@ class _PetApp extends React.Component {
                     <h2 className="type-cards-title">Our sweet pet types</h2>
                     <div className="type-img">
                         <div>
-                            <Link to={`/explore/dog`} >
+                            <Link to={`/explore/?&type=dog`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622205405/dogs/dog3/frnach-dog3_npdovb.jpg" alt="card" />
                                 <h4>Dogs</h4>
                             </Link>
                         </div>
                         <div>
-                            <Link to="/explore/cat" >
+                        <Link to={`/explore/?&type=cat`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622203804/petMe/cats/cat_nnrk1h.jpg" alt="card" />
                                 <h4>Cats</h4>
                             </Link>
                         </div>
                         <div>
-                            <Link to="/explore/rabbit" >
+                        <Link to={`/explore/?&type=rabbit`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622206572/petMe/rabbit/rrabit3/1_2_chadja.jpg" alt="card" />
                                 <h4>Rabbits</h4>
                             </Link>
                         </div>
                         <div>
-                            <Link to="/explore/parrot" >
+                        <Link to={`/explore/?&type=parrot`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622213930/petMe/parrot/1_3_s1zdqk.jpg" alt="card" />
                                 <h4>Parrots</h4>
                             </Link>
@@ -129,16 +129,16 @@ class _PetApp extends React.Component {
                     <h2 className="type-cards-title">Most Liked Pets Available For Adoption</h2>
                     <div className="preview-cards">
                         <div>
-                            <PetPreview pet={pets[4]} key={pets[4]._id} />
+                            <PetPreview pet={pets[4]} key={pets[4]?._id} />
                         </div>
                         <div>
-                            <PetPreview pet={pets[5]} key={pets[5]._id} />
+                            <PetPreview pet={pets[5]} key={pets[5]?._id} />
                         </div>
                         <div>
-                            <PetPreview pet={pets[6]} key={pets[6]._id} />
+                            <PetPreview pet={pets[6]} key={pets[6]?._id} />
                         </div>
                         <div>
-                            <PetPreview pet={pets[7]} key={pets[7]._id} />
+                            <PetPreview pet={pets[7]} key={pets[7]?._id} />
                         </div>
 
                     </div>

@@ -38,7 +38,7 @@ class _PetFilter extends React.Component {
             <section className='pet-filter'>
                 <div className="filter-select gender-select">
                     <label >Gender</label>
-                    <label  >
+                    <label >
                         <select className='main-select' value={gender} onChange={this.handleChange} name="gender" >
                             <option className="any-placeholder" value="">Both</option>
                             <option value="male">Male</option>
@@ -72,10 +72,9 @@ class _PetFilter extends React.Component {
                 </div>
                 <div className="filter-select size-select">
                     <label >Size</label>
-                    <label  >
+                    <label >
                         <select className='main-select' value={size} onChange={this.handleChange} name="size" >
                             <option className="any-placeholder" value="">Any</option>
-
                             <option value="small">Small</option>
                             <option value="medium">Mediun</option>
                             <option value="big">Big</option>
@@ -87,11 +86,10 @@ class _PetFilter extends React.Component {
                     <input placeholder="Enter location" className='location-select' value={location} onChange={this.handleChange} name="location"  ></input>
                 </div>
 
-
                 <button className="search-btn" onClick={this.onSubmitFilter}>
                     <img className="filter-search" src={magnifyingGlass} alt="glass" />
                 </button>
-               
+
             </section>
         )
     }

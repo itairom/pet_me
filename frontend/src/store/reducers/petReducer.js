@@ -36,6 +36,17 @@ export function petReducer(state = initialState, action) {
                     return pet;
                 })
             }
+        case 'ADD_COMMENT':
+            return {
+                ...state,
+                pets: state.pets.map(pet => {
+                    if (pet._id === action.petId) {
+                        pet.comments.push(action.newComment)
+                        return pet;
+                    }
+                    return pet;
+                })
+            }
         case 'SET_FILTER':
             return { ...state, filter: action.filter }
         default:

@@ -24,10 +24,10 @@ export class PetPreview extends React.Component {
         };
         const { pet } = this.props
         if (!pet) <h1>Loading...</h1>
-        const gender = pet.gender === 'female' ? <Female className="gender" /> : <Male className="gender" />
+        const gender = pet?.gender === 'female' ? <Female className="gender" /> : <Male className="gender" />
         return (
             <section className="pet-card-container">
-                <Link key={pet._id} to={`/${pet._id}`}>
+                <Link key={ pet._id } to={ `/${pet._id}` }>
                     <div className="img-container">
                         <Slider {...settings}>
                             {pet.imgUrls.map(imgUrl => <img src={imgUrl} alt="" key={pet._id}/>)}
@@ -36,15 +36,15 @@ export class PetPreview extends React.Component {
                 </Link>
                 <div className="card-info">
                     <div className="pet-name-gender flex">
-                        <p>{pet.name}</p>
-                        {gender}
+                        <p>{ pet.name }</p>
+                        { gender }
                     </div>
-                    <p className="pet-title">{pet.title}</p>
+                    <p className="pet-title">{ pet.title }</p>
                     <div className="pet-preview-host flex">
-                        <p>{pet.owner.name}</p>
+                        <p>{ pet.owner.name }</p>
                         <div className="pet-preview-likes flex">
                             <Heart className="preview-heart" />
-                            <span>{pet.likes}</span>
+                            <span>{ pet.likes }</span>
                         </div>
                     </div>
                 </div>

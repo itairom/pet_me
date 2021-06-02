@@ -1,3 +1,4 @@
+// import { addComment } from '../store/actions/petActions';
 import { storageService } from './asyncStorageService'
 window.storageService = storageService;
 
@@ -6,7 +7,8 @@ export const petService = {
     getPetByid,
     add,
     remove,
-    toggleLike
+    toggleLike,
+    addComment
 }
 
 const gPets = [
@@ -41,9 +43,9 @@ const gPets = [
             "name": "Charlotte Sarah",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133335/dogs/dog3/owner_lwk54f.jpg",
             "loc": {
-                "address": "yafo",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "address": "Yaffo",
+                "lat": 32.073582,
+                "lng": 34.788052
             }
         },
         "tags": [
@@ -94,9 +96,9 @@ const gPets = [
             "name": "Joseph Gonzalez",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133443/dogs/dog1/owner_hiazkr.jpg",
             "loc": {
-                "address": "tel aviv",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "address": "Tel Aviv",
+                "lat": 32.085300,
+                "lng": 34.781769
             }
         },
         "tags": [
@@ -147,9 +149,9 @@ const gPets = [
             "name": "Madison Jessica",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622144695/petMe/cats/cat1/houcine-ncib-B4TjXnI0Y2c-unsplash_xtt5d6.jpg",
             "loc": {
-                "address": "tel aviv",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "address": "Ramat Gan",
+                "lat": 32.068424,
+                "lng": 34.824783
             }
         },
         "tags": [
@@ -201,8 +203,8 @@ const gPets = [
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622149457/petMe/frogs/frog1/owner_2_xiz5hx.jpg",
             "loc": {
                 "address": "Haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "lat": 32.794044,
+                "lng": 34.989571
             }
         },
         "tags": [
@@ -254,9 +256,9 @@ const gPets = [
             "name": "Harry Callum",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
             "loc": {
-                "address": "eilat",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "address": "Eilat",
+                "lat": 29.557669,
+                "lng": 34.951923
             }
         },
         "tags": [
@@ -308,9 +310,9 @@ const gPets = [
             "name": "Charlie Kyle",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622381042/petMe/hamster/owner_9_fhtzmn.jpg",
             "loc": {
-                "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "address": "Hadera",
+                "lat": 32.437408,
+                "lng": 34.925621
             }
         },
         "tags": [
@@ -361,9 +363,9 @@ const gPets = [
             "name": "Thomas	Joe",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622380429/dogs/dog5/owner_8_mcd1be.jpg",
             "loc": {
-                "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "address": "Beer Sheva",
+                "lat": 31.252974,
+                "lng": 34.791462
             }
         },
         "tags": [
@@ -414,9 +416,9 @@ const gPets = [
             "name": "George	Reece",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622380349/petMe/cats/cat2/owner_7_yhyw90.jpg",
             "loc": {
-                "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "address": "Modiin",
+                "lat": 31.936850,
+                "lng": 35.038509
             }
         },
         "tags": [
@@ -467,9 +469,9 @@ const gPets = [
             "name": "Mike York",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
             "loc": {
-                "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "address": "Jerusalem",
+                "lat": 31.768318,
+                "lng": 35.213711
             }
         },
         "tags": [
@@ -520,10 +522,10 @@ const gPets = [
             "name": "Mike York",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622145053/petMe/rabbit/rabbit1/owner_iss67z.jpg",
             "loc": {
-                "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
-              }
+                "address": "Netanya",
+                "lat": 32.329369,
+                "lng": 34.856541
+            }
         },
         "tags": [
             "dog",
@@ -573,9 +575,9 @@ const gPets = [
             "name": "Sophie	Tracy",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379848/petMe/parrot/parrot1/owner_5_nofgky.jpg",
             "loc": {
-                "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "address": "Ramat Havadiv",
+                "lat": 32.060500,
+                "lng": 34.808120
             }
         },
         "tags": [
@@ -626,9 +628,9 @@ const gPets = [
             "name": "William Damian",
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
-                "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "address": "Ramat Hasharon",
+                "lat": 32.136749,
+                "lng": 34.841042
             }
         },
         "tags": [
@@ -1079,18 +1081,10 @@ const gPets = [
 const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
-    console.log(filterBy)
-
-    //  filterBy = {
-    //     gender: 'female',
-    //     type: '',
-    //     age: '',
-    //     location: 'yafo'
-    // }
-
     let pets = await storageService.query(STORAGE_KEY, filterBy)
 
-    if (!pets || []) {
+    if (!pets || !pets.length) {
+        console.log('in');
         pets = gPets;
         storageService.save(STORAGE_KEY, pets);
     }
@@ -1102,10 +1096,15 @@ async function add(pet) {
     }
     let addPet = await storageService.post(STORAGE_KEY, pet)
     return addPet
-
 }
+
+async function addComment(newComment) {
+    console.log(newComment)
+    
+    return await storageService.postComment(STORAGE_KEY, newComment)
+}
+
 function remove(petId) {
-    console.log("🚀 ~ file: petService.js ~ line 356 ~ remove ~ petId", petId)
     storageService.remove(STORAGE_KEY, petId)
 }
 
@@ -1116,17 +1115,6 @@ async function getPetByid(petId) {
 
 async function toggleLike(petId, userId, act, idx) {
     const petIdx = gPets.findIndex(pet => pet._id === petId)
-    // switch (act) {
-    //     case 1:
-    //         gPets[petIdx].likedBy.push(userId)
-    //         gPets[petIdx].likes++
-    //         break;
-    //     case -1:
-    //         gPets[petIdx].likedBy.splice(idx, 1)
-    //         gPets[petIdx].likes--
-    //         break;
-    //     default:
-    //         break;
-    // }
+
     return Promise.resolve(petId, gPets[petIdx].likedBy)
 }

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
+import { GoogleMap } from '../cmps/GoogleMap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.min.css';
 import { faEnvelope, faHeart, faShare, faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
@@ -18,6 +19,7 @@ import SportsIcon from '@material-ui/icons/Sports';
 // import { ReactComponent as HeartFill } from '../assets/img/svg/heart-fill.svg'
 // import { ReactComponent as RedHeart } from '../assets/img/svg/red-heart.svg'
 
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 class _PetDetails extends Component {
@@ -119,10 +121,10 @@ class _PetDetails extends Component {
                         {<span className="pet-location">{pet.owner.loc.address}</span>}
                     </div>
                     <div className="details-header-btns">
-                        {/* TODO: add icons +actions btns */}
-                        <span className="pet-likes">{pet.likes}</span>
-                        <span className="pet-like-btn" onClick={() => this.onLike(pet._id)}>
-                            <FontAwesomeIcon icon={faHeart} className={isLiked ? 'heart' : 'heart fill'} />
+                        {/* TODO: add icons +actions btns */ }
+                        <span className="pet-likes">{ pet.likes }</span>
+                        <span className="pet-like-btn" onClick={ () => this.onLike(pet._id) }>
+                            <FavoriteIcon className={ !isLiked ? 'heart heart-empty' : 'heart heartfill' } />
                         </span>
                         <span className="share-pet" onClick={() => this.onShare}><FontAwesomeIcon icon={faShare} />
                             <div className={'share-modal' + this.state.isOpanModal ? 'hide' : ''}>
@@ -139,9 +141,9 @@ class _PetDetails extends Component {
 
                     <div className="details-info-container">
                         <div className="info-header flex ">
-                            <div className="flex column">
-                                <h3>{pet.name + ', owned by ' + pet.owner.name}</h3>
-                                <span>{pet.title}</span>
+                            <div className="info-header-txt flex column">
+                                <h3>{ pet.name + ', owned by ' + pet.owner.name }</h3>
+                                <span>{ pet.title }</span>
 
                             </div>
                             <img src={pet.owner.imgUrl} alt="" />
@@ -200,7 +202,11 @@ class _PetDetails extends Component {
                 <div className="comments-section">
                     <CommentsCmp pet={pet} key={pet._id} />
                 </div>
-                {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */}
+                {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */ }
+                <section className="google-map section">
+                    <h3 className="pet-loc">Where to find me</h3>
+                    <GoogleMap loc={ pet.owner.loc } />
+                </section>
             </section>
         )
     }
