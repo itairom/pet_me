@@ -28,11 +28,11 @@ export class PetPreview extends React.Component {
         return (
             <section className="pet-card-container">
                 <Link key={ pet._id } to={ `/${pet._id}` }>
-                    <div className="img-container">
+
                         <Slider {...settings}>
                             {pet.imgUrls.map(imgUrl => <img src={imgUrl} alt="" key={pet._id}/>)}
                         </Slider>
-                    </div>
+
                 </Link>
                 <div className="card-info">
                     <div className="pet-name-gender flex">

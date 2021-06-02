@@ -22,9 +22,6 @@ class _PetApp extends React.Component {
         this.setState({ pets: this.props.pets })
     }
 
-
-
-
     render() {
         const { pets } = this.props
         if (pets.length === 0) return <h1>loading</h1>
@@ -33,7 +30,7 @@ class _PetApp extends React.Component {
             <section className="main-container">
                 <section className="hero full ">
                     <div className="hero-content">
-                        < PetFilter />
+                        {/* < PetFilter /> */}
                         <h1>Find your</h1>
                         <h1> best friend</h1>
                     </div>
@@ -48,19 +45,19 @@ class _PetApp extends React.Component {
                             </Link>
                         </div>
                         <div>
-                        <Link to={`/explore/?&type=cat`} >
+                            <Link to={`/explore/?&type=cat`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622203804/petMe/cats/cat_nnrk1h.jpg" alt="card" />
                                 <h4>Cats</h4>
                             </Link>
                         </div>
                         <div>
-                        <Link to={`/explore/?&type=rabbit`} >
+                            <Link to={`/explore/?&type=rabbit`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622206572/petMe/rabbit/rrabit3/1_2_chadja.jpg" alt="card" />
                                 <h4>Rabbits</h4>
                             </Link>
                         </div>
                         <div>
-                        <Link to={`/explore/?&type=parrot`} >
+                            <Link to={`/explore/?&type=parrot`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622213930/petMe/parrot/1_3_s1zdqk.jpg" alt="card" />
                                 <h4>Parrots</h4>
                             </Link>
@@ -87,7 +84,7 @@ class _PetApp extends React.Component {
                             </div>
                             <p> Check out the photos and view pet information.
                                 Next, read user reviews and comments about the pet and its owner.</p>
-                                {/* <RightArrow className="arrow-icons" /> */}
+                            {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                         <div>
                             <div className="info-title-icon">
@@ -110,19 +107,10 @@ class _PetApp extends React.Component {
                 <section className="type-cards preview-homepage">
                     <h2 className="type-cards-title">Waiting long time to adopt</h2>
                     <div className="preview-cards">
-                        <div>
-                            <PetPreview pet={pets[9]} key={pets[9]._id} />
-                        </div>
-                        <div>
-                            <PetPreview pet={pets[13]} key={pets[13]._id} />
-                        </div>
-                        <div>
-                            <PetPreview pet={pets[1]} key={pets[1]._id} />
-                        </div>
-                        <div>
-                            <PetPreview pet={pets[14]} key={pets[14]._id} />
-                        </div>
-
+                        <PetPreview pet={pets[9]} key={pets[9]._id} />
+                        <PetPreview pet={pets[13]} key={pets[13]._id} />
+                        <PetPreview pet={pets[1]} key={pets[1]._id} />
+                        <PetPreview pet={pets[14]} key={pets[14]._id} />
                     </div>
                 </section>
                 <section className="type-cards preview-homepage">
