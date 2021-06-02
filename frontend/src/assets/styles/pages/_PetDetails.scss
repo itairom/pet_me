@@ -244,30 +244,4 @@
     transform: translate(-50%, -50%);
 
 }
-    
-.heart{
-    cursor: pointer;
-    transition: 0.5s;
-    &.heart-empty {
-        fill: lightgray !important;
-        width: 30px;
-        font-size: 3rem;
-        transition: 0.3s;
-        &:hover {
-            fill: #FC3A3A50 !important;
-            font-size: 3rem;
-        }
-    }
-    &.heartfill{
-        fill: #FC3A3A !important;
-        font-size: 2rem;
-        transition: 0.3s;
-        
-        &:hover {
-            fill: #FC3A3A50 !important;
-            font-size: 2rem;
-        }
-    }
-    
-
-}
+ 

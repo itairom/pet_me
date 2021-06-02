@@ -1100,7 +1100,7 @@ async function add(pet) {
 
 async function addComment(newComment) {
     console.log(newComment)
-    
+
     return await storageService.postComment(STORAGE_KEY, newComment)
 }
 
