@@ -4,12 +4,15 @@ import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
 import { PetFilter } from '../cmps/PetFilter'
 import { PetPreview } from '../cmps/PetPreview'
-// import { ReactComponent as Glass } from '../assets/img/svg/magnifying-glass.svg'
-
+import { ReactComponent as RightArrow } from '../assets/img/svg/right-arrow.svg'
+import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg'
+import contact from '../assets/img/svg/contact.svg'
+import info from '../assets/img/svg/info.svg'
+import paw from '../assets/img/svg/paw.svg'
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 
 class _PetApp extends React.Component {
-
     state = {
         pets: null
     }
@@ -36,7 +39,7 @@ class _PetApp extends React.Component {
                     </div>
                 </section>
                 <div className="type-cards">
-                    <h2>Our sweet pet types</h2>
+                    <h2 className="type-cards-title">Our sweet pet types</h2>
                     <div className="type-img">
                         <div>
                             <Link to={`/explore/?&type=dog`} >
@@ -67,45 +70,63 @@ class _PetApp extends React.Component {
                 <section className="homepage-section-info">
                     <div className="content">
                         <div>
-                            <h2>Filter down to your perfect fit</h2>
+                            <div className="info-title-icon">
+                                <h2>Filter down to your perfect fit</h2>
+                                {/* <img className="info-icons" src={magnifyingGlass} alt="glass" /> */}
+                                <SearchOutlinedIcon className="info-icons" />
+                            </div>
                             <p> Personalize your search with filters like gender,
-                                 type, size or a pool to get exactly what you want. </p>
+                            type, size or a pool to get exactly what you want.
+                            </p>
+                            {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                         <div>
-                            <h2>Dig into the details</h2>
+                            <div className="info-title-icon">
+                                <h2>Dig into the details</h2>
+                                <img className="info-icons" src={info} alt="glass" />
+                            </div>
                             <p> Check out the photos and view pet information.
                                 Next, read user reviews and comments about the pet and its owner.</p>
+                                {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                         <div>
-                            <h2>Contact pet owners</h2>
+                            <div className="info-title-icon">
+                                <h2>Contact pet owners</h2>
+                                <img className="info-icons" src={contact} alt="glass" />
+                            </div>
                             <p>  Once you have decided which pet you would like to adopt, contact the pet owners and keep your fingers crossed.</p>
+                            {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                         <div>
-                            <h2>Adopt a friend!</h2>
+                            <div className="info-title-icon">
+                                <h2>Adopt a friend!</h2>
+                                <img className="info-icons" src={paw} alt="glass" />
+                            </div>
                             <p> In a quick and easy process you can adopt a pet that will become your new friend for life. </p>
+                            {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                     </div>
                 </section>
                 <section className="type-cards preview-homepage">
-                    <h2>Waiting long time to adopt</h2>
+                    <h2 className="type-cards-title">Waiting long time to adopt</h2>
                     <div className="preview-cards">
                         <div>
-                            <PetPreview pet={pets[0]} key={pets[0]?._id} />
+                            <PetPreview pet={pets[9]} key={pets[9]._id} />
                         </div>
                         <div>
-                            <PetPreview pet={pets[1]} key={pets[1]?._id} />
+                            <PetPreview pet={pets[13]} key={pets[13]._id} />
                         </div>
                         <div>
-                            <PetPreview pet={pets[2]} key={pets[2]?._id} />
+                            <PetPreview pet={pets[1]} key={pets[1]._id} />
                         </div>
                         <div>
-                            <PetPreview pet={pets[3]} key={pets[3]?._id} />
+                            <PetPreview pet={pets[14]} key={pets[14]._id} />
                         </div>
 
                     </div>
                 </section>
                 <section className="type-cards preview-homepage">
-                    <h2>Most Liked Pets Available For Adoption</h2>
+                    <h2 className="type-cards-title">Most Liked Pets Available For Adoption</h2>
                     <div className="preview-cards">
                         <div>
                             <PetPreview pet={pets[4]} key={pets[4]?._id} />
@@ -161,13 +182,13 @@ class _PetApp extends React.Component {
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210260/petMe/about-imgs/boy-and-cat_hd5uqt.jpg" alt="card" /> */}
                     {/* </div> */}
                     {/* </div> */}
-                    <div className="blur">
+                    <div className="blur full">
 
-                        <div className="about-content">
+                        <div className="about-content main-container">
                             <h2>Our vision</h2>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque quidem, quibusdam reiciendis perspiciatis quo itaque ad ullam provident minus corporis autem ab? Voluptas nemo rerum, ut fuga hic reiciendis natus?s</p>
+
                         </div>
                     </div>
                 </section>

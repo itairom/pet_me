@@ -6,7 +6,10 @@ import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
 import { Link } from 'react-router-dom'
 // import "~slick-carousel/slick/slick.css";
 // import "~slick-carousel/slick/slick-theme.css";
-// import Slider from "react-slick";
+import "../../node_modules/slick-carousel/slick/slick.css";
+import "../../node_modules/slick-carousel/slick/slick-theme.css";
+
+import Slider from "react-slick";
 
 
 export class PetPreview extends React.Component {
@@ -26,11 +29,9 @@ export class PetPreview extends React.Component {
             <section className="pet-card-container">
                 <Link key={ pet._id } to={ `/${pet._id}` }>
                     <div className="img-container">
-
-                        {/* <Slider {...settings}> */ }
-                        <img src={ pet.imgUrls[0] } alt="" />
-                        {/* </Slider> */ }
-
+                        <Slider {...settings}>
+                            {pet.imgUrls.map(imgUrl => <img src={imgUrl} alt="" key={pet._id}/>)}
+                        </Slider>
                     </div>
                 </Link>
                 <div className="card-info">

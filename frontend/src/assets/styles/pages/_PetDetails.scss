@@ -9,14 +9,13 @@
         flex: 1;
     }
 
-    .details-header-btns{
+    .details-header-btns {
         display: flex;
         align-items: center;
-        justify-content: center;
+        // justify-content: center;
         gap: 0.5em;
-        & > * {
 
-        }
+        &>* {}
 
         & .pet-like-btn {
             cursor: pointer;
@@ -80,8 +79,8 @@
         margin-right: 1rem;
         // margin-left: auto;
         text-align: left;
-        padding: 0 12px;
-        
+        // padding: 0 12px;
+
         & .info-header {
             justify-content: space-between;
             
@@ -100,7 +99,7 @@
                 object-fit: cover;
             }
         }
-        
+
         & .info-body {
             & .read-more {
                 border-bottom: 1px solid #d3d3d3;
@@ -108,13 +107,24 @@
                 margin-bottom: 20px;
                 color: #6b6a6a;
             }
-            
+
             & .pet-info-list {
                 text-align: left;
                 padding-bottom: 20px;
                 border-bottom: 1px solid #d3d3d3;
                 margin-bottom: 15px;
                 color: #1e1e1e;
+                li{
+                    margin-block-end: 5px;
+                    :first-child{
+                        width: 24px;
+                        height: 24px;
+                        color: $clr9;
+                    }
+                }
+                li p{
+                    margin-inline-start: 4px;
+                }
             }
             @include for-normal-layout {
                 .pet-info-list {
@@ -123,9 +133,9 @@
                 }
             }
         }
-        
+
     }
-    
+
     & .adopt-modal-container {
         flex-direction: column;
         gap: 20px;
@@ -176,8 +186,8 @@
             font-size: 14px;
             border-radius: 4px;
         }
-        
-        & .adopt-btn{
+
+        & .adopt-btn {
             padding: 15px 45px;
             margin-right: auto;
             margin-left: auto;
@@ -186,8 +196,8 @@
             background-color: #36b99f;
             border-radius: 8px;
             transition: .3s;
-            
-            
+
+
             &:hover {
                 background-color: #fff;
                 color: #6b6a6a;
