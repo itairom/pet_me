@@ -4,8 +4,7 @@ const logger = require('../../services/logger.service')
 
 async function getUser(req, res) {
     try {
-        const user = await userService.getByUsername(req.body.username)
-        console.log("🚀 ~ file: user.controller.js ~ line 8 ~ getUser ~ user", user)
+        const user = await userService.getById(req.params.id)
         res.send(user)
     } catch (err) {
         logger.error('Failed to get user', err)
@@ -49,7 +48,6 @@ async function updateRequest(req, res) {
         const request = req.body
         // console.log("🚀 ~ file: user.controller.js ~ line 50 ~ updateRequest ~ request", request)
         const savedUser = await userService.updateRequest(request)
-        console.log("🚀 ~ file: user.controller.js ~ line 52 ~ updateRequest ~ savedUser", savedUser)
         res.send(savedUser)
         // socketService.broadcast({type: 'user-updated', data: review, to:savedUser._id})
     } catch (err) {

@@ -17,7 +17,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-block-start: rem(50px);
+        margin-block-start: rem(130px);
         color: aliceblue;
 
         @include for-mobile-layout {
@@ -28,16 +28,15 @@
         h1 {
             font-family: avenir-black;
             font-size: rem(100px);
-
+            &:last-child::after {
+                content: '.';
+                color: $clr9;
+            }
             @include for-mobile-layout {
                 font-size: rem(55px);
             }
         }
 
-        :last-child::after {
-            content: '.';
-            color: $clr9;
-        }
     }
 }
 
@@ -114,6 +113,7 @@
 
         @include for-narrow-layout {
             justify-content: space-between;
+            grid-row-gap: 20px;
         }
 
         @include for-normal-layout {

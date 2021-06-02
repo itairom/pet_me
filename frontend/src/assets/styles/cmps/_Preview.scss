@@ -1,10 +1,8 @@
-// .main-container{
-//     background-color: black;
-// }
 
 .pet-card-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
     img {
         height: 165px;
@@ -20,6 +18,9 @@
 
         .pet-title {
             color: $clr8;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 

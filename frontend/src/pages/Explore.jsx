@@ -6,13 +6,9 @@ import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to im
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { PetFilter } from '../cmps/PetFilter'
 
-// window.addEventListener('click', () => {
-//     this.setState({ isFilterShown: false })
-// })
 
 class _Explore extends React.Component {
-
-
+    
     state = {
         pets: null,
         isFilterShown: false,
@@ -22,6 +18,10 @@ class _Explore extends React.Component {
         await this.onSetFilter()
         this.props.loadPets(this.state.filterBy)
         this.setState({ pets: this.props.pets })
+        
+        window.addEventListener('wheel', () => {
+            this.setState({ isFilterShown: false })
+        })
     }
 
     onSetFilter = () => {
@@ -48,15 +48,15 @@ class _Explore extends React.Component {
         if (!pets) return <img src={userIcon} alt="loading" />
         return (
             <section className="main-container">
-                <div className="explore-search">
+               {!isFilterShown&& <div className="explore-search">
                     <span onClick={() => this.onToggleFilter()} > Start your search</span>
-
-                    {isFilterShown && <PetFilter />}
-
                     <div className="search-btn">
                         <img className="filter-search" src={magnifyingGlass} alt="glass" />
                     </div>
-                </div>
+                </div>}
+
+                    {isFilterShown && <PetFilter />}
+
 
                 {!filterBy?.type && <h1>Our pets</h1>}
                 {filterBy?.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}

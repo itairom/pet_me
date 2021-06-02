@@ -4,10 +4,10 @@ import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
 import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
 import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
 import { Link } from 'react-router-dom'
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";
+// import "../assets/styles/cmps/slick.scss"
+// import "../assets/styles/cmps/slick-theme.scss"
 import { HeartLike } from './HeartLike'
 
 import Slider from "react-slick";
