@@ -654,7 +654,7 @@ export const petService = {
 // ]
 
 const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/pet' : 'http://localhost:3030/api/pet'
-let gPets=[]
+let gPets = []
 
 
 const STORAGE_KEY = 'pets'
@@ -673,8 +673,6 @@ async function add(pet) {
     }
     let addPet = await storageService.post(STORAGE_KEY, pet)
     return addPet
-
-    
 }
 
 async function addComment(newComment) {
@@ -695,6 +693,5 @@ async function getPetByid(petId) {
 
 async function toggleLike(petId, userId, act, idx) {
     const petIdx = gPets.findIndex(pet => pet._id === petId)
-
     return Promise.resolve(petId, gPets[petIdx].likedBy)
 }
