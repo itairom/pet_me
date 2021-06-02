@@ -24,7 +24,7 @@ export class PetPreview extends React.Component {
         const gender = pet?.gender === 'female' ? <Female className="gender" /> : <Male className="gender" />
         return (
             <section className="pet-card-container">
-                <Link key={pet._id} to={`/${pet._id}`}>
+                <Link key={pet?._id} to={`/${pet?._id}`}>
                     <div className="img-container">
 
                         {/* <Slider {...settings}> */}

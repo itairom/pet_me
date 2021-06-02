@@ -2,7 +2,8 @@
 const dbService = require('../../services/db.service')
 // const logger = require('../../services/logger.service')
 const reviewService = require('../review/review.service')
-const ObjectId = require('mongodb').ObjectId
+const gUsers = require('../../data/user.json')
+
 
 module.exports = {
     query,
@@ -10,24 +11,19 @@ module.exports = {
     getByUsername,
     remove,
     update,
-    add
+    add,
+    updateRequest
 }
 
-async function query(filterBy = {}) {
-    const criteria = _buildCriteria(filterBy)
+async function query() {
+
     try {
-        const collection = await dbService.getCollection('user')
-        var users = await collection.find(criteria).toArray()
-        users = users.map(user => {
-            delete user.password
-            user.createdAt = ObjectId(user._id).getTimestamp()
-            // Returning fake fresh data
-            // user.createdAt = Date.now() - (1000 * 60 * 60 * 24 * 3) // 3 days ago
-            return user
-        })
-        return users
-    } catch (err) {
-        logger.error('cannot find users', err)
+        const entities = await gUsers
+        return entities
+    }
+
+    catch (err) {
+        logger.error('cannot find userz', err)
         throw err
     }
 }
@@ -51,10 +47,10 @@ async function getById(userId) {
     }
 }
 async function getByUsername(username) {
+    const entities = await gUsers
     try {
-        const collection = await dbService.getCollection('user')
-        const user = await collection.findOne({ username })
-        return user
+        return entities.find(entity => entity.username === username)
+
     } catch (err) {
         logger.error(`while finding user ${username}`, err)
         throw err
@@ -70,6 +66,22 @@ async function remove(userId) {
         throw err
     }
 }
+
+async function updateRequest(request) {
+    try {
+    const entities = await gUsers
+    // let user = entities.find(user => user._id === request.userId)
+    // console.log("🚀 ~ file: user.service.js ~ line 75 ~ updateRequest ~ user", user)
+    // user.pets.find((pet)=> {pet._id===petId})
+
+    return request
+    }
+    catch(err){
+        logger.error(`cannot add req `, err)
+        throw err
+    }
+}
+
 
 async function update(user) {
     try {
