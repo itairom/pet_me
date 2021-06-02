@@ -4,6 +4,7 @@ import { addComment } from '../store/actions/petActions'
 import { connect } from 'react-redux'
 import { utilService } from '../services/utilService'
 
+
 class _CommentsCmp extends Component {
     state = {
         isCommenting: false,
@@ -55,19 +56,19 @@ class _CommentsCmp extends Component {
                 </div>
                 <h3 className="comments-head">Comments</h3>
                 <div className="comments-body">
-                    <ul>
+                    <ul className="comments-list clean-list">
                         { pet.comments.map(comment =>
-                            <div key={ comment.id } className="comments-list">
-                                <li>
-                                    <div className="reviewer-preview-card flex column">
+                            <div key={ comment.id }>
+                                <li className="comment-preview-card flex column">
+                                    <div className="comment-header flex">
                                         <img src={ comment.by.imgUrl } alt="skeleton" />
                                         <div className="flex column">
                                             <span className="commenter-name">{ comment.by.fullname }</span>
                                             {/* TODO: reconfigure date by fixed times */ }
                                             <span className="comment-time">{ utilService.timeSince(comment.created, 'ago') }</span>
                                         </div>
-                                        <LongTxt className="comment-desc" txt={ comment.txt } />
                                     </div>
+                                    <LongTxt className="comment-desc" txt={ comment.txt } />
                                 </li>
                             </div>
                         ) }

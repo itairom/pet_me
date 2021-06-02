@@ -5,11 +5,12 @@ import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
+import { GoogleMap } from '../cmps/GoogleMap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.min.css';
 import { faEnvelope, faHeart, faShare } from '@fortawesome/free-solid-svg-icons'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 class _PetDetails extends Component {
@@ -114,7 +115,7 @@ class _PetDetails extends Component {
                         {/* TODO: add icons +actions btns */ }
                         <span className="pet-likes">{ pet.likes }</span>
                         <span className="pet-like-btn" onClick={ () => this.onLike(pet._id) }>
-                            <FontAwesomeIcon icon={ faHeart } className={ isLiked ? 'heart' : 'heart fill' } />
+                            <FavoriteIcon className={ !isLiked ? 'heart heart-empty' : 'heart heartfill' } />
                         </span>
                         <span className="share-pet" onClick={ () => this.onShare }><FontAwesomeIcon icon={ faShare } />
                             <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
@@ -131,7 +132,7 @@ class _PetDetails extends Component {
 
                     <div className="details-info-container">
                         <div className="info-header flex ">
-                            <div className="flex column">
+                            <div className="info-header-txt flex column">
                                 <h3>{ pet.name + ', owned by ' + pet.owner.name }</h3>
                                 <span>{ pet.title }</span>
 
@@ -163,6 +164,10 @@ class _PetDetails extends Component {
                     <CommentsCmp pet={ pet } key={ pet._id } />
                 </div>
                 {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */ }
+                <section className="google-map section">
+                    <h3 className="pet-loc">Where to find me</h3>
+                    <GoogleMap loc={ pet.owner.loc } />
+                </section>
             </section>
         )
     }
