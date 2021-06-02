@@ -4,7 +4,8 @@ const logger = require('../../services/logger.service')
 
 async function getUser(req, res) {
     try {
-        const user = await userService.getById(req.params.id)
+        const user = await userService.getByUsername(req.body.username)
+        console.log("🚀 ~ file: user.controller.js ~ line 8 ~ getUser ~ user", user)
         res.send(user)
     } catch (err) {
         logger.error('Failed to get user', err)
@@ -14,11 +15,7 @@ async function getUser(req, res) {
 
 async function getUsers(req, res) {
     try {
-        const filterBy = {
-            txt: req.query?.txt || '',
-            minBalance: +req.query?.minBalance || 0
-        }
-        const users = await userService.query(filterBy)
+        const users = await userService.query()
         res.send(users)
     } catch (err) {
         logger.error('Failed to get users', err)
@@ -47,10 +44,24 @@ async function updateUser(req, res) {
         res.status(500).send({ err: 'Failed to update user' })
     }
 }
+async function updateRequest(req, res) {
+    try {
+        const request = req.body
+        // console.log("🚀 ~ file: user.controller.js ~ line 50 ~ updateRequest ~ request", request)
+        const savedUser = await userService.updateRequest(request)
+        console.log("🚀 ~ file: user.controller.js ~ line 52 ~ updateRequest ~ savedUser", savedUser)
+        res.send(savedUser)
+        // socketService.broadcast({type: 'user-updated', data: review, to:savedUser._id})
+    } catch (err) {
+        logger.error('Failed to update user', err)
+        res.status(500).send({ err: 'Failed to update user' })
+    }
+}
 
 module.exports = {
     getUser,
     getUsers,
     deleteUser,
-    updateUser
+    updateUser,
+    updateRequest
 }

@@ -220,7 +220,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     toggleLike,
     loadPets,
-    loadUsers
+    loadUsers,
+    // adoptRequest
     // updatePet
 }
 

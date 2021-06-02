@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import React from 'react'
 import { loadPets } from '../store/actions/petActions'
 import { PetList } from '../cmps/PetList'
-import userIcon from '../assets/img/loaders/1.gif' // relative path to image
+import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to image
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { PetFilter } from '../cmps/PetFilter'
 
@@ -20,7 +20,6 @@ class _Explore extends React.Component {
     }
     async componentDidMount() {
         await this.onSetFilter()
-        console.log(this.state.filterBy)
         this.props.loadPets(this.state.filterBy)
         this.setState({ pets: this.props.pets })
     }
@@ -47,7 +46,6 @@ class _Explore extends React.Component {
         const { pets } = this.props
         const { isFilterShown, filterBy } = this.state
         if (!pets) return <img src={userIcon} alt="loading" />
-        console.log(filterBy?.type);
         return (
             <section className="main-container">
                 <div className="explore-search">
@@ -61,7 +59,7 @@ class _Explore extends React.Component {
                 </div>
 
                 {!filterBy?.type && <h1>Our pets</h1>}
-                {filterBy?.type && <h1>Our <span> {filterBy.size} {filterBy.type}s</span></h1>}
+                {filterBy?.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}
                 < PetList pets={pets} />
             </section>
         )

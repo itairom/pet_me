@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Loader from '../assets/img/loaders/loader_3.svg' // relative path to image 
 import Pin from '../assets/img/svg/pin.svg' // relative path to image 
 import { petService } from '../services/petService'
+import { utilService } from '../services/utilService'
 
 
 import {
@@ -15,22 +16,21 @@ import {
 
 class _Profile extends Component {
     state = {
-        userPets: null
+        userPets: []
 
     }
 
     componentDidMount() {
-        this.props.loadUsers()
         this.onLoadPets()
+        this.props.loadUsers()
     }
 
     onLoadPets = () => {
         let pets = []
         this.props.loggedInUser.pets.forEach(pet =>
-            // { console.log(pet)}
             petService.getPetByid(pet._id)
                 .then(petItem => {
-                    pets.push(petItem)
+                    pets.unshift(petItem)
                 })
         )
         this.setState({ userPets: pets })
@@ -41,13 +41,9 @@ class _Profile extends Component {
 
         const { loggedInUser } = this.props
         const { userPets } = this.state
-        // const { loggedInUser } = this.props
         if (!loggedInUser) return <img src={Loader} alt="loadnig" />
         if (!userPets) return <img src={Loader} alt="loadnig" />
-
-
-        console.log(userPets);
-        // console.log("🚀 ~ ", loggedInUser)
+        console.log("🚀 ~ file: Profile.jsx ~ line 45 ~ _Profile ~ render ~ userPets", userPets)
         return (
             <section className="main-profile">
                 <section className="user-card">
@@ -63,52 +59,48 @@ class _Profile extends Component {
 
                 <section className="user-pets">
                     <h1>Your pets</h1>
-
-                    <div className="adopt-card">
-                        <h2>pet name</h2>
-                        <section className="adopt-table">
-                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622366729/petMe/rabbit/rabbit2/1_itx6fr.jpg"
-                                alt="" />
-                            <table>
-                                <thead className="table-head">
-                                    <tr>
-                                        <td>Adopter Name</td>
-                                        <td>Message</td>
-                                        <td>Date</td>
-                                    </tr>
-                                </thead>
-                                <tbody className="table-body">
-                                    <tr>
-                                        <td>Puki</td>
-                                        <td>"Hii, i would like to adopt your rabbit"</td>
-                                        <td>25.4.21</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Muki</td>
-                                        <td>"Very cute! i know someone that like to adopt "</td>
-                                        <td>11.4.21</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
-                    </div>
-
-
-                    {userPets.map(pet => {
+                    {userPets.map((pet, idx) => {
                         return (
-                            <div>
-                                <h1>{pet?.name}</h1>
-                                <h1>{pet?.type}</h1>
-                                <h1>{pet?.breed}</h1>
-                            </div>)
-                    })}
 
+                            <div className="adopt-card">
+                                <h2>{pet.name}</h2>
+
+                                <section className="adopt-table">
+                                    <img src={pet.imgUrls[0]}
+                                        alt="pet" />
+                                    <table>
+                                        <thead className="table-head">
+                                            <tr>
+                                                <td>Adopter Name</td>
+                                                <td>Message</td>
+                                                <td>Date</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="table-body">
+                                            {loggedInUser.pets[idx]
+                                                .adoptQue.map(pet => {
+                                                    return (<tr>
+                                                        <td>{pet.fullname}</td>
+                                                        <td>{pet.message}</td>
+                                                        <td>{ utilService.timeSince(pet.date,'ago') }</td>
+                                                    </tr>)
+                                                })}
+                                        </tbody>
+                                    </table>
+                                </section>
+                            </div>
+
+                        )
+                    })}
 
                 </section>
 
 
 
-            </section>
+
+
+
+            </section >
 
         )
     }

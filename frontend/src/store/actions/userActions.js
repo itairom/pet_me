@@ -33,6 +33,7 @@ export function login(userCreds) {
   return async dispatch => {
     try {
       const user = await userService.login(userCreds)
+      console.log("🚀 ~ file: userActions.js ~ line 36 ~ login ~ user", user)
       dispatch({ type: 'SET_USER', user })
     } catch (err) {
       console.log('UserActions: err in login', err)
@@ -58,5 +59,18 @@ export function logout() {
     } catch (err) {
       console.log('UserActions: err in logout', err)
     }
+  }
+}
+
+export function adoptRequest(request) { 
+  return dispatch => {
+      return userService.adoptRequest(request)
+          .then(request => {
+          console.log("🚀 ~ file: userActions.js ~ line 69 ~ adoptRequest ~ request", request)
+              const action = {
+                  type: 'ADD_REQUEST', request
+              }
+              dispatch(action)
+          })
   }
 }
