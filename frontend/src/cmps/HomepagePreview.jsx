@@ -12,26 +12,26 @@ class _HomepagePreview extends React.Component {
     render() {
 
         const { pets } = this.props
-        if (pets.length<18) return <h1>loading</h1>
+        if (pets.length < 18) return <h1>loading</h1>
 
         return (
             <>
                 <section className="type-cards preview-homepage">
                     <h2 className="type-cards-title">Waiting long time to adopt</h2>
                     <div className="preview-cards">
-                        <PetPreview pet={pets[9]} key={pets[9]?._id} />
-                        <PetPreview pet={pets[13]} key={pets[13]?._id} />
-                        <PetPreview pet={pets[1]} key={pets[1]?._id} />
-                        <PetPreview pet={pets[14]} key={pets[14]?._id} />
+                        <PetPreview pet={ pets[9] } key={ pets[9]?._id } />
+                        <PetPreview pet={ pets[13] } key={ pets[13]?._id } />
+                        <PetPreview pet={ pets[1] } key={ pets[1]?._id } />
+                        <PetPreview pet={ pets[14] } key={ pets[14]?._id } />
                     </div>
                 </section>
                 <section className="type-cards preview-homepage">
                     <h2 className="type-cards-title">Most Liked Pets Available For Adoption</h2>
                     <div className="preview-cards">
-                        <PetPreview pet={pets[4]} key={pets[4]?._id} />
-                        <PetPreview pet={pets[5]} key={pets[5]?._id} />
-                        <PetPreview pet={pets[6]} key={pets[6]?._id} />
-                        <PetPreview pet={pets[7]} key={pets[7]?._id} />
+                        <PetPreview pet={ pets[12] } key={ pets[11]?._id } />
+                        <PetPreview pet={ pets[11] } key={ pets[12]?._id } />
+                        <PetPreview pet={ pets[4] } key={ pets[4]?._id } />
+                        <PetPreview pet={ pets[19] } key={ pets[19]?._id } />
                     </div>
                 </section>
             </>
