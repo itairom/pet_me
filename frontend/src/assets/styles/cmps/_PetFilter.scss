@@ -1,4 +1,5 @@
 .pet-filter {
+    transition: 0.5s ease-in-out;
     display: flex;
     justify-self: center;
     // height: 70px;
@@ -116,7 +117,6 @@
     width: 130px;
     outline: none;
     border: none;
-
     width: 100%;
     min-width: 83px;
 

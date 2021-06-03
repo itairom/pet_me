@@ -5,9 +5,7 @@ const STORAGE_KEY = 'pets'
 async function getPets(req, res) {
     try {
         const filterBy = req.query
-        console.log("🚀 ~ file: pet.controller.js ~ line 9 ~ getPets ~ filterBy", filterBy)
-        const pets = await petService.query(STORAGE_KEY, filterBy)
-        console.log('after service');
+        const pets = await petService.query( filterBy)
         res.send(pets)
     } catch (err) {
         logger.error('failed to get pets', err)
@@ -25,9 +23,20 @@ async function getPetByid(req, res) {
     }
 }
 
-
+async function updatePet(req, res) {
+    try {
+        const pet = req.body
+        const savedPet = await petService.save(pet)
+        res.send(savedPet)
+    } catch (err) {
+        logger.error(`Failed to update pet: ${pet._id}`, err)
+        res.status(500).send({ err: 'Failed to update pet' })
+    }
+}
 
 
 module.exports = {
-    getPets, getPetByid
+    getPets,
+    getPetByid,
+    updatePet
 }

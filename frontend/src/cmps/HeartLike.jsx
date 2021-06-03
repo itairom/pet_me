@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { toggleLike } from '../store/actions/petActions'
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { store } from 'react-notifications-component';
+
 
 
 class _HeartLike extends Component {
@@ -18,7 +20,7 @@ class _HeartLike extends Component {
 
     checkUserLike = () => {
         const { loggedInUser, pet } = this.props
-        if (!loggedInUser) return   
+        if (!loggedInUser) return
         const userId = pet.likedBy.find(userId => userId === loggedInUser._id)
         const isAlreadyLiked = userId ? true : false;
         this.setState({ isLiked: isAlreadyLiked })
@@ -27,16 +29,35 @@ class _HeartLike extends Component {
     onLike = () => {
         const { loggedInUser, pet } = this.props
 
-        if (!loggedInUser) return console.log('you are in guest mode, please logging to like the pet')
+        if (!loggedInUser) {
+            store.addNotification({
+                title: 'Alert',
+                message: 'You are in guest mode, Please logging to like the pet',
+                type: 'danger',
+                insert: "bottom-full",
+                container: "bottom-full",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                    duration: 2000,
+                    onScreen: true
+                }
+            });
+            return console.log('You are in guest mode, please logging to like the pet')
+        }
 
         const userId = pet.likedBy.find(userId => userId === loggedInUser._id)
         const isAlreadyLiked = userId ? true : false;
         this.setState({ isLiked: !isAlreadyLiked })
-        if (!isAlreadyLiked) this.props.toggleLike(pet._id, loggedInUser._id, 1)
-        else {
-            const idx = pet.likedBy.findIndex(userId => userId === loggedInUser._id)
-            this.props.toggleLike(pet._id, userId, -1, idx)
+        //add or remove user from likedBy
+        const idx = pet.likedBy.findIndex(userId => userId === loggedInUser._id)
+        const likeInfo = {
+            petId: pet._id,
+            userId: loggedInUser._id,
+            act: !isAlreadyLiked ? 1 : -1,
+            idx
         }
+        this.props.toggleLike(pet, likeInfo)
     }
 
 

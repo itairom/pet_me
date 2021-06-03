@@ -1,6 +1,6 @@
 import { petService } from '../../services/petService.js'
 
-export function loadPets(filterBy) { // Action Creator
+export function loadPets(filterBy = null) { // Action Creator
     return async dispatch => {
         try {
             const pets = await petService.query(filterBy)
@@ -11,6 +11,7 @@ export function loadPets(filterBy) { // Action Creator
         }
     }
 }
+// CREATE
 export function addPet(pet) {
     return dispatch => {
         return petService.add(pet)
@@ -22,10 +23,10 @@ export function addPet(pet) {
             })
     }
 }
-
+// UPDATE
 export function updatePet(pet) { // Action Creator
     return dispatch => {
-        return petService.add(pet)
+        return petService.update(pet)
             .then(pet => {
                 const action = {
                     type: 'UPDATE_PET', pet
@@ -35,7 +36,7 @@ export function updatePet(pet) { // Action Creator
     }
 }
 
-
+// Delete
 export function removePet(petId) { // Action Creator
     return dispatch => {
         return petService.remove(petId)
@@ -47,18 +48,15 @@ export function removePet(petId) { // Action Creator
             })
     }
 }
-
-export function toggleLike(petId, userId, act, idx) { // Action Creator
-    console.log(petId, userId, act, idx)
+// From here: use the CRUDL to 
+export function toggleLike(pet, likedInfo) { // Action Creator
+    console.log(likedInfo)
     return dispatch => {
-        return petService.toggleLike(petId, userId, act, idx)
-            .then((petId, newLikedBy) => {
-                console.log('newLikedBy', newLikedBy)
+        return petService.toggleLike(pet, likedInfo)
+            .then((updatedPet) => {
                 const action = {
-                    type: (act === 1) ? 'ADD_LIKE' : 'REMOVE_LIKE',
-                    petId,
-                    userId,
-                    idx
+                    type: 'UPDATE_PET',
+                    pet: updatedPet
                 }
                 dispatch(action)
             })

@@ -4,7 +4,7 @@ import { utilService } from '../services/utilService'
 import { socketService } from '../services/socketService'
 import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
-import { loadUsers, AdoptAction } from '../store/actions/userActions'
+import { loadUsers } from '../store/actions/userActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 import { HeartLike } from '../cmps/HeartLike'
@@ -13,7 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.min.css';
 import { faEnvelope, faShare, faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-// import TodayIcon from '@material-ui/icons/Today';
 import SportsIcon from '@material-ui/icons/Sports';
 import ShareIcon from '@material-ui/icons/Share';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
@@ -30,8 +29,13 @@ class _PetDetails extends Component {
     }
 
     componentDidMount() {
-
         const id = this.props.match.params.petId;
+        // socketService.setup()
+        // socketService.emit('adopt-request', id)
+        socketService.on('eyal', () => {
+            console.log('im on!')
+        })
+
         this.props.loadPets()
             .then(() => {
                 const pet = this.props.pets.find(pet => pet._id === id)
@@ -66,35 +70,20 @@ class _PetDetails extends Component {
 
     onAdopt = () => {
         const { pet, owner, loggedInUser } = this.state
-        console.log('pet, owner, loggedInUser', pet, owner, loggedInUser)
-        if (!loggedInUser) return alert('Please login in order to adopt this pet')
+        // console.log('pet, owner, loggedInUser', pet, owner, loggedInUser)
+        if (!loggedInUser) return alert('Please login in order to adopt this pet ')
         if (loggedInUser.pets.find(loggedInUserPet => loggedInUserPet._id === pet._id)) return alert('You cannot adopt you own pet')
         this.setState({ isAttend: true })
-        //new
         const data = {
+            owner: owner,
             userId: loggedInUser._id,
             date: Date.now(),
-            message: `${loggedInUser.fullname} would like to adopt ${pet.name}`,
+            message: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click to view`,
             fullname: loggedInUser.fullname
         }
         // AdoptAction()
-        socketService.emit(socketService.SOCKET_EVENT_ADOPT_REQUEST, data)
+        socketService.emit('adopt-request', data)
     }
-
-    // {
-    //     "_id": "p102",
-    //     "isAdopted": false,
-    //     "adoptQue": [
-    //       {
-    //         "userId": "123",
-    //         "message": "lolo",
-    //         "chatId": "i11"
-    //       },
-    //       {
-    //         "userId": "123",
-    //         "message": "i like to addopt",
-    //         "chatId": "ch23"
-    //       }
 
 
     //if the user clicked attend let the user reclick to undo
@@ -108,7 +97,10 @@ class _PetDetails extends Component {
     }
 
     render() {
-        const { pet } = this.state
+        // console.log(this.props)
+        const id = this.props.match.params.petId
+        const pet = this.props.pets.find(pet => pet._id === id)
+        // const { pet } = this.props
         if (!pet) return <h1>loading</h1>
 
         return (
@@ -226,8 +218,6 @@ const mapDispatchToProps = {
     toggleLike,
     loadPets,
     loadUsers,
-    // adoptRequest
-    // updatePet
 }
 
 export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)
