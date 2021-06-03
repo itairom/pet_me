@@ -19,11 +19,12 @@ class _Explore extends React.Component {
         this.props.loadPets(this.state.filterBy)
         this.setState({ pets: this.props.pets })
         
-        window.addEventListener('wheel', () => {
+        window.addEventListener('scroll', () => {
             this.setState({ isFilterShown: false })
         })
     }
-
+    
+    
     onSetFilter = () => {
         const search = new URLSearchParams(this.props.location.search)
         let filterBy = {
@@ -48,15 +49,14 @@ class _Explore extends React.Component {
         if (!pets) return <img src={userIcon} alt="loading" />
         return (
             <section className="main-container">
-               {!isFilterShown&& <div className="explore-search">
+                {!isFilterShown && <div className="explore-search">
                     <span onClick={() => this.onToggleFilter()} > Start your search</span>
-                    <div className="search-btn">
+                    <div className="search-btn-explore">
                         <img className="filter-search" src={magnifyingGlass} alt="glass" />
                     </div>
                 </div>}
 
-                    {isFilterShown && <PetFilter />}
-
+                {isFilterShown && <PetFilter />}
 
                 {!filterBy?.type && <h1>Our pets</h1>}
                 {filterBy?.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}

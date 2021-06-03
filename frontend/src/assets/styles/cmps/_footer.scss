@@ -1,4 +1,4 @@
-.main-footer{
+.main-footer {
     // grid-column: 1/span 3;
     // position: relative;
     // bottom: 0;
@@ -10,10 +10,17 @@
     // font-size: .65rem;
     // padding: 0 12px;
 
-    & small{
+    & small {
         // display: flex;
         align-self: center;
-        padding:15px;
+        padding: 15px 0 3px;
         // margin: 10px 0;
+    }
+
+    .nav-social {
+        cursor: pointer;
+        :not(:last-child) {
+            padding-right: 8px;
+        }
     }
 }

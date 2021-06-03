@@ -4,6 +4,7 @@
     z-index: 1;
     width: 100%;
 
+
     & .header-container {
         display: flex;
         height: 70px;
@@ -81,21 +82,18 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100px;
-        @include for-mobile-layout {
-            width:77px
-    
-        }
+        width: 77px;
+     
         & a {
             // margin: 5px ;
-            width: 85px;
+            width: 100%;
             border-radius: 0;
             align-self: center;
             padding: 5px 10px;
             margin: 5px 0;
         }
         & a:hover {
-            width: 85px;
+            width: 100%;
             background-color: hsla(0, 0%, 88.6%, 0.363);
         }
     }

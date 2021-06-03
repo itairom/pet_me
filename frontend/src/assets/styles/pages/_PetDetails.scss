@@ -1,9 +1,5 @@
-.pet-details-section {
-    margin-block-end: 1rem;
-}
-
 .details-header {
-    margin-top: 40px;
+    margin-top: 75px;
 
     .details-title {
         flex: 1;
@@ -11,9 +7,10 @@
 
     .details-header-btns {
         display: flex;
-        align-items: center;
+        // align-items: center;
         // justify-content: center;
         gap: 0.5em;
+        margin-top: 8px;
 
         &>* {}
 
@@ -21,12 +18,20 @@
             cursor: pointer;
             background-color: #ffffff;
         }
+
+        .share-pet {
+            cursor: pointer;
+            color: #6b6a6a;
+
+            :hover {
+                color: black;
+            }
+        }
     }
 }
 
 
 .details-imgs-container {
-    margin-top: 10px;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -67,11 +72,9 @@
     padding-bottom: 10px;
 
     @include for-normal-layout {
-            flex-direction: row;
+        flex-direction: row;
 
-            & .pet-info-list {
-                
-            }
+        & .pet-info-list {}
     }
 
     .details-info-container {
@@ -83,12 +86,13 @@
 
         & .info-header {
             justify-content: space-between;
-            
+
             & .info-header-txt h3 {
                 margin-bottom: 5px;
             }
+
             & .info-header-txt span {
-                padding: 5px 0 30px;
+                padding: 5px 0 15px;
                 margin-bottom: 10px;
             }
 
@@ -114,18 +118,22 @@
                 border-bottom: 1px solid #d3d3d3;
                 margin-bottom: 15px;
                 color: #1e1e1e;
-                li{
-                    margin-block-end: 5px;
-                    :first-child{
+
+                li {
+                    margin-block-end: 10px;
+
+                    :first-child {
                         width: 24px;
                         height: 24px;
                         color: $clr9;
                     }
                 }
-                li p{
-                    margin-inline-start: 4px;
+
+                li p {
+                    margin-inline-start: 10px;
                 }
             }
+
             @include for-normal-layout {
                 .pet-info-list {
                     border-bottom: unset;
@@ -205,6 +213,7 @@
                 border-color: #36b99f;
             }
         }
+
         @include for-wide-layout {
             .adopt-modal-section {
                 height: 50%;
@@ -216,6 +225,7 @@
                 width: 300px;
             }
         }
+
         @include for-normal-layout {
             .adopt-modal-section {
                 height: 50%;
@@ -224,15 +234,26 @@
                 z-index: 5;
                 width: 260px;
             }
+        }
+
     }
-        
+}
+
+.google-map {
+    .pet-location {
+        display: flex;
+        color: #6b6a6a;
+        :first-child{
+            width: 0.8em;
+            height: 0.9em;
+        }
     }
 }
 
 //some self helpers
 
 
-.map-pin svg{
+.map-pin svg {
     fill: #36b99fde;
     height: 48px;
     width: 48px;
@@ -244,4 +265,3 @@
     transform: translate(-50%, -50%);
 
 }
- 

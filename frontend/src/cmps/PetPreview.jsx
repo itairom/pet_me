@@ -12,7 +12,6 @@ import { HeartLike } from './HeartLike'
 
 import Slider from "react-slick";
 
-
 export class PetPreview extends React.Component {
 
     render() {

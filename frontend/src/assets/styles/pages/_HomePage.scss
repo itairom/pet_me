@@ -12,6 +12,9 @@
     justify-content: center;
     // @include aspect-ratio(100vh, 90vh)
     // align-items: center;
+    @include for-mobile-layout {
+        background-image: url("https://res.cloudinary.com/dstqymucm/image/upload/v1622708465/petMe/hero-img/richard-brutyo_d8gnss.jpg");
+      }
 
     .hero-content {
         display: flex;
@@ -68,6 +71,11 @@
         }
 
         @include for-narrow-layout {
+            justify-content: space-between;
+            grid-row-gap: 20px;
+        }
+
+        @include for-normal-layout {
             justify-content: space-evenly;
             grid-row-gap: 20px;
         }
@@ -140,7 +148,7 @@
             }
 
             @include for-normal-layout {
-                height: 300px;
+                height: 280px;
                 width: 250px;
             }
         }

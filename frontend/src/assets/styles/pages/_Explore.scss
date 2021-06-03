@@ -2,16 +2,15 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 30px 15px;
-    margin-block-start: 20px;
+    padding-top:60px;
     margin-block-end: 20px
 }
 
 
 .explore-search {
     cursor: pointer;
-    // position: fixed;
-    top: 4px;
-    left: 40%;
+    top: 9px;
+    left: 45%;
     // right: 50%;
     align-items: center;
     display: flex;
@@ -19,7 +18,7 @@
     color: #1e1e1e;
     font-size: .9rem;
     font-weight: 700;
-    position: absolute;
+    position: fixed;
     z-index: 101;
     border-radius: 200px;
     line-height: 49px;
@@ -30,15 +29,15 @@
         background-color: $clr9;
         background-color: #36b99f;
         // color: whitesmoke;
-        padding: 5px 7px;
-        margin: 3px 3px 3px 30px;
+        padding: 4px 3px;
+        margin: 3px 7px 3px 30px;
         border-radius: 50%;
-        width: 45.5px;
-        height: 45.5px;
+        width: 35px;
+        height: 35px;
 
 
         &>img {
-            padding: 6px;
+            padding: 3px;
             
             // width: 40px;
             // height: 40px;
