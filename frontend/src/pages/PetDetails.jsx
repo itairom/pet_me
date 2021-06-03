@@ -4,7 +4,7 @@ import { utilService } from '../services/utilService'
 import { socketService } from '../services/socketService'
 import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
-import { loadUsers, AdoptAction } from '../store/actions/userActions'
+import { loadUsers } from '../store/actions/userActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 import { HeartLike } from '../cmps/HeartLike'
@@ -13,7 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.min.css';
 import { faEnvelope, faShare, faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-// import TodayIcon from '@material-ui/icons/Today';
 import SportsIcon from '@material-ui/icons/Sports';
 
 
@@ -73,7 +72,6 @@ class _PetDetails extends Component {
         if (!loggedInUser) return alert('Please login in order to adopt this pet ')
         if (loggedInUser.pets.find(loggedInUserPet => loggedInUserPet._id === pet._id)) return alert('You cannot adopt you own pet')
         this.setState({ isAttend: true })
-        //new
         const data = {
             owner: owner,
             userId: loggedInUser._id,
@@ -107,95 +105,95 @@ class _PetDetails extends Component {
             <section className="pet-details-section main-container">
                 <header className="details-header flex column">
                     <div className="details-title flex column">
-                        <h3 className="pet-name">{ pet.name }</h3>
-                        { <span className="pet-location">{ pet.owner.loc.address }</span> }
+                        <h3 className="pet-name">{pet.name}</h3>
+                        {<span className="pet-location">{pet.owner.loc.address}</span>}
                     </div>
                     <div className="details-header-btns">
-                        {/* TODO: add icons +actions btns */ }
-                        <span className="pet-likes">{ pet.likes }</span>
-                        <HeartLike pet={ pet } />
+                        {/* TODO: add icons +actions btns */}
+                        <span className="pet-likes">{pet.likes}</span>
+                        <HeartLike pet={pet} />
 
-                        <span className="share-pet" onClick={ () => this.onShare }><FontAwesomeIcon icon={ faShare } />
-                            <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
+                        <span className="share-pet" onClick={() => this.onShare}><FontAwesomeIcon icon={faShare} />
+                            <div className={'share-modal' + this.state.isOpanModal ? 'hide' : ''}>
                             </div>
                         </span>
                     </div>
                 </header>
                 <div className="details-imgs-container grid">
-                    { pet.imgUrls.map((imgUrl, idx) => {
-                        return <img key={ pet._id + idx } src={ imgUrl } alt="skeleton" />
-                    }) }
+                    {pet.imgUrls.map((imgUrl, idx) => {
+                        return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
+                    })}
                 </div>
                 <div className="details-main-section flex">
 
                     <div className="details-info-container">
                         <div className="info-header flex ">
                             <div className="info-header-txt flex column">
-                                <h3>{ pet.name + ', owned by ' + pet.owner.name }</h3>
-                                <span>{ pet.title }</span>
+                                <h3>{pet.name + ', owned by ' + pet.owner.name}</h3>
+                                <span>{pet.title}</span>
 
                             </div>
-                            <img src={ pet.owner.imgUrl } alt="" />
+                            <img src={pet.owner.imgUrl} alt="" />
                         </div>
                         <div className="info-body">
-                            <LongTxt className="pet-desc" txt={ pet.desc } />
-                            {/* <p className="pet-desc">{ pet.desc }</p> */ }
+                            <LongTxt className="pet-desc" txt={pet.desc} />
+                            {/* <p className="pet-desc">{ pet.desc }</p> */}
                             <ul className="pet-info-list clean-list">
                                 <li className="flex align-center">
-                                    <FontAwesomeIcon icon={ faCalendar } />
+                                    <FontAwesomeIcon icon={faCalendar} />
                                     <p>
-                                        Age: { (pet.age === 1) ? pet.age + ' year old' : pet.age + ' years old' }
+                                        Age: {(pet.age === 1) ? pet.age + ' year old' : pet.age + ' years old'}
                                     </p>
                                 </li>
                                 <li className="flex align-center">
-                                    <FontAwesomeIcon icon={ faVenusMars } />
+                                    <FontAwesomeIcon icon={faVenusMars} />
                                     <p>
-                                        Gender: { pet.gender }
+                                        Gender: {pet.gender}
                                     </p>
                                 </li>
                                 <li className="flex align-center">
-                                    <FontAwesomeIcon icon={ faCat } />
+                                    <FontAwesomeIcon icon={faCat} />
                                     <p>
-                                        Breed: { pet.breed }
+                                        Breed: {pet.breed}
                                     </p>
                                 </li>
                                 <li className="flex align-center">
-                                    <FontAwesomeIcon icon={ faSyringe } />
+                                    <FontAwesomeIcon icon={faSyringe} />
                                     <p>
-                                        vaccinated: { pet.vaccine ? 'yes' : 'no' }
+                                        vaccinated: {pet.vaccine ? 'yes' : 'no'}
                                     </p>
                                 </li>
                                 <li className="flex align-center">
-                                    <FontAwesomeIcon icon={ faStethoscope } />
+                                    <FontAwesomeIcon icon={faStethoscope} />
                                     <p>
-                                        Spayed/Neutered: { pet.neuterSpayed ? 'yes' : 'no' }
+                                        Spayed/Neutered: {pet.neuterSpayed ? 'yes' : 'no'}
                                     </p>
                                 </li>
                                 <li className="flex align-center">
                                     <SportsIcon />
                                     <p>
-                                        trained: { pet.trained ? 'yes' : 'no' }
+                                        trained: {pet.trained ? 'yes' : 'no'}
                                     </p>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div className="adopt-modal-container flex column">
-                        <span className="adoption-time adopt-sign">{ 'Looking for    a home for ' + utilService.timeSince(pet.addedAt) }</span>
-                        <span className="adoption-likes adopt-sign">{ 'Liked by ' + pet.likes + ' people!' }</span>
-                        <button className="adopt-btn el-btn" onClick={ () => this.onAdopt() }>{ (this.state.isAttend) ? 'Request sent' : 'Adopt Me' }</button>
-                        <span><FontAwesomeIcon icon={ faEnvelope } /> { pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com' }</span>
-                        <span><FontAwesomeIcon icon={ faWhatsapp } /> 054-2312993</span>
+                        <span className="adoption-time adopt-sign">{'Looking for    a home for ' + utilService.timeSince(pet.addedAt)}</span>
+                        <span className="adoption-likes adopt-sign">{'Liked by ' + pet.likes + ' people!'}</span>
+                        <button className="adopt-btn el-btn" onClick={() => this.onAdopt()}>{(this.state.isAttend) ? 'Request sent' : 'Adopt Me'}</button>
+                        <span><FontAwesomeIcon icon={faEnvelope} /> {pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com'}</span>
+                        <span><FontAwesomeIcon icon={faWhatsapp} /> 054-2312993</span>
                     </div>
                 </div>
                 <div className="comments-section">
-                    <CommentsCmp pet={ pet } key={ pet._id } />
+                    <CommentsCmp pet={pet} key={pet._id} />
                 </div>
-                {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */ }
+                {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */}
                 <section className="google-map section">
                     <h3 className="pet-loc">Where to find me</h3>
-                    {/* <span>{ pet.owner.loc.address }</span> */ }
-                    <GoogleMap loc={ pet.owner.loc } />
+                    {/* <span>{ pet.owner.loc.address }</span> */}
+                    <GoogleMap loc={pet.owner.loc} />
                 </section>
             </section>
         )
@@ -215,8 +213,6 @@ const mapDispatchToProps = {
     toggleLike,
     loadPets,
     loadUsers,
-    // adoptRequest
-    // updatePet
 }
 
 export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)

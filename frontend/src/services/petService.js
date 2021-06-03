@@ -37,10 +37,13 @@ async function update(pet) {
 
 async function addComment(newComment) {
     console.log(newComment)
+    const { petId } = newComment
 
-    return await storageService.postComment(STORAGE_KEY, newComment)
+    let comment = await httpService.post(`pet/comment/${petId}`, newComment)
+
+    return comment
+
 }
-
 function remove(petId) {
     storageService.remove(STORAGE_KEY, petId)
 }
@@ -50,6 +53,8 @@ async function getPetByid(petId) {
     let pet = await httpService.get(`pet/${petId}`)
     return pet
 }
+
+
 
 async function toggleLike(pet, likedInfo) {
     const { userId, act, idx } = likedInfo
@@ -69,3 +74,5 @@ async function toggleLike(pet, likedInfo) {
 
     return await update(updatedPet)
 }
+
+

@@ -1,5 +1,5 @@
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
-import { Link, withRouter } from 'react-router-dom'
+import {  withRouter } from 'react-router-dom'
 import React from 'react'
 
 

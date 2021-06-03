@@ -5,9 +5,7 @@ const STORAGE_KEY = 'pets'
 async function getPets(req, res) {
     try {
         const filterBy = req.query
-        console.log("🚀 ~ file: pet.controller.js ~ line 9 ~ getPets ~ filterBy", filterBy)
-        const pets = await petService.query(STORAGE_KEY, filterBy)
-        console.log('after service');
+        const pets = await petService.query( filterBy)
         res.send(pets)
     } catch (err) {
         logger.error('failed to get pets', err)

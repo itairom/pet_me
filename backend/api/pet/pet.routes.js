@@ -4,9 +4,9 @@ const { log } = require('../../middlewares/logger.middleware')
 const { getPets, getPetByid, updatePet } = require('./pet.controller')
 const router = express.Router()
 
-// middleware that is specific to this router
-// router.use(requireAuth)
-
+router.post('/comment/:petId', addComment)
+router.get('/:id', log, getPetByid)
+router.post('/like', addLike)
 router.get('/', getPets)
 router.get('/:id', log, getPetByid)
 router.put('/:id', log, updatePet)

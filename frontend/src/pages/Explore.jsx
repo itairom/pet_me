@@ -8,19 +8,22 @@ import { PetFilter } from '../cmps/PetFilter'
 
 
 class _Explore extends React.Component {
-    
     state = {
-        pets: null,
         isFilterShown: false,
         filterBy: null
     }
     async componentDidMount() {
         await this.onSetFilter()
-        this.props.loadPets(this.state.filterBy)
-        this.setState({ pets: this.props.pets })
-        
-        window.addEventListener('wheel', () => {
+        await this.props.loadPets(this.state.filterBy)
+
+        window.addEventListener('scroll', () => {
             this.setState({ isFilterShown: false })
+        })
+    }
+
+    async componentWillUnmount() {
+        await this.props.loadPets()
+        window.removeEventListener('scroll', () => {
         })
     }
 
@@ -41,32 +44,29 @@ class _Explore extends React.Component {
         )
     }
 
-
     render() {
         const { pets } = this.props
         const { isFilterShown, filterBy } = this.state
         if (!pets) return <img src={userIcon} alt="loading" />
+        if (!filterBy) return <img src={userIcon} alt="loading" />
+        console.log("🚀 ~ file: Explore.jsx ~ line 52 ~ _Explore ~ render ~ filterBy", filterBy)
+
         return (
             <section className="main-container">
-               {!isFilterShown&& <div className="explore-search">
+                {!isFilterShown && <div className="explore-search">
                     <span onClick={() => this.onToggleFilter()} > Start your search</span>
                     <div className="search-btn">
                         <img className="filter-search" src={magnifyingGlass} alt="glass" />
                     </div>
                 </div>}
-
-                    {isFilterShown && <PetFilter />}
-
-
-                {!filterBy?.type && <h1>Our pets</h1>}
-                {filterBy?.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}
+                {isFilterShown && <PetFilter />}
+                {!filterBy.type && <h1>Our pets</h1>}
+                {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}
                 < PetList pets={pets} />
             </section>
         )
     }
 }
-
-
 
 function mapStateToProps(state) {
     return {

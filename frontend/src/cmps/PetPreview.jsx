@@ -2,7 +2,6 @@
 import React from 'react'
 import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
 import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
-import { ReactComponent as Heart } from '../assets/img/svg/heart.svg'
 import { Link } from 'react-router-dom'
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";

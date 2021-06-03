@@ -3,9 +3,8 @@ import React from 'react'
 import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
 import { PetFilter } from '../cmps/PetFilter'
+import { HomepagePreview } from '../cmps/HomepagePreview'
 import { PetPreview } from '../cmps/PetPreview'
-import { ReactComponent as RightArrow } from '../assets/img/svg/right-arrow.svg'
-import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg'
 import contact from '../assets/img/svg/contact.svg'
 import info from '../assets/img/svg/info.svg'
 import paw from '../assets/img/svg/paw.svg'
@@ -13,13 +12,9 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 
 class _PetApp extends React.Component {
-    state = {
-        pets: null
-    }
 
-    componentDidMount() {
-        this.props.loadPets()
-        this.setState({ pets: this.props.pets })
+    async componentDidMount() {
+        await this.props.loadPets()
     }
 
     render() {
@@ -39,25 +34,25 @@ class _PetApp extends React.Component {
                     <h2 className="type-cards-title">Our sweet pet types</h2>
                     <div className="type-img">
                         <div>
-                            <Link to={ `/explore/?&type=dog` } >
+                            <Link to={`/explore/?gender=&age=&type=dog&location=&size=`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622205405/dogs/dog3/frnach-dog3_npdovb.jpg" alt="card" />
                                 <h4>Dogs</h4>
                             </Link>
                         </div>
                         <div>
-                            <Link to={ `/explore/?&type=cat` } >
+                            <Link to={`/explore/?gender=&age=&type=cat&location=&size=`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622203804/petMe/cats/cat_nnrk1h.jpg" alt="card" />
                                 <h4>Cats</h4>
                             </Link>
                         </div>
                         <div>
-                            <Link to={ `/explore/?&type=rabbit` } >
+                            <Link to={`/explore/?gender=&age=&type=rabbit&location=&size=`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622206572/petMe/rabbit/rrabit3/1_2_chadja.jpg" alt="card" />
                                 <h4>Rabbits</h4>
                             </Link>
                         </div>
                         <div>
-                            <Link to={ `/explore/?&type=parrot` } >
+                            <Link to={`/explore/?gender=&age=&type=parrot&location=&size=`} >
                                 <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622213930/petMe/parrot/1_3_s1zdqk.jpg" alt="card" />
                                 <h4>Parrots</h4>
                             </Link>
@@ -69,42 +64,42 @@ class _PetApp extends React.Component {
                         <div>
                             <div className="info-title-icon">
                                 <h2>Filter down to your perfect fit</h2>
-                                {/* <img className="info-icons" src={magnifyingGlass} alt="glass" /> */ }
+                                {/* <img className="info-icons" src={magnifyingGlass} alt="glass" /> */}
                                 <SearchOutlinedIcon className="info-icons" />
                             </div>
                             <p> Personalize your search with filters like gender,
                             type, size or a pool to get exactly what you want.
                             </p>
-                            {/* <RightArrow className="arrow-icons" /> */ }
+                            {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                         <div>
                             <div className="info-title-icon">
                                 <h2>Dig into the details</h2>
-                                <img className="info-icons" src={ info } alt="glass" />
+                                <img className="info-icons" src={info} alt="glass" />
                             </div>
                             <p> Check out the photos and view pet information.
                                 Next, read user reviews and comments about the pet and its owner.</p>
-                            {/* <RightArrow className="arrow-icons" /> */ }
+                            {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                         <div>
                             <div className="info-title-icon">
                                 <h2>Contact pet owners</h2>
-                                <img className="info-icons" src={ contact } alt="glass" />
+                                <img className="info-icons" src={contact} alt="glass" />
                             </div>
                             <p>  Once you have decided which pet you would like to adopt, contact the pet owners and keep your fingers crossed.</p>
-                            {/* <RightArrow className="arrow-icons" /> */ }
+                            {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                         <div>
                             <div className="info-title-icon">
                                 <h2>Adopt a friend!</h2>
-                                <img className="info-icons" src={ paw } alt="glass" />
+                                <img className="info-icons" src={paw} alt="glass" />
                             </div>
                             <p> In a quick and easy process you can adopt a pet that will become your new friend for life. </p>
                             {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                     </div>
                 </section>
-                <section className="type-cards preview-homepage">
+                {/* <section className="type-cards preview-homepage">
                     <h2 className="type-cards-title">Waiting long time to adopt</h2>
                     <div className="preview-cards">
                         <PetPreview pet={pets[9]} key={pets[9]._id} />
@@ -121,16 +116,16 @@ class _PetApp extends React.Component {
                         <PetPreview pet={pets[6]} key={pets[6]._id} />
                         <PetPreview pet={pets[7]} key={pets[7]._id} />
                     </div>
-                </section>
-
+                </section> */}
+                <HomepagePreview pets={this.props.pets} />
                 <section className="homepage-about main-container full">
-                    {/* <div className="inner-container flex"> */ }
-                    {/* <div className="about_imgs"> */ }
+                    {/* <div className="inner-container flex"> */}
+                    {/* <div className="about_imgs"> */}
                     {/* <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622209864/petMe/about-imgs/about1_rt4e2u.jpg" alt="card" />
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210087/petMe/about-imgs/about-cat_w78jtf.jpg" alt="card" />
                             <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210260/petMe/about-imgs/boy-and-cat_hd5uqt.jpg" alt="card" /> */}
-                    {/* </div> */ }
-                    {/* </div> */ }
+                    {/* </div> */}
+                    {/* </div> */}
                     <div className="blur full">
 
                         <div className="about-content main-container">

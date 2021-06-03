@@ -1,9 +1,6 @@
 import { petService } from '../../services/petService.js'
 
-// FRONT CRUDL
-
-// READ
-export function loadPets(filterBy) { // Action Creator
+export function loadPets(filterBy = null) { // Action Creator
     return async dispatch => {
         try {
             const pets = await petService.query(filterBy)
