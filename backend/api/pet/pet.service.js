@@ -41,7 +41,7 @@ const ObjectId = require('mongodb').ObjectId
 async function query(filterBy = '') {
     const { type, age, location, gender, size } = filterBy
     // const criteria = _buildCriteria(filterBy)
-    
+
     try {
         const collection = await dbService.getCollection('pet')
         const pets = await collection.find({}).toArray()
@@ -52,7 +52,25 @@ async function query(filterBy = '') {
     }
 }
 
-
+async function save(pet) {
+    let savedPet = { ...pet }
+    const collection = await dbService.getCollection('pet')
+    try {
+        if (pet._id) {
+            //update
+            savedPet.updatedAt = Date.now()
+            await collection.updateOne({ _id: pet._id }, { $set: savedPet })
+        } else {
+            //create
+            savedPet.createdAt = Date.now()
+            await collection.insertOne(savedPet)
+        }
+    } catch (err) {
+        logger.error('cannot save pet', err)
+        throw err
+    }
+    return savedPet
+}
 
 function get(entityType, entityId) {
     return query(entityType)
@@ -70,15 +88,15 @@ function post(entityType, newEntity) {
         })
 }
 
-function put(entityType, updatedEntity) {
-    return query(entityType)
-        .then(entities => {
-            const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
-            entities.splice(idx, 1, updatedEntity)
-            save(entityType, entities)
-            return updatedEntity
-        })
-}
+// function put(entityType, updatedEntity) {
+//     return query(entityType)
+//         .then(entities => {
+//             const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
+//             entities.splice(idx, 1, updatedEntity)
+//             save(entityType, entities)
+//             return updatedEntity
+//         })
+// }
 
 function remove(entityType, entityId) {
     return query(entityType)
@@ -90,9 +108,7 @@ function remove(entityType, entityId) {
 }
 
 
-function save(entityType, entities) {
-    localStorage.setItem(entityType, JSON.stringify(entities))
-}
+
 
 
 function _makeId(length = 5) {
@@ -108,15 +124,15 @@ function _buildCriteria(filterBy) {
     const { type, age, location, gender, size } = filterBy
 
     const criteria = {}
-    if (filterBy.type === type ) {
+    if (filterBy.type === type) {
         criteria.type = { $regex: filterBy.type, $options: 'i' }
         // criteria.type=type
         criteria.or()
     }
-   
+
     return criteria
 }
 
 module.exports = {
-    query, get
+    query, get, save
 }

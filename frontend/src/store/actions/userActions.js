@@ -1,4 +1,5 @@
 import { userService } from '../../services/userService'
+import { socketService } from '../../services/socketService'
 
 // THUNK action creators
 // Work asynchronously with the service and dispatch actions to the reducers 
@@ -9,6 +10,14 @@ export function loadUsers() {
       dispatch({ type: 'LOADING_START' })
       const users = await userService.getUsers()
       dispatch({ type: 'SET_USERS', users })
+      //for sending new requests
+      socketService.on('user-updated', newAdoptReq => {
+        console.log(newAdoptReq)
+        dispatch({
+          type: 'ADD_REQUEST', newAdoptReq
+        })
+
+      })
     } catch (err) {
       console.log('UserActions: err in loadUsers', err)
     } finally {
@@ -62,15 +71,15 @@ export function logout() {
   }
 }
 
-export function adoptRequest(request) { 
+export function adoptRequest(request) {
   return dispatch => {
-      return userService.adoptRequest(request)
-          .then(request => {
-          console.log("🚀 ~ file: userActions.js ~ line 69 ~ adoptRequest ~ request", request)
-              const action = {
-                  type: 'ADD_REQUEST', request
-              }
-              dispatch(action)
-          })
+    return userService.adoptRequest(request)
+      .then(request => {
+        console.log("🚀 ~ file: userActions.js ~ line 69 ~ adoptRequest ~ request", request)
+        const action = {
+          type: 'ADD_REQUEST', request
+        }
+        dispatch(action)
+      })
   }
 }

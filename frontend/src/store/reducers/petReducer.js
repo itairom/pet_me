@@ -10,6 +10,16 @@ export function petReducer(state = initialState, action) {
             return { ...state, pets: action.pets }
         case 'ADD_PET':
             return { ...state, pets: [...state.pets, action.pet] }
+        case 'UPDATE_PET':
+            return {
+                ...state,
+                pets: state.pets.map(pet => {
+                    if (pet._id === action.pet._id) {
+                        return action.pet; //swap the relevant pet with updatedPet (action.pet)
+                    }
+                    return pet;
+                })
+            }
         case 'REMOVE_PET':
             return { ...state, pets: state.pets.filter(pet => pet._id !== action.petId) }
         case 'ADD_LIKE':

@@ -29,8 +29,8 @@ class _PetDetails extends Component {
 
     componentDidMount() {
         const id = this.props.match.params.petId;
-        socketService.setup()
-        socketService.emit('adopt-request', id)
+        // socketService.setup()
+        // socketService.emit('adopt-request', id)
         socketService.on('eyal', () => {
             console.log('im on!')
         })
@@ -75,30 +75,15 @@ class _PetDetails extends Component {
         this.setState({ isAttend: true })
         //new
         const data = {
+            owner: owner,
             userId: loggedInUser._id,
             date: Date.now(),
             message: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click to view`,
             fullname: loggedInUser.fullname
         }
         // AdoptAction()
-        socketService.emit('yuval', data)
+        socketService.emit('adopt-request', data)
     }
-
-
-    // {
-    //     "_id": "p102",
-    //     "isAdopted": false,
-    //     "adoptQue": [
-    //       {
-    //         "userId": "123",
-    //         "message": "lolo",
-    //         "chatId": "i11"
-    //       },
-    //       {
-    //         "userId": "123",
-    //         "message": "i like to addopt",
-    //         "chatId": "ch23"
-    //       }
 
 
     //if the user clicked attend let the user reclick to undo
@@ -112,7 +97,10 @@ class _PetDetails extends Component {
     }
 
     render() {
-        const { pet } = this.state
+        // console.log(this.props)
+        const id = this.props.match.params.petId
+        const pet = this.props.pets.find(pet => pet._id === id)
+        // const { pet } = this.props
         if (!pet) return <h1>loading</h1>
 
         return (

@@ -33,7 +33,7 @@ function connectSockets(http, session) {
             // logger.debug('Session ID is', socket.handshake.sessionID)
             socket.myTopic = topic
         })
-        socket.on('adopt-request', topic => {
+        socket.on('adopt-request-old', topic => {
             console.log('backend -adopting')
             if (socket.myTopic === topic) return;
             if (socket.myTopic) {
@@ -60,11 +60,17 @@ function connectSockets(http, session) {
         socket.on('user-watch', userId => {
             socket.join(userId)
         })
-        // socket.on('adopt-request', data => {
-        //     console.log(data)
-        //     // io.emit(data)
-        // })
-
+        socket.on('adopt-request', data => {
+            console.log('data-from-details', data)
+            // io.emit(data)
+            gIo.emit('ilay', data)
+        })
+        socket.on('ilay', (data) => {
+            console.log('data from petservice', data)
+            //save data to backend userservice => db 
+            // userService.update(data.owner)
+        
+        })
     })
 }
 

@@ -25,9 +25,20 @@ async function getPetByid(req, res) {
     }
 }
 
-
+async function updatePet(req, res) {
+    try {
+        const pet = req.body
+        const savedPet = await petService.save(pet)
+        res.send(savedPet)
+    } catch (err) {
+        logger.error(`Failed to update pet: ${pet._id}`, err)
+        res.status(500).send({ err: 'Failed to update pet' })
+    }
+}
 
 
 module.exports = {
-    getPets, getPetByid
+    getPets,
+    getPetByid,
+    updatePet
 }

@@ -22,11 +22,14 @@ class _Profile extends Component {
     }
 
     componentDidMount() {
-        this.onLoadPets()
-        this.props.loadUsers()
-        console.log(this.props.loggedInUser)
-        // socketService.on('yuval', (data) => {
-        //     console.log('data recived', data)
+        socketService.on('user-updated', (data) => {
+            console.log(data)
+        })
+        // this.onLoadPets()
+        // this.props.loadUsers()
+        // console.log(this.props.loggedInUser)
+        // socketService.on('data-to-profile', (data) => {
+        //     console.log('data recived in profile', data)
         //     console.log('requested from socket')
         //     console.log('loggedninuser', this.props.loggedInUser)
         //     store.addNotification({

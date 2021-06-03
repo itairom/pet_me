@@ -73,6 +73,7 @@ class _CommentsCmp extends Component {
                             </div>
                         ) }
                     </ul>
+                    {/* comment modal */}
                     <div className={ this.state.isCommenting ? 'new-comment-modal' : 'new-comment-modal hide' }
                         onClick={ () => { this.toggleAddComment() } }>
                         <form className="modal-form" onSubmit={ (ev) =>

@@ -16,8 +16,9 @@ export function userReducer(state = initialState, action = {}) {
         ...state,
         users: state.users.filter(user => user._id !== action.userId)
       }
-      case 'ADD_REQUES':
-        return { ...state, users: action.users }
+    case 'ADD_REQUEST':
+      console.log('adding request on reducer')
+      return { ...state, users: action.users }
 
     case 'SET_USERS':
       return { ...state, users: action.users }
@@ -34,7 +35,7 @@ export function userReducer(state = initialState, action = {}) {
       state.users.splice(idx, 1, user)
       return { ...state, users: action.users }
 
-      
+
 
     case 'SET_SCORE':
       return { ...state, loggedInUser: { ...state.loggedInUser, score: action.score } }
