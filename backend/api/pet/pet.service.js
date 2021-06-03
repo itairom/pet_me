@@ -83,7 +83,7 @@ function _buildCriteria(filterBy) {
         criteria.size.find({ $text: { $search: size } })
     }
     if (type) {
-        criteria.type = type
+        criteria.type = { $regex: new RegExp(filterBy.type, 'ig') }
     }
     if (age) {
         criteria.age = type

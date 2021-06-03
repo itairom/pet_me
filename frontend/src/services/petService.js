@@ -35,13 +35,22 @@ async function update(pet) {
     return updatedPet
 }
 
-async function addComment(newComment) {
+async function addComment(newComment, pet) {
     console.log(newComment)
-    const { petId } = newComment
+    const updatedPet = { ...pet }
+    const { loggedInUser, petId, txt } = newComment
+    newComment = {
+        txt,
+        created: Date.now(),
+        by: {
+            id: loggedInUser._id,
+            fullname: loggedInUser.fullname,
+            imgUrl: loggedInUser.imgUrl
+        }
+    }
+    updatedPet.comments.push(newComment)
 
-    let comment = await httpService.post(`pet/comment/${petId}`, newComment)
-
-    return comment
+    return await update(updatedPet)
 
 }
 function remove(petId) {
