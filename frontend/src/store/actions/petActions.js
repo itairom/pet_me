@@ -63,19 +63,18 @@ export function toggleLike(pet, likedInfo) { // Action Creator
     }
 }
 
-export function addComment(ev, newComment, petId) { // Action Creator
+export function addComment(ev, newComment, pet) { // Action Creator
     ev.preventDefault()
     console.log('im in action')
     // const { txt, petId, loggedInUser } = newComment
     return dispatch => {
         console.log('dispatching commment')
-        return petService.addComment(newComment)
-            .then((newComment) => {
+        return petService.addComment(newComment, pet)
+            .then((updatedPet) => {
                 console.log('recived comment')
                 const action = {
-                    type: 'ADD_COMMENT',
-                    newComment,
-                    petId
+                    type: 'UPDATE_PET',
+                    pet: updatedPet
                 }
                 dispatch(action)
             })

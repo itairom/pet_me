@@ -19,6 +19,7 @@ import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import CheckIcon from '@material-ui/icons/Check';
 import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
 import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
+
 class _PetDetails extends Component {
     state = {
         pet: null,

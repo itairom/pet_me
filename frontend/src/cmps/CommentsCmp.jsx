@@ -15,9 +15,9 @@ class _CommentsCmp extends Component {
         }
     }
 
-    onSubmit = (ev, commentToEdit, petId) => {
+    onSubmit = (ev, commentToEdit, pet) => {
         this.toggleAddComment()
-        this.props.addComment(ev, commentToEdit, petId)
+        this.props.addComment(ev, commentToEdit, pet)
         this.setState(prevState => ({
             commentToEdit: {
                 ...prevState.commentToEdit,
@@ -73,11 +73,11 @@ class _CommentsCmp extends Component {
                             </div>
                         ) }
                     </ul>
-                    {/* comment modal */}
+                    {/* comment modal */ }
                     <div className={ this.state.isCommenting ? 'new-comment-modal' : 'new-comment-modal hide' }
                         onClick={ () => { this.toggleAddComment() } }>
                         <form className="modal-form" onSubmit={ (ev) =>
-                            this.onSubmit(ev, this.state.commentToEdit, this.props.pet._id) }
+                            this.onSubmit(ev, this.state.commentToEdit, this.props.pet) }
                             onClick={ e => { e.stopPropagation() } }>
                             <h2>Add a comment</h2>
                             <textarea
