@@ -1,9 +1,9 @@
 .main-profile {
-    margin-top: 50px;
+    margin-top: 85px;
 }
 
 .user-card {
-    position: absolute;
+    // position: absolute;
     left: 50px;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .user-pets {
-    position: absolute;
+    // position: absolute;
     background-color: rgb(209, 230, 230);
     width: 700px;
     right: 50px;
@@ -73,6 +73,10 @@
     td{
         padding: 10px;
     }
+    table{
+        width: 400px;
+    }
+
 }
 
 .table-head {

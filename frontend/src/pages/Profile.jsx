@@ -21,31 +21,9 @@ class _Profile extends Component {
         userPets: []
     }
 
-    componentDidMount() {
-        socketService.on('user-updated', (data) => {
-            console.log(data)
-        })
-        // this.onLoadPets()
-        // this.props.loadUsers()
-        // console.log(this.props.loggedInUser)
-        // socketService.on('data-to-profile', (data) => {
-        //     console.log('data recived in profile', data)
-        //     console.log('requested from socket')
-        //     console.log('loggedninuser', this.props.loggedInUser)
-        //     store.addNotification({
-        //         title: "Wonderful!",
-        //         message: data.message,
-        //         type: "info",
-        //         insert: "top-right",
-        //         container: "bottom-right",
-        //         animationIn: ["animate__animated", "animate__fadeIn"],
-        //         animationOut: ["animate__animated", "animate__fadeOut"],
-        //         dismiss: {
-        //             duration: 5000,
-        //             onScreen: true
-        //         }
-        //     });
-        // })
+    async componentDidMount() {
+        this.props.login()
+       await this.onLoadPets()
     }
 
     onLoadPets = () => {
@@ -68,7 +46,7 @@ class _Profile extends Component {
         if (!userPets) return <img src={ Loader } alt="loadnig" />
         console.log("🚀 ~ file: Profile.jsx ~ line 45 ~ _Profile ~ render ~ userPets", userPets)
         return (
-            <section className="main-profile">
+            <section className="main-profile main-container">
                 <section className="user-card">
                     <section className="user-info">
                         <h1>{ loggedInUser.fullname }</h1>

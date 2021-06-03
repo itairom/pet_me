@@ -50,7 +50,7 @@ class _Explore extends React.Component {
         if (!pets) return <img src={userIcon} alt="loading" />
         if (!filterBy) return <img src={userIcon} alt="loading" />
         console.log("🚀 ~ file: Explore.jsx ~ line 52 ~ _Explore ~ render ~ filterBy", filterBy)
-
+        
         return (
             <section className="main-container">
                 {!isFilterShown && <div className="explore-search">
