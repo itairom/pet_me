@@ -4,14 +4,9 @@ const ObjectId = require('mongodb').ObjectId
 
 
 async function query(filterBy = '') {
-<<<<<<< HEAD
-    const { type, age, location, gender, size } = filterBy
-    // const criteria = _buildCriteria(filterBy)
-=======
     // console.log("🚀 ~ file: pet.service.js ~ line 7 ~ query ~ filterBy", filterBy)
     const criteria = _buildCriteria(filterBy)
     // console.log("🚀 ~ file: pet.service.js ~ line 9 ~ query ~ criteria", criteria)
->>>>>>> fbf6760848709d12558db2d1522b8851f388f63b
 
     try {
         const collection = await dbService.getCollection('pet')
@@ -48,31 +43,16 @@ function get(entityType, entityId) {
         .then(entities => entities.find(entity => entity._id === entityId))
 }
 
-async function addLike(likeDetails) {
-    const { petId, userId, act } = likeDetails
-
-<<<<<<< HEAD
-// function put(entityType, updatedEntity) {
-//     return query(entityType)
-//         .then(entities => {
-//             const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
-//             entities.splice(idx, 1, updatedEntity)
-//             save(entityType, entities)
-//             return updatedEntity
-//         })
+// const collection = await dbService.getCollection('pet')
+// if (act > 0) {
+//     await collection.updateOne({ _id: petId }, { $inc: { likes: 1 } });
 // }
-=======
-    const collection = await dbService.getCollection('pet')
-    if (act > 0) {
-        await collection.updateOne({ _id: petId }, { $inc: { likes: 1 } });
-    }
-    else {
-        await collection.updateOne({ _id: petId }, { $inc: { likes: -1 } });
-    }
-    // await collection.updateOne({ _id: petId }, { $addToSet: { likedBy: userId } });
-    return act
-}
->>>>>>> fbf6760848709d12558db2d1522b8851f388f63b
+// else {
+//     await collection.updateOne({ _id: petId }, { $inc: { likes: -1 } });
+// }
+// // await collection.updateOne({ _id: petId }, { $addToSet: { likedBy: userId } });
+// return act
+// }
 
 
 
@@ -96,18 +76,11 @@ function _buildCriteria(filterBy) {
     const { type, age, location, gender, size } = filterBy
 
     const criteria = {}
-<<<<<<< HEAD
-    if (filterBy.type === type) {
-        criteria.type = { $regex: filterBy.type, $options: 'i' }
-        // criteria.type=type
-        criteria.or()
-    }
-=======
     // if (filterBy.type === type ) {
 
 
     if (size) {
-        criteria.size.find( { $text: { $search: size } } )
+        criteria.size.find({ $text: { $search: size } })
     }
     if (type) {
         criteria.type = type
@@ -121,15 +94,10 @@ function _buildCriteria(filterBy) {
     if (location) {
         criteria.location.include(location)
     }
->>>>>>> fbf6760848709d12558db2d1522b8851f388f63b
 
     return criteria
 }
 
 module.exports = {
-<<<<<<< HEAD
     query, get, save
-=======
-    query, get, addLike, addComment
->>>>>>> fbf6760848709d12558db2d1522b8851f388f63b
 }
