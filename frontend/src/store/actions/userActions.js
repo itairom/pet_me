@@ -39,10 +39,12 @@ export function removeUser(userId) {
 
 
 export function login(userCreds) {
+  // console.log("🚀 ~ file: userActions.js ~ line 42 ~ login ~ userCreds", userCreds)
   return async dispatch => {
     try {
       const user = await userService.login(userCreds)
-      console.log("🚀 ~ file: userActions.js ~ line 36 ~ login ~ user", user)
+      // const user = await userService.login(userCreds)
+      // console.log("🚀 ~ file: userActions.js ~ line 36 ~ login ~ user", user)
       dispatch({ type: 'SET_USER', user })
     } catch (err) {
       console.log('UserActions: err in login', err)

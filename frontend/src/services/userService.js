@@ -18,30 +18,17 @@ export const userService = {
   adoptRequest
 }
 
-// window.userService = userService
-
-// async function getUsers(filterBy = '') {
-//   let users = await storageService.query()
-//   if (!users || !users.length) {
-//     console.log('in');
-//     users = gUsers;
-//     storageService.save('user', users);
-//   }
-//   return users;
-// }
-
+// window.userService = userService p
 
 function getUsers() {
     return httpService.get(`user`)
 }
 
 function getById(userId) {
-  // return storageService.get('user', userId)
   return httpService.get(`user/${userId}`)
 }
 function remove(userId) {
-  return storageService.remove('user', userId)
-  // return httpService.delete(`user/${userId}`)
+  return httpService.delete(`user/${userId}`)
 }
 
 async function update(user) {
@@ -59,15 +46,9 @@ async function adoptRequest(request){
 }
 
 
-
-
-
 async function login(userCred) {
-  // const users = await storageService.query('user')
-  // const user = users.find(user => user.username === userCred.username)
-  // return _saveLocalUser(user)
 
-  const user = await httpService.post('user/login', userCred)
+  const user = await httpService.post('auth/login', userCred)
   if (user) return _saveLocalUser(user)
 }
 async function signup(userCred) {

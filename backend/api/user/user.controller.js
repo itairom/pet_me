@@ -1,3 +1,4 @@
+
 const userService = require('./user.service')
 const socketService = require('../../services/socket.service')
 const logger = require('../../services/logger.service')
@@ -5,10 +6,8 @@ const logger = require('../../services/logger.service')
 
 async function getUser(req, res) {
     try {
-        const user = await userService.getById(req.params.id)
+        const user = await userService.getByUsername(req.params.username)
         res.send(user)
-        //get data from on()
-        //promise => return new user include new adopt request
         socketService.broadcast({ type: 'user-updated', data: user, to: user._id })
     } catch (err) {
         logger.error('Failed to get user', err)
@@ -50,10 +49,8 @@ async function updateUser(req, res) {
 async function updateRequest(req, res) {
     try {
         const request = req.body
-        // console.log("🚀 ~ file: user.controller.js ~ line 50 ~ updateRequest ~ request", request)
         const savedUser = await userService.updateRequest(request)
         res.send(savedUser)
-        // socketService.broadcast({type: 'user-updated', data: review, to:savedUser._id})
     } catch (err) {
         logger.error('Failed to update user', err)
         res.status(500).send({ err: 'Failed to update user' })

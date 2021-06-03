@@ -6,7 +6,8 @@ import { petService } from '../services/petService'
 import { utilService } from '../services/utilService'
 import { socketService } from '../services/socketService'
 import { store } from 'react-notifications-component';
-
+import { cloudinaryService } from '../services/cloudinaryService'
+import StarRateIcon from '@material-ui/icons/StarRate';
 
 import {
     loadUsers,
@@ -22,8 +23,7 @@ class _Profile extends Component {
     }
 
     async componentDidMount() {
-        this.props.login()
-       await this.onLoadPets()
+        await this.onLoadPets()
     }
 
     onLoadPets = () => {
@@ -34,40 +34,51 @@ class _Profile extends Component {
                     pets.unshift(petItem)
                 })
         )
+        console.log(pets);
         this.setState({ userPets: pets })
     }
 
 
-    render() {
 
+    render() {
         const { loggedInUser } = this.props
+        console.log("🚀 ~ file: Profile.jsx ~ line 44 ~ _Profile ~ render ~ loggedInUser", loggedInUser)
         const { userPets } = this.state
-        if (!loggedInUser) return <img src={ Loader } alt="loadnig" />
-        if (!userPets) return <img src={ Loader } alt="loadnig" />
-        console.log("🚀 ~ file: Profile.jsx ~ line 45 ~ _Profile ~ render ~ userPets", userPets)
+        if (!loggedInUser) return <img src={Loader} alt="loadnig" />
+        if (!userPets) return <img src={Loader} alt="loadnig" />
         return (
             <section className="main-profile main-container">
                 <section className="user-card">
+                    <div className="profile-img">
+                        {/* <button onClick={() => cloudinaryService.uploadImg()}>U</button> */}
+                        <img src={loggedInUser.imgUrl} alt="img" />
+                    </div>
                     <section className="user-info">
-                        <h1>{ loggedInUser.fullname }</h1>
-                        <img src={ loggedInUser.imgUrl } alt="img" />
+                        <h1>{loggedInUser.fullname} </h1>
+                        <h4>{loggedInUser.username} </h4>
+                        <h4 className="italic">"{loggedInUser.title}"</h4>
                         <div className="location-info">
-                            <img src={ Pin } alt="location info" />
-                            <div>{ loggedInUser.loc.address }</div>
+                            <img src={Pin} alt="location info" />
+                            <div>{loggedInUser.loc.address}</div>
+                        </div>
+                        <div className="user-rate">
+                        {loggedInUser.reviews[0].rate}
+                        <StarRateIcon />
                         </div>
                     </section>
                 </section>
 
                 <section className="user-pets">
                     <h1>Your pets</h1>
-                    { userPets.map((pet, idx) => {
+                    {userPets.map((pet, idx) => {
                         return (
 
                             <div className="adopt-card">
-                                <h2>{ pet.name }</h2>
+                                <h2>{pet.name}</h2>
 
+                                <h3>Request Queue</h3>
                                 <section className="adopt-table">
-                                    <img src={ pet.imgUrls[0] }
+                                    <img src={pet.imgUrls[0]}
                                         alt="pet" />
                                     <table>
                                         <thead className="table-head">
@@ -78,29 +89,22 @@ class _Profile extends Component {
                                             </tr>
                                         </thead>
                                         <tbody className="table-body">
-                                            { loggedInUser.pets[idx]
+                                            {loggedInUser.pets[idx]
                                                 .adoptQue.map(pet => {
                                                     return (<tr>
-                                                        <td>{ pet.fullname }</td>
-                                                        <td>{ pet.message }</td>
-                                                        <td>{ utilService.timeSince(pet.date, 'ago') }</td>
+                                                        <td>{pet.fullname}</td>
+                                                        <td>{pet.message}</td>
+                                                        <td>{utilService.timeSince(pet.date, 'ago')}</td>
                                                     </tr>)
-                                                }) }
+                                                })}
                                         </tbody>
                                     </table>
                                 </section>
                             </div>
-
                         )
-                    }) }
+                    })}
 
                 </section>
-
-
-
-
-
-
             </section >
 
         )

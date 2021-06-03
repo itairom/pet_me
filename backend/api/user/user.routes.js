@@ -6,8 +6,11 @@ const router = express.Router()
 // middleware that is specific to this router
 // router.use(requireAuth)
 
-router.get('/', getUsers)
-router.post('/login', getUser)
-router.put('/request', updateRequest)
+// router.get('/', getUsers)
+// router.post('/login', getUser)
+// router.put('/request', updateRequest)
 
+router.get('/', getUsers)
+router.get('/:id', getUser)
+router.put('/:id',  updateUser)
 module.exports = router

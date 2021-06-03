@@ -164,7 +164,7 @@ class _PetDetails extends Component {
                                 <li className="flex align-center">
                                     <FontAwesomeIcon icon={ faSyringe } />
                                     <p>
-                                        vaccinated: { pet.vaccine ? 'yes' : 'no' }
+                                        Vaccinated: { pet.vaccine ? 'yes' : 'no' }
                                     </p>
                                 </li>
                                 <li className="flex align-center">
@@ -176,7 +176,7 @@ class _PetDetails extends Component {
                                 <li className="flex align-center">
                                     <SportsIcon />
                                     <p>
-                                        trained: { pet.trained ? 'yes' : 'no' }
+                                        Trained: { pet.trained ? 'yes' : 'no' }
                                     </p>
                                 </li>
                             </ul>

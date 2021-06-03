@@ -58,7 +58,6 @@ function remove(petId) {
 }
 
 async function getPetByid(petId) {
-
     let pet = await httpService.get(`pet/${petId}`)
     return pet
 }

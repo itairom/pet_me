@@ -52,7 +52,7 @@ class _Explore extends React.Component {
         console.log("🚀 ~ file: Explore.jsx ~ line 52 ~ _Explore ~ render ~ filterBy", filterBy)
         
         return (
-            <section className="main-container">
+            <section className="main-container explore-container">
                 {!isFilterShown && <div className="explore-search">
                     <span onClick={() => this.onToggleFilter()} > Start your search</span>
                     <div className="search-btn-explore">
