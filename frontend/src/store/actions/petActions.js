@@ -1,6 +1,6 @@
 import { petService } from '../../services/petService.js'
 
-export function loadPets(filterBy) { // Action Creator
+export function loadPets(filterBy = null) { // Action Creator
     return async dispatch => {
         try {
             const pets = await petService.query(filterBy)
@@ -52,8 +52,9 @@ export function toggleLike(petId, userId, act, idx) { // Action Creator
     console.log(petId, userId, act, idx)
     return dispatch => {
         return petService.toggleLike(petId, userId, act, idx)
-            .then((petId, newLikedBy) => {
-                console.log('newLikedBy', newLikedBy)
+            // .then((petId, newLikedBy) => {
+            .then(() => {
+
                 const action = {
                     type: (act === 1) ? 'ADD_LIKE' : 'REMOVE_LIKE',
                     petId,

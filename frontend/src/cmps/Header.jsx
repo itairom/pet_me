@@ -6,8 +6,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../store/actions/userActions'
 import { socketService } from '../services/socketService'
-
-
+import { loadPets } from '../store/actions/petActions'
 
 class _Header extends Component {
 
@@ -23,8 +22,8 @@ class _Header extends Component {
             console.log('requested from socket')
             this.setState({ isRequested: true })
         })
-
     }
+
 
     toggleDropdown = () => {
         this.setState({ isProfileShown: !this.state.isProfileShown })
@@ -44,40 +43,34 @@ class _Header extends Component {
 
         return <header className="main-header main-container">
             <nav className="header-container">
-                <NavLink to="/">
-                    <img className="header-logo" src={ logo } alt="PetMe" />
+                <NavLink onClick={()=>this.props.loadPets()} to="/">
+                    <img  className="header-logo" src={logo} alt="PetMe" />
                 </NavLink>
                 <div>
-                    <span>{ (this.state.isRequested) ? 'requests' : '' }</span>
-
+                    <span>{(this.state.isRequested) ? 'requests' : ''}</span>
                 </div>
 
-                {/* <div className="search-bar"></div> */ }
-                <div className="right-nav">
-                    <NavLink className="explore-btn" to="/explore">Explore</NavLink>
-                    <div onClick={ () => this.toggleDropdown() } className="login-profile">
-                        { isProfileShown && <div className="user-dropdown">
+                <div className="right-nav"> 
+                    <NavLink className="explore-btn" to='/explore/?gender=&age=&type=&location=&size='>Explore</NavLink>
+                    <div onClick={() => this.toggleDropdown()} className="login-profile">
+                        {isProfileShown && <div className="user-dropdown">
                             <div className="dropdown-list">
-
-                                { (loggedInUser) && <Link to='/profile' >
+                                {(loggedInUser) && <Link to='/profile' >
                                     <span>Profile</span>
-                                </Link> }
+                                </Link>}
 
-                                { (loggedInUser) &&
-                                    <a onClick={ () => this.onLogout() }>Logout</a>
+                                {(loggedInUser) &&
+                                    <a href="" onClick={() => this.onLogout()}>Logout</a>
                                 }
-
-
-                                { (!loggedInUser) && <Link to='/login' >
+                                {(!loggedInUser) && <Link to='/login' >
                                     <span>Login</span>
-                                </Link> }
+                                </Link>}
                             </div>
+                        </div>}
 
-                        </div> }
-
-                        <img src={ menuIcon } alt="icon" />
-                        { (!loggedInUser) && <img src={ userIcon } alt="icon" /> }
-                        { (loggedInUser) && <img className="profile-icon" src={ loggedInUser.imgUrl } alt="icon" /> }
+                        <img src={menuIcon} alt="icon" />
+                        {(!loggedInUser) && <img src={userIcon} alt="icon" />}
+                        {(loggedInUser) && <img className="profile-icon" src={loggedInUser.imgUrl} alt="icon" />}
                     </div>
                 </div>
             </nav>
@@ -93,7 +86,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    logout
+    logout,loadPets
 }
 
 

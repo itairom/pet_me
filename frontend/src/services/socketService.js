@@ -8,13 +8,13 @@ export const SOCKET_EVENT_ADOPT_REQUEST = 'adopt-request';
 
 
 const baseUrl = (process.env.NODE_ENV === 'production')? '' : '//localhost:3030'
-// export const socketService = createSocketService()
-export const socketService = createDummySocketService()
+export const socketService = createSocketService()
+// export const socketService = createDummySocketService()
 
 window.socketService = socketService
 
 var socketIsReady = false;
-// socketService.setup()
+socketService.setup()
 
 
 function createSocketService() {

@@ -5,9 +5,7 @@ const STORAGE_KEY = 'pets'
 async function getPets(req, res) {
     try {
         const filterBy = req.query
-        console.log("🚀 ~ file: pet.controller.js ~ line 9 ~ getPets ~ filterBy", filterBy)
-        const pets = await petService.query(STORAGE_KEY, filterBy)
-        console.log('after service');
+        const pets = await petService.query( filterBy)
         res.send(pets)
     } catch (err) {
         logger.error('failed to get pets', err)
@@ -24,10 +22,27 @@ async function getPetByid(req, res) {
         res.status(500).send({ err: 'Failed to get pet by id' })
     }
 }
-
-
-
+async function addLike(req, res) {
+    try {
+        const like = req.body
+        const pet = await petService.addLike(like)
+        res.send(pet)
+    } catch (err) {
+        logger.error('Failed to get pet by id', err)
+        res.status(500).send({ err: 'Failed to get pet by id' })
+    }
+}
+async function addComment(req, res) {
+    try {
+        const like = req.body
+        const pet = await petService.addComment(like)
+        res.send(pet)
+    } catch (err) {
+        logger.error('Failed to get pet by id', err)
+        res.status(500).send({ err: 'Failed to get pet by id' })
+    }
+}
 
 module.exports = {
-    getPets, getPetByid
+    getPets, getPetByid, addLike, addComment
 }

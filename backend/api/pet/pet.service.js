@@ -2,92 +2,63 @@ const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
 const ObjectId = require('mongodb').ObjectId
 
-// const fs = require('fs')
-// const gPets = require('../../data/pet.json')
 
-// async function query(entityType, filterBy = '') {
-
-//     const { type, age, location, gender, size } = filterBy
-
-//     try {
-//         const entities = await gPets// JSON.parse(localStorage.getItem(entityType)) || []
-
-//         // if (type) {
-//         //     entities = entities.filter(entity => entity.type.includes(type))
-//         // }
-//         // if (age) {
-//         //     entities = entities.filter(entity => entity.age.includes(age))
-//         // }
-//         // if (location) {
-//         //     entities = entities.filter(entity => entity.owner.loc.address.toUpperCase().includes(location.toUpperCase()))
-//         // }
-//         // if (gender) {
-//         //     entities = entities.filter(entity => entity.gender === gender)
-//         // }
-//         // if (size) {
-//         //     entities = entities.filter(entity => entity.size.toUpperCase().includes(size.toUpperCase()))
-//         // }
-//         // // save(entityType, entities)
-
-//         return entities
-//     }
-
-//     catch {
-//         logger.error('cannot find pets', err)
-//         throw err
-//     }
-
-// }
 async function query(filterBy = '') {
-    const { type, age, location, gender, size } = filterBy
-    // const criteria = _buildCriteria(filterBy)
-    
+    // console.log("🚀 ~ file: pet.service.js ~ line 7 ~ query ~ filterBy", filterBy)
+    const criteria = _buildCriteria(filterBy)
+    // console.log("🚀 ~ file: pet.service.js ~ line 9 ~ query ~ criteria", criteria)
+
     try {
         const collection = await dbService.getCollection('pet')
-        const pets = await collection.find({}).toArray()
+        const pets = await collection.find(criteria).toArray()
         return pets
     } catch (err) {
         logger.error('cannot find pets', err)
         throw err
     }
 }
-
-
+async function addComment(comment) {
+    const { txt, petId, loggedInUser } = comment
+    const commentToAdd =
+    {
+        id: petId,
+        txt,
+        created: Date.now(),
+        by: {
+            _id: loggedInUser._id,
+            fullname: loggedInUser.fullname,
+            imgUrl: loggedInUser.imgUrl
+        }
+    }
+    try {
+        const collection = await dbService.getCollection('pet')
+        await collection.findOne({ _id: petId }, { $push: { comments: commentToAdd } })
+        return commentToAdd
+    } catch (err) {
+        logger.error('cannot find pets', err)
+        throw err
+    }
+}
 
 function get(entityType, entityId) {
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
 }
 
-function post(entityType, newEntity) {
-    newEntity._id = _makeId()
-    return query(entityType)
-        .then(entities => {
-            console.log("🚀 ~ file: asyncStorageService.js ~ line 38 ~ query ~ entities", entities)
-            entities.push(newEntity)
-            save(entityType, entities)
-            return newEntity
-        })
+async function addLike(likeDetails) {
+    const { petId, userId, act } = likeDetails
+
+    const collection = await dbService.getCollection('pet')
+    if (act > 0) {
+        await collection.updateOne({ _id: petId }, { $inc: { likes: 1 } });
+    }
+    else {
+        await collection.updateOne({ _id: petId }, { $inc: { likes: -1 } });
+    }
+    // await collection.updateOne({ _id: petId }, { $addToSet: { likedBy: userId } });
+    return act
 }
 
-function put(entityType, updatedEntity) {
-    return query(entityType)
-        .then(entities => {
-            const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
-            entities.splice(idx, 1, updatedEntity)
-            save(entityType, entities)
-            return updatedEntity
-        })
-}
-
-function remove(entityType, entityId) {
-    return query(entityType)
-        .then(entities => {
-            const idx = entities.findIndex(entity => entity._id === entityId)
-            entities.splice(idx, 1)
-            save(entityType, entities)
-        })
-}
 
 
 function save(entityType, entities) {
@@ -105,18 +76,35 @@ function _makeId(length = 5) {
 }
 
 function _buildCriteria(filterBy) {
+    console.log("🚀 ~ file: pet.service.js ~ line 79 ~ _buildCriteria ~ filterBy", filterBy)
+
+    if (!filterBy) return {}
+
     const { type, age, location, gender, size } = filterBy
 
     const criteria = {}
-    if (filterBy.type === type ) {
-        criteria.type = { $regex: filterBy.type, $options: 'i' }
-        // criteria.type=type
-        criteria.or()
+    // if (filterBy.type === type ) {
+
+
+    if (size) {
+        criteria.size.find( { $text: { $search: size } } )
     }
-   
+    if (type) {
+        criteria.type = type
+    }
+    if (age) {
+        criteria.age = type
+    }
+    if (gender) {
+        criteria.gender = gender
+    }
+    if (location) {
+        criteria.location.include(location)
+    }
+
     return criteria
 }
 
 module.exports = {
-    query, get
+    query, get, addLike, addComment
 }

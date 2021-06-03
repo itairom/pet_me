@@ -1,8 +1,7 @@
-
 [
     {
         "_id": "p101",
-        "addedAt": 1622299586455,
+        "addedAt": 1622299586455.0,
         "type": "dog",
         "name": "Noble",
         "breed": "bulldog",
@@ -18,9 +17,10 @@
         "gender": "male",
         "age": "senior",
         "isAdopted": false,
-        "likes": "33",
+        "likes": 13,
         "likedBy": [
-            "s103"
+            "s103",
+            "s101"
         ],
         "size": "big",
         "neuterSpayed": true,
@@ -44,18 +44,20 @@
             {
                 "id": "rev101",
                 "txt": "lovely dog!",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "u102",
                     "fullname": "mika ",
                     "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622144695/petMe/cats/cat1/houcine-ncib-B4TjXnI0Y2c-unsplash_xtt5d6.jpg"
                 }
             }
-        ]
+        ],
+        "like": 700,
+        "likedby": "s101"
     },
     {
         "_id": "p102",
-        "addedAt": 1622299586455,
+        "addedAt": 1622299586455.0,
         "type": "dog",
         "name": "Lenny",
         "breed": "Golden Retriever",
@@ -71,9 +73,11 @@
         "gender": "male",
         "age": "adult",
         "isAdopted": false,
-        "likes": "50",
+        "likes": 50,
         "likedBy": [
-            "s103"
+            "s103",
+            "s101",
+            "s101"
         ],
         "size": "Medium",
         "neuterSpayed": true,
@@ -85,7 +89,7 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622133443/dogs/dog1/owner_hiazkr.jpg",
             "loc": {
                 "address": "Tel Aviv",
-                "lat": 32.085300,
+                "lat": 32.0853,
                 "lng": 34.781769
             }
         },
@@ -97,7 +101,7 @@
             {
                 "id": "rev101",
                 "txt": "lovely cat",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "u102",
                     "fullname": "mika ",
@@ -108,7 +112,7 @@
     },
     {
         "_id": "p103",
-        "addedAt": 1622299526455,
+        "addedAt": 1622299526455.0,
         "type": "cat",
         "name": "Puki",
         "breed": "American Bobtail",
@@ -124,7 +128,7 @@
         "gender": "female",
         "age": "young",
         "isAdopted": false,
-        "likes": "50",
+        "likes": 50,
         "likedBy": [
             "s103"
         ],
@@ -150,7 +154,7 @@
             {
                 "id": "rev101",
                 "txt": "lovely cat",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "u102",
                     "fullname": "mika ",
@@ -161,8 +165,8 @@
     },
     {
         "_id": "p104",
-        "addedAt": 1622299426455,
-        "type": "Frog",
+        "addedAt": 1622299426455.0,
+        "type": "frog",
         "name": "Ribb",
         "breed": "Tree Frog",
         "title": "A charming green frog",
@@ -177,7 +181,7 @@
         "gender": "male",
         "age": "senior",
         "isAdopted": true,
-        "likes": "87",
+        "likes": 87,
         "likedBy": [
             "s103"
         ],
@@ -203,7 +207,7 @@
             {
                 "id": "rev101",
                 "txt": "lovely cat",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "u102",
                     "fullname": "mika ",
@@ -214,7 +218,7 @@
     },
     {
         "_id": "p105",
-        "addedAt": 1622299586455,
+        "addedAt": 1622299586455.0,
         "type": "rabbit",
         "name": "Lily",
         "breed": "Netherland Rabbit",
@@ -230,7 +234,7 @@
         "gender": "female",
         "age": "adult",
         "isAdopted": false,
-        "likes": "100",
+        "likes": 97,
         "likedBy": [
             "s103",
             "s101"
@@ -257,7 +261,7 @@
             {
                 "id": "rev101",
                 "txt": "lovely cat",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "u102",
                     "fullname": "mika ",
@@ -268,8 +272,8 @@
     },
     {
         "_id": "p106",
-        "addedAt": 1622298586355,
-        "type": "Hamster",
+        "addedAt": 1622298586355.0,
+        "type": "hamster",
         "name": "Hammy",
         "breed": "Golden Hamster",
         "title": "A sweet little hamster",
@@ -284,10 +288,9 @@
         "gender": "male",
         "age": "young",
         "isAdopted": true,
-        "likes": "103",
+        "likes": 106,
         "likedBy": [
             "s103"
-
         ],
         "size": "medium",
         "neuterSpayed": false,
@@ -311,7 +314,7 @@
             {
                 "id": "rev101",
                 "txt": "lovely cat",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "u102",
                     "fullname": "mika ",
@@ -322,8 +325,8 @@
     },
     {
         "_id": "p107",
-        "addedAt": 1622299526455,
-        "type": "Dog",
+        "addedAt": 1622299526455.0,
+        "type": "dog",
         "name": "Rex",
         "breed": "Akita",
         "title": "Akita is a strong and brave dog",
@@ -338,7 +341,7 @@
         "gender": "male",
         "age": "senior",
         "isAdopted": false,
-        "likes": "99",
+        "likes": 99,
         "likedBy": [
             "s103"
         ],
@@ -364,7 +367,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -375,8 +378,8 @@
     },
     {
         "_id": "p108",
-        "addedAt": 1622299986455,
-        "type": "Cat",
+        "addedAt": 1622299986455.0,
+        "type": "cat",
         "name": "Misty",
         "breed": "white cat",
         "title": "Misty the White Cat loves to rest",
@@ -391,7 +394,7 @@
         "gender": "female",
         "age": "adult",
         "isAdopted": false,
-        "likes": "89",
+        "likes": 89,
         "likedBy": [
             "s103"
         ],
@@ -405,7 +408,7 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622380349/petMe/cats/cat2/owner_7_yhyw90.jpg",
             "loc": {
                 "address": "Modiin",
-                "lat": 31.936850,
+                "lat": 31.93685,
                 "lng": 35.038509
             }
         },
@@ -417,7 +420,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -428,8 +431,8 @@
     },
     {
         "_id": "p109",
-        "addedAt": 1622299296455,
-        "type": "Dog",
+        "addedAt": 1622299296455.0,
+        "type": "dog",
         "name": "Ray",
         "breed": "Basenji dog",
         "title": "Ray loves to walk and sniff",
@@ -444,7 +447,7 @@
         "gender": "male",
         "age": "senior",
         "isAdopted": false,
-        "likes": "93",
+        "likes": 93,
         "likedBy": [
             "s103"
         ],
@@ -470,7 +473,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -481,8 +484,8 @@
     },
     {
         "_id": "p110",
-        "addedAt": 1622299102455,
-        "type": "Rabbit",
+        "addedAt": 1622299102455.0,
+        "type": "rabbit",
         "name": "Angel",
         "breed": "Blanc de Hotot",
         "title": "An angelic and charming rabbit",
@@ -497,7 +500,7 @@
         "gender": "female",
         "age": "young",
         "isAdopted": false,
-        "likes": "100",
+        "likes": 103,
         "likedBy": [
             "s103"
         ],
@@ -523,7 +526,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -534,8 +537,8 @@
     },
     {
         "_id": "p111",
-        "addedAt": 1622299116455,
-        "type": "Parrot",
+        "addedAt": 1622299116455.0,
+        "type": "parrot",
         "name": "Jake",
         "breed": "Lories",
         "title": "The colorful parrot Jake",
@@ -550,7 +553,7 @@
         "gender": "male",
         "age": "adult",
         "isAdopted": false,
-        "likes": "95",
+        "likes": 95,
         "likedBy": [
             "s103"
         ],
@@ -564,8 +567,8 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379848/petMe/parrot/parrot1/owner_5_nofgky.jpg",
             "loc": {
                 "address": "Ramat Havadiv",
-                "lat": 32.060500,
-                "lng": 34.808120
+                "lat": 32.0605,
+                "lng": 34.80812
             }
         },
         "tags": [
@@ -576,7 +579,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -587,8 +590,8 @@
     },
     {
         "_id": "p112",
-        "addedAt": 1622299586455,
-        "type": "Rabbit",
+        "addedAt": 1622299586455.0,
+        "type": "rabbit",
         "name": "Mopsy",
         "breed": "American Rabbit",
         "title": "Just a sweet rabbit",
@@ -603,7 +606,7 @@
         "gender": "male",
         "age": "senior",
         "isAdopted": false,
-        "likes": "101",
+        "likes": 101,
         "likedBy": [
             "s103"
         ],
@@ -629,7 +632,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -640,8 +643,8 @@
     },
     {
         "_id": "p113",
-        "addedAt": 1622299586455,
-        "type": "Dog",
+        "addedAt": 1622299586455.0,
+        "type": "dog",
         "name": "Tiny",
         "breed": "Blue Nose Pitbull",
         "title": "The cutest puppy ever",
@@ -656,7 +659,7 @@
         "gender": "male",
         "age": "senior",
         "isAdopted": false,
-        "likes": "101",
+        "likes": 101,
         "likedBy": [
             "s103"
         ],
@@ -670,8 +673,8 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
                 "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "lat": 21313123123.0,
+                "lng": 23132131221.0
             }
         },
         "tags": [
@@ -682,7 +685,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -693,8 +696,8 @@
     },
     {
         "_id": "p114",
-        "addedAt": 1622299586455,
-        "type": "Cat",
+        "addedAt": 1622299586455.0,
+        "type": "cat",
         "name": "Punk",
         "breed": "Blue Nose Pitbull",
         "title": "The most adorable little kitten",
@@ -709,7 +712,7 @@
         "gender": "female",
         "age": "young",
         "isAdopted": false,
-        "likes": "91",
+        "likes": 99,
         "likedBy": [
             "s103"
         ],
@@ -723,8 +726,8 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
                 "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "lat": 21313123123.0,
+                "lng": 23132131221.0
             }
         },
         "tags": [
@@ -735,7 +738,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -746,8 +749,8 @@
     },
     {
         "_id": "p115",
-        "addedAt": 1622299586455,
-        "type": "Horse",
+        "addedAt": 1622299586455.0,
+        "type": "horse",
         "name": "Baby",
         "breed": " Quarter",
         "title": "The sweetest and funniest horse",
@@ -762,7 +765,7 @@
         "gender": "female",
         "age": "young",
         "isAdopted": false,
-        "likes": "71",
+        "likes": 71,
         "likedBy": [
             "s103"
         ],
@@ -776,8 +779,8 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
                 "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "lat": 21313123123.0,
+                "lng": 23132131221.0
             }
         },
         "tags": [
@@ -788,7 +791,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -799,7 +802,7 @@
     },
     {
         "_id": "p116",
-        "addedAt": 1622299586455,
+        "addedAt": 1622299586455.0,
         "type": "Horse",
         "name": "Maika",
         "breed": " Quarter",
@@ -829,8 +832,8 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
                 "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "lat": 21313123123.0,
+                "lng": 23132131221.0
             }
         },
         "tags": [
@@ -841,7 +844,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -852,7 +855,7 @@
     },
     {
         "_id": "p117",
-        "addedAt": 1622299586455,
+        "addedAt": 1622299586455.0,
         "type": "Dog",
         "name": "Lucifer",
         "breed": "australian shepherd",
@@ -882,8 +885,8 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
                 "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "lat": 21313123123.0,
+                "lng": 23132131221.0
             }
         },
         "tags": [
@@ -894,7 +897,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -905,7 +908,7 @@
     },
     {
         "_id": "p118",
-        "addedAt": 1622299586455,
+        "addedAt": 1622299586455.0,
         "type": "Parrot",
         "name": "Moon",
         "breed": "australian shepherd",
@@ -921,7 +924,7 @@
         "gender": "male",
         "age": "senior",
         "isAdopted": false,
-        "likes": "69",
+        "likes": 69,
         "likedBy": [
             "s103"
         ],
@@ -935,8 +938,8 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
                 "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "lat": 21313123123.0,
+                "lng": 23132131221.0
             }
         },
         "tags": [
@@ -947,7 +950,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -958,8 +961,8 @@
     },
     {
         "_id": "p119",
-        "addedAt": 1622299586455,
-        "type": "Parrot",
+        "addedAt": 1622299586455.0,
+        "type": "parrot",
         "name": "Loyd",
         "breed": "australian shepherd",
         "title": "Incredibly social guy",
@@ -974,7 +977,7 @@
         "gender": "male",
         "age": "adult",
         "isAdopted": false,
-        "likes": "49",
+        "likes": 49,
         "likedBy": [
             "s103"
         ],
@@ -988,8 +991,8 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
                 "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "lat": 21313123123.0,
+                "lng": 23132131221.0
             }
         },
         "tags": [
@@ -1000,7 +1003,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",
@@ -1011,8 +1014,8 @@
     },
     {
         "_id": "p120",
-        "addedAt": 1622299586455,
-        "type": "Cat",
+        "addedAt": 1622299586455.0,
+        "type": "cat",
         "name": "Murka",
         "breed": "australian shepherd",
         "title": "Beatiful large female cat",
@@ -1027,7 +1030,7 @@
         "gender": "female",
         "age": "adult",
         "isAdopted": false,
-        "likes": "99",
+        "likes": 99,
         "likedBy": [
             "s103"
         ],
@@ -1041,8 +1044,8 @@
             "imgUrl": "https://res.cloudinary.com/dstqymucm/image/upload/v1622379372/petMe/rabbit/rabbit2/owner_3_xqnlwn.jpg",
             "loc": {
                 "address": "haifa",
-                "lat": 21313123123,
-                "lng": 23132131221
+                "lat": 21313123123.0,
+                "lng": 23132131221.0
             }
         },
         "tags": [
@@ -1053,7 +1056,7 @@
             {
                 "id": "rev101",
                 "txt": "",
-                "created": 1622299786455,
+                "created": 1622299786455.0,
                 "by": {
                     "_id": "",
                     "fullname": "",

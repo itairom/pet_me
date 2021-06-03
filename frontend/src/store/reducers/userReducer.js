@@ -21,6 +21,7 @@ export function userReducer(state = initialState, action = {}) {
 
     case 'SET_USERS':
       return { ...state, users: action.users }
+  
     case 'ADOPT':
       const user = state.users.find(user => user._id === action.userId)
       const userPet = user.pets.find(pet => pet._id)
