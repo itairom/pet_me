@@ -5,6 +5,12 @@ import { PetList } from '../cmps/PetList'
 import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to image
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { PetFilter } from '../cmps/PetFilter'
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 
 class _Explore extends React.Component {
@@ -27,6 +33,10 @@ class _Explore extends React.Component {
         })
     }
 
+    handleChange = (event) => {
+        this.setState({ sortBy: event.target.value });
+    };
+
     onSetFilter = () => {
         const search = new URLSearchParams(this.props.location.search)
         let filterBy = {
@@ -44,11 +54,27 @@ class _Explore extends React.Component {
         )
     }
 
+    makeStyles = ((theme) => ({
+        formControl: {
+            margin: theme.spacing(1),
+            minWidth: 200,
+            color:'red'
+
+
+        },
+        selectEmpty: {
+            marginTop: theme.spacing(2),
+            minWidth: 200,
+
+        },
+    }))
+
     render() {
         const { pets } = this.props
         const { isFilterShown, filterBy } = this.state
         if (!pets) return <img src={userIcon} alt="loading" />
         if (!filterBy) return <img src={userIcon} alt="loading" />
+        const classes = makeStyles();
 
         return (
             <section className="main-container explore-container">
@@ -58,10 +84,27 @@ class _Explore extends React.Component {
                         <img className="filter-search" src={magnifyingGlass} alt="glass" />
                     </div>
                 </div>}
-                {isFilterShown && <PetFilter />}
+                
+                {/* {isFilterShown && <PetFilter />} */}
+                {/* <section className="sort-by"> */}
+                {/* <FormControl className={classes.formControl}> */}
+                {/* </section> */}
                 <div className="filter-description">
                     {!filterBy.type && <h1 >Our pets</h1>}
                     {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}
+                <FormControl className="sort-form">
+                    <InputLabel id="demo-simple-select-label">Sort By</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={this.state.sortBy}
+                        onChange={this.handleChange}
+                    >
+                        <MenuItem value={'likes'}>Likes</MenuItem>
+                        <MenuItem value={'name'}>name</MenuItem>
+                        {/* <MenuItem value={30}>Thirty</MenuItem> */}
+                    </Select>
+                </FormControl>
                 </div>
                 < PetList pets={pets} />
             </section>

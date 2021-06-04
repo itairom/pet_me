@@ -7,16 +7,25 @@ import { connect } from 'react-redux'
 import { logout } from '../store/actions/userActions'
 import { socketService } from '../services/socketService'
 import { store } from 'react-notifications-component';
-
-
+import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { loadPets } from '../store/actions/petActions'
+import { PetFilter } from './PetFilter'
+import { ReactComponent as Logo } from '../assets/img/svg/logo1.svg'
+
 
 class _Header extends Component {
 
     state = {
         isProfileShown: false,
         isRequested: false,
-        nav: false
+        nav: false,
+        isFilterShown: false
+
+    }
+
+    onToggleFilter = () => {
+        this.setState({ isFilterShown: !this.state.isFilterShown }
+        )
     }
 
     componentDidMount() {
@@ -40,7 +49,6 @@ class _Header extends Component {
         }
 
     }
-
 
     // console.log(this.props);
     // socketService.on('eyal', (data) => {
@@ -84,20 +92,33 @@ class _Header extends Component {
     render() {
 
         const { loggedInUser } = this.props
-        const { isProfileShown, nav } = this.state
-        
+        const { isProfileShown, nav, isFilterShown } = this.state
+
         return <header className={`main-header ${nav && 'nav-white'} main-container`}>
             < nav className="header-container" >
                 <NavLink onClick={() => this.props.loadPets()} to="/">
                     <img className="header-logo" src={logo} alt="PetMe" />
                 </NavLink>
+            <Logo className="logo-header" />
                 <div>
                     {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */}
 
                 </div>
 
+                {/* {!isFilterShown && <div className="explore-search">
+                    <span onClick={() => this.onToggleFilter()} > Start your search</span>
+                    <div className="search-btn-explore">
+                        <img className="filter-search" src={magnifyingGlass} alt="glass" />
+                    </div>
+                </div>}
+                {isFilterShown && <PetFilter />} */}
+
+
+
+
                 <div className="right-nav">
                     <NavLink className={`explore-btn ${nav && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>Explore</NavLink>
+                    {/* <PetFilter /> */}
                     <div onClick={() => this.toggleDropdown()} className="login-profile">
                         {isProfileShown && <div className="user-dropdown">
                             <div className="dropdown-list">
@@ -113,7 +134,6 @@ class _Header extends Component {
                                 </Link>}
                             </div>
                         </div>}
-
                         <img src={menuIcon} alt="icon" />
                         {(!loggedInUser) && <img src={userIcon} alt="icon" />}
                         {(loggedInUser) && <img className="profile-icon" src={loggedInUser.imgUrl} alt="icon" />}
