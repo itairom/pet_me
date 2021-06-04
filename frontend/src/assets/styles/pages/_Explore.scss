@@ -6,9 +6,18 @@
     margin-block-end: 20px
 }
 .filter-description{
-    
+display: flex;
+// align-items: center;
+justify-content: space-between;
 }
 
+.sort-by{
+    width: 200px;
+}
+
+.sort-form{
+    width: 300px;
+}
 .explore-container{
     margin-top: 80px;
 }

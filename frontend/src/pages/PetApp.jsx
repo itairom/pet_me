@@ -8,11 +8,19 @@ import contact from '../assets/img/svg/contact.svg'
 import info from '../assets/img/svg/info.svg'
 import paw from '../assets/img/svg/paw.svg'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 
 
 
 class _PetApp extends React.Component {
 
+    state={
+        // isFilterShown: false
+
+    }
+
+
+    
     async componentDidMount() {
         await this.props.loadPets()
     }

@@ -7,16 +7,25 @@ import { connect } from 'react-redux'
 import { logout } from '../store/actions/userActions'
 import { socketService } from '../services/socketService'
 import { store } from 'react-notifications-component';
-
-
+import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { loadPets } from '../store/actions/petActions'
+import { PetFilter } from './PetFilter'
+import { ReactComponent as Logo } from '../assets/img/svg/logo1.svg'
+
 
 class _Header extends Component {
 
     state = {
         isProfileShown: false,
         isRequested: false,
-        nav: false
+        nav: false,
+        isFilterShown: false
+
+    }
+
+    onToggleFilter = () => {
+        this.setState({ isFilterShown: !this.state.isFilterShown }
+        )
     }
 
     componentDidMount() {
@@ -40,7 +49,6 @@ class _Header extends Component {
         }
 
     }
-
 
     // console.log(this.props);
     // socketService.on('eyal', (data) => {
