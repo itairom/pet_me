@@ -117,7 +117,7 @@
                 // padding-bottom: 20px;
                 border-bottom: 1px solid #d3d3d3;
                 // margin-bottom: 15px;
-                color: #1e1e1e; 
+                color: #1e1e1e;
                 display: flex;
                 justify-content: space-between;
 
@@ -178,7 +178,6 @@
         max-width: 100%;
         // width: 320px;
 
-
         & span {
             color: #6b6a6a;
         }
@@ -186,6 +185,7 @@
         & .adopt-sign {
             font-size: 1rem;
             text-align: left;
+            margin-left: 5px;
             border-top-left-radius: 3px;
             border-bottom-left-radius: 3px;
             // padding: 0px 10px;
@@ -279,6 +279,16 @@
     transform: translate(-50%, -50%);
 }
 
-.binoculars{
-    width: 30px;
+.binoculars {
+    width: 25px;
+    height: 25px;
+    // margin-right: 5px;
+}
+.paw {
+    width: 25px;
+    height: 25px;
+}
+
+.thumb-up {
+    // margin-right: 5px;
 }

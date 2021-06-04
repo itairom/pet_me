@@ -21,6 +21,8 @@ import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
 import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { ReactComponent as Binoculars } from '../assets/img/svg/binoculars.svg'
+import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'
+// import PetsIcon from '@material-ui/icons/Pets';
 
 
 class _PetDetails extends Component {
@@ -188,11 +190,18 @@ class _PetDetails extends Component {
                         </div>
                     </div>
                     <div className="adopt-modal-container flex column">
-                        <div>
+                        <div className="flex align-center">
                             <Binoculars className="binoculars" />
                             <span className="adoption-time adopt-sign">{'Looking for    a home for ' + utilService.timeSince(pet.addedAt)}</span>
                         </div>
-                        <span className="adoption-likes adopt-sign">{'Liked by ' + pet.likes + ' people!'}</span>
+                        <div className="flex align-center">
+                            <ThumbUpIcon className="thumb-up" />
+                            <span className="adoption-likes adopt-sign">{'Liked by ' + pet.likes + ' people!'}</span>
+                        </div>
+                        <div className="flex align-center">
+                            <Paw className="paw" />
+                            <span className="adoption-time adopt-sign">{pet.name }is waiting for you</span>
+                        </div>
                         <button className="adopt-btn el-btn" onClick={() => this.onAdopt()}>{(this.state.isAttend) ? 'Request sent' : 'Adopt Me'}</button>
                         {/* <span><FontAwesomeIcon icon={faEnvelope} /> {pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com'}</span> */}
                         {/* <span><FontAwesomeIcon icon={faWhatsapp} /> 054-2312993</span> */}
