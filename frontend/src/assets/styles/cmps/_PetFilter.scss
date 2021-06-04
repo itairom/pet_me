@@ -2,42 +2,28 @@
     transition: 0.5s ease-in-out;
     display: flex;
     justify-self: center;
-    // height: 70px;
-    background-color: rgb(255, 255, 255);
-    // width: 650px;
-    border-radius: 50px;
-    border: 1px solid #dadada;
-    transition: 0.3s ease-in-out;
-    box-shadow: 0 0 10px 0 #0000001c;
-    // margin-bottom: rem(100px);
-    transition: 0.3s ease-in-out;
+    background-color: white;
     z-index: 100;
-    // position: absolute;
-    // max-width: 90vw;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 200px;
+    max-width: 800px;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 2px 13px -1px #000000;
+    margin-block-end: 130px;
+
     @include for-mobile-layout {
         margin-block-end: 175px;
     }
 
-    @include for-normal-layout {
-    }
-
-    // box-shadow: 0 1px 2px rgb(0 0 0 / 18%);
-    // left: 0;
-    // right: 0;
-    // background-color: snow;
-    // border-radius: 200px;
-    // top: 70px;
-    // height: 56px;
-    // margin-right: auto;
-    // margin-left: auto;
-
-    & > a {
+    &>a {
         display: flex;
         background-color: #36baa0;
         margin: 5px 15px 10px 15px;
     }
 
-    & > a:hover {
+    &>a:hover {
         background-color: #36baa0;
         box-shadow: none;
         border-radius: 50px;
@@ -58,7 +44,6 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-
     width: 100px;
     padding: 10px 15px 10px 25px;
     border-radius: 50px;
@@ -69,17 +54,8 @@
         padding: 6px 0px 6px 0;
     }
 
-    .location-select {
-        padding: 0;
-        margin: 0;
-    }
-
-    & > label {
-        padding: 0;
-    }
-
-    & > input {
-        padding: 4px 0;
+    @include for-narrow-layout {
+        padding: 10px 10px 10px 25px;
     }
 
     &:hover {
@@ -110,7 +86,7 @@
     width: 25%;
 
     @include for-mobile-layout {
-        padding: 6px 0px 6px 10px;
+        padding: 6px 0px 6px 16px;
     }
 }
 
@@ -119,36 +95,30 @@
 }
 
 .location-select {
-    // margin-top: 10px;
     width: 130px;
     outline: none;
     border: none;
     width: 100%;
     min-width: 83px;
-}
 
-// & > label {
-//     // margin-top: -4px;
-// }
-
-@include for-mobile-layout {
-    display: none;
-}
-
-a {
-    & > .search-btn {
-        padding: 5px;
+    @include for-mobile-layout {
+        display: none;
     }
+
 }
+
 
 .search-btn {
+    background-color: #36baa0;
     border-radius: 50%;
     width: 52.5px;
     height: 52.5px;
     align-self: center;
+    padding-right: 23px;
 
     @include for-mobile-layout {
-        width: 40px;
+        width: 49px;
         height: 40px;
+        padding-right: 0;
     }
 }

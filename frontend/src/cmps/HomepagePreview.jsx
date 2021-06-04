@@ -26,7 +26,7 @@ class _HomepagePreview extends React.Component {
                     </div>
                 </section>
                 <section className="type-cards preview-homepage">
-                    <h2 className="type-cards-title">Most Liked Pets Available For Adoption</h2>
+                    <h2 className="type-cards-title">Most Liked Pets</h2>
                     <div className="preview-cards">
                         <PetPreview pet={ pets[12] } key={ pets[11]?._id } />
                         <PetPreview pet={ pets[11] } key={ pets[12]?._id } />

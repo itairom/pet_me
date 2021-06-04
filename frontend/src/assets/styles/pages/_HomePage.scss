@@ -10,11 +10,10 @@
     background-attachment: fixed;
     display: flex;
     justify-content: center;
-    // @include aspect-ratio(100vh, 90vh)
-    // align-items: center;
+
     @include for-mobile-layout {
         background-image: url("https://res.cloudinary.com/dstqymucm/image/upload/v1622708465/petMe/hero-img/richard-brutyo_d8gnss.jpg");
-      }
+    }
 
     .hero-content {
         user-select: none;
@@ -31,13 +30,15 @@
 
         h1 {
             font-family: avenir-black;
-            font-size: rem(100px);
+            font-size: rem(55px);
+            
             &:last-child::after {
                 content: '.';
                 color: $clr9;
             }
-            @include for-mobile-layout {
-                font-size: rem(55px);
+            
+            @include for-normal-layout {
+                font-size: rem(100px);
             }
         }
 
@@ -52,7 +53,7 @@
         margin-bottom: 20px;
 
         @include for-normal-layout {
-            margin-inline-start: 73px;
+            // margin-inline-start: 73px;
         }
 
         @include for-wide-layout {
@@ -77,7 +78,7 @@
         }
 
         @include for-normal-layout {
-            justify-content: space-evenly;
+            justify-content: space-between;
             grid-row-gap: 20px;
         }
 
@@ -105,6 +106,11 @@
 
             @include for-normal-layout {
                 height: 300px;
+                width: 293px;
+            }
+
+            @include for-wide-layout {
+                height: 280px;
                 width: 250px;
             }
         }
@@ -122,11 +128,6 @@
 
         @include for-narrow-layout {
             justify-content: space-between;
-            grid-row-gap: 20px;
-        }
-
-        @include for-normal-layout {
-            justify-content: space-evenly;
             grid-row-gap: 20px;
         }
 
@@ -150,6 +151,11 @@
 
             @include for-normal-layout {
                 height: 280px;
+                width: 293px;
+            }
+
+            @include for-wide-layout {
+                height: 280px;
                 width: 250px;
             }
         }
@@ -163,29 +169,12 @@
     background-size: cover;
     width: 100%;
     height: 500px;
-    
+
     @include for-mobile-layout {
         height: 335px;
     }
-    
-    .about_imgs {
-        flex: 1;
-        height: unset;
-        display: grid;
-        gap: 15px;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 190px 190px;
-        
-        >* {
-            border-radius: 20px;
-            object-fit: cover;
-        }
-        
-        :last-child {
-            grid-column: 1 / span 2;
-        }
-    }
-    
+
+
     .blur {
         background-color: #0000002e !important;
         display: flex;
@@ -196,16 +185,25 @@
         height: 100%;
 
         .about-content {
-            position: relative;
-            bottom: 0;
             color: white;
             margin: 0 25% 0;
 
-            @include for-mobile-layout {
-                margin: 0;
+            .welcome-logo {
+                width: 150px;
+                align-self: center;
+
+                @include for-mobile-layout {
+                    width: 100px;
+                }
             }
 
-            >* {
+            @include for-mobile-layout {
+                margin: 0;
+                padding: 2%;
+            }
+
+
+            >*:not(:last-child) {
                 margin-block-end: 10px;
             }
         }
@@ -243,6 +241,7 @@
 
         }
 
+
         .arrow-icons {
             height: 50px;
             width: 60px;
@@ -256,22 +255,34 @@
             flex: 1 1 0;
             min-width: auto;
 
-            p:not(:last-of-type) {
+            :not(:last-of-type) {
                 padding-inline-end: 5px;
             }
 
             &:not(:last-child) {
-                margin-inline-end: 20px;
+                margin-inline-end: 0px;
+                margin-block-end: 10px;
 
-                @include for-mobile-layout {
-                    margin-inline-end: 0px;
-                    margin-block-end: 10px;
+                @include for-mobile-layout {}
+
+                @include for-normal-layout {
+                    margin-inline-end: 36px;
                 }
             }
+
         }
 
         @include for-mobile-layout {
             flex-direction: column;
         }
+
+        @include for-narrow-layout {
+            flex-direction: column;
+        }
+
+        @include for-normal-layout {
+            flex-direction: row;
+        }
+
     }
 }

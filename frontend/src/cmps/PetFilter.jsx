@@ -76,7 +76,7 @@ class _PetFilter extends React.Component {
                     <input placeholder="Enter location" className='location-select' value={location} onChange={this.handleChange} name="location"  ></input>
                 </div>
 
-                <button className="search-btn" onClick={this.onSubmitFilter}>
+                <button className="search-btn filter-select" onClick={this.onSubmitFilter}>
                     <img className="filter-search" src={magnifyingGlass} alt="glass" />
                 </button>
             </section>
