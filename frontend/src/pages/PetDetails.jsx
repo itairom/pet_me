@@ -72,7 +72,6 @@ class _PetDetails extends Component {
 
     onAdopt = () => {
         const { pet, owner, loggedInUser } = this.state
-        // console.log('pet, owner, loggedInUser', pet, owner, loggedInUser)
         if (!loggedInUser) return alert('Please login in order to adopt this pet ')
         if (loggedInUser.pets.find(loggedInUserPet => loggedInUserPet._id === pet._id)) return alert('You cannot adopt you own pet')
         this.setState({ isAttend: true })
@@ -99,7 +98,6 @@ class _PetDetails extends Component {
     }
 
     render() {
-        // console.log(this.props)
         const id = this.props.match.params.petId
         const pet = this.props.pets.find(pet => pet._id === id)
         // const { pet } = this.props
@@ -164,7 +162,7 @@ class _PetDetails extends Component {
                                 <li className="flex align-center">
                                     <FontAwesomeIcon icon={ faSyringe } />
                                     <p>
-                                        vaccinated: { pet.vaccine ? 'yes' : 'no' }
+                                        Vaccinated: { pet.vaccine ? 'yes' : 'no' }
                                     </p>
                                 </li>
                                 <li className="flex align-center">
@@ -176,7 +174,7 @@ class _PetDetails extends Component {
                                 <li className="flex align-center">
                                     <SportsIcon />
                                     <p>
-                                        trained: { pet.trained ? 'yes' : 'no' }
+                                        Trained: { pet.trained ? 'yes' : 'no' }
                                     </p>
                                 </li>
                             </ul>

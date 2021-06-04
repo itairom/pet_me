@@ -19,26 +19,30 @@ class _Header extends Component {
     }
 
     componentDidMount() {
-        // console.log(this.props);
-        socketService.on('eyal', (data) => {
-            this.setState({ isRequested: true })
-            console.log(data)
-            console.log('requested from socket')
-            store.addNotification({
-                title: "Wonderful!",
-                message: data.message,
-                type: "info",
-                insert: "top-right",
-                container: "bottom-right",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 5000,
-                    onScreen: true
-                }
-            });
-        })
+        this.setListeners()
     }
+
+
+    // console.log(this.props);
+    // socketService.on('eyal', (data) => {
+    //     this.setState({ isRequested: true })
+    //     console.log(data)
+    //     console.log('requested from socket')
+    //     store.addNotification({
+    //         title: "Wonderful!",
+    //         message: data.message,
+    //         type: "info",
+    //         insert: "top-right",
+    //         container: "bottom-right",
+    //         animationIn: ["animate__animated", "animate__fadeIn"],
+    //         animationOut: ["animate__animated", "animate__fadeOut"],
+    //         dismiss: {
+    //             duration: 5000,
+    //             onScreen: true
+    //         }
+    //     });
+    // })
+
 
 
     toggleDropdown = () => {
@@ -50,7 +54,13 @@ class _Header extends Component {
         // this.props.history.push('/')
     }
 
-
+    setListeners = () => {
+        window.addEventListener('click', () => {
+            if (this.state.isProfileShown && window.event.clientY > 80) {
+                this.setState({ isProfileShown: false })
+            }
+        })
+    }
 
     render() {
 
@@ -58,39 +68,39 @@ class _Header extends Component {
         const { isProfileShown } = this.state
 
         return <header className="main-header main-container">
-            <nav className="header-container">
-                <NavLink onClick={ () => this.props.loadPets() } to="/">
-                    <img className="header-logo" src={ logo } alt="PetMe" />
+            < nav className="header-container" >
+                <NavLink onClick={() => this.props.loadPets()} to="/">
+                    <img className="header-logo" src={logo} alt="PetMe" />
                 </NavLink>
                 <div>
-                    {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */ }
+                    {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */}
 
                 </div>
 
                 <div className="right-nav">
                     <NavLink className="explore-btn" to='/explore/?gender=&age=&type=&location=&size='>Explore</NavLink>
-                    <div onClick={ () => this.toggleDropdown() } className="login-profile">
-                        { isProfileShown && <div className="user-dropdown">
+                    <div onClick={() => this.toggleDropdown()} className="login-profile">
+                        {isProfileShown && <div className="user-dropdown">
                             <div className="dropdown-list">
-                                { (loggedInUser) && <Link to='/profile' >
+                                {(loggedInUser) && <Link to='/profile' >
                                     <span>Profile</span>
-                                </Link> }
+                                </Link>}
 
-                                { (loggedInUser) &&
-                                    <a href="" onClick={ () => this.onLogout() }>Logout</a>
+                                {(loggedInUser) &&
+                                    <a href="" onClick={() => this.onLogout()}>Logout</a>
                                 }
-                                { (!loggedInUser) && <Link to='/login' >
+                                {(!loggedInUser) && <Link to='/login' >
                                     <span>Login</span>
-                                </Link> }
+                                </Link>}
                             </div>
-                        </div> }
+                        </div>}
 
-                        <img src={ menuIcon } alt="icon" />
-                        { (!loggedInUser) && <img src={ userIcon } alt="icon" /> }
-                        { (loggedInUser) && <img className="profile-icon" src={ loggedInUser.imgUrl } alt="icon" /> }
+                        <img src={menuIcon} alt="icon" />
+                        {(!loggedInUser) && <img src={userIcon} alt="icon" />}
+                        {(loggedInUser) && <img className="profile-icon" src={loggedInUser.imgUrl} alt="icon" />}
                     </div>
                 </div>
-            </nav>
+            </nav >
         </header >
     }
 }

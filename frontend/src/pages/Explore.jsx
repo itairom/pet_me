@@ -50,9 +50,9 @@ class _Explore extends React.Component {
         if (!pets) return <img src={userIcon} alt="loading" />
         if (!filterBy) return <img src={userIcon} alt="loading" />
         console.log("🚀 ~ file: Explore.jsx ~ line 52 ~ _Explore ~ render ~ filterBy", filterBy)
-
+        
         return (
-            <section className="main-container">
+            <section className="main-container explore-container">
                 {!isFilterShown && <div className="explore-search">
                     <span onClick={() => this.onToggleFilter()} > Start your search</span>
                     <div className="search-btn-explore">

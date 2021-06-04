@@ -50,7 +50,6 @@ export function removePet(petId) { // Action Creator
 }
 // From here: use the CRUDL to 
 export function toggleLike(pet, likedInfo) { // Action Creator
-    console.log(likedInfo)
     return dispatch => {
         return petService.toggleLike(pet, likedInfo)
             .then((updatedPet) => {
@@ -63,15 +62,13 @@ export function toggleLike(pet, likedInfo) { // Action Creator
     }
 }
 
+
 export function addComment(ev, newComment, pet) { // Action Creator
     ev.preventDefault()
-    console.log('im in action')
     // const { txt, petId, loggedInUser } = newComment
     return dispatch => {
-        console.log('dispatching commment')
         return petService.addComment(newComment, pet)
             .then((updatedPet) => {
-                console.log('recived comment')
                 const action = {
                     type: 'UPDATE_PET',
                     pet: updatedPet
