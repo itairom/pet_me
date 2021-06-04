@@ -72,7 +72,6 @@ class _PetDetails extends Component {
 
     onAdopt = () => {
         const { pet, owner, loggedInUser } = this.state
-        // console.log('pet, owner, loggedInUser', pet, owner, loggedInUser)
         if (!loggedInUser) return alert('Please login in order to adopt this pet ')
         if (loggedInUser.pets.find(loggedInUserPet => loggedInUserPet._id === pet._id)) return alert('You cannot adopt you own pet')
         this.setState({ isAttend: true })
@@ -99,7 +98,6 @@ class _PetDetails extends Component {
     }
 
     render() {
-        // console.log(this.props)
         const id = this.props.match.params.petId
         const pet = this.props.pets.find(pet => pet._id === id)
         // const { pet } = this.props
