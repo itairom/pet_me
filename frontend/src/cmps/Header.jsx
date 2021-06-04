@@ -98,7 +98,10 @@ class _Header extends Component {
             <header className={`main-header ${nav && 'nav-white'} main-container`}>
                 < nav className="header-container" >
                     <NavLink onClick={() => this.props.loadPets()} to="/">
-                        <img className="header-logo" src={logo} alt="PetMe" />
+                        <div className="logo-container flex">
+                            <Logo className="logo" />
+                            <h1 className={`logo-title ${nav && 'black'} `}>PetMe</h1>
+                        </div>
                     </NavLink>
                     <div>
                         {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */}
@@ -107,8 +110,8 @@ class _Header extends Component {
 
                     <div className="right-nav">
 
-                        {window.innerWidth>500&&<NavLink className={`explore-btn ${nav && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>
-                            Explore</NavLink>}
+                        <NavLink className={`explore-btn ${nav && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>
+                            Explore</NavLink>
                         <div onClick={() => this.toggleDropdown()} className="login-profile">
                             {isProfileShown && <div className="user-dropdown">
                                 <div className="dropdown-list">
