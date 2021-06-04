@@ -124,10 +124,11 @@ class _PetApp extends React.Component {
                     {/* </div> */}
                     {/* </div> */}
                     <div className="blur full">
-                        <div className="about-content main-container">
+                        <div className="about-content flex column">
                             <h2>Our vision</h2>
                             <p>PetMe is dedicated to saving the lives of animals in need. We improve animal welfare in communities through adoption, education, and providing resources for people and pets.</p>
                             <p>We strive for a world where every companion animal has a safe and loving home and their family has the knowledge and resources needed to give them the life they deserve.</p>
+                            <img className="welcome-logo" src="https://petcolove.org/wp-content/uploads/2018/08/welcome-to-the-family-web.png" alt="" />
                         </div>
                     </div>
                 </section>

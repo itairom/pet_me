@@ -1,26 +1,31 @@
 .main-footer {
-    // grid-column: 1/span 3;
-    // position: relative;
-    // bottom: 0;
-    // border-top: 1px solid #ddd;
     background-color: #ececec;
-    // align-items: center;
-    // width: 100%;
-    // height: 2.7rem;
-    // font-size: .65rem;
-    // padding: 0 12px;
 
     & small {
-        // display: flex;
         align-self: center;
-        padding: 15px 0 3px;
-        // margin: 10px 0;
+        padding: 10px 0 3px;
     }
 
     .nav-social {
         cursor: pointer;
+
         :not(:last-child) {
             padding-right: 8px;
         }
+
+        :hover {
+            .fa {
+                fill: #3b5998;
+            }
+
+            .in {
+                fill: #ea4c56;
+            }
+
+            .tw {
+                fill: #1da1f2;
+            }
+        }
+
     }
 }
