@@ -49,8 +49,7 @@ class _Explore extends React.Component {
         const { isFilterShown, filterBy } = this.state
         if (!pets) return <img src={userIcon} alt="loading" />
         if (!filterBy) return <img src={userIcon} alt="loading" />
-        console.log("🚀 ~ file: Explore.jsx ~ line 52 ~ _Explore ~ render ~ filterBy", filterBy)
-        
+
         return (
             <section className="main-container explore-container">
                 {!isFilterShown && <div className="explore-search">
@@ -60,8 +59,10 @@ class _Explore extends React.Component {
                     </div>
                 </div>}
                 {isFilterShown && <PetFilter />}
-                {!filterBy.type && <h1>Our pets</h1>}
-                {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}
+                <div className="filter-description">
+                    {!filterBy.type && <h1 >Our pets</h1>}
+                    {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}
+                </div>
                 < PetList pets={pets} />
             </section>
         )
