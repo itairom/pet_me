@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import React from 'react'
 
 
-
+    
 class _PetFilter extends React.Component {
 
     state = {
@@ -69,7 +69,6 @@ class _PetFilter extends React.Component {
                         <option value="medium">Mediun</option>
                         <option value="big">Big</option>
                     </select>
-                    {/* </label> */}
                 </div>
                 <div className="filter-select location-select">
                     <label >Location</label>

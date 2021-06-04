@@ -1,5 +1,4 @@
 .pet-filter {
-    transition: 0.5s ease-in-out;
     display: flex;
     justify-self: center;
     background-color: white;
@@ -10,8 +9,7 @@
     max-width: 800px;
     left: 0;
     right: 0;
-    box-shadow: 0px 2px 13px -1px #000000;
-    margin-block-end: 130px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 
     @include for-mobile-layout {
         margin-block-end: 175px;
@@ -33,10 +31,10 @@
 .filter-search {
     display: flex;
     align-self: center;
-    width: 32px;
+    width: 29px;
 
     @include for-mobile-layout {
-        width: 22px;
+        width: 27px;
     }
 }
 
@@ -106,7 +104,6 @@
     }
 
 }
-
 
 .search-btn {
     background-color: #36baa0;

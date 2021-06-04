@@ -13,27 +13,32 @@
 .explore-search {
     cursor: pointer;
     top: 9px;
-    left: 45%;
-    // right: 50%;
+    left: 24%;
     align-items: center;
     display: flex;
     padding: 0 0 0 0.6rem;
     color: #1e1e1e;
     font-size: .9rem;
-    font-weight: 700;
     position: fixed;
     z-index: 101;
     border-radius: 200px;
-    line-height: 49px;
+    line-height: 45px;
     border: #dadada 1px solid;
+    @include for-narrow-layout {
+        left:33%
+    }
+    @include for-normal-layout {
+        left:38%
+    }
+    @include for-wide-layout {
+        left:44%
+    }
 
 
     &>.search-btn-explore {
-        background-color: $clr9;
         background-color: #36b99f;
-        // color: whitesmoke;
         padding: 4px 3px;
-        margin: 3px 7px 3px 30px;
+        margin: 1px 6px 1px 19px;
         border-radius: 50%;
         width: 35px;
         height: 35px;
@@ -46,4 +51,5 @@
             // height: 40px;
         }
     }
+
 }

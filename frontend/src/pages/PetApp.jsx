@@ -2,13 +2,13 @@ import { connect } from 'react-redux'
 import React from 'react'
 import { loadPets, addPet } from '../store/actions/petActions'
 import { Link } from 'react-router-dom'
-import { PetFilter } from '../cmps/PetFilter'
+import { FilterDynamic } from '../cmps/FilterDynamic'
 import { HomepagePreview } from '../cmps/HomepagePreview'
-import { PetPreview } from '../cmps/PetPreview'
 import contact from '../assets/img/svg/contact.svg'
 import info from '../assets/img/svg/info.svg'
 import paw from '../assets/img/svg/paw.svg'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+
 
 
 class _PetApp extends React.Component {
@@ -16,6 +16,7 @@ class _PetApp extends React.Component {
     async componentDidMount() {
         await this.props.loadPets()
     }
+
     render() {
         const { pets } = this.props
         if (pets.length === 0) return <h1>loading</h1>
@@ -23,7 +24,7 @@ class _PetApp extends React.Component {
             <section className="main-container">
                 <section className="hero full">
                     <div className="hero-content">
-                        < PetFilter />
+                        <FilterDynamic />
                             <h1>Find your</h1>
                             <h1> best friend</h1>
                     </div>

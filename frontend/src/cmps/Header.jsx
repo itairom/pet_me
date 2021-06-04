@@ -15,11 +15,30 @@ class _Header extends Component {
 
     state = {
         isProfileShown: false,
-        isRequested: false
+        isRequested: false,
+        nav: false
     }
 
     componentDidMount() {
         this.setListeners()
+        window.addEventListener("scroll", this.handleScroll);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', () => {
+        })
+    }
+
+    handleScroll = () => {
+        if (window.pageYOffset > 50) {
+            if (!this.state.nav) {
+                this.setState({ nav: true });
+            }
+        } else {
+            if (this.state.nav) {
+                this.setState({ nav: false });
+            }
+        }
+
     }
 
 
@@ -65,9 +84,9 @@ class _Header extends Component {
     render() {
 
         const { loggedInUser } = this.props
-        const { isProfileShown } = this.state
-
-        return <header className="main-header main-container">
+        const { isProfileShown, nav } = this.state
+        
+        return <header className={`main-header ${nav && 'nav-white'} main-container`}>
             < nav className="header-container" >
                 <NavLink onClick={() => this.props.loadPets()} to="/">
                     <img className="header-logo" src={logo} alt="PetMe" />
@@ -78,7 +97,7 @@ class _Header extends Component {
                 </div>
 
                 <div className="right-nav">
-                    <NavLink className="explore-btn" to='/explore/?gender=&age=&type=&location=&size='>Explore</NavLink>
+                    <NavLink className={`explore-btn ${nav && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>Explore</NavLink>
                     <div onClick={() => this.toggleDropdown()} className="login-profile">
                         {isProfileShown && <div className="user-dropdown">
                             <div className="dropdown-list">
