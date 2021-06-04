@@ -85,42 +85,46 @@ class _Header extends Component {
 
         const { loggedInUser } = this.props
         const { isProfileShown, nav } = this.state
-        
-        return <header className={`main-header ${nav && 'nav-white'} main-container`}>
-            < nav className="header-container" >
-                <NavLink onClick={() => this.props.loadPets()} to="/">
-                    <img className="header-logo" src={logo} alt="PetMe" />
-                </NavLink>
-                <div>
-                    {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */}
 
-                </div>
+        return (
+            <header className={`main-header ${nav && 'nav-white'} main-container`}>
+                < nav className="header-container" >
+                    <NavLink onClick={() => this.props.loadPets()} to="/">
+                        <img className="header-logo" src={logo} alt="PetMe" />
+                    </NavLink>
+                    <div>
+                        {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */}
 
-                <div className="right-nav">
-                    <NavLink className={`explore-btn ${nav && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>Explore</NavLink>
-                    <div onClick={() => this.toggleDropdown()} className="login-profile">
-                        {isProfileShown && <div className="user-dropdown">
-                            <div className="dropdown-list">
-                                {(loggedInUser) && <Link to='/profile' >
-                                    <span>Profile</span>
-                                </Link>}
-
-                                {(loggedInUser) &&
-                                    <a href="" onClick={() => this.onLogout()}>Logout</a>
-                                }
-                                {(!loggedInUser) && <Link to='/login' >
-                                    <span>Login</span>
-                                </Link>}
-                            </div>
-                        </div>}
-
-                        <img src={menuIcon} alt="icon" />
-                        {(!loggedInUser) && <img src={userIcon} alt="icon" />}
-                        {(loggedInUser) && <img className="profile-icon" src={loggedInUser.imgUrl} alt="icon" />}
                     </div>
-                </div>
-            </nav >
-        </header >
+
+                    <div className="right-nav">
+
+                        {window.innerWidth>500&&<NavLink className={`explore-btn ${nav && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>
+                            Explore</NavLink>}
+                        <div onClick={() => this.toggleDropdown()} className="login-profile">
+                            {isProfileShown && <div className="user-dropdown">
+                                <div className="dropdown-list">
+                                    {(loggedInUser) && <Link to='/profile' >
+                                        <span>Profile</span>
+                                    </Link>}
+
+                                    {(loggedInUser) &&
+                                        <a href="" onClick={() => this.onLogout()}>Logout</a>
+                                    }
+                                    {(!loggedInUser) && <Link to='/login' >
+                                        <span>Login</span>
+                                    </Link>}
+                                </div>
+                            </div>}
+
+                            <img src={menuIcon} alt="icon" />
+                            {(!loggedInUser) && <img src={userIcon} alt="icon" />}
+                            {(loggedInUser) && <img className="profile-icon" src={loggedInUser.imgUrl} alt="icon" />}
+                        </div>
+                    </div>
+                </nav >
+            </header >
+        )
     }
 }
 

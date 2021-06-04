@@ -5,8 +5,8 @@ import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
 import { Link } from 'react-router-dom'
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";
-// import "../assets/styles/cmps/slick.scss"
-// import "../assets/styles/cmps/slick-theme.scss"
+import "../assets/styles/cmps/slick.scss";
+import "../assets/styles/cmps/slick-theme.scss";
 import { HeartLike } from './HeartLike'
 
 import Slider from "react-slick";
