@@ -1,5 +1,4 @@
 .pet-filter {
-    transition: 0.5s ease-in-out;
     display: flex;
     justify-self: center;
     background-color: white;
@@ -10,20 +9,19 @@
     max-width: 800px;
     left: 0;
     right: 0;
-    box-shadow: 0px 2px 13px -1px #000000;
-    margin-block-end: 130px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 
     @include for-mobile-layout {
         margin-block-end: 175px;
     }
 
-    &>a {
+    & > a {
         display: flex;
         background-color: #36baa0;
         margin: 5px 15px 10px 15px;
     }
 
-    &>a:hover {
+    & > a:hover {
         background-color: #36baa0;
         box-shadow: none;
         border-radius: 50px;
@@ -33,10 +31,10 @@
 .filter-search {
     display: flex;
     align-self: center;
-    width: 32px;
+    width: 29px;
 
     @include for-mobile-layout {
-        width: 22px;
+        width: 27px;
     }
 }
 
@@ -104,9 +102,7 @@
     @include for-mobile-layout {
         display: none;
     }
-
 }
-
 
 .search-btn {
     background-color: #36baa0;
@@ -121,4 +117,13 @@
         height: 40px;
         padding-right: 0;
     }
+}
+
+.select-modal {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background-color: #36baa0;
+    top: 200px;
+    left: 190px;;
 }

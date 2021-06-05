@@ -4,13 +4,26 @@ const ObjectId = require('mongodb').ObjectId
 
 
 async function query(filterBy = '') {
+    console.log("🚀 ~ file: pet.service.js ~ line 7 ~ query ~ filterBy", filterBy)
     // console.log("🚀 ~ file: pet.service.js ~ line 7 ~ query ~ filterBy", filterBy)
+    // if(filterBy.sort!=='undefined'){
+    //     console.log(filterBy.sort);
+    // }
+    let { sortBy } = filterBy
+   
+    console.log("🚀 ~ file: pet.service.js ~ line 12 ~ query ~ sortBy", sortBy)
+    let sort = {}
+    if (sortBy === 'name') {
+        sort.name = 1
+    } else if (sortBy === 'likes') {
+        sort.likes = -1
+    }
+
     const criteria = _buildCriteria(filterBy)
-    // console.log("🚀 ~ file: pet.service.js ~ line 9 ~ query ~ criteria", criteria)
 
     try {
         const collection = await dbService.getCollection('pet')
-        const pets = await collection.find(criteria).toArray()
+        const pets = await collection.find(criteria).sort(sort).toArray()
         return pets
     } catch (err) {
         logger.error('cannot find pets', err)
@@ -43,22 +56,6 @@ function get(entityType, entityId) {
         .then(entities => entities.find(entity => entity._id === entityId))
 }
 
-// const collection = await dbService.getCollection('pet')
-// if (act > 0) {
-//     await collection.updateOne({ _id: petId }, { $inc: { likes: 1 } });
-// }
-// else {
-//     await collection.updateOne({ _id: petId }, { $inc: { likes: -1 } });
-// }
-// // await collection.updateOne({ _id: petId }, { $addToSet: { likedBy: userId } });
-// return act
-// }
-
-
-
-
-
-
 function _makeId(length = 5) {
     var text = ''
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -69,7 +66,7 @@ function _makeId(length = 5) {
 }
 
 function _buildCriteria(filterBy) {
-    console.log("🚀 ~ file: pet.service.js ~ line 79 ~ _buildCriteria ~ filterBy", filterBy)
+    // console.log("🚀 ~ file: pet.service.js ~ line 79 ~ _buildCriteria ~ filterBy", filterBy)
 
     if (!filterBy) return {}
 

@@ -1,31 +1,50 @@
 import { connect } from 'react-redux'
 import React from 'react'
 import { loadPets } from '../store/actions/petActions'
+import { onExplore, showSearch } from '../store/actions/userActions'
 import { PetList } from '../cmps/PetList'
 import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to image
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
-import { PetFilter } from '../cmps/PetFilter'
-
 
 class _Explore extends React.Component {
     state = {
         isFilterShown: false,
-        filterBy: null
+        filterBy: null,
+        sortBy: ''
     }
     async componentDidMount() {
+        window.scroll(0, 0)
+        this.props.onExplore()
+        this.props.showSearch()
         await this.onSetFilter()
         await this.props.loadPets(this.state.filterBy)
-
-        // window.addEventListener('scroll', () => {
-        //     this.setState({ isFilterShown: false })
-        // })
+        window.addEventListener('scroll', this.onEventListner())
     }
 
     async componentWillUnmount() {
         await this.props.loadPets()
-        // window.removeEventListener('scroll', () => {
-        // })
+        window.removeEventListener('scroll', this.onEventListner())
     }
+
+    onEventListner = () => {
+        this.setState({ isFilterShown: false })
+    }
+
+    onSetSort = () => {
+        const { filterBy, sortBy } = this.state
+        let filter = {
+            ...filterBy,
+            sort: sortBy
+        }
+        this.props.loadPets(filter)
+    }
+    handleChange = (event) => {
+        this.setState({ sortBy: event.target.value },
+            () => {
+                this.onSetSort()
+            })
+    }
+
 
     onSetFilter = () => {
         const search = new URLSearchParams(this.props.location.search)
@@ -34,7 +53,7 @@ class _Explore extends React.Component {
             type: search.get('type'),
             age: search.get('age'),
             size: search.get('size'),
-            location: search.get('location')
+            location: search.get('location'),
         }
         this.setState({ filterBy })
     }
@@ -46,23 +65,38 @@ class _Explore extends React.Component {
 
     render() {
         const { pets } = this.props
-        const { isFilterShown, filterBy } = this.state
-        if (!pets) return <img src={ userIcon } alt="loading" />
-        if (!filterBy) return <img src={ userIcon } alt="loading" />
-        console.log("🚀 ~ file: Explore.jsx ~ line 52 ~ _Explore ~ render ~ filterBy", filterBy)
-
+        const { isFilterShown, filterBy, sortBy } = this.state
+        if (!pets) return <img src={userIcon} alt="loading" />
+        if (!filterBy) return <img src={userIcon} alt="loading" />
         return (
             <section className="main-container explore-container">
-                {!isFilterShown && <div className="explore-search">
-                    <span onClick={ () => this.onToggleFilter() } > Start your search</span>
+
+                {/* {!isFilterShown && <div className="explore-search">
+                    <span onClick={() => this.onToggleFilter()} > Start your search</span>
                     <div className="search-btn-explore">
                         <img className="filter-search" src={ magnifyingGlass } alt="glass" />
                     </div>
-                </div> }
-                {isFilterShown && <PetFilter /> }
-                {!filterBy.type && <h1>Our pets</h1> }
-                {filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size }  { filterBy.type }s</span></h1> }
-                < PetList pets={ pets } />
+                </div>} */}
+
+                {/* {isFilterShown && <PetFilter />} */}
+                {/* <section className="sort-by"> */}
+                {/* <FormControl className={classes.formControl}> */}
+                {/* </section> */}
+
+                <div className="filter-description">
+                    {!filterBy.type && <h1 >Our pets</h1>}
+                    {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}
+
+                    <div className="sort-form">
+                        <label >Sort By</label>
+                        <select value={this.state.sortBy} onChange={this.handleChange}>
+                            {/* <option value="">Any</option> */}
+                            <option value={'name'}>Name</option>
+                            <option value={'likes'}>Likes</option>
+                        </select>
+                    </div>
+                </div>
+                < PetList pets={pets} />
             </section>
         )
     }
@@ -70,12 +104,14 @@ class _Explore extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        pets: state.petModule.pets
+        pets: state.petModule.pets,
+        inExplore: state.systemModule.onExplore
+
     }
 }
 
 const mapDispatchToProps = {
-    loadPets
+    loadPets, onExplore, showSearch
 }
 
 export const Explore = connect(mapStateToProps, mapDispatchToProps)(_Explore)

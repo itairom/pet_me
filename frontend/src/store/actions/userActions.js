@@ -105,4 +105,36 @@ export function newAdoptRequest(data) { // Action Creator
       })
   }
 }
+export function onExplore() {
+  return dispatch => {
+    const action = {
+      type: 'ON_EXPLORE'
+    }
+    dispatch(action)
+  }
+}
+export function onHome() {
+  return dispatch => {
+    const action = {
+      type: 'ON_HOME'
+    }
+    dispatch(action)
+  }
+}
+export function showSearch() {
+  return dispatch => {
+    const action = {
+      type: 'SHOW_SEARCH'
+    }
+    dispatch(action)
+  }
+}
+export function notshowSearch() {
+  return dispatch => {
+    const action = {
+      type: 'NOT_SHOW_SEARCH'
+    }
+    dispatch(action)
+  }
+}
 

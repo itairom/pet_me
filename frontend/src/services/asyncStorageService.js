@@ -59,7 +59,7 @@ function post(entityType, newEntity) {
 
 function postComment(entityType, newComment) {
     const { txt, petId, loggedInUser } = newComment
-    console.log('im in storageService')
+    // console.log('im in storageService')
 
     return query(entityType)
         .then(entities => {

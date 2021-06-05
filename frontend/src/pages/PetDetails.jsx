@@ -4,21 +4,25 @@ import { utilService } from '../services/utilService'
 import { socketService } from '../services/socketService'
 import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
-import { loadUsers, newAdoptRequest } from '../store/actions/userActions'
+import { loadUsers, newAdoptRequest, onExplore } from '../store/actions/userActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 import { HeartLike } from '../cmps/HeartLike'
 import { GoogleMap } from '../cmps/GoogleMap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.min.css';
-import { faEnvelope, faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
-import SportsIcon from '@material-ui/icons/Sports';
-import ShareIcon from '@material-ui/icons/Share';
-import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 // import CheckIcon from '@material-ui/icons/Check';
 // import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
 // import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
+import { faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import SportsIcon from '@material-ui/icons/Sports';
+import ShareIcon from '@material-ui/icons/Share';
+import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import { ReactComponent as Binoculars } from '../assets/img/svg/binoculars.svg'
+import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'
+// import PetsIcon from '@material-ui/icons/Pets';
+
 
 class _PetDetails extends Component {
     state = {
@@ -31,6 +35,8 @@ class _PetDetails extends Component {
     }
 
     componentDidMount() {
+        window.scroll(0, 0)
+        this.props.onExplore()
         const id = this.props.match.params.petId;
         // socketService.setup()
         // socketService.emit('adopt-request', id)
@@ -59,7 +65,7 @@ class _PetDetails extends Component {
         this.setState({ isOpanModal: !this.state.isOpanModal })
     }
 
-    //owner only btn 
+    //owner only btn
     onUpdatePet = () => {
         this.props.updatePet(this.state.pet)
         this.toggleEditMode()
@@ -134,67 +140,81 @@ class _PetDetails extends Component {
 
                     <div className="details-info-container">
                         <div className="info-header flex ">
+                            <img src={ pet.owner.imgUrl } alt="" />
                             <div className="info-header-txt flex column">
                                 <h3>{ pet.name + ', owned by ' + pet.owner.name }</h3>
                                 <span>{ pet.title }</span>
-
                             </div>
-                            <img src={ pet.owner.imgUrl } alt="" />
                         </div>
+
                         <div className="info-body">
                             <LongTxt className="pet-desc" txt={ pet.desc } />
                             {/* <p className="pet-desc">{ pet.desc }</p> */ }
                             <ul className="pet-info-list clean-list">
-                                <li className="flex align-center">
-                                    <FontAwesomeIcon icon={ faCalendar } />
-                                    <p>
-                                        {/* Age: {(pet.age === 1) ? pet.age + ' year old' : pet.age + ' years old'} */ }
-                                        { pet.age + ' ' + pet.type }
-                                    </p>
-                                </li>
-                                <li className="flex align-center">
-                                    <FontAwesomeIcon icon={ faVenusMars } />
-                                    <p>
-                                        Gender: { pet.gender }
-                                    </p>
-                                </li>
-                                <li className="flex align-center">
-                                    <FontAwesomeIcon icon={ faCat } />
-                                    <p>
-                                        Breed: { pet.breed }
-                                    </p>
-                                </li>
-                                <li className="flex align-center">
-                                    <FontAwesomeIcon icon={ faSyringe } />
-                                    <p>
-                                        Vaccinated: { pet.vaccine ? 'yes' : 'no' }
-                                    </p>
-                                </li>
-                                <li className="flex align-center">
-                                    <FontAwesomeIcon icon={ faStethoscope } />
-                                    <p>
-                                        Spayed/Neutered: { pet.neuterSpayed ? 'yes' : 'no' }
-                                    </p>
-                                </li>
-                                <li className="flex align-center">
-                                    <SportsIcon />
-                                    <p>
-                                        Trained: { pet.trained ? 'yes' : 'no' }
-                                    </p>
-                                </li>
+                                <section className="left-info-list">
+                                    <li className="flex align-center">
+                                        <FontAwesomeIcon icon={ faCalendar } />
+                                        <p>
+                                            {/* Age: {(pet.age === 1) ? pet.age + ' year old' : pet.age + ' years old'} */ }
+                                            { pet.age + ' ' + pet.type }
+                                        </p>
+                                    </li>
+                                    <li className="flex align-center">
+                                        <FontAwesomeIcon icon={ faVenusMars } />
+                                        <p>
+                                            Gender: { pet.gender }
+                                        </p>
+                                    </li>
+                                    <li className="flex align-center">
+                                        <FontAwesomeIcon icon={ faCat } />
+                                        <p>
+                                            Breed: { pet.breed }
+                                        </p>
+                                    </li>
+                                </section>
+                                <section className="right-info-list">
+                                    <li className="flex align-center">
+                                        <FontAwesomeIcon icon={ faSyringe } />
+                                        <p>
+                                            Vaccinated: { pet.vaccine ? 'yes' : 'no' }
+                                        </p>
+                                    </li>
+                                    <li className="flex align-center">
+                                        <FontAwesomeIcon icon={ faStethoscope } />
+                                        <p>
+                                            Spayed/Neutered: { pet.neuterSpayed ? 'yes' : 'no' }
+                                        </p>
+                                    </li>
+                                    <li className="flex align-center">
+                                        <SportsIcon />
+                                        <p>
+                                            Trained: { pet.trained ? 'yes' : 'no' }
+                                        </p>
+                                    </li>
+                                </section>
                             </ul>
                         </div>
                     </div>
                     <div className="adopt-modal-container flex column">
-                        <span className="adoption-time adopt-sign">{ 'Looking for    a home for ' + utilService.timeSince(pet.addedAt) }</span>
-                        <span className="adoption-likes adopt-sign">{ 'Liked by ' + pet.likes + ' people!' }</span>
+                        <div className="flex align-center">
+                            <Binoculars className="binoculars" />
+                            <span className="adoption-time adopt-sign">{ 'Looking for    a home for ' + utilService.timeSince(pet.addedAt) }</span>
+                        </div>
+                        <div className="flex align-center">
+                            <ThumbUpIcon className="thumb-up" />
+                            <span className="adoption-likes adopt-sign">{ 'Liked by ' + pet.likes + ' people!' }</span>
+                        </div>
+                        <div className="flex align-center">
+                            <Paw className="paw" />
+                            <span className="adoption-time adopt-sign paw-last">{ pet.name }is waiting for you</span>
+                        </div>
                         <button className="adopt-btn el-btn" onClick={ () => this.onAdopt() }>{ (this.state.isAttend) ? 'Request sent' : 'Adopt Me' }</button>
-                        <span><FontAwesomeIcon icon={ faEnvelope } /> { pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com' }</span>
-                        <span><FontAwesomeIcon icon={ faWhatsapp } /> 054-2312993</span>
+                        {/* <span><FontAwesomeIcon icon={faEnvelope} /> {pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com'}</span> */ }
+                        {/* <span><FontAwesomeIcon icon={faWhatsapp} /> 054-2312993</span> */ }
                     </div>
                 </div>
                 <div className="comments-section">
-                    <CommentsCmp pet={ pet } key={ pet._id + "comments" } />
+                    <CommentsCmp pet={ pet } key={ pet._id } />
                 </div>
                 {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */ }
                 <section className="google-map section">
@@ -224,7 +244,8 @@ const mapDispatchToProps = {
     toggleLike,
     loadPets,
     loadUsers,
-    newAdoptRequest
+    newAdoptRequest,
+    onExplore
 }
 
 export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)

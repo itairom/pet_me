@@ -13,11 +13,18 @@ class _PetFilter extends React.Component {
             age: '',
             size: '',
             location: ''
-        }
+        },
+        types: ['cat,fish,lion']
     }
 
     handleChange = ({ target }) => {
         const { name, value } = target
+        const { filterBy } = this.state
+        this.setState({ filterBy: { ...filterBy, [name]: value } })
+    }
+
+    handleChangeModal = (value, name) => {
+        // const { name, value } = target
         const { filterBy } = this.state
         this.setState({ filterBy: { ...filterBy, [name]: value } })
     }
@@ -27,8 +34,13 @@ class _PetFilter extends React.Component {
         this.props.history.push(`/explore/?${query.toString()}`)
     }
 
+
+
+
     render() {
         const { gender, age, type, location, size } = this.state.filterBy
+
+        console.log('pet', type);
 
         return (
 
@@ -69,12 +81,19 @@ class _PetFilter extends React.Component {
                         <option value="medium">Mediun</option>
                         <option value="big">Big</option>
                     </select>
-                    {/* </label> */}
                 </div>
                 <div className="filter-select location-select">
                     <label >Location</label>
                     <input placeholder="Enter location" className='location-select' value={location} onChange={this.handleChange} name="location"  ></input>
                 </div>
+
+                {/* {this.state.types.map(type => {
+                    return (
+                        <div className="select-modal">
+                            <div onClick={() => this.handleChangeModal(type, 'type')} value={type}> {type} </div>
+                        </div>
+                    )
+                })} */}
 
                 <button className="search-btn filter-select" onClick={this.onSubmitFilter}>
                     <img className="filter-search" src={magnifyingGlass} alt="glass" />

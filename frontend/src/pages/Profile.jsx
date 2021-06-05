@@ -7,6 +7,8 @@ import Loader from '../assets/img/loaders/loader_3.svg' // relative path to imag
 import Pin from '../assets/img/svg/pin.svg' // relative path to image 
 import { petService } from '../services/petService'
 // import { socketService } from '../services/socketService'
+import { onExplore } from '../store/actions/userActions'
+
 import { utilService } from '../services/utilService'
 import { loadUsers, login, logout, removeUser, signup } from '../store/actions/userActions'
 
@@ -22,6 +24,7 @@ class _Profile extends Component {
     async componentDidMount() {
         this.onLoadRequests()
         await this.onLoadPets()
+        this.props.onExplore()
     }
 
     componentWillUnmount() {
@@ -181,6 +184,7 @@ const mapStateToProps = state => {
         users: state.userModule.users,
         loggedInUser: state.userModule.loggedInUser,
         isLoading: state.systemModule.isLoading
+
     }
 }
 const mapDispatchToProps = {
@@ -188,7 +192,8 @@ const mapDispatchToProps = {
     logout,
     signup,
     removeUser,
-    loadUsers
+    loadUsers,
+    onExplore
 }
 
 export const Profile = connect(mapStateToProps, mapDispatchToProps)(_Profile)
