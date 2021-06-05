@@ -23,21 +23,22 @@ class _Header extends Component {
 
     }
 
-    onToggleFilter = () => {
-        this.setState({ isFilterShown: !this.state.isFilterShown }
-        )
-    }
-
     componentDidMount() {
         this.setListeners()
         window.addEventListener("scroll", this.handleScroll);
+        console.log('inExplore', this.props.inExplore);
     }
+
+
     componentWillUnmount() {
         window.removeEventListener('scroll', () => {
         })
     }
 
     handleScroll = () => {
+
+        this.setState({ isFilterShown: false })
+
         if (window.pageYOffset > 50) {
             if (!this.state.nav) {
                 this.setState({ nav: true });
@@ -76,6 +77,11 @@ class _Header extends Component {
         this.setState({ isProfileShown: !this.state.isProfileShown })
     }
 
+    onToggleFilter = () => {
+        this.setState({ isFilterShown: !this.state.isFilterShown }
+        )
+    }
+
     onLogout = () => {
         this.props.logout()
         // this.props.history.push('/')
@@ -90,9 +96,9 @@ class _Header extends Component {
     }
 
     render() {
-        
-        const { loggedInUser } = this.props
-        const { isProfileShown, nav } = this.state
+
+        const { loggedInUser, inExplore, isShowSearch } = this.props
+        const { isProfileShown, nav, isFilterShown } = this.state
 
         return (
             <header className={`main-header ${nav && 'nav-white'} main-container`}>
@@ -100,17 +106,29 @@ class _Header extends Component {
                     <NavLink onClick={() => this.props.loadPets()} to="/">
                         <div className="logo-container flex">
                             <Logo className="logo" />
-                            <h1 className={`logo-title ${nav && 'black'} `}>PetMe</h1>
+                            <h1 className={`logo-title ${nav && 'black'} ${inExplore && 'black'} `}>PetMe</h1>
                         </div>
                     </NavLink>
+
+                    <section className="filter-section">
+                        {isShowSearch && !isFilterShown && <div className="explore-search">
+                            <span onClick={() => this.onToggleFilter()} > Start your search</span>
+                            <div className="search-btn-explore">
+                                <img className="filter-search" src={magnifyingGlass} alt="glass" />
+                            </div>
+                        </div>}
+                        {isShowSearch && isFilterShown && <div className="explore-search">
+                            < PetFilter />
+                        </div>}
+                    </section>
+
                     <div>
                         {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */}
-
                     </div>
 
-                    <div className="right-nav">
 
-                        <NavLink className={`explore-btn ${nav && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>
+                    <div className="right-nav">
+                        <NavLink className={`explore-btn ${nav && 'black'} ${inExplore && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>
                             Explore</NavLink>
                         <div onClick={() => this.toggleDropdown()} className="login-profile">
                             {isProfileShown && <div className="user-dropdown">
@@ -143,7 +161,9 @@ class _Header extends Component {
 
 const mapStateToProps = state => {
     return {
-        loggedInUser: state.userModule.loggedInUser
+        loggedInUser: state.userModule.loggedInUser,
+        inExplore: state.systemModule.onExplore,
+        isShowSearch: state.systemModule.isShowSearch
     }
 }
 const mapDispatchToProps = {

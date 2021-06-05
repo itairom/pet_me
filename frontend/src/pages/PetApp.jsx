@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import React from 'react'
 import { loadPets, addPet } from '../store/actions/petActions'
+import { onHome ,showSearch,notshowSearch} from '../store/actions/userActions'
 import { Link } from 'react-router-dom'
 import { FilterDynamic } from '../cmps/FilterDynamic'
 import { HomepagePreview } from '../cmps/HomepagePreview'
@@ -14,27 +15,31 @@ import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative
 
 class _PetApp extends React.Component {
 
-    state={
+    state = {
         // isFilterShown: false
 
     }
 
 
-    
+
     async componentDidMount() {
+        window.scroll(0,0)
+        this.props.notshowSearch()
+
+        this.props.onHome()
         await this.props.loadPets()
     }
 
     render() {
-        const { pets } = this.props
+        const { pets, inExplore } = this.props
         if (pets.length === 0) return <h1>loading</h1>
         return (
             <section className="main-container">
                 <section className="hero full">
                     <div className="hero-content">
                         <FilterDynamic />
-                            <h1>Find your</h1>
-                            <h1> best friend</h1>
+                        <h1>Find your</h1>
+                        <h1> best friend</h1>
                     </div>
                 </section>
                 <div className="type-cards">
@@ -105,24 +110,6 @@ class _PetApp extends React.Component {
                         </div>
                     </div>
                 </section>
-                {/* <section className="type-cards preview-homepage">
-                    <h2 className="type-cards-title">Waiting long time to adopt</h2>
-                    <div className="preview-cards">
-                        <PetPreview pet={pets[9]} key={pets[9]._id} />
-                        <PetPreview pet={pets[13]} key={pets[13]._id} />
-                        <PetPreview pet={pets[1]} key={pets[1]._id} />
-                        <PetPreview pet={pets[14]} key={pets[14]._id} />
-                    </div>
-                </section>
-                <section className="type-cards preview-homepage">
-                    <h2 className="type-cards-title">Most Liked Pets Available For Adoption</h2>
-                    <div className="preview-cards">
-                        <PetPreview pet={pets[4]} key={pets[4]._id} />
-                        <PetPreview pet={pets[5]} key={pets[5]._id} />
-                        <PetPreview pet={pets[6]} key={pets[6]._id} />
-                        <PetPreview pet={pets[7]} key={pets[7]._id} />
-                    </div>
-                </section> */}
                 <HomepagePreview pets={this.props.pets} />
                 <section className="homepage-about main-container full">
                     {/* <div className="inner-container flex"> */}
@@ -156,7 +143,10 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
     loadPets,
-    addPet
+    addPet,
+    onHome,
+    showSearch,
+    notshowSearch
 }
 
 export const PetApp = connect(mapStateToProps, mapDispatchToProps)(_PetApp)

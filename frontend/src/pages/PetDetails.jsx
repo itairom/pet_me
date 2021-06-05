@@ -4,7 +4,7 @@ import { utilService } from '../services/utilService'
 import { socketService } from '../services/socketService'
 import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
-import { loadUsers } from '../store/actions/userActions'
+import { loadUsers, onExplore } from '../store/actions/userActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 import { HeartLike } from '../cmps/HeartLike'
@@ -32,6 +32,8 @@ class _PetDetails extends Component {
     }
 
     componentDidMount() {
+        window.scroll(0, 0)
+        this.props.onExplore()
         const id = this.props.match.params.petId;
         // socketService.setup()
         // socketService.emit('adopt-request', id)
@@ -130,13 +132,13 @@ class _PetDetails extends Component {
 
                     <div className="details-info-container">
                         <div className="info-header flex ">
+                            <img src={pet.owner.imgUrl} alt="" />
                             <div className="info-header-txt flex column">
                                 <h3>{pet.name + ', owned by ' + pet.owner.name}</h3>
                                 <span>{pet.title}</span>
-
                             </div>
-                            <img src={pet.owner.imgUrl} alt="" />
                         </div>
+
                         <div className="info-body">
                             <LongTxt className="pet-desc" txt={pet.desc} />
                             {/* <p className="pet-desc">{ pet.desc }</p> */}
@@ -234,6 +236,7 @@ const mapDispatchToProps = {
     toggleLike,
     loadPets,
     loadUsers,
+    onExplore
 }
 
 export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)

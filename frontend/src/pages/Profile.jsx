@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import Loader from '../assets/img/loaders/loader_3.svg' // relative path to image 
 import Pin from '../assets/img/svg/pin.svg' // relative path to image 
 import { petService } from '../services/petService'
+import { onExplore } from '../store/actions/userActions'
+
 import { utilService } from '../services/utilService'
 import { socketService } from '../services/socketService'
 import { store } from 'react-notifications-component';
@@ -24,6 +26,7 @@ class _Profile extends Component {
 
     async componentDidMount() {
         await this.onLoadPets()
+        this.props.onExplore()
     }
 
     onLoadPets = () => {
@@ -116,6 +119,7 @@ const mapStateToProps = state => {
         users: state.userModule.users,
         loggedInUser: state.userModule.loggedInUser,
         isLoading: state.systemModule.isLoading
+
     }
 }
 const mapDispatchToProps = {
@@ -123,7 +127,8 @@ const mapDispatchToProps = {
     logout,
     signup,
     removeUser,
-    loadUsers
+    loadUsers,
+    onExplore
 }
 
 export const Profile = connect(mapStateToProps, mapDispatchToProps)(_Profile)
