@@ -15,7 +15,7 @@ export const petService = {
 const STORAGE_KEY = 'pets'
 
 async function query(filterBy = '') {
-    var queryStr = (!filterBy) ? '' : `?gender=${filterBy.gender}&age=${filterBy.age}&type=${filterBy.type}&location=${filterBy.location}&size=${filterBy.size}`
+    var queryStr = (!filterBy) ? '' : `?gender=${filterBy.gender}&age=${filterBy.age}&type=${filterBy.type}&location=${filterBy.location}&size=${filterBy.size}&sortBy=${filterBy.sort}`
     try {
         return httpService.get(`pet${queryStr}`)
     } catch (err) {

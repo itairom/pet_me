@@ -16,6 +16,7 @@
     }
 
     & .explore-btn {
+        margin-right: 5px;
         color: $clr1;
 
         @include for-mobile-layout {

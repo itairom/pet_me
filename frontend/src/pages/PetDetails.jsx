@@ -11,14 +11,10 @@ import { HeartLike } from '../cmps/HeartLike'
 import { GoogleMap } from '../cmps/GoogleMap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.min.css';
-import { faEnvelope, faShare, faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import SportsIcon from '@material-ui/icons/Sports';
 import ShareIcon from '@material-ui/icons/Share';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
-import CheckIcon from '@material-ui/icons/Check';
-import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
-import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { ReactComponent as Binoculars } from '../assets/img/svg/binoculars.svg'
 import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'
@@ -64,7 +60,7 @@ class _PetDetails extends Component {
         this.setState({ isOpanModal: !this.state.isOpanModal })
     }
 
-    //owner only btn 
+    //owner only btn
     onUpdatePet = () => {
         this.props.updatePet(this.state.pet)
         this.toggleEditMode()
@@ -200,7 +196,7 @@ class _PetDetails extends Component {
                         </div>
                         <div className="flex align-center">
                             <Paw className="paw" />
-                            <span className="adoption-time adopt-sign">{pet.name }is waiting for you</span>
+                            <span className="adoption-time adopt-sign paw-last">{pet.name}is waiting for you</span>
                         </div>
                         <button className="adopt-btn el-btn" onClick={() => this.onAdopt()}>{(this.state.isAttend) ? 'Request sent' : 'Adopt Me'}</button>
                         {/* <span><FontAwesomeIcon icon={faEnvelope} /> {pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com'}</span> */}

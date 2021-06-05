@@ -90,7 +90,7 @@ class _Header extends Component {
     }
 
     render() {
-
+        
         const { loggedInUser } = this.props
         const { isProfileShown, nav } = this.state
 

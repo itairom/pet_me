@@ -27,6 +27,10 @@
     font-size: rem(30px);
 }
 
+.black {
+    color: $clr7;
+}
+
 // flex helpers
 
 .container {
@@ -83,3 +87,4 @@
 .portrait-ratio {
     @include aspect-ratio(9, 16);
 }
+
