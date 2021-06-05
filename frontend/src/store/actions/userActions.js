@@ -44,6 +44,9 @@ export function login(userCreds) {
     try {
       const user = await userService.login(userCreds)
       // const user = await userService.login(userCreds)
+      // .then(x => {
+      socketService.emit('user-watch', user._id)
+      // })
       // console.log("🚀 ~ file: userActions.js ~ line 36 ~ login ~ user", user)
       dispatch({ type: 'SET_USER', user })
     } catch (err) {
@@ -66,6 +69,7 @@ export function logout() {
   return async dispatch => {
     try {
       await userService.logout()
+      // socketService.off(user._id)
       dispatch({ type: 'SET_USER', user: null })
     } catch (err) {
       console.log('UserActions: err in logout', err)
@@ -85,3 +89,20 @@ export function adoptRequest(request) {
       })
   }
 }
+
+export function newAdoptRequest(data) { // Action Creator
+  return dispatch => {
+    console.log('im in user action before service')
+    return userService.saveNewRequest(data)
+      .then((updatedUser) => {
+        socketService.emit('adopt-request', data)
+        console.log('im in user action after service')
+        const action = {
+          type: 'UPDATE_USER',
+          user: updatedUser
+        }
+        dispatch(action)
+      })
+  }
+}
+

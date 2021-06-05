@@ -4,21 +4,21 @@ import { utilService } from '../services/utilService'
 import { socketService } from '../services/socketService'
 import { connect } from 'react-redux'
 import { toggleLike, loadPets } from '../store/actions/petActions'
-import { loadUsers } from '../store/actions/userActions'
+import { loadUsers, newAdoptRequest } from '../store/actions/userActions'
 import { LongTxt } from '../cmps/LongTxt'
 import { CommentsCmp } from '../cmps/CommentsCmp'
 import { HeartLike } from '../cmps/HeartLike'
 import { GoogleMap } from '../cmps/GoogleMap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.min.css';
-import { faEnvelope, faShare, faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import SportsIcon from '@material-ui/icons/Sports';
 import ShareIcon from '@material-ui/icons/Share';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
-import CheckIcon from '@material-ui/icons/Check';
-import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
-import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
+// import CheckIcon from '@material-ui/icons/Check';
+// import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
+// import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
 
 class _PetDetails extends Component {
     state = {
@@ -77,13 +77,18 @@ class _PetDetails extends Component {
         this.setState({ isAttend: true })
         const data = {
             owner: owner,
-            userId: loggedInUser._id,
-            date: Date.now(),
-            message: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click to view`,
-            fullname: loggedInUser.fullname
+            petId: pet._id,
+            msg: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click to view`,
+            newRequest: {
+                date: Date.now(),
+                fullname: loggedInUser.fullname,
+                userId: loggedInUser._id,
+                message: `${loggedInUser.fullname} would like to adopt ${pet.name}`,
+                chatId: 'c' + utilService.makeId(7),
+            }
         }
+        this.props.newAdoptRequest(data)
         // AdoptAction()
-        socketService.emit('adopt-request', data)
     }
 
 
@@ -189,7 +194,7 @@ class _PetDetails extends Component {
                     </div>
                 </div>
                 <div className="comments-section">
-                    <CommentsCmp pet={ pet } key={ pet._id } />
+                    <CommentsCmp pet={ pet } key={ pet._id + "comments" } />
                 </div>
                 {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */ }
                 <section className="google-map section">
@@ -219,6 +224,7 @@ const mapDispatchToProps = {
     toggleLike,
     loadPets,
     loadUsers,
+    newAdoptRequest
 }
 
 export const PetDetails = connect(mapStateToProps, mapDispatchToProps)(_PetDetails)

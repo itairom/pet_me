@@ -38,7 +38,7 @@ async function update(pet) {
 async function addComment(newComment, pet) {
     console.log(newComment)
     const updatedPet = { ...pet }
-    const { loggedInUser, petId, txt } = newComment
+    const { loggedInUser, txt } = newComment
     newComment = {
         txt,
         created: Date.now(),

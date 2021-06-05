@@ -15,13 +15,14 @@ export const userService = {
   remove,
   update,
   getLoggedinUser,
-  adoptRequest
+  adoptRequest,
+  saveNewRequest
 }
 
 // window.userService = userService p
 
 function getUsers() {
-    return httpService.get(`user`)
+  return httpService.get(`user`)
 }
 
 function getById(userId) {
@@ -32,13 +33,13 @@ function remove(userId) {
 }
 
 async function update(user) {
-  return storageService.put('user', user)
-  // user = await httpService.put(`user/${user._id}`, user)
-  // Handle case in which admin updates other user's details
-  if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
+  console.log('updating user')
+  let updatedUser = await httpService.put(`user/${user._id}`, user)
+  return updatedUser
 }
 
-async function adoptRequest(request){
+
+async function adoptRequest(request) {
   // return storageService.put('user/req', user)
   return httpService.put('user/request', request)
   // Handle case in which admin updates other user's details
@@ -69,3 +70,20 @@ function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem('loggedinUser'))
 }
 
+
+async function saveNewRequest(data) {
+  console.log('im in userService (front)')
+  const { newRequest, owner, petId } = data
+  const petIdx = owner.pets.findIndex(pet => pet._id === petId)
+  const isAlreadyRequested = owner.pets[petIdx].adoptQue.some(pet => pet.userId === newRequest.userId)
+  if (!isAlreadyRequested) {
+    const updatedOwner = owner
+    updatedOwner.pets[petIdx].adoptQue.push(newRequest)
+    return await update(updatedOwner)
+  }
+  else {
+    // add toggle and splice the que from the array, then send update(updatedOwner)
+    // in the jsx change the button to "Adopt" again
+    return console.log('You already requested the owner, please wait for a response')
+  }
+}

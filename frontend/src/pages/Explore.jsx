@@ -16,15 +16,15 @@ class _Explore extends React.Component {
         await this.onSetFilter()
         await this.props.loadPets(this.state.filterBy)
 
-        window.addEventListener('scroll', () => {
-            this.setState({ isFilterShown: false })
-        })
+        // window.addEventListener('scroll', () => {
+        //     this.setState({ isFilterShown: false })
+        // })
     }
 
     async componentWillUnmount() {
         await this.props.loadPets()
-        window.removeEventListener('scroll', () => {
-        })
+        // window.removeEventListener('scroll', () => {
+        // })
     }
 
     onSetFilter = () => {
@@ -47,22 +47,22 @@ class _Explore extends React.Component {
     render() {
         const { pets } = this.props
         const { isFilterShown, filterBy } = this.state
-        if (!pets) return <img src={userIcon} alt="loading" />
-        if (!filterBy) return <img src={userIcon} alt="loading" />
+        if (!pets) return <img src={ userIcon } alt="loading" />
+        if (!filterBy) return <img src={ userIcon } alt="loading" />
         console.log("🚀 ~ file: Explore.jsx ~ line 52 ~ _Explore ~ render ~ filterBy", filterBy)
-        
+
         return (
             <section className="main-container explore-container">
                 {!isFilterShown && <div className="explore-search">
-                    <span onClick={() => this.onToggleFilter()} > Start your search</span>
+                    <span onClick={ () => this.onToggleFilter() } > Start your search</span>
                     <div className="search-btn-explore">
-                        <img className="filter-search" src={magnifyingGlass} alt="glass" />
+                        <img className="filter-search" src={ magnifyingGlass } alt="glass" />
                     </div>
-                </div>}
-                {isFilterShown && <PetFilter />}
-                {!filterBy.type && <h1>Our pets</h1>}
-                {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}
-                < PetList pets={pets} />
+                </div> }
+                {isFilterShown && <PetFilter /> }
+                {!filterBy.type && <h1>Our pets</h1> }
+                {filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size }  { filterBy.type }s</span></h1> }
+                < PetList pets={ pets } />
             </section>
         )
     }
