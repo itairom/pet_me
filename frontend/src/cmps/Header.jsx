@@ -60,6 +60,8 @@ class _Header extends Component {
         )
     }
 
+  
+
     render() {
 
         const { loggedInUser, inExplore, isShowSearch } = this.props

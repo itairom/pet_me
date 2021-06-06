@@ -74,14 +74,7 @@ class _PetFilter extends React.Component {
                         <label >{type}{!type && 'select'}</label>
                         {!toggleSelect && <FilterSelect key={type} handleChange={this.handleChange} options={options.type} name="type" />}
                     </label>
-                    {/* <select className='main-select' value={type} onChange={this.handleChange} name="type" >
-                        <option className="any-placeholder" value="">Any</option>
-                        <option value="cat">Cat</option>
-                        <option value="dog">Dog</option>
-                        <option value="rabbit">Rabbit</option>
-                        <option value="parrot">Parrot</option>
-                        <option value="hamster">Hamster</option>
-                    </select> */}
+
                 </div>
                 <div className="filter-select gender-select">
                     <label >Gender</label>
@@ -90,11 +83,7 @@ class _PetFilter extends React.Component {
                         {!toggleSelect && <FilterSelect key={gender} handleChange={this.handleChange} options={options.gender} name="gender" />}
                     </label>
 
-                    {/* <select className='main-select' value={gender} onChange={this.handleChange} name="gender" >
-                        <option className="any-placeholder" value="">Both</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select> */}
+
                 </div>
                 <div className="filter-select age-select">
                     <label >Age</label>
@@ -103,12 +92,6 @@ class _PetFilter extends React.Component {
                         {!toggleSelect && <FilterSelect key={age} handleChange={this.handleChange} options={options.age} name="age" />}
                     </label>
 
-                    {/* <select className='main-select' value={age} onChange={this.handleChange} name="age" >
-                        <option className="any-placeholder" value="">Any</option>
-                        <option value="young">0-3</option>
-                        <option value="adult">4-6</option>
-                        <option value="senior">6-15</option>
-                    </select> */}
                 </div>
                 <div className="filter-select size-select">
                     <label >Size</label>
@@ -118,12 +101,7 @@ class _PetFilter extends React.Component {
                     </label>
 
 
-                    {/* <select onClick={()=>this.onToggleSelect()} className='main-select' value={size} onChange={this.handleChange} name="size" >
-                        <option className="any-placeholder" value="">Any</option>
-                        <option value="small">Small</option>
-                        <option value="medium">Mediun</option>
-                        <option value="big">Big</option>
-                    </select> */}
+
                 </div>
                 <div className="filter-select location-select">
                     <label >Location</label>
