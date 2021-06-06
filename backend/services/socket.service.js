@@ -67,6 +67,13 @@ function connectSockets(http, session) {
             // socket.leave(data.owner._id)
             // emitToAll({ type: 'adopt-requested', data })
         })
+        socket.on('aprove-adopt', data => {
+            console.log('data-from-details', data)
+            // socket.join(data.owner._id)
+            emitToUser({ type: 'aprove-adoption', data, userId: data.userId })
+            // socket.leave(data.owner._id)
+            // emitToAll({ type: 'adopt-requested', data })
+        })
         socket.on('ilay', (data) => {
             console.log('data from petservice', data)
             //save data to backend userservice => db 
