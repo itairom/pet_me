@@ -37,23 +37,18 @@ export function removeUser(userId) {
   }
 }
 
-
 export function login(userCreds) {
-  // console.log("🚀 ~ file: userActions.js ~ line 42 ~ login ~ userCreds", userCreds)
   return async dispatch => {
     try {
       const user = await userService.login(userCreds)
-      // const user = await userService.login(userCreds)
-      // .then(x => {
-      socketService.emit('user-watch', user._id)
-      // })
-      // console.log("🚀 ~ file: userActions.js ~ line 36 ~ login ~ user", user)
+      socketService.emit('user-join', user._id)
       dispatch({ type: 'SET_USER', user })
     } catch (err) {
       console.log('UserActions: err in login', err)
     }
   }
 }
+
 export function signup(userCreds) {
   return async dispatch => {
     try {
@@ -109,14 +104,17 @@ export function newAdoptRequest(data) { // Action Creator
 export function approveAdopt(data) { // Action Creator
   return dispatch => {
     return userService.saveNewApprove(data)
-      .then((updatedUser) => {
+      .then((updatedUsers) => {
+        console.log(updatedUsers)
         socketService.emit('approve-requested', data)
         console.log('im in user action after service')
-        const action = {
-          type: 'UPDATE_USER',
-          user: updatedUser
-        }
-        dispatch(action)
+        // updatedUsers.forEach(user => {
+        //   const action = {
+        //     type: 'UPDATE_USER',
+        //     user: user
+        //   }
+        //   dispatch(action)
+        // });
       })
   }
 }

@@ -6,6 +6,7 @@ import { store } from 'react-notifications-component';
 
 
 
+
 class _HeartLike extends Component {
 
     state = {
@@ -33,14 +34,14 @@ class _HeartLike extends Component {
             store.addNotification({
                 title: 'Alert',
                 message: 'You are in guest mode, Please logging to like the pet',
-                type: 'danger',
-                insert: "bottom-full",
-                container: "bottom-full",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
+                type: 'info',
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__zoomIn"],
+                animationOut: ["animate__animated", "animate__zoomOut"],
+                dismiss: {  
                     duration: 2000,
-                    onScreen: true
+                    onScreen: false
                 }
             });
             return console.log('You are in guest mode, please logging to like the pet')

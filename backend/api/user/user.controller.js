@@ -6,9 +6,10 @@ const logger = require('../../services/logger.service')
 
 async function getUser(req, res) {
     try {
-        const user = await userService.getByUsername(req.params.username)
+        const user = await userService.getById(req.params.id)
+        console.log(user)
         res.send(user)
-        socketService.broadcast({ type: 'user-updated', data: user, to: user._id })
+        // socketService.broadcast({ type: 'user-updated', data: user, to: user._id })
     } catch (err) {
         logger.error('Failed to get user', err)
         res.status(500).send({ err: 'Failed to get user' })

@@ -24,41 +24,26 @@ function connectSockets(http, session) {
                 gSocketBySessionIdMap[socket.handshake.sessionID] = null
             }
         })
-        socket.on('chat topic', topic => {
-            if (socket.myTopic === topic) return;
+
+        socket.on('user-join', id => {
+            if (socket.myTopic === id) return;
             if (socket.myTopic) {
                 socket.leave(socket.myTopic)
             }
-            socket.join(topic)
-            // logger.debug('Session ID is', socket.handshake.sessionID)
-            socket.myTopic = topic
-        })
-        socket.on('chat newMsg', msg => {
-            console.log('Msg', msg);
-            // emits to all sockets:
-            // gIo.emit('chat addMsg', msg)
-            // emits only to sockets in the same room
-            gIo.to(socket.myTopic).emit('chat addMsg', msg)
+            socket.join(id, function () {
+                console.log('user-join', id)
+            })
+            socket.myTopic = id
         })
 
-
-        socket.on('user-watch', userId => {
-            socket.join(userId)
-        })
         socket.on('adopt-request', data => {
-            console.log('data-from-details', data)
-            // socket.join(data.owner._id)
+            console.log('im in socket on in backend', data.owner._id, data.newRequest.userId)
             emitToUser({ type: 'adopt-request-owner', data: data.msgToOwner, userId: data.owner._id })
             emitToUser({ type: 'adopt-request-requester', data: data.msgToRequester, userId: data.newRequest.userId })
-            // socket.leave(data.owner._id)
-            // emitToAll({ type: 'adopt-requested', data })
         })
+
         socket.on('aprove-adopt', data => {
             console.log('data-from-details', data)
-            // socket.join(data.owner._id)
-            // emitToUser({ type: 'aprove-adoption', data, userId: data.userId })
-            // socket.leave(data.owner._id)
-            // emitToAll({ type: 'adopt-requested', data })
         })
     })
 }
@@ -67,10 +52,10 @@ function emitToAll({ type, data, room = null }) {
     if (room) gIo.to(room).emit(type, data)
     else gIo.emit(type, data)
 }
-
+//here is the problem
 // TODO: Need to test emitToUser feature
 function emitToUser({ type, data, userId }) {
-    console.log(data)
+    console.log(data, userId)
     gIo.to(userId).emit(type, data)
 }
 

@@ -12,6 +12,7 @@ import { onExplore } from '../store/actions/userActions'
 import Rating from '@material-ui/lab/Rating';
 import { utilService } from '../services/utilService'
 import { loadUsers, login, logout, removeUser, signup, approveAdopt } from '../store/actions/userActions'
+import { loadPets } from '../store/actions/petActions'
 import { socketService } from '../services/socketService'
 // import { userService } from '../services/userService'
 
@@ -22,13 +23,16 @@ class _Profile extends Component {
         userRequests: [],
         isGotRequests: false,
         isRemoveReq: false,
-        reqBtnTxt: ''
+        reqBtnTxt: '',
+        adoptionRequestsInfo: []
     }
 
-    async componentDidMount() {
+    componentDidMount() {
+        console.log('mounted')
         window.scrollTo(0, 0)
-        this.onLoadRequests()
-        await this.onLoadPets()
+        this.onLoadPets()
+
+        // this.onLoadRequests()
         this.props.onExplore()
     }
 
@@ -36,22 +40,36 @@ class _Profile extends Component {
         console.log('unmount')
     }
 
-    onLoadPets = async () => {
-        let pets = this.props.loggedInUser.pets;
-        const userPets = await Promise.all(pets.map(async pet => {
-            return await petService.getPetByid(pet._id)
-        }));
+    onLoadPets = () => {
+        // let pets = this.props.loggedInUser.pets;
+        // const userPets = await Promise.all(pets.map(async pet => {
+        //     return await petService.getPetByid(pet._id)
+        // }));
+        let userPets = []
+        if (this.props.pets) {
+            userPets = this.props.loggedInUser.pets.map(pet => {
+                return this.props.pets.filter(userPet => userPet._id === pet._id)
+            })
+        }
+        else {
+            userPets = this.props.loadPets()
+        }
         this.setState({ userPets })
     }
 
 
     onLoadRequests = () => {
-        const userRequests = this.props.users.map(user => {
+        const adoptionRequestsInfo = this.props.users.map(user => {
             return user.pets.map(pet => {
-                return pet.adoptQue.map(request => request.userId === this.props.loggedInUser._id)
-            })
+                return pet.adoptQue.map(request => {
+                    if (request.userId === this.props.loggedInUser._id) {
+                        return { user, pet: { ...pet, userId: user._id } }
+                    }
+                    return undefined
+                }).filter(e => e)
+            }).flatMap(e => e)
         });
-        this.setState({ userRequests })
+        this.setState({ adoptionRequestsInfo })
     }
 
     removeReq = (ev) => {
@@ -76,11 +94,15 @@ class _Profile extends Component {
     render() {
         // console.log("🚀 ~ file: Profile.jsx ~ line 44 ~ _Profile ~ render ~ loggedInUser", loggedInUser)
         const { loggedInUser } = this.props
-        const { userRequests } = this.state
-        const { userPets } = this.state
-        console.log('userRequests', userRequests)
+        // const { userPets } = this.state
+        const userPets = this.props.loggedInUser.pets.map(pet => {
+            return this.props.pets.filter(userPet => userPet._id === pet._id)
+        })
+        console.log(userPets)
+        // const { adoptionRequestsInfo } = this.state
+        // console.log('adoptionRequestsInfo', adoptionRequestsInfo)
         if (!loggedInUser) return <img src={ Loader } alt="loadnig" />
-        if (!userPets) return <img src={ Loader } alt="loadnig" />
+        // if (!userPets) return <img src={ Loader } alt="loadnig" />
         return (
 
             <section className="main-profile main-container">
@@ -215,8 +237,8 @@ const mapStateToProps = state => {
     return {
         users: state.userModule.users,
         loggedInUser: state.userModule.loggedInUser,
-        isLoading: state.systemModule.isLoading
-
+        isLoading: state.systemModule.isLoading,
+        pets: state.petModule.pets
     }
 }
 const mapDispatchToProps = {
@@ -225,6 +247,7 @@ const mapDispatchToProps = {
     signup,
     removeUser,
     loadUsers,
+    loadPets,
     onExplore,
     approveAdopt
 }

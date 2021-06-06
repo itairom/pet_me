@@ -36,10 +36,11 @@ async function query(filterBy = {}) {
 }
 
 async function getById(userId) {
+    console.log(userId)
     try {
         const collection = await dbService.getCollection('user')
+        const user = await collection.findOne({ "_id": userId })
         // const user = await collection.findOne({ '_id': ObjectId(userId) })
-        const user = await collection.findOne(userId)
         delete user.password
         return user
     } catch (err) {

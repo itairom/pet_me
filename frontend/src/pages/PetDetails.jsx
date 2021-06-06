@@ -95,7 +95,6 @@ class _PetDetails extends Component {
             }
         }
         this.props.newAdoptRequest(data)
-        // AdoptAction()
     }
 
 

@@ -27,12 +27,14 @@ class _Header extends Component {
         this.setListeners()
         window.addEventListener("scroll", this.handleScroll);
         console.log('inExplore', this.props.inExplore);
+        this.props.loggedInUser && socketService.emit('user-join', this.props.loggedInUser._id)
     }
 
 
     componentWillUnmount() {
         window.removeEventListener('scroll', () => {
         })
+        // socketService.off('user-join')
     }
 
     handleScroll = () => {
@@ -84,14 +86,14 @@ class _Header extends Component {
                     <NavLink onClick={ () => this.props.loadPets() } to="/">
                         <div className="logo-container flex">
                             <Logo className="logo" />
-                            <h1 className={ `logo-title ${nav && 'black'} ${inExplore && 'black'} ` }>PetMe</h1>
+                            <h1 className={ `logo-title  ${nav && 'black'} ${inExplore && 'black'} ` }>PetMe</h1>
                         </div>
                     </NavLink>
 
                     <section className="filter-section">
-                        {isShowSearch && !isFilterShown && <div className="explore-search">
-                            <span onClick={() => this.onToggleFilter()} > Start your search</span>
-                            {/* <span onClick={() => this.onToggleFilter()} > Start your search</span> */}
+                        { isShowSearch && !isFilterShown && <div className="explore-search">
+                            <span onClick={ () => this.onToggleFilter() } > Start your search</span>
+                            {/* <span onClick={() => this.onToggleFilter()} > Start your search</span> */ }
                             <div className="search-btn-explore">
                                 <img className="filter-search" src={ magnifyingGlass } alt="glass" />
                             </div>

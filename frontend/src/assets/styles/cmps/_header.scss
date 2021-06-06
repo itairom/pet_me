@@ -45,6 +45,10 @@
 .header-logo {
     zoom: 70%;
     margin-top: 10px;
+    ::after {
+        content: '.';
+        color: $clr9;
+    }
 }
 
 .login-profile {

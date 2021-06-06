@@ -34,9 +34,6 @@ class _PetFilter extends React.Component {
         this.props.history.push(`/explore/?${query.toString()}`)
     }
 
-
-
-
     render() {
         const { gender, age, type, location, size } = this.state.filterBy
 
