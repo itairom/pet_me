@@ -47,7 +47,6 @@ class _HomepagePreview extends React.Component {
         const { likedPets, mostWaitingPets } = this.state
         if (!likedPets.length) return <h1>loading</h1>
         if (!mostWaitingPets.length) return <h1>loading</h1>
-        console.log(mostWaitingPets);
 
         return (
             <>
@@ -69,10 +68,8 @@ class _HomepagePreview extends React.Component {
                     </div>
                 </section>
             </>
-
         )
     }
-
 }
 
 function mapStateToProps(state) {
@@ -85,7 +82,6 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
     loadPets,
     addPet,
-
 }
 
 export const HomepagePreview = connect(mapStateToProps, mapDispatchToProps)(_HomepagePreview)

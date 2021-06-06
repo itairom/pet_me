@@ -35,7 +35,7 @@ class _Header extends Component {
     handleScroll = () => {
         this.setState({ isFilterShown: false })
         if (window.pageYOffset > 50) {
-                this.setState({ navBackground: true });
+            this.setState({ navBackground: true });
         } else {
             this.setState({ navBackground: false });
         }
@@ -94,7 +94,8 @@ class _Header extends Component {
 
 
                     <div className="right-nav">
-                        <NavLink className={`explore-btn ${navBackground && 'black'} ${inExplore && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>
+                        <NavLink className={`explore-btn ${navBackground && 'black'} ${inExplore && 'black'} `}
+                            to='/explore/?gender=&age=&type=&location=&size='>
                             Explore</NavLink>
                         <div onClick={() => this.toggleDropdown()} className="login-profile">
                             {isProfileShown && <div className="user-dropdown">

@@ -119,11 +119,54 @@
     }
 }
 
-.select-modal {
-    position: fixed;
-    width: 200px;
-    height: 200px;
-    background-color: #36baa0;
-    top: 200px;
-    left: 190px;;
+.select-modal-type {
+    position: absolute;
+    width: 200pxx;
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 10px;
+    
+    option:hover{
+background-color: #bdbdbdb7;
+    }
+   
+}
+
+.select-modal-age {
+    position: absolute;
+    width: 200pxx;
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 10px;
+    
+    option:hover{
+background-color: #bdbdbdb7;
+    }
+   
+}.select-modal-gender {
+    position: absolute;
+    width: 200pxx;
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 10px;
+    
+    option:hover{
+background-color: #bdbdbdb7;
+    }
+   
+}.select-modal-size {
+    position: absolute;
+    width: 200pxx;
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 10px;
+    
+    option:hover{
+background-color: #bdbdbdb7;
+    }
+   
+}
+
+select-label{
+    position: relative;
 }
