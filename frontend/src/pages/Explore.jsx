@@ -85,14 +85,15 @@ class _Explore extends React.Component {
 
                 <div className="filter-description">
                     {!filterBy.type && <h1 >Our pets</h1>}
-                    {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}
+                    {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span>  </h1>}
 
                     <div className="sort-form">
                         <label >Sort By</label>
                         <select value={this.state.sortBy} onChange={this.handleChange}>
                             {/* <option value="">Any</option> */}
-                            <option value={'name'}>Name</option>
-                            <option value={'likes'}>Likes</option>
+                            <option value="createdAt">Date</option>
+                            <option value="name">Name</option>
+                            <option value="likes">Likes</option>
                         </select>
                     </div>
                 </div>
