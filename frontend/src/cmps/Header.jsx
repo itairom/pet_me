@@ -89,8 +89,9 @@ class _Header extends Component {
                     </NavLink>
 
                     <section className="filter-section">
-                        { isShowSearch && !isFilterShown && <div className="explore-search">
-                            <span onClick={ () => this.onToggleFilter() } > Start your search</span>
+                        {isShowSearch && !isFilterShown && <div className="explore-search">
+                            <span onClick={() => this.onToggleFilter()} > Start your search</span>
+                            {/* <span onClick={() => this.onToggleFilter()} > Start your search</span> */}
                             <div className="search-btn-explore">
                                 <img className="filter-search" src={ magnifyingGlass } alt="glass" />
                             </div>
