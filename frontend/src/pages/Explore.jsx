@@ -18,16 +18,7 @@ class _Explore extends React.Component {
         this.props.showSearch()
         await this.onSetFilter()
         await this.props.loadPets(this.state.filterBy)
-        window.addEventListener('scroll', this.onEventListner())
-    }
 
-    async componentWillUnmount() {
-        await this.props.loadPets()
-        window.removeEventListener('scroll', this.onEventListner())
-    }
-
-    onEventListner = () => {
-        this.setState({ isFilterShown: false })
     }
 
     onSetSort = () => {
@@ -74,7 +65,7 @@ class _Explore extends React.Component {
                 {/* {!isFilterShown && <div className="explore-search">
                     <span onClick={() => this.onToggleFilter()} > Start your search</span>
                     <div className="search-btn-explore">
-                        <img className="filter-search" src={magnifyingGlass} alt="glass" />
+                        <img className="filter-search" src={ magnifyingGlass } alt="glass" />
                     </div>
                 </div>} */}
 

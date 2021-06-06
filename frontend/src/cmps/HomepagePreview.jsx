@@ -5,33 +5,67 @@ import { loadPets, addPet } from '../store/actions/petActions'
 
 class _HomepagePreview extends React.Component {
 
+    state = {
+        likedPets: [],
+        mostWaitingPets: []
+    }
+
     async componentDidMount() {
         await this.props.loadPets()
+        this.setLikedPets()
+        this.setMostWaitingPets()
+    }
+
+    setLikedPets = () => {
+        let likedPets = [...this.props.pets]
+        likedPets.sort((a, b) => {
+            if (a.likes > b.likes) {
+                return -1
+            }
+            if (a.likes < b.likes) {
+                return 1
+            }
+        })
+        likedPets.splice(4)
+        this.setState({ likedPets })
+    }
+    setMostWaitingPets = () => {
+        let mostWaitingPets = [...this.props.pets]
+        mostWaitingPets.sort((a, b) => {
+            if (a.createdAt > b.createdAt) {
+                return -1
+            }
+            if (a.createdAt < b.createdAt) {
+                return 1
+            }
+        })
+        mostWaitingPets.splice(4)
+        this.setState({ mostWaitingPets })
     }
 
     render() {
-
-        const { pets } = this.props
-        if (pets.length < 18) return <h1>loading</h1>
+        const { likedPets, mostWaitingPets } = this.state
+        if (!likedPets.length) return <h1>loading</h1>
+        if (!mostWaitingPets.length) return <h1>loading</h1>
+        console.log(mostWaitingPets);
 
         return (
             <>
                 <section className="type-cards preview-homepage">
                     <h2 className="type-cards-title">Waiting long time to adopt</h2>
                     <div className="preview-cards">
-                        <PetPreview pet={ pets[9] } key={ pets[9]?._id } />
-                        <PetPreview pet={ pets[13] } key={ pets[13]?._id } />
-                        <PetPreview pet={ pets[1] } key={ pets[1]?._id } />
-                        <PetPreview pet={ pets[14] } key={ pets[14]?._id } />
+                        {mostWaitingPets.map(previewPet => {
+                            return <PetPreview pet={previewPet} key={previewPet._id} />
+                        })}
                     </div>
                 </section>
+
                 <section className="type-cards preview-homepage">
                     <h2 className="type-cards-title">Most Liked Pets</h2>
                     <div className="preview-cards">
-                        <PetPreview pet={ pets[12] } key={ pets[11]?._id } />
-                        <PetPreview pet={ pets[11] } key={ pets[12]?._id } />
-                        <PetPreview pet={ pets[4] } key={ pets[4]?._id } />
-                        <PetPreview pet={ pets[19] } key={ pets[19]?._id } />
+                        {likedPets.map(previewPet => {
+                            return <PetPreview pet={previewPet} key={previewPet._id} />
+                        })}
                     </div>
                 </section>
             </>
@@ -43,14 +77,15 @@ class _HomepagePreview extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        pets: state.petModule.pets
+        homePreviewPets: state.petModule.homePreviewPets
     }
 }
 
 
 const mapDispatchToProps = {
     loadPets,
-    addPet
+    addPet,
+
 }
 
 export const HomepagePreview = connect(mapStateToProps, mapDispatchToProps)(_HomepagePreview)

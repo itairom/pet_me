@@ -1,10 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { PetFilter } from './PetFilter'
-import { onHome ,showSearch,notshowSearch} from '../store/actions/userActions'
-
-import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
-
+import { showSearch, hideSearch } from '../store/actions/userActions'
 
 export class _FilterDynamic extends React.Component {
     state = {
@@ -12,24 +9,22 @@ export class _FilterDynamic extends React.Component {
     }
 
     async componentDidMount() {
-        this.setState({ isFilterShown: true });
-        window.addEventListener("scroll", this.handleScroll);
+        window.addEventListener("scroll", this.handleScroll)
     }
     componentWillUnmount() {
-        window.removeEventListener('scroll', () => {
-        })
+        window.removeEventListener('scroll', this.handleScroll)
     }
-    
+
     handleScroll = () => {
         if (window.pageYOffset > 50) {
             this.props.showSearch()
             if (this.state.isFilterShown) {
-                this.setState({ isFilterShown: false });
+                this.setState({ isFilterShown: false })
             }
         } else {
             if (!this.state.isFilterShown) {
-                this.props.notshowSearch()
-                this.setState({ isFilterShown: true });
+                this.props.hideSearch()
+                this.setState({ isFilterShown: true })
             }
         }
     }
@@ -43,13 +38,6 @@ export class _FilterDynamic extends React.Component {
         const { isFilterShown } = this.state
         return (
             <>
-                {/* {!isFilterShown && <div className="explore-search">
-                    <span onClick={() => this.onToggleFilter()} > Start your search</span>
-                    <div className="search-btn-explore">
-                        <img className="filter-search" src={magnifyingGlass} alt="glass" />
-                    </div>
-                </div>
-                } */}
                 {isFilterShown && <PetFilter />}
             </>
         )
@@ -58,14 +46,11 @@ export class _FilterDynamic extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        // loggedInUser: state.userModule.loggedInUser,
-        // inExplore: state.systemModule.onExplore,
-        // isShowSearch: state.systemModule.isShowSearch
+
     }
 }
 const mapDispatchToProps = {
-    showSearch,notshowSearch
+    showSearch, hideSearch
 }
-
 
 export const FilterDynamic = connect(mapStateToProps, mapDispatchToProps)(_FilterDynamic)

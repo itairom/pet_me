@@ -62,14 +62,23 @@ function connectSockets(http, session) {
         })
         socket.on('adopt-request', data => {
             console.log('data-from-details', data)
-            // io.emit(data)
-            gIo.emit('ilay', data)
+            // socket.join(data.owner._id)
+            emitToUser({ type: 'adopt-requested', data, userId: data.owner._id })
+            // socket.leave(data.owner._id)
+            // emitToAll({ type: 'adopt-requested', data })
+        })
+        socket.on('aprove-adopt', data => {
+            console.log('data-from-details', data)
+            // socket.join(data.owner._id)
+            emitToUser({ type: 'aprove-adoption', data, userId: data.userId })
+            // socket.leave(data.owner._id)
+            // emitToAll({ type: 'adopt-requested', data })
         })
         socket.on('ilay', (data) => {
             console.log('data from petservice', data)
             //save data to backend userservice => db 
             // userService.update(data.owner)
-        
+
         })
     })
 }
@@ -81,6 +90,7 @@ function emitToAll({ type, data, room = null }) {
 
 // TODO: Need to test emitToUser feature
 function emitToUser({ type, data, userId }) {
+    console.log(data)
     gIo.to(userId).emit(type, data)
 }
 

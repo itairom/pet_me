@@ -46,6 +46,7 @@ function createSocketService() {
       socketIsReady = false
     }
   }
+  console.log(socketIsReady)
   return socketService
 }
 

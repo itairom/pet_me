@@ -1,5 +1,6 @@
 const initialState = {
     pets: [],
+    homePreviewPets: [],
     pet: null,
     filter: null
 }
