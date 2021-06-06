@@ -20,7 +20,8 @@ class _Header extends Component {
         isProfileShown: false,
         isRequested: false,
         nav: false,
-        isFilterShown: false
+        isFilterShown: false,
+        navBackground: false
 
     }
 
@@ -61,7 +62,7 @@ class _Header extends Component {
         )
     }
 
-  
+
 
     render() {
 
@@ -97,7 +98,7 @@ class _Header extends Component {
 
 
                     <div className="right-nav">
-                        <NavLink className={`explore-btn ${navBackground && 'black'} ${inExplore && 'black'} `}
+                        <NavLink className={ `explore-btn ${navBackground && 'black'} ${inExplore && 'black'} ` }
                             to='/explore/?gender=&age=&type=&location=&size='>
                             Explore</NavLink>
                         <div onClick={ () => this.toggleDropdown() } className="login-profile">
