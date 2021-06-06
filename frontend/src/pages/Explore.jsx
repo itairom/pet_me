@@ -13,12 +13,16 @@ class _Explore extends React.Component {
         sortBy: ''
     }
     async componentDidMount() {
+        console.log('cdm');
         window.scroll(0, 0)
         this.props.onExplore()
         this.props.showSearch()
         await this.onSetFilter()
         await this.props.loadPets(this.state.filterBy)
+    }
 
+    async componentWillUnmount() {
+        await this.props.loadPets()
     }
 
     onSetSort = () => {

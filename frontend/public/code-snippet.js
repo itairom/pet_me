@@ -1,8 +1,3 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { PetFilter } from './PetFilter'
-import { showSearch, hideSearch } from '../store/actions/userActions'
-
 export class _FilterDynamic extends React.Component {
     state = {
         isFilterShown: true
@@ -12,7 +7,7 @@ export class _FilterDynamic extends React.Component {
         window.addEventListener("scroll", this.handleScroll)
     }
     componentWillUnmount() {
-        window.removeEventListener('scroll',this.handleScroll)
+        window.removeEventListener('scroll', this.handleScroll)
     }
 
     handleScroll = () => {
@@ -39,18 +34,20 @@ export class _FilterDynamic extends React.Component {
         return (
             <>
                 {isFilterShown && <PetFilter />}
+
+                <header className={`main-header ${navBackground && 'nav-white'}  ${!navBackground && 'nav-transparent'}   main-container`}>
+                    < nav className="header-container" >
+                        <NavLink onClick={() => this.props.loadPets()} to="/">
+                            <div className="logo-container flex">
+                                <Logo className="logo" />
+                                <h1 className={`logo-title ${navBackground && 'black'} ${inExplore && 'black'} `}>PetMe</h1>
+                            </div>
+                        </NavLink>
+                    </ nav>
+                </header>
+
             </>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-
-    }
-}
-const mapDispatchToProps = {
-    showSearch, hideSearch
-}
-
-export const FilterDynamic = connect(mapStateToProps, mapDispatchToProps)(_FilterDynamic)

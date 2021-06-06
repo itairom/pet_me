@@ -13,6 +13,7 @@ import { PetFilter } from './PetFilter'
 import { ReactComponent as Logo } from '../assets/img/svg/logo1.svg'
 
 
+
 class _Header extends Component {
 
     state = {
@@ -42,9 +43,7 @@ class _Header extends Component {
         this.setState({ isFilterShown: false })
 
         if (window.pageYOffset > 50) {
-            if (!this.state.nav) {
-                this.setState({ nav: true });
-            }
+            this.setState({ navBackground: true });
         } else {
             if (this.state.nav) {
                 this.setState({ nav: false });
@@ -62,18 +61,7 @@ class _Header extends Component {
         )
     }
 
-    onLogout = () => {
-        this.props.logout()
-        // this.props.history.push('/')
-    }
-
-    setListeners = () => {
-        window.addEventListener('click', () => {
-            if (this.state.isProfileShown && window.event.clientY > 80) {
-                this.setState({ isProfileShown: false })
-            }
-        })
-    }
+  
 
     render() {
 
@@ -109,7 +97,8 @@ class _Header extends Component {
 
 
                     <div className="right-nav">
-                        <NavLink className={ `explore-btn ${nav && 'black'} ${inExplore && 'black'} ` } to='/explore/?gender=&age=&type=&location=&size='>
+                        <NavLink className={`explore-btn ${navBackground && 'black'} ${inExplore && 'black'} `}
+                            to='/explore/?gender=&age=&type=&location=&size='>
                             Explore</NavLink>
                         <div onClick={ () => this.toggleDropdown() } className="login-profile">
                             { isProfileShown && <div className="user-dropdown">
