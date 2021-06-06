@@ -14,10 +14,6 @@ import { ReactComponent as Loader } from '../assets/img/loaders/loader_3.svg' //
 
 class _PetApp extends React.Component {
 
-    state = {
-
-    }
-
     async componentDidMount() {
         window.scroll(0, 0)
         this.props.hideSearch()
