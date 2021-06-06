@@ -98,7 +98,7 @@ class _Header extends Component {
 
 
                     <div className="right-nav">
-                        <NavLink className={ `explore-btn ${navBackground && 'black'} ${inExplore && 'black'} ` }
+                        <NavLink className={ `explore-btn ${this.state.navBackground && 'black'} ${inExplore && 'black'} ` }
                             to='/explore/?gender=&age=&type=&location=&size='>
                             Explore</NavLink>
                         <div onClick={ () => this.toggleDropdown() } className="login-profile">
