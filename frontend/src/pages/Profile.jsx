@@ -65,7 +65,7 @@ class _Profile extends Component {
                             <div>{loggedInUser.loc.address}</div>
                         </div>
                         <div className="user-rate">
-                        {loggedInUser.reviews[0].rate}
+                        {loggedInUser.reviews[0]?.rate}
                         <StarRateIcon />
                         </div>
                     </section>

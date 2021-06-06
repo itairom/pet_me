@@ -32,19 +32,20 @@
             font-family: avenir-black;
             font-size: rem(55px);
 
-            &:first-of-type{
+            &:first-of-type {
                 margin-block-start: 130px;
+
                 @include for-mobile-layout {
                     margin-block-start: 0;
                 }
             }
-            
+
             &:last-child::after {
                 content: '.';
                 color: $clr9;
             }
-            
-            
+
+
             @include for-normal-layout {
                 font-size: rem(100px);
             }
@@ -207,7 +208,8 @@
 
             @include for-mobile-layout {
                 margin: 0;
-                padding: 2%;
+                padding: 2% 10%;
+                font-size: small;
             }
 
 
@@ -233,29 +235,31 @@
     .content {
         display: flex;
         padding: 40px 0;
-
+        
         .info-title-icon {
             display: flex;
             justify-content: space-between;
-
+            
             .info-icons {
                 width: 32px;
                 height: 32px;
-
+                
                 &:first-of-type {
                     padding-top: 3px;
                 }
             }
-
         }
-
-
-        .arrow-icons {
-            height: 50px;
-            width: 60px;
-            align-self: center;
+        
+        p {
+            position: relative;
+            .arrow-icons {
+                position: absolute;
+                right: 0px;
+                bottom: -4px;
+                width: 35px;
+                height: 35px;
+            }
         }
-
         >* {
             display: flex;
             flex-direction: column;

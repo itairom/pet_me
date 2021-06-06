@@ -19,14 +19,16 @@ export class LongTxt extends Component {
 
     addReadmoreMsg = () => {
         if (this.props.txt.length > 100) {
-            return (this.state.readMore) ? ' less' : ' Expand...'
+            return (this.state.readMore) ? ' Less' : ' Expand...'
         }
     }
 
     render() {
         return (
-            <span onClick={ this.toggleRead }>
-                <p className="read-more">{ this.getTxt() }<span className="expand-txt">{ this.addReadmoreMsg() }</span></p>
+            <span onClick={this.toggleRead}>
+                <p className="read-more">
+                    {this.getTxt()}<span className="expand-txt">{this.addReadmoreMsg()}</span>
+                </p>
             </span>
         )
     }

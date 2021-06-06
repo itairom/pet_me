@@ -12,8 +12,7 @@
         gap: 0.5em;
         margin-top: 8px;
 
-        & > * {
-        }
+        &>* {}
 
         & .pet-like-btn {
             cursor: pointer;
@@ -32,6 +31,7 @@
 }
 
 .details-imgs-container {
+
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -61,6 +61,19 @@
     & :nth-child(5) {
         border-bottom-right-radius: 10px;
     }
+    @include for-mobile-layout{
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px;
+        grid-gap: 0px;
+        gap: 0px;
+        margin-bottom: 0px;
+        & img {
+            object-fit: cover;
+            width: 400px;
+            height: 250px;
+            border-radius: 10px;
+        }
+    }
 }
 
 .details-main-section {
@@ -68,21 +81,18 @@
     border-bottom: 1px solid #d3d3d3;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    text-transform: capitalize;
+
 
     @include for-normal-layout {
         flex-direction: row;
-
-        
     }
-    
+
     @include for-wide-layout {
         & .pet-info-list {
-    
             margin-right: 100px;
         }
-
     }
+
     .details-info-container {
         flex: 1;
         margin-right: 1rem;
@@ -95,14 +105,12 @@
 
             margin: 25px 0;
 
-        
-
 
             & .info-header-txt h3 {
                 margin-bottom: 5px;
                 margin-left: 10px;
             }
-            
+
             & .info-header-txt span {
                 margin-left: 10px;
                 padding: 5px 0 15px;
@@ -134,16 +142,32 @@
                 display: flex;
                 justify-content: space-between;
 
+                @include for-mobile-layout {
+                    margin-block-end: 10px;
+                }
+
+                @include for-narrow-layout {
+                    margin-block-end: 10px;
+                }
+
                 .left-info-list {
                     display: flex;
                     flex-direction: column;
                     // margin-right: 100px;
                 }
+
                 .right-info-list {
                     display: flex;
                     flex-direction: column;
-                    // margin-right: 20px;
+
+                    @include for-mobile-layout {
+                        margin-inline-start: 20px;
+                    }
+                    @include for-narrow-layout {
+                        margin-inline-start: 20px;
+                    }
                 }
+
                 li {
                     margin-block-end: 10px;
 
@@ -159,6 +183,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    text-transform: capitalize;
                 }
             }
 
@@ -187,7 +212,7 @@
         position: sticky;
         top: 70px;
         right: 0;
-        z-index: 5;
+        // z-index: 5;
         max-width: 100%;
         // width: 320px;
 
@@ -195,10 +220,11 @@
             color: #6b6a6a;
             margin-top: 5px;
         }
-        .paw-last{
+
+        .paw-last {
             margin-top: 10px;
         }
-        
+
         & .adopt-sign {
             font-size: 1rem;
             text-align: left;
@@ -275,6 +301,7 @@
     .pet-location {
         display: flex;
         color: #6b6a6a;
+
         :first-child {
             width: 0.8em;
             height: 0.9em;
@@ -301,6 +328,7 @@
     height: 25px;
     // margin-right: 5px;
 }
+
 .paw {
     width: 25px;
     height: 25px;

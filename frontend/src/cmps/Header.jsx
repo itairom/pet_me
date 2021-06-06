@@ -13,6 +13,7 @@ import { PetFilter } from './PetFilter'
 import { ReactComponent as Logo } from '../assets/img/svg/logo1.svg'
 
 
+
 class _Header extends Component {
 
     state = {
@@ -36,9 +37,7 @@ class _Header extends Component {
     }
 
     handleScroll = () => {
-
         this.setState({ isFilterShown: false })
-
         if (window.pageYOffset > 50) {
             if (!this.state.nav) {
                 this.setState({ nav: true });

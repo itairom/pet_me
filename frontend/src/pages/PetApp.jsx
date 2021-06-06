@@ -7,6 +7,7 @@ import { FilterDynamic } from '../cmps/FilterDynamic'
 import { HomepagePreview } from '../cmps/HomepagePreview'
 import contact from '../assets/img/svg/contact.svg'
 import info from '../assets/img/svg/info.svg'
+import rightArrow from '../assets/img/svg/arrow-right.png'
 import paw from '../assets/img/svg/paw.svg'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
@@ -14,13 +15,6 @@ import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative
 
 
 class _PetApp extends React.Component {
-
-    state = {
-        // isFilterShown: false
-
-    }
-
-
 
     async componentDidMount() {
         window.scroll(0,0)
@@ -81,8 +75,8 @@ class _PetApp extends React.Component {
                             </div>
                             <p> Personalize your search with filters like gender,
                             type, size or a pool to get exactly what you want.
+                            {/* <img className="arrow-icons" src={rightArrow} alt="" /> */}
                             </p>
-                            {/* <RightArrow className="arrow-icons" /> */}
                         </div>
                         <div>
                             <div className="info-title-icon">
@@ -90,35 +84,32 @@ class _PetApp extends React.Component {
                                 <img className="info-icons" src={info} alt="glass" />
                             </div>
                             <p> Check out the photos and view pet information.
-                                Next, read user reviews and comments about the pet and its owner.</p>
-                            {/* <RightArrow className="arrow-icons" /> */}
+                                Next, read user reviews and comments about the pet and its owner.
+                                {/* <img className="arrow-icons" src={rightArrow} alt="" /> */}
+                                </p>
                         </div>
                         <div>
                             <div className="info-title-icon">
                                 <h2>Contact pet owners</h2>
                                 <img className="info-icons" src={contact} alt="glass" />
                             </div>
-                            <p>  Once you have decided which pet you would like to adopt, contact the pet owners and keep your fingers crossed.</p>
-                            {/* <RightArrow className="arrow-icons" /> */}
+                            <p>  Once you have decided which pet you would like to adopt, contact the pet owners and keep your fingers crossed.
+                            {/* <img className="arrow-icons" src={rightArrow} alt="" /> */}
+                            </p>
                         </div>
                         <div>
                             <div className="info-title-icon">
                                 <h2>Adopt a friend!</h2>
                                 <img className="info-icons" src={paw} alt="glass" />
                             </div>
-                            <p> In a quick and easy process you can adopt a pet that will become your new friend for life. </p>
+                            <p> In a quick and easy process you can adopt a pet that will become your new companion for life. Join us for a fun journey! 
+                                
+                            </p>
                         </div>
                     </div>
                 </section>
                 <HomepagePreview pets={this.props.pets} />
                 <section className="homepage-about main-container full">
-                    {/* <div className="inner-container flex"> */}
-                    {/* <div className="about_imgs"> */}
-                    {/* <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622209864/petMe/about-imgs/about1_rt4e2u.jpg" alt="card" />
-                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210087/petMe/about-imgs/about-cat_w78jtf.jpg" alt="card" />
-                            <img src="https://res.cloudinary.com/dstqymucm/image/upload/v1622210260/petMe/about-imgs/boy-and-cat_hd5uqt.jpg" alt="card" /> */}
-                    {/* </div> */}
-                    {/* </div> */}
                     <div className="blur full">
                         <div className="about-content flex column">
                             <h2>Our vision</h2>
@@ -129,7 +120,6 @@ class _PetApp extends React.Component {
                     </div>
                 </section>
             </section>
-
         )
     }
 }
@@ -139,7 +129,6 @@ function mapStateToProps(state) {
         pets: state.petModule.pets
     }
 }
-
 
 const mapDispatchToProps = {
     loadPets,
