@@ -1,11 +1,7 @@
 // import { addComment } from '../store/actions/petActions';
 import { storageService } from './asyncStorageService'
 import { httpService } from '../services/httpService'
-<<<<<<< HEAD
 import { utilService } from './utilService';
-=======
-import { utilService } from '../services/utilService'
->>>>>>> d277242b8e0faa5c3663c6bf24fcb983d7975239
 window.storageService = storageService;
 
 export const petService = {

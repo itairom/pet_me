@@ -23,16 +23,12 @@ class _Header extends Component {
     }
 
     componentDidMount() {
-<<<<<<< HEAD
         this.setListeners()
-        window.addEventListener("scroll", this.handleScroll);
         console.log('inExplore', this.props.inExplore);
         this.props.loggedInUser && socketService.emit('user-watch', this.props.loggedInUser._id)
             && console.log('added user ' + this.props.loggedInUser._id + ' to user-watch sockets')
-=======
         window.addEventListener('click', this.handleClick)
         window.addEventListener('scroll', this.handleScroll)
->>>>>>> d277242b8e0faa5c3663c6bf24fcb983d7975239
     }
 
     componentWillUnmount() {
@@ -74,20 +70,12 @@ class _Header extends Component {
         const { isProfileShown, navBackground, isFilterShown } = this.state
 
         return (
-<<<<<<< HEAD
-            <header className={ `main-header ${nav && 'nav-white'} main-container` }>
-=======
             <header className={`main-header ${navBackground && 'nav-white'}  ${!navBackground && 'nav-transparent'}   main-container`}>
->>>>>>> d277242b8e0faa5c3663c6bf24fcb983d7975239
                 < nav className="header-container" >
                     <NavLink onClick={ () => this.props.loadPets() } to="/">
                         <div className="logo-container flex">
                             <Logo className="logo" />
-<<<<<<< HEAD
-                            <h1 className={ `logo-title ${nav && 'black'} ${inExplore && 'black'} ` }>PetMe</h1>
-=======
                             <h1 className={`logo-title ${navBackground && 'black'} ${inExplore && 'black'} `}>PetMe</h1>
->>>>>>> d277242b8e0faa5c3663c6bf24fcb983d7975239
                         </div>
                     </NavLink>
 
@@ -97,17 +85,10 @@ class _Header extends Component {
                             <div className="search-btn-explore">
                                 <img className="filter-search" src={ magnifyingGlass } alt="glass" />
                             </div>
-<<<<<<< HEAD
-                        </div> }
-                        { isShowSearch && isFilterShown && <div className="explore-search">
-                            < PetFilter />
-                        </div> }
-=======
                         </div>}
                         {isShowSearch && isFilterShown &&
                             < PetFilter />
                         }
->>>>>>> d277242b8e0faa5c3663c6bf24fcb983d7975239
                     </section>
 
                     <div>
@@ -116,11 +97,7 @@ class _Header extends Component {
 
 
                     <div className="right-nav">
-<<<<<<< HEAD
-                        <NavLink className={ `explore-btn ${nav && 'black'} ${inExplore && 'black'} ` } to='/explore/?gender=&age=&type=&location=&size='>
-=======
                         <NavLink className={`explore-btn ${navBackground && 'black'} ${inExplore && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>
->>>>>>> d277242b8e0faa5c3663c6bf24fcb983d7975239
                             Explore</NavLink>
                         <div onClick={ () => this.toggleDropdown() } className="login-profile">
                             { isProfileShown && <div className="user-dropdown">
