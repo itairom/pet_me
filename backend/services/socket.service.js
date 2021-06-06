@@ -33,16 +33,6 @@ function connectSockets(http, session) {
             // logger.debug('Session ID is', socket.handshake.sessionID)
             socket.myTopic = topic
         })
-        socket.on('adopt-request-old', topic => {
-            console.log('backend -adopting')
-            if (socket.myTopic === topic) return;
-            if (socket.myTopic) {
-                socket.leave(socket.myTopic)
-            }
-            socket.join(topic)
-            // logger.debug('Session ID is', socket.handshake.sessionID)
-            socket.myTopic = topic
-        })
         socket.on('chat newMsg', msg => {
             console.log('Msg', msg);
             // emits to all sockets:
@@ -50,35 +40,25 @@ function connectSockets(http, session) {
             // emits only to sockets in the same room
             gIo.to(socket.myTopic).emit('chat addMsg', msg)
         })
-        socket.on('yuval', msg => {
-            console.log('Msg yuval', msg);
-            // emits to all sockets:
-            // gIo.emit('chat addMsg', msg)
-            // emits only to sockets in the same room
-            gIo.to(socket.myTopic).emit('eyal', msg)
-        })
+
+
         socket.on('user-watch', userId => {
             socket.join(userId)
         })
         socket.on('adopt-request', data => {
             console.log('data-from-details', data)
             // socket.join(data.owner._id)
-            emitToUser({ type: 'adopt-requested', data, userId: data.owner._id })
+            emitToUser({ type: 'adopt-request-owner', data: data.msgToOwner, userId: data.owner._id })
+            emitToUser({ type: 'adopt-request-requester', data: data.msgToRequester, userId: data.newRequest.userId })
             // socket.leave(data.owner._id)
             // emitToAll({ type: 'adopt-requested', data })
         })
         socket.on('aprove-adopt', data => {
             console.log('data-from-details', data)
             // socket.join(data.owner._id)
-            emitToUser({ type: 'aprove-adoption', data, userId: data.userId })
+            // emitToUser({ type: 'aprove-adoption', data, userId: data.userId })
             // socket.leave(data.owner._id)
             // emitToAll({ type: 'adopt-requested', data })
-        })
-        socket.on('ilay', (data) => {
-            console.log('data from petservice', data)
-            //save data to backend userservice => db 
-            // userService.update(data.owner)
-
         })
     })
 }

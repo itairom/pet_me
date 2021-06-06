@@ -1,5 +1,5 @@
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
-import StarRateIcon from '@material-ui/icons/StarRate'
+// import StarRateIcon from '@material-ui/icons/StarRate'
 import React, { Component } from 'react'
 // import { store } from 'react-notifications-component'
 import { connect } from 'react-redux'
@@ -12,9 +12,8 @@ import { onExplore } from '../store/actions/userActions'
 import Rating from '@material-ui/lab/Rating';
 import { utilService } from '../services/utilService'
 import { loadUsers, login, logout, removeUser, signup, approveAdopt } from '../store/actions/userActions'
-import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBBtn, MDBRipple } from 'mdb-react-ui-kit';
 import { socketService } from '../services/socketService'
-import { userService } from '../services/userService'
+// import { userService } from '../services/userService'
 
 
 class _Profile extends Component {
@@ -71,7 +70,7 @@ class _Profile extends Component {
         const data = { pet, req, loggedInUser, idx, msg }
         this.props.approveAdopt(data)
         socketService.emit('aprove-adopt', msg)
-        
+
     }
 
     render() {
@@ -139,11 +138,11 @@ class _Profile extends Component {
                                                 <tbody className="table-body" key={ utilService.makeId(6) }>
                                                     { loggedInUser.pets[idx]
                                                         .adoptQue.map(req => {
-                                                            return (<tr>
+                                                            return (<tr key={ utilService.makeId(6) }>
                                                                 <td>{ req.fullname }</td>
                                                                 <td>{ req.message }</td>
                                                                 <td>{ utilService.timeSince(req.date, 'ago') }</td>
-                                                                <td><button onClick={ () => this.aproveAdopt(pet, req, loggedInUser, idx) } className="aprove-btn">Aprove</button></td>
+                                                                <td><button onClick={ () => this.approveAdopt(pet, req, loggedInUser, idx) } className="aprove-btn">Aprove</button></td>
                                                             </tr>)
                                                         }) }
                                                 </tbody>
@@ -164,7 +163,7 @@ class _Profile extends Component {
                                     loggedInUser.pets[idx]
                                         .adoptQue.map(req => {
                                             return (
-                                                <div className="request-card flex column">
+                                                <div className="request-card flex column" key={ utilService.makeId(6) }>
                                                     <div className="main-card-section">
                                                         <img src={ req.imgUrl } alt="pet-img" className="pet-img" />
                                                         <div className="request-info">

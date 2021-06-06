@@ -84,7 +84,8 @@ class _PetDetails extends Component {
         const data = {
             owner: owner,
             petId: pet._id,
-            msg: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click to view`,
+            msgToOwner: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click to view`,
+            msgToRequester: `${loggedInUser.fullname} recived your adopt request \n Click to view`,
             newRequest: {
                 date: Date.now(),
                 fullname: loggedInUser.fullname,
@@ -244,7 +245,7 @@ const mapDispatchToProps = {
     toggleLike,
     loadPets,
     loadUsers,
-    newAdoptRequest,    
+    newAdoptRequest,
     onExplore
 }
 

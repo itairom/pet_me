@@ -139,7 +139,7 @@ class _LoginSignup extends Component {
           <div>
             <h3>
               Welcome {loggedInUser.fullname}
-              <button onClick={this.props.logout}>Logout</button>
+              <button onClick={() => this.props.logout(loggedInUser)}>Logout</button>
             </h3>
           </div>
         )}

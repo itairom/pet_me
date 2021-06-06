@@ -64,12 +64,13 @@ export function signup(userCreds) {
     }
   }
 }
-export function logout() {
+
+export function logout(userId) {
   console.log('logout');
   return async dispatch => {
+    // socketService.off(userId)
     try {
       await userService.logout()
-      // socketService.off(user._id)
       dispatch({ type: 'SET_USER', user: null })
     } catch (err) {
       console.log('UserActions: err in logout', err)
@@ -109,7 +110,7 @@ export function approveAdopt(data) { // Action Creator
   return dispatch => {
     return userService.saveNewApprove(data)
       .then((updatedUser) => {
-        socketService.emit('adopt-request', data)
+        socketService.emit('approve-requested', data)
         console.log('im in user action after service')
         const action = {
           type: 'UPDATE_USER',

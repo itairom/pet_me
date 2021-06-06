@@ -29,6 +29,7 @@ function getUsers() {
 function getById(userId) {
   return httpService.get(`user/${userId}`)
 }
+
 function remove(userId) {
   return httpService.delete(`user/${userId}`)
 }
@@ -92,23 +93,39 @@ async function saveNewRequest(data) {
 
 async function saveNewApprove(data) {
   const { pet, req, loggedInUser, idx } = data
-  const newPet = {
-    _id: pet._id,
-    isAdopted: true,
-    formerOwnerId: loggedInUser._id,
-    adoptQue: []
-  }
-  let newOwner = getById(req.userId)
-  newOwner = {
-    ...newOwner,
-    pets: [...newOwner.pets, newOwner.pets.push(newPet)]
-  }
-  const newLoggedInUser = {
-    ...loggedInUser,
-    pets: [...loggedInUser.pets, loggedInUser.pets.splice(idx, 1)]
 
-  }
-  const updatedOwner = await update(newOwner)
-  const updatedLoggedInUser = await update(newLoggedInUser)
-  return { updatedOwner, updatedLoggedInUser }
+  const newOwner = await getById(loggedInUser._id)
+
+  console.log('newOwner', newOwner)
+  // const newOwnerPet = {
+  //   _id: pet._id,
+  //   isAdopted: true,
+  //   formerOwnerId: loggedInUser._id,
+  //   adoptQue: []
+  // }
+  // const newOwnedPet = {
+  //   _id: pet._id,
+  //   isAdopted: true,
+  //   formerOwnerId: loggedInUser._id,
+  //   adoptQue: []
+  // }
+
+  // newOwner = {
+  //   ...newOwner,
+  //   pets: [...newOwner.pets, newOwner.pets.push(newOwnerPet)]
+  // }
+
+  // const newLoggedInUser = {
+  //   ...loggedInUser,
+  //   oldPets: (loggedInUser.oldPets) ?
+  //     [...loggedInUser.oldPets, loggedInUser.oldPets.push(loggedInUser.pets[idx])] :
+  //     [loggedInUser.oldPets.push(loggedInUser.pets[idx])],
+  //   pets: [...loggedInUser.pets, loggedInUser.pets.splice(idx, 1)]
+  // }
+
+  // console.log()
+  // const updatedOwner = await update(newOwner)
+  // const updatedLoggedInUser = await update(newLoggedInUser)
+  // return { updatedOwner, updatedLoggedInUser }
+
 }

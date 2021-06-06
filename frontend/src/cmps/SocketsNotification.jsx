@@ -16,9 +16,13 @@ export class SocketsNotification extends Component {
       console.log(data)
       this.adoptNotify(data.msg)
     });
-    socketService.on('aprove-adoption', (data) => {
-      console.log(data)
-      this.adoptNotify('just Aproved you adopt request!')
+    socketService.on('adopt-request-owner', (msg) => {
+      console.log(msg)
+      this.adoptNotify(msg)
+    });
+    socketService.on('adopt-request-requester', (msg) => {
+      console.log(msg)
+      this.adoptNotify(msg)
     });
   }
 
