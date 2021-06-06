@@ -15,6 +15,9 @@ async function query(filterBy = '') {
     let sort = {}
     if (sortBy === 'name') {
         sort.name = 1
+    if (sortBy === 'createdAt') {
+        sort.name = -1
+    }
     } else if (sortBy === 'likes') {
         sort.likes = -1
     }

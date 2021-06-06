@@ -144,7 +144,7 @@ export function showSearch() {
     dispatch(action)
   }
 }
-export function notshowSearch() {
+export function hideSearch() {
   return dispatch => {
     const action = {
       type: 'NOT_SHOW_SEARCH'

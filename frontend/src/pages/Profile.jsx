@@ -99,7 +99,7 @@ class _Profile extends Component {
                             <div>{ loggedInUser.loc.address }</div>
                         </div>
                         <div className="user-rate">
-                            <Rating name="disabled" value={ loggedInUser.reviews[0].rate } disabled />
+                            <Rating name="disabled" value={ loggedInUser.reviews[0]?.rate } disabled />
                         </div>
                     </section>
                     <div><button className="logout">Logout</button></div>

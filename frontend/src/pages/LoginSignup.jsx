@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { onExplore } from '../store/actions/userActions'
 
 import {
   loadUsers,
@@ -25,6 +26,7 @@ class _LoginSignup extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0)
+    this.props.onExplore()
     this.props.loadUsers()
   }
 
@@ -131,9 +133,6 @@ class _LoginSignup extends Component {
     const { loggedInUser } = this.props
     return (
       <div className="login">
-        <h1>
-          Login / Signup
-        </h1>
         <p>{this.state.msg}</p>
         {loggedInUser && (
           <div>
@@ -146,8 +145,8 @@ class _LoginSignup extends Component {
         {!loggedInUser && loginSection}
         {!loggedInUser && signupSection}
 
-        <hr />
-        <section className="admin">
+        {/* <hr /> */}
+        {/* <section className="admin">
           <details>
             <summary>Admin</summary>
             <button onClick={this.props.loadUsers}>Refresh Users</button>
@@ -168,7 +167,7 @@ class _LoginSignup extends Component {
               ))}
             </ul>}
           </details>
-        </section>
+        </section> */}
       </div>
     )
   }
@@ -186,7 +185,8 @@ const mapDispatchToProps = {
   logout,
   signup,
   removeUser,
-  loadUsers
+  loadUsers,
+  onExplore
 }
 
 export const LoginSignup = connect(mapStateToProps, mapDispatchToProps)(_LoginSignup)
