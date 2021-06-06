@@ -16,7 +16,8 @@ export const userService = {
   update,
   getLoggedinUser,
   adoptRequest,
-  saveNewRequest
+  saveNewRequest,
+  saveNewApprove
 }
 
 // window.userService = userService p
@@ -86,4 +87,28 @@ async function saveNewRequest(data) {
     // in the jsx change the button to "Adopt" again
     return console.log('You already requested the owner, please wait for a response')
   }
+}
+
+
+async function saveNewApprove(data) {
+  const { pet, req, loggedInUser, idx } = data
+  const newPet = {
+    _id: pet._id,
+    isAdopted: true,
+    formerOwnerId: loggedInUser._id,
+    adoptQue: []
+  }
+  let newOwner = getById(req.userId)
+  newOwner = {
+    ...newOwner,
+    pets: [...newOwner.pets, newOwner.pets.push(newPet)]
+  }
+  const newLoggedInUser = {
+    ...loggedInUser,
+    pets: [...loggedInUser.pets, loggedInUser.pets.splice(idx, 1)]
+
+  }
+  const updatedOwner = await update(newOwner)
+  const updatedLoggedInUser = await update(newLoggedInUser)
+  return { updatedOwner, updatedLoggedInUser }
 }

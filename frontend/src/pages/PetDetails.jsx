@@ -244,7 +244,7 @@ const mapDispatchToProps = {
     toggleLike,
     loadPets,
     loadUsers,
-    newAdoptRequest,
+    newAdoptRequest,    
     onExplore
 }
 

@@ -6,22 +6,28 @@ import { connect } from 'react-redux'
 import Loader from '../assets/img/loaders/loader_3.svg' // relative path to image 
 import Pin from '../assets/img/svg/pin.svg' // relative path to image 
 import { petService } from '../services/petService'
+
 // import { socketService } from '../services/socketService'
 import { onExplore } from '../store/actions/userActions'
-
+import Rating from '@material-ui/lab/Rating';
 import { utilService } from '../services/utilService'
-import { loadUsers, login, logout, removeUser, signup } from '../store/actions/userActions'
+import { loadUsers, login, logout, removeUser, signup, approveAdopt } from '../store/actions/userActions'
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBBtn, MDBRipple } from 'mdb-react-ui-kit';
+import { socketService } from '../services/socketService'
+import { userService } from '../services/userService'
 
 
 class _Profile extends Component {
     state = {
         userPets: [],
         userRequests: [],
+        isGotRequests: false,
         isRemoveReq: false,
         reqBtnTxt: ''
     }
 
     async componentDidMount() {
+        window.scrollTo(0, 0)
         this.onLoadRequests()
         await this.onLoadPets()
         this.props.onExplore()
@@ -60,6 +66,13 @@ class _Profile extends Component {
         console.log('change to ' + txt)
     }
 
+    approveAdopt = (pet, req, loggedInUser, idx) => {
+        const msg = loggedInUser.fullname + ' just approved your request to adopt ' + pet.name
+        const data = { pet, req, loggedInUser, idx, msg }
+        this.props.approveAdopt(data)
+        socketService.emit('aprove-adopt', msg)
+        
+    }
 
     render() {
         // console.log("🚀 ~ file: Profile.jsx ~ line 44 ~ _Profile ~ render ~ loggedInUser", loggedInUser)
@@ -70,7 +83,9 @@ class _Profile extends Component {
         if (!loggedInUser) return <img src={ Loader } alt="loadnig" />
         if (!userPets) return <img src={ Loader } alt="loadnig" />
         return (
+
             <section className="main-profile main-container">
+
                 <section className="user-card">
                     <div className="profile-img">
                         {/* <button onClick={() => cloudinaryService.uploadImg()}>U</button> */ }
@@ -85,96 +100,114 @@ class _Profile extends Component {
                             <div>{ loggedInUser.loc.address }</div>
                         </div>
                         <div className="user-rate">
-                            { loggedInUser.reviews[0].rate }
-                            <StarRateIcon />
+                            <Rating name="disabled" value={ loggedInUser.reviews[0].rate } disabled />
                         </div>
                     </section>
                     <div><button className="logout">Logout</button></div>
                 </section>
 
-                <section className="profile-pets-container flex ">
+                {/* <section className={ this.state.isGotRequests ? 'profile-pets-container flex' : 'profile-pets-container hide' }> */ }
+                <section className="profile-pets-container flex" >
+
                     <div className="user-pets">
                         <h1>My pets</h1>
                         { userPets.map((pet, idx) => {
                             return (
-                                <div className="adopt-card">
-                                    <h2>{ pet.name }</h2>
-                                    <h3>Request Queue</h3>
-                                    <section className="adopt-table">
-                                        <img src={ pet.imgUrls[0] }
-                                            alt="pet" />
-                                        <table className="pet-table-card">
-                                            <thead className="table-head">
+                                <div className="adopt-card flex" key={ utilService.makeId(6) }>
+                                    <div className="adopt-card-info">
+
+                                        <div className="pet-header flex">
+                                            <div className="pet-header-txt">
+                                                <h3>{ pet.name }</h3>
+                                                <h4>Added: { utilService.timeSince(pet.addedAt, 'ago') }</h4>
+                                                <h4>Request Queue</h4>
+                                            </div>
+                                            <div className="pet-img-box flex align-center">
+                                                <img src={ pet.imgUrls[0] } alt="pet" />
+                                            </div>
+                                        </div>
+                                        <section className="adopt-table">
+                                            <table className="pet-table-card">
+                                                {/* <thead className="table-head">
                                                 <tr>
                                                     <td>Adopter Name</td>
                                                     <td>Message</td>
                                                     <td>Date</td>
                                                     <td></td>
                                                 </tr>
-                                            </thead>
-                                            <tbody className="table-body">
-                                                { loggedInUser.pets[idx]
-                                                    .adoptQue.map(pet => {
-                                                        return (<tr>
-                                                            <td>{ pet.fullname }</td>
-                                                            <td>{ pet.message }</td>
-                                                            <td>{ utilService.timeSince(pet.date, 'ago') }</td>
-                                                            <td><button className="aprove-btn">Aprove</button></td>
-                                                        </tr>)
-                                                    }) }
-                                            </tbody>
+                                            </thead> */}
+                                                <tbody className="table-body" key={ utilService.makeId(6) }>
+                                                    { loggedInUser.pets[idx]
+                                                        .adoptQue.map(req => {
+                                                            return (<tr>
+                                                                <td>{ req.fullname }</td>
+                                                                <td>{ req.message }</td>
+                                                                <td>{ utilService.timeSince(req.date, 'ago') }</td>
+                                                                <td><button onClick={ () => this.aproveAdopt(pet, req, loggedInUser, idx) } className="aprove-btn">Aprove</button></td>
+                                                            </tr>)
+                                                        }) }
+                                                </tbody>
 
-                                        </table>
-                                    </section>
+                                            </table>
+                                        </section>
+                                    </div>
                                 </div>
                             )
                         }) }
                     </div>
 
-                    <div className="user-requests">
+                    <div className="user-requests hide">
                         <h1>My requests</h1>
                         <div className="request-list flex column">
-                            {/* TODO: add map() from pets to pet: */ }
-                            {/* { userPets.map((pet, idx) => { */ }
-                            <div className="request-card flex column">
-                                <div className="main-card-section">
-                                    <img src={ loggedInUser.imgUrl } alt="" className="pet-img" />
-                                    <div className="request-info">
-                                        <div className="req-owner-name flex">
-                                            <h3>To:</h3>
-                                            <span className="owner-name">Owner name</span>
-                                        </div>
-                                        <div className="req-pet-info flex">
-                                            <h3 className="about-pet">About pet:</h3>
-                                            <span className="pet-name">Pet name</span>
-                                        </div>
-                                        <div className="req-time">{ 'time' }</div>
-                                    </div>
-                                    <div className="request-statue">
-                                        <button onClick={ () => this.toggleRemoveReq }
-                                            // onMouseOver={ () => this.hoverRemoveReq }
-                                            onMouseOver={ () => this.reqBtnTxt('Delete this Request') }
-                                            onMouseOut={ () => this.reqBtnTxt('Requested/Aprove') }
-                                            className={ this.state.isRemoveReqHover ? 'remove-request hovering' : 'remove-request' }>
-                                            {/* ⬆ Hover will reveal 'Delete this Request' and change the color */ }
-                                            {/* ⬇ change Requested/Aprove with adoptQue.status */ }
-                                            {/* { this.state.isRemoveReqHover ? 'Delete this Request' : 'Requested/Aprove' } */ }
-                                            { this.state.reqBtnTxt ? this.state.reqBtnTxt : 'Requested/Aprove' }
-                                            <div className={ this.state.isRemoveReq ? 'remove' : 'remove hide' }>
+                            { userPets.map((pet, idx) => {
+                                return (
+                                    loggedInUser.pets[idx]
+                                        .adoptQue.map(req => {
+                                            return (
+                                                <div className="request-card flex column">
+                                                    <div className="main-card-section">
+                                                        <img src={ req.imgUrl } alt="pet-img" className="pet-img" />
+                                                        <div className="request-info">
+                                                            <div className="req-owner-name flex">
+                                                                <h3>From:</h3>
+                                                                <span className="owner-name">{ req.fullname }</span>
+                                                            </div>
+                                                            <div className="req-pet-info flex">
+                                                                <h3 className="about-pet">Messege:</h3>
+                                                                <span className="pet-name">{ req.message }</span>
+                                                            </div>
+                                                            <div className="req-time">{ utilService.timeSince(req.date, 'ago') }</div>
+                                                        </div>
+                                                        <div className="request-statue">
+                                                            <button onClick={ () => this.toggleRemoveReq }
+                                                                // onMouseOver={ () => this.hoverRemoveReq }
+                                                                onMouseOver={ () => this.reqBtnTxt('Delete this Request') }
+                                                                onMouseOut={ () => this.reqBtnTxt('Requested/Aprove') }
+                                                                className={ this.state.isRemoveReqHover ? 'remove-request hovering' : 'remove-request' }>
+                                                                {/* ⬆ Hover will reveal 'Delete this Request' and change the color */ }
+                                                                {/* ⬇ change Requested/Aprove with adoptQue.status */ }
+                                                                {/* { this.state.isRemoveReqHover ? 'Delete this Request' : 'Requested/Aprove' } */ }
+                                                                { this.state.reqBtnTxt ? this.state.reqBtnTxt : 'Requested/Aprove' }
+                                                                {/* <div className={ this.state.isRemoveReq ? 'remove' : 'remove hide' }>
                                                 <button onClick={ (event) => this.removeReq(event) }>Yes</button>
                                                 <button onClick={ (event) => this.removeReq(event) }>No</button>
-                                            </div>
-                                        </button>
-                                    </div>
-                                </div>
-                                {/* for commenting back to owner - opan bottom modal */ }
-                                <div className="card-extention"></div>
-                            </div>
+                                            </div> */}
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    {/* for commenting back to owner - opan bottom modal */ }
+                                                    <div className="card-extention"></div>
+                                                </div>
+                                            )
+                                        })
+
+                                )
+                            }) }
                         </div>
                     </div>
                 </section>
-            </section >
 
+            </section >
         )
     }
 }
@@ -193,7 +226,8 @@ const mapDispatchToProps = {
     signup,
     removeUser,
     loadUsers,
-    onExplore
+    onExplore,
+    approveAdopt
 }
 
 export const Profile = connect(mapStateToProps, mapDispatchToProps)(_Profile)

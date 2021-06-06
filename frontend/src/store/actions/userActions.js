@@ -105,6 +105,20 @@ export function newAdoptRequest(data) { // Action Creator
       })
   }
 }
+export function approveAdopt(data) { // Action Creator
+  return dispatch => {
+    return userService.saveNewApprove(data)
+      .then((updatedUser) => {
+        socketService.emit('adopt-request', data)
+        console.log('im in user action after service')
+        const action = {
+          type: 'UPDATE_USER',
+          user: updatedUser
+        }
+        dispatch(action)
+      })
+  }
+}
 export function onExplore() {
   return dispatch => {
     const action = {

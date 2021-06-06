@@ -51,25 +51,6 @@ class _Header extends Component {
 
     }
 
-    // console.log(this.props);
-    // socketService.on('eyal', (data) => {
-    //     this.setState({ isRequested: true })
-    //     console.log(data)
-    //     console.log('requested from socket')
-    //     store.addNotification({
-    //         title: "Wonderful!",
-    //         message: data.message,
-    //         type: "info",
-    //         insert: "top-right",
-    //         container: "bottom-right",
-    //         animationIn: ["animate__animated", "animate__fadeIn"],
-    //         animationOut: ["animate__animated", "animate__fadeOut"],
-    //         dismiss: {
-    //             duration: 5000,
-    //             onScreen: true
-    //         }
-    //     });
-    // })
 
 
 

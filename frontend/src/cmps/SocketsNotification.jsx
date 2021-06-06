@@ -16,6 +16,10 @@ export class SocketsNotification extends Component {
       console.log(data)
       this.adoptNotify(data.msg)
     });
+    socketService.on('aprove-adoption', (data) => {
+      console.log(data)
+      this.adoptNotify('just Aproved you adopt request!')
+    });
   }
 
   componentWillUnmount() {
@@ -29,7 +33,7 @@ export class SocketsNotification extends Component {
       message: msg,
       type: "info",
       insert: "top-right",
-      container: "bottom-right",
+      container: "bottom-full",
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
