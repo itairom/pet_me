@@ -1,12 +1,12 @@
 import userIcon from '../assets/img/header/user.svg' // relative path to image 
 import menuIcon from '../assets/img/header/menu.svg' // relative path to image 
 import logo from '../assets/img/logo.png' // relative path to image 
+import { socketService } from '../services/socketService'
+import { store } from 'react-notifications-component';
 import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../store/actions/userActions'
-import { socketService } from '../services/socketService'
-import { store } from 'react-notifications-component';
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { loadPets } from '../store/actions/petActions'
 import { PetFilter } from './PetFilter'
@@ -18,41 +18,37 @@ class _Header extends Component {
     state = {
         isProfileShown: false,
         isRequested: false,
-        navBackground: false,
+        nav: false,
         isFilterShown: false
+
     }
 
     componentDidMount() {
         this.setListeners()
+        window.addEventListener("scroll", this.handleScroll);
         console.log('inExplore', this.props.inExplore);
-        this.props.loggedInUser && socketService.emit('user-watch', this.props.loggedInUser._id)
-            && console.log('added user ' + this.props.loggedInUser._id + ' to user-watch sockets')
-        window.addEventListener('click', this.handleClick)
-        window.addEventListener('scroll', this.handleScroll)
     }
 
+
     componentWillUnmount() {
-        window.removeEventListener('click', this.handleClick)
-        window.removeEventListener('scroll', this.handleScroll)
+        window.removeEventListener('scroll', () => {
+        })
     }
 
     handleScroll = () => {
+
         this.setState({ isFilterShown: false })
+
         if (window.pageYOffset > 50) {
-                this.setState({ navBackground: true });
+            if (!this.state.nav) {
+                this.setState({ nav: true });
+            }
         } else {
-            this.setState({ navBackground: false });
+            if (this.state.nav) {
+                this.setState({ nav: false });
+            }
         }
-    }
 
-    handleClick = () => {
-        if (this.state.isProfileShown && window.event.clientY > 80) {
-            this.setState({ isProfileShown: false })
-        }
-    }
-
-    onLogout = () => {
-        this.props.logout()
     }
 
     toggleDropdown = () => {
@@ -64,18 +60,31 @@ class _Header extends Component {
         )
     }
 
+    onLogout = () => {
+        this.props.logout()
+        // this.props.history.push('/')
+    }
+
+    setListeners = () => {
+        window.addEventListener('click', () => {
+            if (this.state.isProfileShown && window.event.clientY > 80) {
+                this.setState({ isProfileShown: false })
+            }
+        })
+    }
+
     render() {
 
         const { loggedInUser, inExplore, isShowSearch } = this.props
-        const { isProfileShown, navBackground, isFilterShown } = this.state
+        const { isProfileShown, nav, isFilterShown } = this.state
 
         return (
-            <header className={`main-header ${navBackground && 'nav-white'}  ${!navBackground && 'nav-transparent'}   main-container`}>
+            <header className={ `main-header ${nav && 'nav-white'} main-container` }>
                 < nav className="header-container" >
                     <NavLink onClick={ () => this.props.loadPets() } to="/">
                         <div className="logo-container flex">
                             <Logo className="logo" />
-                            <h1 className={`logo-title ${navBackground && 'black'} ${inExplore && 'black'} `}>PetMe</h1>
+                            <h1 className={ `logo-title ${nav && 'black'} ${inExplore && 'black'} ` }>PetMe</h1>
                         </div>
                     </NavLink>
 
@@ -85,10 +94,10 @@ class _Header extends Component {
                             <div className="search-btn-explore">
                                 <img className="filter-search" src={ magnifyingGlass } alt="glass" />
                             </div>
-                        </div>}
-                        {isShowSearch && isFilterShown &&
+                        </div> }
+                        { isShowSearch && isFilterShown && <div className="explore-search">
                             < PetFilter />
-                        }
+                        </div> }
                     </section>
 
                     <div>
@@ -97,7 +106,7 @@ class _Header extends Component {
 
 
                     <div className="right-nav">
-                        <NavLink className={`explore-btn ${navBackground && 'black'} ${inExplore && 'black'} `} to='/explore/?gender=&age=&type=&location=&size='>
+                        <NavLink className={ `explore-btn ${nav && 'black'} ${inExplore && 'black'} ` } to='/explore/?gender=&age=&type=&location=&size='>
                             Explore</NavLink>
                         <div onClick={ () => this.toggleDropdown() } className="login-profile">
                             { isProfileShown && <div className="user-dropdown">
