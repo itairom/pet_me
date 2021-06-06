@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import React from 'react'
 import { loadPets, addPet } from '../store/actions/petActions'
-import { onHome ,showSearch,notshowSearch} from '../store/actions/userActions'
+import { onHome, showSearch, hideSearch } from '../store/actions/userActions'
 import { Link } from 'react-router-dom'
 import { FilterDynamic } from '../cmps/FilterDynamic'
 import { HomepagePreview } from '../cmps/HomepagePreview'
@@ -10,23 +10,21 @@ import info from '../assets/img/svg/info.svg'
 import rightArrow from '../assets/img/svg/arrow-right.png'
 import paw from '../assets/img/svg/paw.svg'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
-
+import { ReactComponent as Loader } from '../assets/img/loaders/loader_3.svg' // relative path to image 
 
 
 class _PetApp extends React.Component {
 
     async componentDidMount() {
-        window.scroll(0,0)
-        this.props.notshowSearch()
-
+        window.scroll(0, 0)
+        this.props.hideSearch()
         this.props.onHome()
         await this.props.loadPets()
     }
 
     render() {
-        const { pets, inExplore } = this.props
-        if (pets.length === 0) return <h1>loading</h1>
+        const { pets } = this.props
+        if (pets.length === 0) return <Loader />
         return (
             <section className="main-container">
                 <section className="hero full">
@@ -135,7 +133,7 @@ const mapDispatchToProps = {
     addPet,
     onHome,
     showSearch,
-    notshowSearch
+    hideSearch
 }
 
 export const PetApp = connect(mapStateToProps, mapDispatchToProps)(_PetApp)

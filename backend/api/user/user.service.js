@@ -12,7 +12,8 @@ module.exports = {
     remove,
     update,
     add,
-    updateRequest
+    updateRequest,
+    save
 }
 
 async function query(filterBy = {}) {
@@ -101,6 +102,28 @@ async function update(user) {
         throw err
     }
 }
+
+async function save(user) {
+    console.log(user)
+    let savedUser = { ...user }
+    const collection = await dbService.getCollection('user')
+    try {
+        if (user._id) {
+            //update
+            savedUser.updatedAt = Date.now()
+            await collection.updateOne({ _id: user._id }, { $set: savedUser })
+        } else {
+            //create
+            savedUser.createdAt = Date.now()
+            await collection.insertOne(savedUser)
+        }
+    } catch (err) {
+        logger.error('cannot save user', err)
+        throw err
+    }
+    return savedUser
+}
+
 
 async function add(user) {
     try {

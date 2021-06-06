@@ -13,21 +13,16 @@ class _Explore extends React.Component {
         sortBy: ''
     }
     async componentDidMount() {
+        console.log('cdm');
         window.scroll(0, 0)
         this.props.onExplore()
         this.props.showSearch()
         await this.onSetFilter()
         await this.props.loadPets(this.state.filterBy)
-        window.addEventListener('scroll', this.onEventListner())
     }
 
     async componentWillUnmount() {
         await this.props.loadPets()
-        window.removeEventListener('scroll', this.onEventListner())
-    }
-
-    onEventListner = () => {
-        this.setState({ isFilterShown: false })
     }
 
     onSetSort = () => {
@@ -74,7 +69,7 @@ class _Explore extends React.Component {
                 {/* {!isFilterShown && <div className="explore-search">
                     <span onClick={() => this.onToggleFilter()} > Start your search</span>
                     <div className="search-btn-explore">
-                        <img className="filter-search" src={magnifyingGlass} alt="glass" />
+                        <img className="filter-search" src={ magnifyingGlass } alt="glass" />
                     </div>
                 </div>} */}
 
@@ -85,14 +80,15 @@ class _Explore extends React.Component {
 
                 <div className="filter-description">
                     {!filterBy.type && <h1 >Our pets</h1>}
-                    {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span></h1>}
+                    {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span>  </h1>}
 
                     <div className="sort-form">
                         <label >Sort By</label>
                         <select value={this.state.sortBy} onChange={this.handleChange}>
                             {/* <option value="">Any</option> */}
-                            <option value={'name'}>Name</option>
-                            <option value={'likes'}>Likes</option>
+                            <option value="createdAt">Date</option>
+                            <option value="name">Name</option>
+                            <option value="likes">Likes</option>
                         </select>
                     </div>
                 </div>
