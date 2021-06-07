@@ -3,28 +3,18 @@
     flex-direction: column;
     justify-content: space-between;
 
+    @include for-mobile-layout {
+        margin-block-end: 20px;
+    }
+
     img {
         height: 165px;
         border-radius: 10px;
         object-fit: cover;
         cursor: pointer;
     }
-    
-    // img:hover {
-        
-        // .slick-prev:before,
-        // .slick-next:before{
-        //     font-family: "slick" !important;
-        //     font-size: 25px !important;
-        //     line-height: 1 !important;
-        //     opacity: 0.75 !important;
-        //     color: white !important;
-        //     -webkit-font-smoothing: antialiased !important;
-        //     -moz-osx-font-smoothing: grayscale!important;
-        // }
-    // }
+
     .card-info {
-        padding: 10px 0 0;
         display: flex;
         flex-direction: column;
 

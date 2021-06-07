@@ -37,7 +37,7 @@ class _PetDetails extends Component {
         isEditMode: false,
         isOpanModal: false,
         isAttend: false,
-        isMobileScreen: false
+        isMobileScreen: null
     }
 
     componentDidMount() {
@@ -65,8 +65,10 @@ class _PetDetails extends Component {
 
     checkScreenWidth = () => {
         if (window.innerWidth > 500) {
+            console.log('> 500',window.innerWidth);
             this.setState({ isMobileScreen: false });
         } else {
+            console.log('< 500',window.innerWidth);
             this.setState({ isMobileScreen: true });
         }
     }
@@ -126,6 +128,7 @@ class _PetDetails extends Component {
 
     render() {
         const { isMobileScreen } = this.state
+        if (isMobileScreen === null) return <h1>loading</h1>
         const id = this.props.match.params.petId
         const pet = this.props.pets.find(pet => pet._id === id)
         // const { pet } = this.props
