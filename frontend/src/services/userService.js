@@ -137,8 +137,7 @@ async function saveNewApprove(data) {
   }
 
   console.log(newOwner, newLoggedInUser)
-  // const updatedOwner = await update(newOwner)
-  // const updatedLoggedInUser = await update(newLoggedInUser)
-  // const newUsers = [updatedOwner, updatedLoggedInUser]
-  // return Promise.resolve(newUsers)
+  const updatedOwner = await update(newOwner)
+  const updatedLoggedInUser = await update(newLoggedInUser)
+  return Promise.resolve({ updatedOwner, updatedLoggedInUser })
 }

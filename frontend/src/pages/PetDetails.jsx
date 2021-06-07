@@ -48,9 +48,6 @@ class _PetDetails extends Component {
         const id = this.props.match.params.petId;
         // socketService.setup()
         // socketService.emit('adopt-request', id)
-        socketService.on('eyal', () => {
-            console.log('im on!')
-        })
 
         this.props.loadPets()
             .then(() => {

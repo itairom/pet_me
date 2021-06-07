@@ -102,22 +102,31 @@ export function newAdoptRequest(data) { // Action Creator
   }
 }
 export function approveAdopt(data) { // Action Creator
-  return dispatch => {
-    return userService.saveNewApprove(data)
-      .then((updatedUsers) => {
-        console.log(updatedUsers)
-        socketService.emit('approve-requested', data)
-        console.log('im in user action after service')
-        // updatedUsers.forEach(user => {
-        //   const action = {
-        //     type: 'UPDATE_USER',
-        //     user: user
-        //   }
-        //   dispatch(action)
-        // });
-      })
+  return async dispatch => {
+    const updatedUsers = await userService.saveNewApprove(data)
+    // console.log(updatedUsers)
+    console.log('updating oldOwner')
+    socketService.emit('update-new-owner', updatedUsers.updatedOwner)
+    const action = {
+      type: 'UPDATE_USER',
+      user: updatedUsers.updatedLoggedInUser
+    }
+    socketService.emit('approve-requested', data)
+    dispatch(action)
   }
 }
+export function approveAdoptToOwner(newOwner) { // Action Creator
+  return async dispatch => {
+    const updatedNewOwner = await userService.update(newOwner)
+    console.log('updating newOwner user')
+    const action = {
+      type: 'UPDATE_USER',
+      user: updatedNewOwner
+    }
+    dispatch(action)
+  }
+}
+
 export function onExplore() {
   return dispatch => {
     const action = {

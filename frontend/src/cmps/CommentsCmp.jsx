@@ -59,6 +59,7 @@ class _CommentsCmp extends Component {
                     <ul className="comments-list clean-list">
                         { pet.comments.map((comment, idx) =>
                             <div key={ comment.id ? comment.id : idx + new Date().getTime() }>
+                                
                                 <li className="comment-preview-card flex column">
                                     <div className="comment-header flex">
                                         <img src={ comment.by.imgUrl } alt="skeleton" />
