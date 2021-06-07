@@ -6,7 +6,7 @@ import {
   loadUsers,
   removeUser,
   login,
-  logout,  
+  logout,
   signup
 } from '../store/actions/userActions'
 
@@ -82,7 +82,7 @@ class _LoginSignup extends Component {
   }
   render() {
 
-// console.log('users',this.props.users);
+    // console.log('users',this.props.users);
 
     let signupSection = (
       <form className="frm" onSubmit={this.doSignup}>
