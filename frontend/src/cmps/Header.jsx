@@ -26,7 +26,7 @@ class _Header extends Component {
     componentDidMount() {
         window.addEventListener('click', this.handleClick)
         window.addEventListener('scroll', this.handleScroll)
-        socketService.emit('user-join', this.props.loggedInUser._id)
+        this.props.loggedInUser && socketService.emit('user-join', this.props.loggedInUser._id)
 
     }
 
