@@ -15,7 +15,12 @@ class _PetFilter extends React.Component {
             size: '',
             location: ''
         },
-        toggleSelect: false
+        toggleSelect: {
+            gender: false,
+            type: false,
+            age: false,
+            size: false,
+        }
     }
 
     // handleChange = ({ target }) => {
@@ -25,10 +30,8 @@ class _PetFilter extends React.Component {
     // }
 
     handleChange = (value, name) => {
-        // console.log("🚀 ~ file: PetFilter.jsx ~ line 28 ~ _PetFilter ~ name", name)
-        // console.log("🚀 ~ file: PetFilter.jsx ~ line 28 ~ _PetFilter ~ value", value)
 
-        // const { name, value } = target
+
         const { filterBy } = this.state
         this.setState({
             filterBy: {
@@ -43,9 +46,16 @@ class _PetFilter extends React.Component {
         this.props.history.push(`/explore/?${query.toString()}`)
     }
 
-    onToggleSelect = () => {
+    onToggleSelect = (by) => {
 
-        this.setState({ toggleSelect: !this.state.toggleSelect })
+        const { toggleSelect } = this.state
+        console.log([toggleSelect])
+        this.setState({
+            toggleSelect: {
+                ...toggleSelect,
+                [by]: !toggleSelect[by]
+            }
+        })
     }
 
     setOptions = () => {
@@ -70,51 +80,45 @@ class _PetFilter extends React.Component {
             <section className='pet-filter'>
                 <div className="filter-select pet-select">
                     <label >Pet</label>
-                    <label onClick={this.onToggleSelect} className="select-label">
+                    <label onClick={() => this.onToggleSelect('type')} className="select-label">
                         <label >{type}{!type && 'select'}</label>
-                        {!toggleSelect && <FilterSelect key={type} handleChange={this.handleChange} options={options.type} name="type" />}
+                        {toggleSelect.type && <FilterSelect key={type} handleChange={this.handleChange} options={options.type} name="type" />}
                     </label>
 
                 </div>
                 <div className="filter-select gender-select">
                     <label >Gender</label>
-                    <label onClick={this.onToggleSelect} className="select-label">
+                    <label onClick={() => this.onToggleSelect('gender')} className="select-label">
                         <label >{gender}{!gender && 'select'}</label>
-                        {!toggleSelect && <FilterSelect key={gender} handleChange={this.handleChange} options={options.gender} name="gender" />}
+                        {toggleSelect.gender && <FilterSelect key={gender} handleChange={this.handleChange} options={options.gender} name="gender" />}
                     </label>
 
 
                 </div>
                 <div className="filter-select age-select">
                     <label >Age</label>
-                    <label onClick={this.onToggleSelect} className="select-label">
+                    <label onClick={() => this.onToggleSelect('age')} className="select-label">
                         <label >{age}{!age && 'select'}</label>
-                        {!toggleSelect && <FilterSelect key={age} handleChange={this.handleChange} options={options.age} name="age" />}
+                        {toggleSelect.age && <FilterSelect key={age} handleChange={this.handleChange} options={options.age} name="age" />}
                     </label>
 
                 </div>
                 <div className="filter-select size-select">
                     <label >Size</label>
-                    <label onClick={this.onToggleSelect} className="select-label">
+                    <label onClick={() => this.onToggleSelect('size')} className="select-label">
                         <label >{size}{!size && 'select'}</label>
-                        {!toggleSelect && <FilterSelect key={size} handleChange={this.handleChange} options={options.size} name="size" />}
+                        {toggleSelect.size && <FilterSelect key={size} handleChange={this.handleChange} options={options.size} name="size" />}
                     </label>
 
 
 
                 </div>
                 <div className="filter-select location-select">
-                    <label >Location</label>
+                    <label className="location-label">Location</label>
                     <input placeholder="Enter location" className='location-select' value={location} onChange={this.handleChange} name="location"  ></input>
                 </div>
 
-                {/* {this.state.types.map(type => {
-                    return (
-                        <div className="select-modal">
-                            <div onClick={() => this.handleChangeModal(type, 'type')} value={type}> {type} </div>
-                        </div>
-                    )
-                })} */}
+
 
                 <button className="search-btn filter-select" onClick={this.onSubmitFilter}>
                     <img className="filter-search" src={magnifyingGlass} alt="glass" />
