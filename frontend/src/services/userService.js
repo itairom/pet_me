@@ -4,10 +4,6 @@ import { socketService } from '../services/socketService'
 
 
 
-
-
-// ]
-
 export const userService = {
   login,
   logout,
@@ -17,7 +13,6 @@ export const userService = {
   remove,
   update,
   getLoggedinUser,
-  adoptRequest,
   saveNewRequest,
   saveNewApprove
 }
@@ -42,15 +37,6 @@ async function update(user) {
   return updatedUser
 }
 
-
-async function adoptRequest(request) {
-  // return storageService.put('user/req', user)
-  return httpService.put('user/request', request)
-  // Handle case in which admin updates other user's details
-  // if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
-}
-
-
 async function login(userCred) {
 
   const user = await httpService.post('auth/login', userCred)
@@ -61,10 +47,12 @@ async function signup(userCred) {
   // const user = await httpService.post('auth/signup', userCred)
   return _saveLocalUser(user)
 }
+
 async function logout() {
   sessionStorage.clear()
   // return await httpService.post('auth/logout')
 }
+
 function _saveLocalUser(user) {
   sessionStorage.setItem('loggedinUser', JSON.stringify(user))
   return user
@@ -73,7 +61,6 @@ function _saveLocalUser(user) {
 function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem('loggedinUser'))
 }
-
 
 async function saveNewRequest(data) {
   console.log('im in userService (front)')
@@ -84,7 +71,9 @@ async function saveNewRequest(data) {
     if (!isAlreadyRequested) {
       const updatedOwner = owner
       updatedOwner.pets[petIdx].adoptQue.push(newRequest)
-      return await update(updatedOwner)
+      // return await update(updatedOwner)
+      return await 
+
     }
     else {
       socketService.emit('already-requested', 'You already requested the owner, please wait for him to response')
@@ -93,7 +82,6 @@ async function saveNewRequest(data) {
     }
   }
 }
-
 
 async function saveNewApprove(data) {
   const { pet, req, loggedInUser, idx } = data
