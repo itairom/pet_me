@@ -11,7 +11,6 @@
     &.nav-transparent {
         transition: 0.3s;
         background-color: transparent;
-
     }
 
     & .header-container {
@@ -56,6 +55,7 @@
     user-select: none;
     background-color: white;
     z-index: 1001;
+
 
     &>img {
         margin-left: 5px;

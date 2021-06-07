@@ -158,11 +158,21 @@ class _PetDetails extends Component {
                         </span>
                     </div>
                 </header>
-                <div className="details-imgs-container grid">
-                    { pet.imgUrls.map((imgUrl, idx) => {
-                        return <img key={ pet._id + idx } src={ imgUrl } alt="skeleton" />
-                    }) }
-                </div>
+                {!isMobileScreen &&
+                    <div className="details-imgs-container grid">
+                        {pet.imgUrls.map((imgUrl, idx) => {
+                            return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
+                        })}
+                    </div>}
+                {isMobileScreen &&
+                    <div className="details-imgs-container grid">
+                        <Slider {...settings}>
+                            {pet.imgUrls.map((imgUrl, idx) => {
+                                return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
+                            })}
+                        </Slider>
+                     </div>
+                    }
                 <div className="details-main-section flex">
 
                     <div className="details-info-container">
