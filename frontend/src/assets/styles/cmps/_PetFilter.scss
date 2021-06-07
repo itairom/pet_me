@@ -2,7 +2,7 @@
     display: flex;
     justify-self: center;
     background-color: white;
-    z-index: 100;
+    // z-index: 100;
     margin-right: auto;
     margin-left: auto;
     border-radius: 200px;
@@ -48,10 +48,14 @@
     color: #6b6a6a;
     background-color: rgb(255, 255, 255);
 
+    .location-select{
+        width :65px
+    }
+
     @include for-mobile-layout {
         padding: 6px 0px 6px 0;
     }
-
+    
     @include for-narrow-layout {
         padding: 10px 10px 10px 25px;
     }
@@ -97,9 +101,12 @@
     width: 130px;
     outline: none;
     border: none;
-    width: 100%;
-    min-width: 83px;
+    width: 80%;
+    min-width: 86px;
     margin: 3.5px 0;
+    margin-left: -2px;
+
+
 
     @include for-mobile-layout {
         display: none;
@@ -117,6 +124,8 @@
     height: 52.5px;
     align-self: center;
     padding-right: 23px;
+    margin-right: 14px;
+
 
     @include for-mobile-layout {
         width: 49px;

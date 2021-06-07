@@ -13,19 +13,35 @@
             padding-right: 8px;
         }
 
-        :hover {
-            .fa {
+        .fa {
+            & :hover {
                 fill: #3b5998;
             }
 
-            .in {
-                fill: #ea4c56;
-            }
-
-            .tw {
-                fill: #1da1f2;
+            @include for-mobile-layout {
+                fill: #3b5998;
             }
         }
 
+        .in {
+            & :hover {
+                fill: #ea4c56;
+            }
+
+            @include for-mobile-layout {
+                fill: #ea4c56;
+            }
+        }
+
+        .tw {
+            & :hover {
+                fill: #1da1f2;
+            }
+
+            @include for-mobile-layout {
+                fill: #1da1f2;
+            }
+        }
     }
+
 }

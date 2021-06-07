@@ -137,7 +137,7 @@ class _Profile extends Component {
                             <Rating name="disabled" value={ loggedInUser.rating ? loggedInUser.rating : loggedInUser.reviews[0]?.rate } disabled />
                         </div>
                     </section>
-                    <div><button className="logout">Logout</button></div>
+                    {/* <div><button className="logout">Logout</button></div> */}
                 </section>
 
                 {/* <section className={ this.state.isGotRequests ? 'profile-pets-container flex' : 'profile-pets-container hide' }> */ }

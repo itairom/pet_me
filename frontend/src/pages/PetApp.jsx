@@ -101,7 +101,6 @@ class _PetApp extends React.Component {
                                 <img className="info-icons" src={paw} alt="glass" />
                             </div>
                             <p> In a quick and easy process you can adopt a pet that will become your new companion for life. Join us for a fun journey! 
-                                
                             </p>
                         </div>
                     </div>
