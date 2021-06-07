@@ -11,7 +11,7 @@ import { petService } from '../services/petService'
 import { onExplore } from '../store/actions/userActions'
 import Rating from '@material-ui/lab/Rating';
 import { utilService } from '../services/utilService'
-import { loadUsers, login, logout, removeUser, signup, approveAdopt } from '../store/actions/userActions'
+import { loadUsers, login, logout, removeUser, signup, approveAdopt, getUser } from '../store/actions/userActions'
 import { loadPets } from '../store/actions/petActions'
 import { socketService } from '../services/socketService'
 // import { userService } from '../services/userService'
@@ -24,14 +24,16 @@ class _Profile extends Component {
         isGotRequests: false,
         isRemoveReq: false,
         reqBtnTxt: '',
-        adoptionRequestsInfo: []
+        adoptionRequestsInfo: [],
+        loggedInUser: null
     }
 
     componentDidMount() {
         console.log('mounted')
         window.scrollTo(0, 0)
-        this.onLoadPets()
+        this.loadLoggedInUser()
 
+        this.onLoadPets()
         // this.onLoadRequests()
         this.props.onExplore()
     }
@@ -40,19 +42,39 @@ class _Profile extends Component {
         console.log('unmount')
     }
 
-    onLoadPets = () => {
-        let userPets = []
-        if (this.props.pets > 0) {
-            userPets = this.props.loggedInUser.pets.map(pet => {
-                return this.props.pets.filter(userPet => userPet._id === pet._id)
-            })
-        }
-        else {
-            userPets = this.props.loadPets()
-            console.log(userPets)
-        }
-        this.setState({ userPets })
+    loadLoggedInUser = () => {
+        const loggedInUser = this.props.getUser(this.props.loggedInUser)
+        this.setState({ loggedInUser })
     }
+    onLoadPets = () => {
+        this.props.loadPets()
+            .then(() => {
+                const userPets = this.props.loggedInUser.pets.map(userPet => {
+                    return this.props.pets.filter(pet => userPet._id === pet._id)
+                }).flatMap(e => e)
+                this.setState({ userPets })
+            })
+        // this.props.loadPets()
+        // .then(() => {
+        //     const pet = this.props.pets.find(pet => pet._id === id)
+        //     this.props.loadUsers()
+        //         .then(() => {
+        //             const user = this.props.users.find(user => user._id === pet.owner._id)
+        //             this.setState({ pet, owner: user, loggedInUser: this.props.loggedInUser })
+        //         })
+        // })    // socketService
+        // if(this.props.pets.length > 0) {
+        // let userPets = this.props.loggedInUser.pets.map(userPet => {
+        //     return pets.filter(pet => userPet._id === pet._id)
+        // })
+
+        // else {
+        //     userPets = this.props.loadPets()
+        //     console.log(userPets)
+        // }
+        // this.setState({ userPets })
+    }
+
 
 
     onLoadRequests = () => {
@@ -83,16 +105,16 @@ class _Profile extends Component {
     approveAdopt = (pet, req, loggedInUser, idx) => {
         const msg = loggedInUser.fullname + ' just approved your request to adopt ' + pet.name
         const data = { pet, req, loggedInUser, idx, msg }
-        // this.props.approveAdopt(data)
+        this.props.approveAdopt(data)
         socketService.emit('aprove-adopt', msg)
     }
 
     render() {
         const { loggedInUser } = this.props
-        // const { userPets } = this.state
-        const userPets = this.props.loggedInUser.pets.map(pet => {
-            return this.props.pets.filter(userPet => userPet._id === pet._id)
-        }).flatMap(e => e)
+        const { userPets } = this.state
+        // const userPets = this.props.loggedInUser.pets.map(pet => {
+        //     return this.props.pets.filter(userPet => userPet._id === pet._id)
+        // }).flatMap(e => e)
         console.log(userPets)
         if (!loggedInUser) return <img src={ Loader } alt="loadnig" />
         if (!userPets) return <img src={ Loader } alt="loadnig" />
@@ -180,7 +202,7 @@ class _Profile extends Component {
                                             return (
                                                 <div className="request-card flex column" key={ utilService.makeId(6) }>
                                                     <div className="main-card-section">
-                                                        <img src={ req.imgUrl } alt="pet-img" className="pet-img" />
+                                                        {/* <img src={ pet.imgUrl[0] } alt="pet-img" className="pet-img" /> */}
                                                         <div className="request-info">
                                                             <div className="req-owner-name flex">
                                                                 <h3>From:</h3>
@@ -242,7 +264,8 @@ const mapDispatchToProps = {
     loadUsers,
     loadPets,
     onExplore,
-    approveAdopt
+    approveAdopt,
+    getUser
 }
 
 export const Profile = connect(mapStateToProps, mapDispatchToProps)(_Profile)

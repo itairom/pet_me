@@ -87,10 +87,7 @@ async function saveNewRequest(data) {
       return await update(updatedOwner)
     }
     else {
-      // add toggle and splice the que from the array, then send update(updatedOwner)
-      // in the jsx change the button to "Adopt" again
       socketService.emit('already-requested', 'You already requested the owner, please wait for him to response')
-      // console.log('You already requested the owner, please wait for a response') 
       return
 
     }
@@ -101,8 +98,6 @@ async function saveNewRequest(data) {
 async function saveNewApprove(data) {
   const { pet, req, loggedInUser, idx } = data
 
-  // let newOwner = await getById(loggedInUser._id)
-  // let newOwner = await getById(req.userId)
   let newOwner = await getById(req.userId)
 
   console.log('newOwner', newOwner)
@@ -137,8 +132,8 @@ async function saveNewApprove(data) {
   }
 
   console.log(newOwner, newLoggedInUser)
-  const updatedOwner = newOwner
-  // const updatedOwner = await update(newOwner)
-  const updatedLoggedInUser = await update(newLoggedInUser)
-  return Promise.resolve({ updatedOwner, updatedLoggedInUser })
+  // const updatedOwner = newOwner
+  // // const updatedOwner = await update(newOwner)
+  // const updatedLoggedInUser = await update(newLoggedInUser)
+  // return Promise.resolve({ updatedOwner, updatedLoggedInUser })
 }

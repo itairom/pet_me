@@ -48,6 +48,17 @@ export function login(userCreds) {
     }
   }
 }
+export function getUser(user) {
+  return async dispatch => {
+    try {
+      const user = await userService.getById(user)
+      socketService.emit('user-join', user._id)
+      dispatch({ type: 'SET_USER', user })
+    } catch (err) {
+      console.log('UserActions: err in login', err)
+    }
+  }
+}
 
 export function signup(userCreds) {
   return async dispatch => {
@@ -119,7 +130,6 @@ export function approveAdoptToOwner(newOwner) { // Action Creator
   return async dispatch => {
     const updatedNewOwner = await userService.update(newOwner)
     console.log('updating new-owner-user')
-    
     const action = {
       type: 'UPDATE_USER',
       user: updatedNewOwner

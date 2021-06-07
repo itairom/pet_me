@@ -47,9 +47,7 @@ class _PetDetails extends Component {
         this.props.onExplore()
         const id = this.props.match.params.petId;
         // socketService.setup()
-        // socketService.emit('adopt-request', id)
-
-        this.props.loadPets()
+     this.props.loadPets()
             .then(() => {
                 const pet = this.props.pets.find(pet => pet._id === id)
                 this.props.loadUsers()
@@ -57,7 +55,9 @@ class _PetDetails extends Component {
                         const user = this.props.users.find(user => user._id === pet.owner._id)
                         this.setState({ pet, owner: user, loggedInUser: this.props.loggedInUser })
                     })
-            })
+            })    // socketService.emit('adopt-request', id)
+
+       
     }
     // componentWillUnmount() {
     //     window.removeEventListener('resize', this.screenWidth)
