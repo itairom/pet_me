@@ -13,6 +13,7 @@ import { PetFilter } from './PetFilter'
 import { ReactComponent as Logo } from '../assets/img/svg/logo1.svg'
 
 
+
 class _Header extends Component {
 
     state = {

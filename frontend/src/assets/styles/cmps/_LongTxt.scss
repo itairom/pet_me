@@ -1,3 +1,10 @@
 .read-more {
     color: #6b6a6a;
+    .expand-txt{
+        color:$clr1 ;
+        cursor: pointer;
+        &:hover{
+            font-weight: bold;
+        }
+    }
 }

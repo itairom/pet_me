@@ -12,7 +12,7 @@ export class _FilterDynamic extends React.Component {
         window.addEventListener("scroll", this.handleScroll)
     }
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll)
+        window.removeEventListener('scroll',this.handleScroll)
     }
 
     handleScroll = () => {

@@ -23,6 +23,11 @@ import { ReactComponent as Binoculars } from '../assets/img/svg/binoculars.svg'
 import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'
 // import PetsIcon from '@material-ui/icons/Pets';
 
+import "../../node_modules/slick-carousel/slick/slick.css";
+import "../../node_modules/slick-carousel/slick/slick-theme.css";
+
+import Slider from "react-slick";
+
 
 class _PetDetails extends Component {
     state = {
@@ -31,10 +36,13 @@ class _PetDetails extends Component {
         loggedInUser: null,
         isEditMode: false,
         isOpanModal: false,
-        isAttend: false
+        isAttend: false,
+        isMobileScreen: false
     }
 
     componentDidMount() {
+        // window.addEventListener("resize", this.screenWidth);
+        this.checkScreenWidth()
         window.scroll(0, 0)
         this.props.onExplore()
         const id = this.props.match.params.petId;
@@ -53,6 +61,17 @@ class _PetDetails extends Component {
                         this.setState({ pet, owner: user, loggedInUser: this.props.loggedInUser })
                     })
             })
+    }
+    // componentWillUnmount() {
+    //     window.removeEventListener('resize', this.screenWidth)
+    // }
+
+    checkScreenWidth = () => {
+        if (window.innerWidth > 500) {
+            this.setState({ isMobileScreen: false });
+        } else {
+            this.setState({ isMobileScreen: true });
+        }
     }
 
     handleChange = ({ target }) => {
@@ -109,9 +128,17 @@ class _PetDetails extends Component {
     }
 
     render() {
+        const { isMobileScreen } = this.state
         const id = this.props.match.params.petId
         const pet = this.props.pets.find(pet => pet._id === id)
         // const { pet } = this.props
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        };
         if (!pet) return <h1>loading</h1>
 
         return (
