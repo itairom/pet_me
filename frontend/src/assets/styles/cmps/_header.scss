@@ -41,8 +41,6 @@
     }
 }
 
-
-
 .header-logo {
     zoom: 70%;
     margin-top: 10px;
@@ -62,8 +60,7 @@
     background-color: white;
     z-index: 1001;
 
-
-    &>img {
+    & > img {
         margin-left: 5px;
         height: 20px;
         width: 20px;
@@ -94,7 +91,6 @@
     border-radius: 4px;
     z-index: 101;
     animation: toggle-drop 0.2s;
-
 
     @keyframes toggle-drop {
         0% {
@@ -181,9 +177,21 @@
             color: $clr7;
         }
 
-
         @include for-mobile-layout {
             display: none;
         }
     }
+}
+
+.resize-nav {
+    .header-container {
+        & > * {
+            margin-top: 20px;
+        }
+    }
+    .pet-filter {
+        margin-top: 0px;
+    }
+    height: 90px;
+    margin-bottom: 50px;
 }

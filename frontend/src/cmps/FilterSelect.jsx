@@ -4,31 +4,17 @@ import { PetFilter } from './PetFilter'
 
 
 export class _FilterSelect extends React.Component {
-    state = {
-
-    }
-
     componentDidMount() {
-        // console.log(this.props);
-    }
-
-    componentWillUnmount() {
 
     }
-
-
-
     render() {
         const { options, name, handleChange } = this.props
-        console.log(name);
 
         return (
-            <div className={'select-modal'} >
+            <div  className={'select-modal'} >
                 {options.map(option => {
-                    return <option onClick={() => handleChange( option, name)} >{option}</option>
-
+                    return <option  onClick={() => handleChange(option, name)} >{option}</option>
                 })}
-
             </div>
         )
     }
