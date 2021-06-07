@@ -75,9 +75,10 @@ class _Header extends Component {
         const { isProfileShown, navBackground, isFilterShown } = this.state
 
         return (
-            <header className={ `main-header ${navBackground && 'nav-white'}  ${!navBackground && 'nav-transparent'}   main-container` }>
+            <header className={`main-header ${navBackground && 'nav-white'}  ${!navBackground && 'nav-transparent'} 
+              main-container     ${isShowSearch && isFilterShown && 'resize-nav'}`}   >
                 < nav className="header-container" >
-                    <NavLink onClick={ () => this.props.loadPets() } to="/">
+                    <NavLink  to="/">
                         <div className="logo-container flex">
                             <Logo className="logo" />
                             <h1 className={ `logo-title ${navBackground && 'black'} ${inExplore && 'black'} ` }>PetMe</h1>
@@ -103,7 +104,7 @@ class _Header extends Component {
 
 
                     <div className="right-nav">
-                        <NavLink className={ `explore-btn ${navBackground && 'black'} ${inExplore && 'black'} ` }
+                        <NavLink onClick={() => this.props.loadPets()} className={`explore-btn ${navBackground && 'black'} ${inExplore && 'black'} `}
                             to='/explore/?gender=&age=&type=&location=&size='>
                             Explore</NavLink>
                         <div onClick={ () => this.toggleDropdown() } className="login-profile">

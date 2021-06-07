@@ -81,7 +81,8 @@
 }
 
 .pet-select {
-    width: 25%;
+    margin-left: 5px;
+    width: 14%;
 
     @include for-mobile-layout {
         padding: 6px 0px 6px 16px;
@@ -131,7 +132,7 @@
     background-color: #ffffff;
     // padding: 10px 15px;
     border-radius: 10px;
-    right: -22px;
+    right: -43px;
     text-align: center;
 
     animation: toggle-drop 0.1s;
@@ -145,16 +146,16 @@
             opacity: 100%;
         }
     }
-    
+
     option {
         padding: 8px 30px;
         font-size: rem(20px);
         text-transform: capitalize;
         border-bottom: 1px solid rgb(244, 244, 244);
     }
-    
-    option:last-of-type{
-        border-bottom:none
+
+    option:last-of-type {
+        border-bottom: none;
     }
 
     option:hover {
@@ -166,4 +167,3 @@
     position: relative;
     width: 66px;
 }
-
