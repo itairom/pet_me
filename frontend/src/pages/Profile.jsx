@@ -102,42 +102,42 @@ class _Profile extends Component {
 
                 <section className="user-card">
                     <div className="profile-img">
-                        {/* <button onClick={() => cloudinaryService.uploadImg()}>U</button> */}
-                        <img src={loggedInUser.imgUrl} alt={<AccountCircleOutlinedIcon />} />
+                        {/* <button onClick={() => cloudinaryService.uploadImg()}>U</button> */ }
+                        <img src={ loggedInUser.imgUrl } alt={ <AccountCircleOutlinedIcon /> } />
                     </div>
                     <section className="user-info">
-                        <h1>{loggedInUser.fullname} </h1>
-                        <h4>{loggedInUser.username} </h4>
-                        <h4 className="italic">"{loggedInUser.title}"</h4>
+                        <h1>{ loggedInUser.fullname } </h1>
+                        <h4>{ loggedInUser.username } </h4>
+                        <h4 className="italic">"{ loggedInUser.title }"</h4>
                         <div className="location-info">
-                            <img src={Pin} alt="location info" />
-                            <div>{loggedInUser.loc.address}</div>
+                            <img src={ Pin } alt="location info" />
+                            <div>{ loggedInUser.loc.address }</div>
                         </div>
                         <div className="user-rate">
-                            <Rating name="disabled" value={loggedInUser.reviews[0]?.rate} disabled />
+                            <Rating name="disabled" value={ loggedInUser.rating ? loggedInUser.rating : loggedInUser.reviews[0]?.rate } disabled />
                         </div>
                     </section>
                     <div><button className="logout">Logout</button></div>
                 </section>
 
-                {/* <section className={ this.state.isGotRequests ? 'profile-pets-container flex' : 'profile-pets-container hide' }> */}
+                {/* <section className={ this.state.isGotRequests ? 'profile-pets-container flex' : 'profile-pets-container hide' }> */ }
                 <section className="profile-pets-container flex" >
 
                     <div className="user-pets">
                         <h1>My pets</h1>
-                        {userPets.map((pet, idx) => {
+                        { userPets.map((pet, idx) => {
                             return (
-                                <div className="adopt-card flex" key={utilService.makeId(6)}>
+                                <div className="adopt-card flex" key={ utilService.makeId(6) }>
                                     <div className="adopt-card-info">
 
                                         <div className="pet-header flex">
                                             <div className="pet-header-txt">
-                                                <h3>{pet.name}</h3>
-                                                <h4>Added: {utilService.timeSince(pet.addedAt, 'ago')}</h4>
+                                                <h3>{ pet.name }</h3>
+                                                <h4>Added: { utilService.timeSince(pet.addedAt, 'ago') }</h4>
                                                 <h4>Request Queue</h4>
                                             </div>
                                             <div className="pet-img-box flex align-center">
-                                                <img src={pet.imgUrls[0]} alt="pet" />
+                                                <img src={ pet.imgUrls[0] } alt="pet" />
                                             </div>
                                         </div>
                                         <section className="adopt-table">
@@ -150,16 +150,16 @@ class _Profile extends Component {
                                                     <td></td>
                                                 </tr>
                                             </thead> */}
-                                                <tbody className="table-body" key={utilService.makeId(6)}>
-                                                    {loggedInUser.pets[idx]
+                                                <tbody className="table-body" key={ utilService.makeId(6) }>
+                                                    { loggedInUser.pets[idx]
                                                         .adoptQue.map(req => {
-                                                            return (<tr key={utilService.makeId(6)}>
-                                                                <td>{req.fullname}</td>
-                                                                <td>{req.message}</td>
-                                                                <td>{utilService.timeSince(req.date, 'ago')}</td>
-                                                                <td><button onClick={() => this.approveAdopt(pet, req, loggedInUser, idx)} className="aprove-btn">Aprove</button></td>
+                                                            return (<tr key={ utilService.makeId(6) }>
+                                                                <td>{ req.fullname }</td>
+                                                                <td>{ req.message }</td>
+                                                                <td>{ utilService.timeSince(req.date, 'ago') }</td>
+                                                                <td><button onClick={ () => this.approveAdopt(pet, req, loggedInUser, idx) } className="aprove-btn">Aprove</button></td>
                                                             </tr>)
-                                                        })}
+                                                        }) }
                                                 </tbody>
 
                                             </table>
@@ -167,41 +167,41 @@ class _Profile extends Component {
                                     </div>
                                 </div>
                             )
-                        })}
+                        }) }
                     </div>
 
                     <div className="user-requests hide">
                         <h1>My requests</h1>
                         <div className="request-list flex column">
-                            {userPets.map((pet, idx) => {
+                            { userPets.map((pet, idx) => {
                                 return (
                                     loggedInUser.pets[idx]
                                         .adoptQue.map(req => {
                                             return (
-                                                <div className="request-card flex column" key={utilService.makeId(6)}>
+                                                <div className="request-card flex column" key={ utilService.makeId(6) }>
                                                     <div className="main-card-section">
-                                                        <img src={req.imgUrl} alt="pet-img" className="pet-img" />
+                                                        <img src={ req.imgUrl } alt="pet-img" className="pet-img" />
                                                         <div className="request-info">
                                                             <div className="req-owner-name flex">
                                                                 <h3>From:</h3>
-                                                                <span className="owner-name">{req.fullname}</span>
+                                                                <span className="owner-name">{ req.fullname }</span>
                                                             </div>
                                                             <div className="req-pet-info flex">
                                                                 <h3 className="about-pet">Messege:</h3>
-                                                                <span className="pet-name">{req.message}</span>
+                                                                <span className="pet-name">{ req.message }</span>
                                                             </div>
-                                                            <div className="req-time">{utilService.timeSince(req.date, 'ago')}</div>
+                                                            <div className="req-time">{ utilService.timeSince(req.date, 'ago') }</div>
                                                         </div>
                                                         <div className="request-statue">
-                                                            <button onClick={() => this.toggleRemoveReq}
+                                                            <button onClick={ () => this.toggleRemoveReq }
                                                                 // onMouseOver={ () => this.hoverRemoveReq }
-                                                                onMouseOver={() => this.reqBtnTxt('Delete this Request')}
-                                                                onMouseOut={() => this.reqBtnTxt('Requested/Aprove')}
-                                                                className={this.state.isRemoveReqHover ? 'remove-request hovering' : 'remove-request'}>
-                                                                {/* ⬆ Hover will reveal 'Delete this Request' and change the color */}
-                                                                {/* ⬇ change Requested/Aprove with adoptQue.status */}
-                                                                {/* { this.state.isRemoveReqHover ? 'Delete this Request' : 'Requested/Aprove' } */}
-                                                                {this.state.reqBtnTxt ? this.state.reqBtnTxt : 'Requested/Aprove'}
+                                                                onMouseOver={ () => this.reqBtnTxt('Delete this Request') }
+                                                                onMouseOut={ () => this.reqBtnTxt('Requested/Aprove') }
+                                                                className={ this.state.isRemoveReqHover ? 'remove-request hovering' : 'remove-request' }>
+                                                                {/* ⬆ Hover will reveal 'Delete this Request' and change the color */ }
+                                                                {/* ⬇ change Requested/Aprove with adoptQue.status */ }
+                                                                {/* { this.state.isRemoveReqHover ? 'Delete this Request' : 'Requested/Aprove' } */ }
+                                                                { this.state.reqBtnTxt ? this.state.reqBtnTxt : 'Requested/Aprove' }
                                                                 {/* <div className={ this.state.isRemoveReq ? 'remove' : 'remove hide' }>
                                                 <button onClick={ (event) => this.removeReq(event) }>Yes</button>
                                                 <button onClick={ (event) => this.removeReq(event) }>No</button>
@@ -209,14 +209,14 @@ class _Profile extends Component {
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    {/* for commenting back to owner - opan bottom modal */}
+                                                    {/* for commenting back to owner - opan bottom modal */ }
                                                     <div className="card-extention"></div>
                                                 </div>
                                             )
                                         })
 
                                 )
-                            })}
+                            }) }
                         </div>
                     </div>
                 </section>
