@@ -23,11 +23,11 @@ class _PetFilter extends React.Component {
         }
     }
 
-    // handleChange = ({ target }) => {
-    //     const { name, value } = target
-    //     const { filterBy } = this.state
-    //     this.setState({ filterBy: { ...filterBy, [name]: value } })
-    // }
+    handleChangeInput = ({ target }) => {
+        const { name, value } = target
+        const { filterBy } = this.state
+        this.setState({ filterBy: { ...filterBy, [name]: value } })
+    }
 
     handleChange = (value, name) => {
 
@@ -49,7 +49,6 @@ class _PetFilter extends React.Component {
     onToggleSelect = (by) => {
 
         const { toggleSelect } = this.state
-        console.log([toggleSelect])
         this.setState({
             toggleSelect: {
                 ...toggleSelect,
@@ -73,7 +72,6 @@ class _PetFilter extends React.Component {
         const sizeOptions = ['small', 'medium', 'big']
         const { gender, age, type, location, size } = this.state.filterBy
         const { toggleSelect } = this.state
-        console.log('pet', this.state.filterBy);
 
         return (
 
@@ -115,7 +113,7 @@ class _PetFilter extends React.Component {
                 </div>
                 <div className="filter-select location-select">
                     <label className="location-label">Location</label>
-                    <input placeholder="Enter location" className='location-select' value={location} onChange={this.handleChange} name="location"  ></input>
+                    <input placeholder="Enter location" className='location-select' value={location} onChange={this.handleChangeInput} name="location"  ></input>
                 </div>
 
 
