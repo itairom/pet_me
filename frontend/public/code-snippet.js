@@ -1,46 +1,41 @@
-export class _FilterDynamic extends React.Component {
+import { React } from 'react'
+import { NavLink } from 'react-router-dom'
+import { PetFilter } from './PetFilter'
+
+export class _Header extends React.Component {
     state = {
-        isFilterShown: true
+        isFilterShown: false
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         window.addEventListener("scroll", this.handleScroll)
     }
+
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll)
     }
 
     handleScroll = () => {
         if (window.pageYOffset > 50) {
-            this.props.showSearch()
-            if (this.state.isFilterShown) {
-                this.setState({ isFilterShown: false })
-            }
+            this.setState({ isFilterShown: true })
         } else {
-            if (!this.state.isFilterShown) {
-                this.props.hideSearch()
-                this.setState({ isFilterShown: true })
-            }
+            this.setState({ isFilterShown: false })
         }
-    }
-
-    onToggleFilter = () => {
-        this.setState({ isFilterShown: !this.state.isFilterShown }
-        )
     }
 
     render() {
         const { isFilterShown } = this.state
+        const className = (this.props.location.pathname !== '/' || isFilterShown) ? 'nav-white' : ''
         return (
             <>
-                {isFilterShown && <PetFilter />}
+                {isFilterShown && <PetFilter /> }
 
-                <header className={`main-header ${navBackground && 'nav-white'}  ${!navBackground && 'nav-transparent'}   main-container`}>
+                <header className={ `main-header ${className} main-container` }>
                     < nav className="header-container" >
-                        <NavLink onClick={() => this.props.loadPets()} to="/">
+                        <NavLink onClick={ () => this.props.loadPets() } to="/">
                             <div className="logo-container flex">
-                                <Logo className="logo" />
-                                <h1 className={`logo-title ${navBackground && 'black'} ${inExplore && 'black'} `}>PetMe</h1>
+                                <div className="logo"></div>
+                                <h1 className={ `logo-title ${className && 'black'}` }>PetMe</h1>
                             </div>
                         </NavLink>
                     </ nav>
@@ -50,4 +45,13 @@ export class _FilterDynamic extends React.Component {
         )
     }
 }
+// ------------------------------------------
+//Sass example:
 
+// .main-header {
+// 
+//     &.nav-white {
+//         background-color: white;
+//         color: black;
+//     }
+// }
