@@ -83,9 +83,8 @@ class _Profile extends Component {
     approveAdopt = (pet, req, loggedInUser, idx) => {
         const msg = loggedInUser.fullname + ' just approved your request to adopt ' + pet.name
         const data = { pet, req, loggedInUser, idx, msg }
-        this.props.approveAdopt(data)
+        // this.props.approveAdopt(data)
         socketService.emit('aprove-adopt', msg)
-
     }
 
     render() {

@@ -9,6 +9,7 @@ import { socketService } from '../services/socketService'
 import { store } from 'react-notifications-component';
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { loadPets } from '../store/actions/petActions'
+import { approveAdoptToOwner } from '../store/actions/userActions'
 import { PetFilter } from './PetFilter'
 import { ReactComponent as Logo } from '../assets/img/svg/logo1.svg'
 
@@ -27,7 +28,9 @@ class _Header extends Component {
         window.addEventListener('click', this.handleClick)
         window.addEventListener('scroll', this.handleScroll)
         this.props.loggedInUser && socketService.emit('user-join', this.props.loggedInUser._id)
-
+        socketService.on('sending-new-owner-to-save', () => {
+            this.props.approveAdoptToOwner()
+        })
     }
 
     componentWillUnmount() {
@@ -140,7 +143,7 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    logout, loadPets
+    logout, loadPets, approveAdoptToOwner
 }
 
 

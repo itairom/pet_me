@@ -41,6 +41,10 @@ function connectSockets(http, session) {
             emitToUser({ type: 'adopt-request-owner', data: data.msgToOwner, userId: data.owner._id })
             emitToUser({ type: 'adopt-request-requester', data: data.msgToRequester, userId: data.newRequest.userId })
         })
+        socket.on('update-new-owner', newOwner => {
+            console.log('socket recived - newOwner: ', newOwner)
+            emitToUser({ type: 'sending-new-owner-to-save', data: newOwner, userId: newOwner._id })
+        })
 
         socket.on('aprove-adopt', data => {
             console.log('data-from-details', data)

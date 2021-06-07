@@ -118,7 +118,8 @@ export function approveAdopt(data) { // Action Creator
 export function approveAdoptToOwner(newOwner) { // Action Creator
   return async dispatch => {
     const updatedNewOwner = await userService.update(newOwner)
-    console.log('updating newOwner user')
+    console.log('updating new-owner-user')
+    
     const action = {
       type: 'UPDATE_USER',
       user: updatedNewOwner
