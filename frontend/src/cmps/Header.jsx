@@ -61,7 +61,9 @@ class _Header extends Component {
         this.setState({ isFilterShown: !this.state.isFilterShown }
         )
     }
-
+    setListeners = () => {
+        
+    }
 
 
     render() {

@@ -41,10 +41,6 @@ class _Profile extends Component {
     }
 
     onLoadPets = () => {
-        // let pets = this.props.loggedInUser.pets;
-        // const userPets = await Promise.all(pets.map(async pet => {
-        //     return await petService.getPetByid(pet._id)
-        // }));
         let userPets = []
         if (this.props.pets) {
             userPets = this.props.loggedInUser.pets.map(pet => {
@@ -97,7 +93,7 @@ class _Profile extends Component {
         // const { userPets } = this.state
         const userPets = this.props.loggedInUser.pets.map(pet => {
             return this.props.pets.filter(userPet => userPet._id === pet._id)
-        })
+        }).flatMap(e => e)
         console.log(userPets)
         // const { adoptionRequestsInfo } = this.state
         // console.log('adoptionRequestsInfo', adoptionRequestsInfo)
