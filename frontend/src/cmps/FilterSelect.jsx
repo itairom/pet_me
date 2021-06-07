@@ -19,13 +19,13 @@ export class _FilterSelect extends React.Component {
 
 
     render() {
-        const {  options, name, handleChange } = this.props
+        const { options, name, handleChange } = this.props
         console.log(name);
 
         return (
-            <div className={'select-modal-'+name} >
+            <div className={'select-modal'} >
                 {options.map(option => {
-                    return <option  onClick={() => handleChange(option, name)} >{option}</option>
+                    return <option onClick={() => handleChange( option, name)} >{option}</option>
 
                 })}
 
