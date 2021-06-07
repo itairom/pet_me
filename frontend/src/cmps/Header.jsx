@@ -1,12 +1,12 @@
 import userIcon from '../assets/img/header/user.svg' // relative path to image 
 import menuIcon from '../assets/img/header/menu.svg' // relative path to image 
 import logo from '../assets/img/logo.png' // relative path to image 
-import { socketService } from '../services/socketService'
-import { store } from 'react-notifications-component';
 import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../store/actions/userActions'
+import { socketService } from '../services/socketService'
+import { store } from 'react-notifications-component';
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { loadPets } from '../store/actions/petActions'
 import { PetFilter } from './PetFilter'
@@ -19,38 +19,37 @@ class _Header extends Component {
     state = {
         isProfileShown: false,
         isRequested: false,
-        nav: false,
-        isFilterShown: false,
-        navBackground: false
-
+        navBackground: false,
+        isFilterShown: false
     }
 
     componentDidMount() {
-        this.setListeners()
-        window.addEventListener("scroll", this.handleScroll);
-        console.log('inExplore', this.props.inExplore);
-        this.props.loggedInUser && socketService.emit('user-join', this.props.loggedInUser._id)
+        window.addEventListener('click', this.handleClick)
+        window.addEventListener('scroll', this.handleScroll)
     }
 
-
     componentWillUnmount() {
-        window.removeEventListener('scroll', () => {
-        })
-        // socketService.off('user-join')
+        window.removeEventListener('click', this.handleClick)
+        window.removeEventListener('scroll', this.handleScroll)
     }
 
     handleScroll = () => {
-
         this.setState({ isFilterShown: false })
-
         if (window.pageYOffset > 50) {
             this.setState({ navBackground: true });
         } else {
-            if (this.state.nav) {
-                this.setState({ nav: false });
-            }
+            this.setState({ navBackground: false });
         }
+    }
 
+    handleClick = () => {
+        if (this.state.isProfileShown && window.event.clientY > 80) {
+            this.setState({ isProfileShown: false })
+        }
+    }
+
+    onLogout = () => {
+        this.props.logout()
     }
 
     toggleDropdown = () => {
@@ -61,67 +60,65 @@ class _Header extends Component {
         this.setState({ isFilterShown: !this.state.isFilterShown }
         )
     }
-    setListeners = () => {
-        
-    }
+
 
 
     render() {
 
         const { loggedInUser, inExplore, isShowSearch } = this.props
-        const { isProfileShown, nav, isFilterShown } = this.state
+        const { isProfileShown, navBackground, isFilterShown } = this.state
 
         return (
-            <header className={ `main-header ${nav && 'nav-white'} main-container` }>
+            <header className={`main-header ${navBackground && 'nav-white'}  ${!navBackground && 'nav-transparent'}   main-container`}>
                 < nav className="header-container" >
-                    <NavLink onClick={ () => this.props.loadPets() } to="/">
+                    <NavLink onClick={() => this.props.loadPets()} to="/">
                         <div className="logo-container flex">
                             <Logo className="logo" />
-                            <h1 className={ `logo-title  ${nav && 'black'} ${inExplore && 'black'} ` }>PetMe</h1>
+                            <h1 className={`logo-title ${navBackground && 'black'} ${inExplore && 'black'} `}>PetMe</h1>
                         </div>
                     </NavLink>
 
                     <section className="filter-section">
-                        { isShowSearch && !isFilterShown && <div className="explore-search">
-                            <span onClick={ () => this.onToggleFilter() } > Start your search</span>
-                            {/* <span onClick={() => this.onToggleFilter()} > Start your search</span> */ }
+                        {isShowSearch && !isFilterShown && <div className="explore-search">
+                            <span onClick={() => this.onToggleFilter()} > Start your search</span>
+                            {/* <span onClick={() => this.onToggleFilter()} > Start your search</span> */}
                             <div className="search-btn-explore">
-                                <img className="filter-search" src={ magnifyingGlass } alt="glass" />
+                                <img className="filter-search" src={magnifyingGlass} alt="glass" />
                             </div>
-                        </div> }
-                        { isShowSearch && isFilterShown && <div className="explore-search">
+                        </div>}
+                        {isShowSearch && isFilterShown &&
                             < PetFilter />
-                        </div> }
+                        }
                     </section>
 
                     <div>
-                        {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */ }
+                        {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */}
                     </div>
 
 
                     <div className="right-nav">
-                        <NavLink className={ `explore-btn ${this.state.navBackground && 'black'} ${inExplore && 'black'} ` }
+                        <NavLink className={`explore-btn ${navBackground && 'black'} ${inExplore && 'black'} `}
                             to='/explore/?gender=&age=&type=&location=&size='>
                             Explore</NavLink>
-                        <div onClick={ () => this.toggleDropdown() } className="login-profile">
-                            { isProfileShown && <div className="user-dropdown">
+                        <div onClick={() => this.toggleDropdown()} className="login-profile">
+                            {isProfileShown && <div className="user-dropdown">
                                 <div className="dropdown-list">
-                                    { (loggedInUser) && <Link to='/profile' >
+                                    {(loggedInUser) && <Link to='/profile' >
                                         <span>Profile</span>
-                                    </Link> }
+                                    </Link>}
 
-                                    { (loggedInUser) &&
-                                        <a href="" onClick={ () => this.onLogout() }>Logout</a>
+                                    {(loggedInUser) &&
+                                        <a href="" onClick={() => this.onLogout()}>Logout</a>
                                     }
-                                    { (!loggedInUser) && <Link to='/login' >
+                                    {(!loggedInUser) && <Link to='/login' >
                                         <span>Login</span>
-                                    </Link> }
+                                    </Link>}
                                 </div>
-                            </div> }
+                            </div>}
 
-                            <img src={ menuIcon } alt="icon" />
-                            { (!loggedInUser) && <img src={ userIcon } alt="icon" /> }
-                            { (loggedInUser) && <img className="profile-icon" src={ loggedInUser.imgUrl } alt="icon" /> }
+                            <img src={menuIcon} alt="icon" />
+                            {(!loggedInUser) && <img src={userIcon} alt="icon" />}
+                            {(loggedInUser) && <img className="profile-icon" src={loggedInUser.imgUrl} alt="icon" />}
                         </div>
                     </div>
                 </nav >
