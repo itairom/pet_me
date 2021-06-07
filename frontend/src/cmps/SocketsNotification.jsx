@@ -9,22 +9,28 @@ import { socketService } from '../services/socketService'
 
 export class SocketsNotification extends Component {
   state = {
+
   }
 
-  async componentDidMount() {
-    socketService.on('adopt-requested', (data) => {
-      console.log(data)
-      this.adoptNotify(data.msg)
+  componentDidMount() {
+    socketService.on('adopt-request-owner', (msg) => {
+      console.log('messging the owner')
+      this.adoptNotify(msg)
     });
-    socketService.on('aprove-adoption', (data) => {
-      console.log(data)
-      this.adoptNotify('just Aproved you adopt request!')
+    socketService.on('adopt-request-requester', (msg) => {
+      console.log('messging the requester')
+      this.adoptNotify(msg)
+    });
+    socketService.on('already-requested', (msg) => {
+      this.alertNotify(msg)
     });
   }
 
   componentWillUnmount() {
-    console.log('unmount')
-    socketService.off('adopt-requested')
+    console.log('SocketsNotification - unmount')
+    socketService.off('adopt-request-owner')
+    socketService.off('adopt-request-requester')
+    socketService.off('already-requested')
   }
 
   adoptNotify = (msg) => {
@@ -32,22 +38,40 @@ export class SocketsNotification extends Component {
       title: "Wonderful!",
       message: msg,
       type: "info",
-      insert: "top-right",
-      container: "bottom-full",
+      insert: "top",
+      container: "bottom-right",
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
-        duration: 5000,
-        onScreen: true
+        duration: 4000,
+        onScreen: false
+      }
+    });
+  }
+  alertNotify = (msg) => {
+    store.addNotification({
+      title: "",
+      message: '',
+      type: "info",
+      insert: "top",
+      container: "bottom-right",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 4000,
+        onScreen: false
       }
     });
   }
   render() {
 
     return (
-      <Link to='/profile' >
+      // <Link to='/profile' >
+      // <Link>
+      <>
         <ReactNotification />
-      </Link>
+      </>
+      // </Link>
 
     )
   }

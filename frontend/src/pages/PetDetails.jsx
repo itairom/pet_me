@@ -48,9 +48,6 @@ class _PetDetails extends Component {
         const id = this.props.match.params.petId;
         // socketService.setup()
         // socketService.emit('adopt-request', id)
-        socketService.on('eyal', () => {
-            console.log('im on!')
-        })
 
         this.props.loadPets()
             .then(() => {
@@ -103,7 +100,8 @@ class _PetDetails extends Component {
         const data = {
             owner: owner,
             petId: pet._id,
-            msg: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click to view`,
+            msgToOwner: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click to view`,
+            msgToRequester: `${loggedInUser.fullname} recived your adopt request \n Click to view`,
             newRequest: {
                 date: Date.now(),
                 fullname: loggedInUser.fullname,
@@ -113,7 +111,6 @@ class _PetDetails extends Component {
             }
         }
         this.props.newAdoptRequest(data)
-        // AdoptAction()
     }
 
 
@@ -158,11 +155,21 @@ class _PetDetails extends Component {
                         </span>
                     </div>
                 </header>
-                <div className="details-imgs-container grid">
-                    { pet.imgUrls.map((imgUrl, idx) => {
-                        return <img key={ pet._id + idx } src={ imgUrl } alt="skeleton" />
-                    }) }
-                </div>
+                {!isMobileScreen &&
+                    <div className="details-imgs-container grid">
+                        {pet.imgUrls.map((imgUrl, idx) => {
+                            return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
+                        })}
+                    </div>}
+                {isMobileScreen &&
+                    <div className="details-imgs-container grid">
+                        <Slider {...settings}>
+                            {pet.imgUrls.map((imgUrl, idx) => {
+                                return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
+                            })}
+                        </Slider>
+                     </div>
+                    }
                 <div className="details-main-section flex">
 
                     <div className="details-info-container">
@@ -271,7 +278,7 @@ const mapDispatchToProps = {
     toggleLike,
     loadPets,
     loadUsers,
-    newAdoptRequest,    
+    newAdoptRequest,
     onExplore
 }
 

@@ -29,13 +29,14 @@ class _HomepagePreview extends React.Component {
         likedPets.splice(4)
         this.setState({ likedPets })
     }
+
     setMostWaitingPets = () => {
         let mostWaitingPets = [...this.props.pets]
         mostWaitingPets.sort((a, b) => {
-            if (a.createdAt > b.createdAt) {
+            if (b.addedAt > a.addedAt) {
                 return -1
             }
-            if (a.createdAt < b.createdAt) {
+            if (a.addedAt < b.addedAt) {
                 return 1
             }
         })
@@ -53,18 +54,18 @@ class _HomepagePreview extends React.Component {
                 <section className="type-cards preview-homepage">
                     <h2 className="type-cards-title">Waiting long time to adopt</h2>
                     <div className="preview-cards">
-                        {mostWaitingPets.map(previewPet => {
-                            return <PetPreview pet={previewPet} key={previewPet._id} />
-                        })}
+                        { mostWaitingPets.map(previewPet => {
+                            return <PetPreview pet={ previewPet } key={ previewPet._id } />
+                        }) }
                     </div>
                 </section>
 
                 <section className="type-cards preview-homepage">
                     <h2 className="type-cards-title">Most Liked Pets</h2>
                     <div className="preview-cards">
-                        {likedPets.map(previewPet => {
-                            return <PetPreview pet={previewPet} key={previewPet._id} />
-                        })}
+                        { likedPets.map(previewPet => {
+                            return <PetPreview pet={ previewPet } key={ previewPet._id } />
+                        }) }
                     </div>
                 </section>
             </>

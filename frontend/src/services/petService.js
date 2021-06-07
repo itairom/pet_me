@@ -1,7 +1,7 @@
 // import { addComment } from '../store/actions/petActions';
 import { storageService } from './asyncStorageService'
 import { httpService } from '../services/httpService'
-import { utilService } from '../services/utilService'
+import { utilService } from './utilService';
 window.storageService = storageService;
 
 export const petService = {
@@ -41,8 +41,7 @@ async function addComment(newComment, pet) {
     const updatedPet = { ...pet }
     const { loggedInUser, txt } = newComment
     newComment = {
-
-
+        id: 'c' + utilService.makeId(6),
         txt,
         created: Date.now(),
         _id:utilService.makeId(),

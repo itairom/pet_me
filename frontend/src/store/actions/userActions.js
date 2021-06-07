@@ -37,23 +37,18 @@ export function removeUser(userId) {
   }
 }
 
-
 export function login(userCreds) {
-  // console.log("🚀 ~ file: userActions.js ~ line 42 ~ login ~ userCreds", userCreds)
   return async dispatch => {
     try {
       const user = await userService.login(userCreds)
-      // const user = await userService.login(userCreds)
-      // .then(x => {
-      socketService.emit('user-watch', user._id)
-      // })
-      // console.log("🚀 ~ file: userActions.js ~ line 36 ~ login ~ user", user)
+      socketService.emit('user-join', user._id)
       dispatch({ type: 'SET_USER', user })
     } catch (err) {
       console.log('UserActions: err in login', err)
     }
   }
 }
+
 export function signup(userCreds) {
   return async dispatch => {
     try {
@@ -64,12 +59,13 @@ export function signup(userCreds) {
     }
   }
 }
-export function logout() {
+
+export function logout(userId) {
   console.log('logout');
   return async dispatch => {
+    // socketService.off(userId)
     try {
       await userService.logout()
-      // socketService.off(user._id)
       dispatch({ type: 'SET_USER', user: null })
     } catch (err) {
       console.log('UserActions: err in logout', err)
@@ -106,19 +102,31 @@ export function newAdoptRequest(data) { // Action Creator
   }
 }
 export function approveAdopt(data) { // Action Creator
-  return dispatch => {
-    return userService.saveNewApprove(data)
-      .then((updatedUser) => {
-        socketService.emit('adopt-request', data)
-        console.log('im in user action after service')
-        const action = {
-          type: 'UPDATE_USER',
-          user: updatedUser
-        }
-        dispatch(action)
-      })
+  return async dispatch => {
+    const updatedUsers = await userService.saveNewApprove(data)
+    // console.log(updatedUsers)
+    console.log('updating oldOwner')
+    socketService.emit('update-new-owner', updatedUsers.updatedOwner)
+    const action = {
+      type: 'UPDATE_USER',
+      user: updatedUsers.updatedLoggedInUser
+    }
+    socketService.emit('approve-requested', data)
+    dispatch(action)
   }
 }
+export function approveAdoptToOwner(newOwner) { // Action Creator
+  return async dispatch => {
+    const updatedNewOwner = await userService.update(newOwner)
+    console.log('updating newOwner user')
+    const action = {
+      type: 'UPDATE_USER',
+      user: updatedNewOwner
+    }
+    dispatch(action)
+  }
+}
+
 export function onExplore() {
   return dispatch => {
     const action = {

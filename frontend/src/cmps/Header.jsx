@@ -26,11 +26,14 @@ class _Header extends Component {
     componentDidMount() {
         window.addEventListener('click', this.handleClick)
         window.addEventListener('scroll', this.handleScroll)
+        this.props.loggedInUser && socketService.emit('user-join', this.props.loggedInUser._id)
+
     }
 
     componentWillUnmount() {
         window.removeEventListener('click', this.handleClick)
         window.removeEventListener('scroll', this.handleScroll)
+        // socketService.off('user-join')
     }
 
     handleScroll = () => {
@@ -75,25 +78,25 @@ class _Header extends Component {
                     <NavLink  to="/">
                         <div className="logo-container flex">
                             <Logo className="logo" />
-                            <h1 className={`logo-title ${navBackground && 'black'} ${inExplore && 'black'} `}>PetMe</h1>
+                            <h1 className={ `logo-title ${navBackground && 'black'} ${inExplore && 'black'} ` }>PetMe</h1>
                         </div>
                     </NavLink>
 
                     <section className="filter-section">
-                        {isShowSearch && !isFilterShown && <div className="explore-search">
-                            <span onClick={() => this.onToggleFilter()} > Start your search</span>
-                            {/* <span onClick={() => this.onToggleFilter()} > Start your search</span> */}
+                        { isShowSearch && !isFilterShown && <div className="explore-search">
+                            <span onClick={ () => this.onToggleFilter() } > Start your search</span>
+                            {/* <span onClick={() => this.onToggleFilter()} > Start your search</span> */ }
                             <div className="search-btn-explore">
-                                <img className="filter-search" src={magnifyingGlass} alt="glass" />
+                                <img className="filter-search" src={ magnifyingGlass } alt="glass" />
                             </div>
-                        </div>}
-                        {isShowSearch && isFilterShown &&
+                        </div> }
+                        { isShowSearch && isFilterShown &&
                             < PetFilter />
                         }
                     </section>
 
                     <div>
-                        {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */}
+                        {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */ }
                     </div>
 
 
@@ -101,25 +104,25 @@ class _Header extends Component {
                         <NavLink onClick={() => this.props.loadPets()} className={`explore-btn ${navBackground && 'black'} ${inExplore && 'black'} `}
                             to='/explore/?gender=&age=&type=&location=&size='>
                             Explore</NavLink>
-                        <div onClick={() => this.toggleDropdown()} className="login-profile">
-                            {isProfileShown && <div className="user-dropdown">
+                        <div onClick={ () => this.toggleDropdown() } className="login-profile">
+                            { isProfileShown && <div className="user-dropdown">
                                 <div className="dropdown-list">
-                                    {(loggedInUser) && <Link to='/profile' >
+                                    { (loggedInUser) && <Link to='/profile' >
                                         <span>Profile</span>
-                                    </Link>}
+                                    </Link> }
 
-                                    {(loggedInUser) &&
-                                        <a href="" onClick={() => this.onLogout()}>Logout</a>
+                                    { (loggedInUser) &&
+                                        <a href="" onClick={ () => this.onLogout() }>Logout</a>
                                     }
-                                    {(!loggedInUser) && <Link to='/login' >
+                                    { (!loggedInUser) && <Link to='/login' >
                                         <span>Login</span>
-                                    </Link>}
+                                    </Link> }
                                 </div>
-                            </div>}
+                            </div> }
 
-                            <img src={menuIcon} alt="icon" />
-                            {(!loggedInUser) && <img src={userIcon} alt="icon" />}
-                            {(loggedInUser) && <img className="profile-icon" src={loggedInUser.imgUrl} alt="icon" />}
+                            <img src={ menuIcon } alt="icon" />
+                            { (!loggedInUser) && <img src={ userIcon } alt="icon" /> }
+                            { (loggedInUser) && <img className="profile-icon" src={ loggedInUser.imgUrl } alt="icon" /> }
                         </div>
                     </div>
                 </nav >

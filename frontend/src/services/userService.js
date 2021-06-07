@@ -1,5 +1,7 @@
 import { storageService } from './asyncStorageService'
 import { httpService } from '../services/httpService'
+import { socketService } from '../services/socketService'
+
 
 
 
@@ -29,6 +31,7 @@ function getUsers() {
 function getById(userId) {
   return httpService.get(`user/${userId}`)
 }
+
 function remove(userId) {
   return httpService.delete(`user/${userId}`)
 }
@@ -76,39 +79,65 @@ async function saveNewRequest(data) {
   console.log('im in userService (front)')
   const { newRequest, owner, petId } = data
   const petIdx = owner.pets.findIndex(pet => pet._id === petId)
-  const isAlreadyRequested = owner.pets[petIdx].adoptQue.some(pet => pet.userId === newRequest.userId)
-  if (!isAlreadyRequested) {
-    const updatedOwner = owner
-    updatedOwner.pets[petIdx].adoptQue.push(newRequest)
-    return await update(updatedOwner)
-  }
-  else {
-    // add toggle and splice the que from the array, then send update(updatedOwner)
-    // in the jsx change the button to "Adopt" again
-    return console.log('You already requested the owner, please wait for a response')
+  if (owner && owner.pets[petIdx] && owner.pets[petIdx].adoptQue) {
+    const isAlreadyRequested = owner.pets[petIdx].adoptQue.some(pet => pet.userId === newRequest.userId)
+    if (!isAlreadyRequested) {
+      const updatedOwner = owner
+      updatedOwner.pets[petIdx].adoptQue.push(newRequest)
+      return await update(updatedOwner)
+    }
+    else {
+      // add toggle and splice the que from the array, then send update(updatedOwner)
+      // in the jsx change the button to "Adopt" again
+      socketService.emit('already-requested', 'You already requested the owner, please wait for him to response')
+      // console.log('You already requested the owner, please wait for a response') 
+      return
+
+    }
   }
 }
 
 
 async function saveNewApprove(data) {
   const { pet, req, loggedInUser, idx } = data
-  const newPet = {
+
+  // let newOwner = await getById(loggedInUser._id)
+  // let newOwner = await getById(req.userId)
+  let newOwner = await getById(req.userId)
+
+  console.log('newOwner', newOwner)
+
+  const newOwnerPet = {
     _id: pet._id,
     isAdopted: true,
     formerOwnerId: loggedInUser._id,
     adoptQue: []
   }
-  let newOwner = getById(req.userId)
+
+  const oldOwnerPet = {
+    _id: pet._id,
+    isAdopted: true,
+    newOwner: req._id,
+    formerOwnerId: loggedInUser._id,
+    adoptQue: []
+  }
+
   newOwner = {
     ...newOwner,
-    pets: [...newOwner.pets, newOwner.pets.push(newPet)]
+    pets: [...newOwner.pets, newOwner.pets.push(newOwnerPet)]
   }
+
   const newLoggedInUser = {
     ...loggedInUser,
-    pets: [...loggedInUser.pets, loggedInUser.pets.splice(idx, 1)]
-
+    oldPets: (loggedInUser.oldPets) ?
+      (!loggedInUser.oldPets.some(oldPet => oldPet._id === pet._id) ?
+        [...loggedInUser.oldPets, loggedInUser.oldPets.push(oldOwnerPet)] : [...loggedInUser.oldPets])
+      : [oldOwnerPet],
+    pets: [loggedInUser.pets.splice(idx, 1), ...loggedInUser.pets]
   }
+
+  console.log(newOwner, newLoggedInUser)
   const updatedOwner = await update(newOwner)
   const updatedLoggedInUser = await update(newLoggedInUser)
-  return { updatedOwner, updatedLoggedInUser }
+  return Promise.resolve({ updatedOwner, updatedLoggedInUser })
 }
