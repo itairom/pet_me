@@ -48,14 +48,14 @@ export function login(userCreds) {
     }
   }
 }
-export function getUser(user) {
+export function getUser(userId) {
   return async dispatch => {
     try {
-      const user = await userService.getById(user)
+      const user = await userService.getById(userId)
       socketService.emit('user-join', user._id)
       dispatch({ type: 'SET_USER', user })
     } catch (err) {
-      console.log('UserActions: err in login', err)
+      // console.log('UserActions: err in login', err)
     }
   }
 }
@@ -84,31 +84,20 @@ export function logout(userId) {
   }
 }
 
-export function adoptRequest(request) {
-  return dispatch => {
-    return userService.adoptRequest(request)
-      .then(request => {
-        console.log("🚀 ~ file: userActions.js ~ line 69 ~ adoptRequest ~ request", request)
-        const action = {
-          type: 'ADD_REQUEST', request
-        }
-        dispatch(action)
-      })
-  }
-}
 
 export function newAdoptRequest(data) { // Action Creator
   return dispatch => {
+    socketService.emit('adopt-request', data)
     console.log('im in user action before service')
     return userService.saveNewRequest(data)
       .then((updatedUser) => {
-        socketService.emit('adopt-request', data)
         console.log('im in user action after service')
         const action = {
           type: 'UPDATE_USER',
           user: updatedUser
         }
         dispatch(action)
+        // getUser()
       })
   }
 }
@@ -123,7 +112,7 @@ export function approveAdopt(data) { // Action Creator
       user: updatedUsers.updatedLoggedInUser
     }
     socketService.emit('approve-requested', data)
-    dispatch(action)
+    // dispatch(action)
   }
 }
 export function approveAdoptToOwner(newOwner) { // Action Creator

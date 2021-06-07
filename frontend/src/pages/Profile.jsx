@@ -25,17 +25,19 @@ class _Profile extends Component {
         isRemoveReq: false,
         reqBtnTxt: '',
         adoptionRequestsInfo: [],
-        loggedInUser: null
+        loggedInUser: null,
+        IncomingLiveData: null
+
     }
 
     componentDidMount() {
-        console.log('mounted')
+        // console.log('mounted')
         window.scrollTo(0, 0)
         this.loadLoggedInUser()
-
         this.onLoadPets()
         // this.onLoadRequests()
         this.props.onExplore()
+        this.socketListeners()
     }
 
     componentWillUnmount() {
@@ -46,6 +48,7 @@ class _Profile extends Component {
         const loggedInUser = this.props.getUser(this.props.loggedInUser)
         this.setState({ loggedInUser })
     }
+
     onLoadPets = () => {
         this.props.loadPets()
             .then(() => {
@@ -54,27 +57,22 @@ class _Profile extends Component {
                 }).flatMap(e => e)
                 this.setState({ userPets })
             })
-        // this.props.loadPets()
-        // .then(() => {
-        //     const pet = this.props.pets.find(pet => pet._id === id)
-        //     this.props.loadUsers()
-        //         .then(() => {
-        //             const user = this.props.users.find(user => user._id === pet.owner._id)
-        //             this.setState({ pet, owner: user, loggedInUser: this.props.loggedInUser })
-        //         })
-        // })    // socketService
-        // if(this.props.pets.length > 0) {
-        // let userPets = this.props.loggedInUser.pets.map(userPet => {
-        //     return pets.filter(pet => userPet._id === pet._id)
-        // })
-
-        // else {
-        //     userPets = this.props.loadPets()
-        //     console.log(userPets)
-        // }
-        // this.setState({ userPets })
     }
 
+    socketListeners = () => {
+        console.log('im listening profile')
+        socketService.on('adopt-request-owner-data', (data) => {
+            console.log(data)
+            //1
+            //savedata
+            //render all cmp
+            
+            this.setState({ IncomingLiveData: data })
+            //2
+            //rederstate - work render IncomingLiveData? render
+            //savedata
+        })
+    }
 
 
     onLoadRequests = () => {
@@ -115,7 +113,7 @@ class _Profile extends Component {
         // const userPets = this.props.loggedInUser.pets.map(pet => {
         //     return this.props.pets.filter(userPet => userPet._id === pet._id)
         // }).flatMap(e => e)
-        console.log(userPets)
+        // console.log(userPets)
         if (!loggedInUser) return <img src={ Loader } alt="loadnig" />
         if (!userPets) return <img src={ Loader } alt="loadnig" />
         return (
@@ -147,6 +145,7 @@ class _Profile extends Component {
 
                     <div className="user-pets">
                         <h1>My pets</h1>
+                        <h1>{ this.state.IncomingLiveData && this.state.IncomingLiveData.petId }</h1>
                         { userPets.map((pet, idx) => {
                             return (
                                 <div className="adopt-card flex" key={ utilService.makeId(6) }>
@@ -202,7 +201,7 @@ class _Profile extends Component {
                                             return (
                                                 <div className="request-card flex column" key={ utilService.makeId(6) }>
                                                     <div className="main-card-section">
-                                                        {/* <img src={ pet.imgUrl[0] } alt="pet-img" className="pet-img" /> */}
+                                                        {/* <img src={ pet.imgUrl[0] } alt="pet-img" className="pet-img" /> */ }
                                                         <div className="request-info">
                                                             <div className="req-owner-name flex">
                                                                 <h3>From:</h3>

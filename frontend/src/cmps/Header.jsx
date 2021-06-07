@@ -12,6 +12,8 @@ import { loadPets } from '../store/actions/petActions'
 import { approveAdoptToOwner } from '../store/actions/userActions'
 import { PetFilter } from './PetFilter'
 import { ReactComponent as Logo } from '../assets/img/svg/logo1.svg'
+import { SocketsNotification } from '../cmps/SocketsNotification'
+
 
 
 
@@ -100,6 +102,7 @@ class _Header extends Component {
 
                     <div>
                         {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */ }
+                        <SocketsNotification />
                     </div>
 
 

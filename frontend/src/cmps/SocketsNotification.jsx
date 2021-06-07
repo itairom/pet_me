@@ -13,6 +13,7 @@ export class SocketsNotification extends Component {
   }
 
   componentDidMount() {
+    console.log('SocketsNotification is running')
     socketService.on('adopt-request-owner', (msg) => {
       console.log('messging the owner')
       this.adoptNotify(msg)
@@ -31,6 +32,7 @@ export class SocketsNotification extends Component {
     socketService.off('adopt-request-owner')
     socketService.off('adopt-request-requester')
     socketService.off('already-requested')
+    console.log('SocketsNotification is off')
   }
 
   adoptNotify = (msg) => {
@@ -39,7 +41,7 @@ export class SocketsNotification extends Component {
       message: msg,
       type: "info",
       insert: "top",
-      container: "bottom-right",
+      container: "bottom-full",
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {

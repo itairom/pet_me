@@ -17,7 +17,7 @@ function connectSockets(http, session) {
     gIo.on('connection', socket => {
         // console.log('New socket - socket.handshake.sessionID', socket.handshake.sessionID)
         gSocketBySessionIdMap[socket.handshake.sessionID] = socket
-        // if (socket.handshake?.session?.user) socket.join(socket.handshake.session.user._id)
+        if (socket.handshake?.session?.user) socket.join(socket.handshake.session.user._id)
         socket.on('disconnect', socket => {
             console.log('Someone disconnected')
             if (socket.handshake) {
@@ -29,9 +29,10 @@ function connectSockets(http, session) {
             if (socket.myTopic === id) return;
             if (socket.myTopic) {
                 socket.leave(socket.myTopic)
+                console.log('user-leave topic', id)
             }
             socket.join(id, function () {
-                console.log('user-join', id)
+                console.log('user-join topic', id)
             })
             socket.myTopic = id
         })
@@ -39,8 +40,12 @@ function connectSockets(http, session) {
         socket.on('adopt-request', data => {
             console.log('im in socket on in backend', data.owner._id, data.newRequest.userId)
             emitToUser({ type: 'adopt-request-owner', data: data.msgToOwner, userId: data.owner._id })
+
+            emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
+            
             emitToUser({ type: 'adopt-request-requester', data: data.msgToRequester, userId: data.newRequest.userId })
         })
+        
         socket.on('update-new-owner', newOwner => {
             console.log('socket recived - newOwner: ', newOwner)
             emitToUser({ type: 'sending-new-owner-to-save', data: newOwner, userId: newOwner._id })

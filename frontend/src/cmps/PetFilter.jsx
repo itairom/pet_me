@@ -78,34 +78,34 @@ class _PetFilter extends React.Component {
             <section className='pet-filter'>
                 <div className="filter-select pet-select">
                     <label >Pet</label>
-                    <label onClick={() => this.onToggleSelect('type')} className="select-label">
-                        <label >{type}{!type && 'select'}</label>
-                        {toggleSelect.type && <FilterSelect key={type} handleChange={this.handleChange} options={options.type} name="type" />}
+                    <label onClick={ () => this.onToggleSelect('type') } className="select-label">
+                        <label >{ type }{ !type && 'any' }</label>
+                        { toggleSelect.type && <FilterSelect key={ type } handleChange={ this.handleChange } options={ options.type } name="type" /> }
                     </label>
 
                 </div>
                 <div className="filter-select gender-select">
                     <label >Gender</label>
-                    <label onClick={() => this.onToggleSelect('gender')} className="select-label">
-                        <label >{gender}{!gender && 'select'}</label>
-                        {toggleSelect.gender && <FilterSelect key={gender} handleChange={this.handleChange} options={options.gender} name="gender" />}
+                    <label onClick={ () => this.onToggleSelect('gender') } className="select-label">
+                        <label >{ gender }{ !gender && 'any' }</label>
+                        { toggleSelect.gender && <FilterSelect key={ gender } handleChange={ this.handleChange } options={ options.gender } name="gender" /> }
                     </label>
 
 
                 </div>
                 <div className="filter-select age-select">
                     <label >Age</label>
-                    <label onClick={() => this.onToggleSelect('age')} className="select-label">
-                        <label >{age}{!age && 'select'}</label>
-                        {toggleSelect.age && <FilterSelect key={age} handleChange={this.handleChange} options={options.age} name="age" />}
+                    <label onClick={ () => this.onToggleSelect('age') } className="select-label">
+                        <label >{ age }{ !age && 'any' }</label>
+                        { toggleSelect.age && <FilterSelect key={ age } handleChange={ this.handleChange } options={ options.age } name="age" /> }
                     </label>
 
                 </div>
                 <div className="filter-select size-select">
                     <label >Size</label>
-                    <label onClick={() => this.onToggleSelect('size')} className="select-label">
-                        <label >{size}{!size && 'select'}</label>
-                        {toggleSelect.size && <FilterSelect key={size} handleChange={this.handleChange} options={options.size} name="size" />}
+                    <label onClick={ () => this.onToggleSelect('size') } className="select-label">
+                        <label >{ size }{ !size && 'any' }</label>
+                        { toggleSelect.size && <FilterSelect key={ size } handleChange={ this.handleChange } options={ options.size } name="size" /> }
                     </label>
 
 
@@ -113,13 +113,13 @@ class _PetFilter extends React.Component {
                 </div>
                 <div className="filter-select location-select">
                     <label className="location-label">Location</label>
-                    <input placeholder="Enter location" className='location-select' value={location} onChange={this.handleChangeInput} name="location"  ></input>
+                    <input placeholder="Enter location" className='location-select' value={ location } onChange={ this.handleChangeInput } name="location"  ></input>
                 </div>
 
 
 
-                <button className="search-btn filter-select" onClick={this.onSubmitFilter}>
-                    <img className="filter-search" src={magnifyingGlass} alt="glass" />
+                <button className="search-btn filter-select" onClick={ this.onSubmitFilter }>
+                    <img className="filter-search" src={ magnifyingGlass } alt="glass" />
                 </button>
             </section>
         )
