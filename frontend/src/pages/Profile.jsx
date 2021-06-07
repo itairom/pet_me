@@ -49,6 +49,7 @@ class _Profile extends Component {
         }
         else {
             userPets = this.props.loadPets()
+            console.log(userPets)
         }
         this.setState({ userPets })
     }
@@ -88,17 +89,14 @@ class _Profile extends Component {
     }
 
     render() {
-        // console.log("🚀 ~ file: Profile.jsx ~ line 44 ~ _Profile ~ render ~ loggedInUser", loggedInUser)
         const { loggedInUser } = this.props
         // const { userPets } = this.state
         const userPets = this.props.loggedInUser.pets.map(pet => {
             return this.props.pets.filter(userPet => userPet._id === pet._id)
         }).flatMap(e => e)
         console.log(userPets)
-        // const { adoptionRequestsInfo } = this.state
-        // console.log('adoptionRequestsInfo', adoptionRequestsInfo)
-        if (!loggedInUser) return <img src={Loader} alt="loadnig" />
-        // if (!userPets) return <img src={ Loader } alt="loadnig" />
+        if (!loggedInUser) return <img src={ Loader } alt="loadnig" />
+        if (!userPets) return <img src={ Loader } alt="loadnig" />
         return (
 
             <section className="main-profile main-container">
