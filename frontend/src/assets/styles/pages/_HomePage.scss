@@ -1,7 +1,7 @@
 .hero {
     background-image: url("https://res.cloudinary.com/dstqymucm/image/upload/v1622383981/petMe/hero-img/6_ulbdue.jpg");
     height: 90vh;
-    background-position: center;
+    background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 50px;
@@ -10,11 +10,12 @@
     background-attachment: fixed;
     display: flex;
     justify-content: center;
-
+    
     @include for-mobile-layout {
         background-image: url("https://res.cloudinary.com/dstqymucm/image/upload/v1622708465/petMe/hero-img/richard-brutyo_d8gnss.jpg");
+        background-position: center;
+        
     }
-
     .hero-content {
         user-select: none;
         display: flex;
@@ -36,7 +37,7 @@
                 margin-block-start: 130px;
 
                 @include for-mobile-layout {
-                    margin-block-start: 0;
+                    margin-block-start: 175px;
                 }
             }
 

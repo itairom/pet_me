@@ -13,7 +13,6 @@ class _Explore extends React.Component {
         sortBy: ''
     }
     async componentDidMount() {
-        console.log('cdm');
         window.scroll(0, 0)
         this.props.onExplore()
         this.props.showSearch()

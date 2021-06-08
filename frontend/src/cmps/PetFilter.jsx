@@ -30,8 +30,6 @@ class _PetFilter extends React.Component {
     }
 
     handleChange = (value, name) => {
-
-
         const { filterBy } = this.state
         this.setState({
             filterBy: {
@@ -47,11 +45,10 @@ class _PetFilter extends React.Component {
     }
 
     onToggleSelect = (by) => {
-
         const { toggleSelect } = this.state
         this.setState({
             toggleSelect: {
-                ...toggleSelect,
+                // ...toggleSelect,
                 [by]: !toggleSelect[by]
             }
         })
@@ -60,12 +57,13 @@ class _PetFilter extends React.Component {
     setOptions = () => {
         const options = {
             size: ['small', 'medium', 'big'],
-            type: ['cat', 'dog', 'rabbit', 'dog', 'parrot', 'hamster'],
+            type: ['cat', 'dog', 'rabbit', 'parrot', 'hamster'],
             gender: ['male', 'female'],
             age: ['young', 'adult', 'senior']
         }
         return options
     }
+
 
     render() {
         const options = this.setOptions()
@@ -82,7 +80,6 @@ class _PetFilter extends React.Component {
                         <label >{ type }{ !type && 'any' }</label>
                         { toggleSelect.type && <FilterSelect key={ type } handleChange={ this.handleChange } options={ options.type } name="type" /> }
                     </label>
-
                 </div>
                 <div className="filter-select gender-select">
                     <label >Gender</label>
@@ -90,8 +87,6 @@ class _PetFilter extends React.Component {
                         <label >{ gender }{ !gender && 'any' }</label>
                         { toggleSelect.gender && <FilterSelect key={ gender } handleChange={ this.handleChange } options={ options.gender } name="gender" /> }
                     </label>
-
-
                 </div>
                 <div className="filter-select age-select">
                     <label >Age</label>
@@ -107,9 +102,6 @@ class _PetFilter extends React.Component {
                         <label >{ size }{ !size && 'any' }</label>
                         { toggleSelect.size && <FilterSelect key={ size } handleChange={ this.handleChange } options={ options.size } name="size" /> }
                     </label>
-
-
-
                 </div>
                 <div className="filter-select location-select">
                     <label className="location-label">Location</label>

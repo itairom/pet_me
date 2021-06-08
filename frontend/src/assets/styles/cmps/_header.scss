@@ -99,7 +99,7 @@
         }
 
         100% {
-            margin-top: 0;
+            margin-top: 10px;
             opacity: 100%;
         }
     }
@@ -184,14 +184,16 @@
 }
 
 .resize-nav {
+    height: 132px;
     .header-container {
-        & > * {
-            margin-top: 20px;
+        .filter-section{
+            position: absolute;
+            top: 29%;  
+            left: 50%; 
+            transform: translate(-50%, -50%); 
         }
     }
     .pet-filter {
-        margin-top: 0px;
+        margin-top: 105px;
     }
-    height: 90px;
-    margin-bottom: 50px;
 }

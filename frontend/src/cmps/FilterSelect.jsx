@@ -5,15 +5,14 @@ import { connect } from 'react-redux'
 
 export class _FilterSelect extends React.Component {
     componentDidMount() {
-
     }
     render() {
         const { options, name, handleChange } = this.props
 
         return (
             <div  className={'select-modal'} >
-                {options.map(option => {
-                    return <option  onClick={() => handleChange(option, name)} >{option}</option>
+                {options.map((option,idx) => {
+                    return <option key={idx} onClick={() => handleChange(option, name)} >{option}</option>
                 })}
             </div>
         )

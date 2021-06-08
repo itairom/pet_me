@@ -1,6 +1,7 @@
-* button{
+* button {
     border-radius: 8px;
 }
+
 .main-profile {
     // margin-top: 85px;
 
@@ -15,7 +16,7 @@
     text-align: center;
     border-radius: 10px;
     margin-top: 100px;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
     @include for-normal-layout {
@@ -25,7 +26,8 @@
     .logout {
         border-radius: 8px;
         background-color: #afafaf;
-        &:hover{
+
+        &:hover {
             background-color: $clr1;
             transition: all 0.3s;
         }
@@ -41,18 +43,13 @@
 }
 
 .profile-img {
-
-    // margin-right: 20px;
     img {
         margin: 10px 0 0 0;
         width: 170px;
         height: 170px;
         border-radius: 50%;
         object-fit: cover;
-
-        @include for-normal-layout {
-            margin: 10px 10px 10px 0;
-        }
+        margin: 10px;
     }
 }
 
@@ -61,7 +58,6 @@
     left: 50px;
     display: flex;
     flex-direction: column;
-    // width: 200px;
     text-transform: capitalize;
 
     h1 {
@@ -86,9 +82,7 @@
         &.italic {
             font-size: rem(20px);
             font-style: italic;
-            // margin-bottom: 40px;
             color: #858585;
-            // margin-left: -4px;
         }
 
     }
@@ -126,7 +120,7 @@
     }
 
     & h1 {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 }
 
@@ -139,7 +133,8 @@
     // background-color: rgb(209, 230, 230);
     width: 100%;
     right: 50px;
-    h1{
+
+    h1 {
         text-align: center;
     }
 }
@@ -185,7 +180,8 @@
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 100%;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 7px -32px 46px -68px rgba(141, 133, 133, 0.75);
+
 }
 
 .table-head {
