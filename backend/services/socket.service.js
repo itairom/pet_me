@@ -8,7 +8,7 @@ function connectSockets(http, session) {
     gIo = require('socket.io')(http);
 
     const sharedSession = require('express-socket.io-session');
-    
+
 
     gIo.use(sharedSession(session, {
         autoSave: true
@@ -52,7 +52,7 @@ function connectSockets(http, session) {
             emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
 
             // //sent to header - update localUser everywhere
-            emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
+            // emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
         })
 
         socket.on('update-new-owner', newOwner => {

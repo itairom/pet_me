@@ -17,7 +17,7 @@ export class SocketsNotification extends Component {
     socketService.on('adopt-request-owner', (msg) => {
       console.log('messging the owner')
       this.setState({ location: 'profile' })
-      this.adoptNotify(msg)
+      setTimeout(() => this.adoptNotify(msg), 10000)
     });
     socketService.on('adopt-request-requester', (msg) => {
       console.log('messging the requester')
@@ -51,7 +51,7 @@ export class SocketsNotification extends Component {
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
-        duration: 4000,
+        duration: 7000,
         onScreen: false
       }
     });
