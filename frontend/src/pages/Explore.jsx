@@ -10,7 +10,9 @@ class _Explore extends React.Component {
     state = {
         isFilterShown: false,
         filterBy: null,
-        sortBy: ''
+        sortBy: '',
+        pets: [],
+        isLoading:false
     }
     async componentDidMount() {
         window.scroll(0, 0)
@@ -18,6 +20,22 @@ class _Explore extends React.Component {
         this.props.showSearch()
         await this.onSetFilter()
         await this.props.loadPets(this.state.filterBy)
+        // this.setState({ pets: this.props.pets })
+        this.setState({ isLoading: true })
+
+
+    }
+
+    async componentDidUpdate() {
+        console.log("componentDidUpdate")
+        console.log(this.state.filterBy);
+        const query = new URLSearchParams(this.state.filterBy).toString()
+        // console.log("🚀 ~ file: Explore.jsx ~ line 30 ~ _Explore ~ componentDidUpdate ~ query", query)
+        // if (query === 'gender=&type=cat&age=&size=&location=') {
+        //     console.log('in');
+            // await this.props.loadPets()
+        //     this.setState({ pets: this.props.pets })
+        // }
     }
 
     onSetSort = () => {
@@ -53,10 +71,13 @@ class _Explore extends React.Component {
     }
 
     render() {
+        console.log('render');
+
         const { pets } = this.props
-        const { isFilterShown, filterBy, sortBy } = this.state
-        if (!pets) return <img src={userIcon} alt="loading" />
+        const { filterBy,isLoading } = this.state
+        if (!pets.length) return <img src={userIcon} alt="loading" />
         if (!filterBy) return <img src={userIcon} alt="loading" />
+        if (!isLoading) return <img src={userIcon} alt="loading" />
         return (
             <section className="main-container explore-container">
 
@@ -67,10 +88,6 @@ class _Explore extends React.Component {
                     </div>
                 </div>} */}
 
-                {/* {isFilterShown && <PetFilter />} */}
-                {/* <section className="sort-by"> */}
-                {/* <FormControl className={classes.formControl}> */}
-                {/* </section> */}
 
                 <div className="filter-description">
                     {!filterBy.type && <h1 >Our pets</h1>}

@@ -4,7 +4,7 @@ import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
 import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
 import { Link } from 'react-router-dom'
 import { HeartLike } from './HeartLike'
-
+import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to image
 import Slider from "react-slick";
 
 export class PetPreview extends React.Component {
@@ -18,7 +18,7 @@ export class PetPreview extends React.Component {
             slidesToScroll: 1
         };
         const { pet } = this.props
-        if (!pet) <h1>Loading...</h1>
+        if (!pet) <img src={userIcon} alt="loading" />
         const gender = pet?.gender === 'female' ? <Female className="gender" /> : <Male className="gender" />
         return (
             <section className="pet-card-container">

@@ -1,6 +1,7 @@
    .heart {
        cursor: pointer;
        transition: 0.3s;
+       user-select: none;
 
        &.heart-empty {
            fill: lightgray !important;

@@ -21,7 +21,6 @@ class _PetFilter extends React.Component {
             age: false,
             size: false,
         },
-        rand:null
 
     }
 
@@ -43,7 +42,6 @@ class _PetFilter extends React.Component {
 
     onSubmitFilter = () => {
         const query = new URLSearchParams(this.state.filterBy)
-        this.setState({rand:true})
         if(this.props.loadPets){
             this.props.loadPets()
         }
