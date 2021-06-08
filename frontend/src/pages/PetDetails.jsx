@@ -22,7 +22,6 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { ReactComponent as Binoculars } from '../assets/img/svg/binoculars.svg'
 import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'
 // import PetsIcon from '@material-ui/icons/Pets';
-
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";
 
@@ -47,7 +46,6 @@ class _PetDetails extends Component {
         window.scroll(0, 0)
         this.props.onExplore()
         const id = this.props.match.params.petId;
-
         this.props.loadPets()
             .then(() => {
                 const pet = this.props.pets.find(pet => pet._id === id)
@@ -147,7 +145,7 @@ class _PetDetails extends Component {
             slidesToShow: 1,
             slidesToScroll: 1
         };
-        if (!pet) return <h1>loading</h1>
+        if (!pet) return <h1>Loading</h1>
 
         return (
             <section className="pet-details-section main-container">

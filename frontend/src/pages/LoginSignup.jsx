@@ -64,6 +64,7 @@ class _LoginSignup extends Component {
     } catch (err) {
       this.setState({ msg: 'Login failed, try again.' })
     }
+    this.props.history.push(`/`)
   }
 
   doSignup = async ev => {
@@ -144,30 +145,6 @@ class _LoginSignup extends Component {
         )}
         {!loggedInUser && loginSection}
         {!loggedInUser && signupSection}
-
-        {/* <hr /> */}
-        {/* <section className="admin">
-          <details>
-            <summary>Admin</summary>
-            <button onClick={this.props.loadUsers}>Refresh Users</button>
-            {this.props.isLoading && 'Loading...'}
-            {this.props.users && <ul>
-
-              {this.props.users.map(user => (
-                <li key={user._id}>
-                  <pre>{JSON.stringify(user, null, 2)}</pre>
-                  <button
-                    onClick={() => {
-                      this.removeUser(user._id)
-                    }}
-                  >
-                    Remove {user.username}
-                  </button>
-                </li>
-              ))}
-            </ul>}
-          </details>
-        </section> */}
       </div>
     )
   }

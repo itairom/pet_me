@@ -6,13 +6,18 @@ if (sessionStorage.loggedinUser) localLoggedinUser = JSON.parse(sessionStorage.l
 const initialState = {
   loggedInUser: localLoggedinUser,
   users: [],
-  userPets: [] //userId => pets
+  userPets: [], //userId => pets
+  userPetQue: [],//itai take
+  isAddingRequest: false
 }
 if (initialState.loggedInUser) socketService.emit('user-join', initialState.loggedInUser._id)
 else socketService.off('user-join')
 
 export function userReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case 'UPDATING_USER':
+      return  { ...state, isAddingRequest: true } // { ...state, userPetQue: action.user }   
+      
     case 'SET_USER':
       return { ...state, loggedInUser: action.user }
     case 'REMOVE_USER':
@@ -47,6 +52,7 @@ export function userReducer(state = initialState, action = {}) {
 
     case 'SET_SCORE':
       return { ...state, loggedInUser: { ...state.loggedInUser, score: action.score } }
+
     default:
       return state
   }

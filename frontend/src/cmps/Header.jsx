@@ -92,7 +92,7 @@ class _Header extends Component {
                             </div>
                         </div> }
                         { isShowSearch && isFilterShown &&
-                            < PetFilter />
+                            < PetFilter loadPets={loadPets} />
                         }
                     </section>
 

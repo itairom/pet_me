@@ -23,7 +23,7 @@ function connectSockets(http, session) {
         }
         // ask hila - why disconnetion
         socket.on('disconnect', socket => {
-            console.log('Someone disconnected')
+            // console.log('Someone disconnected')
             if (socket.handshake) {
                 gSocketBySessionIdMap[socket.handshake.sessionID] = null
             }

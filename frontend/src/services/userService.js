@@ -34,6 +34,7 @@ function remove(userId) {
 
 async function update(user) {
   let updatedUser = await httpService.put(`user/${user._id}`, user)
+  console.log("🚀 ~ file: userService.js ~ line 37 ~ update ~ updatedUser", updatedUser)
   return updatedUser
 }
 
