@@ -11,6 +11,8 @@ import { loadPets } from '../store/actions/petActions'
 import { approveAdoptToOwner } from '../store/actions/userActions'
 import { PetFilter } from './PetFilter'
 import { ReactComponent as Logo } from '../assets/img/svg/logo1.svg'
+import { SocketsNotification } from '../cmps/SocketsNotification'
+import SearchIcon from '@material-ui/icons/Search';
 
 
 
@@ -67,6 +69,7 @@ class _Header extends Component {
     }
 
     render() {
+
         const { loggedInUser, inExplore, isShowSearch } = this.props
         const { isProfileShown, navBackground, isFilterShown } = this.state
 
@@ -85,14 +88,17 @@ class _Header extends Component {
                         {isShowSearch && !isFilterShown && <div className="explore-search">
                             <span onClick={() => this.onToggleFilter()} > Start your search</span>
                             {/* <span onClick={() => this.onToggleFilter()} > Start your search</span> */}
-                            <div className="search-btn-explore">
-                                <img className="filter-search" src={magnifyingGlass} alt="glass" />
-                            </div>
+                            <SearchIcon className="search-btn-explore" />
                         </div>}
                         {isShowSearch && isFilterShown &&
-                            < PetFilter loadPets={loadPets} />
+                            < PetFilter />
                         }
                     </section>
+                    <div>
+                        {/* <span>{ (this.state.isRequested) ? 'requests' : '' }</span> */}
+                        <SocketsNotification />
+                    </div>
+
 
                     <div className="right-nav">
                         <NavLink onClick={() => this.props.loadPets()} className={`explore-btn ${navBackground && 'black'} ${inExplore && 'black'} `}

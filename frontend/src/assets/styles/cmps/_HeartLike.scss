@@ -4,23 +4,23 @@
        user-select: none;
 
        &.heart-empty {
-           fill: lightgray !important;
+           fill:$clr9 !important;
            transition: 0.3s;
            height: 25px;
            width: 25px;
 
            &:active {
-               fill: #FC3A3A !important;
+               fill: $clr7!important;
                transition: 0.3s;
            }
 
            &:hover {
-               fill: #FC3A3A50 !important;
+               fill: $clr8 !important;
            }
        }
 
        &.heartfill {
-           fill: #FC3A3A !important;
+           fill: $clr7 !important;
            transition: 0.3s;
            height: 25px;
            width: 25px;

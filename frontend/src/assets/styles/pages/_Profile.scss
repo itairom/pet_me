@@ -186,18 +186,16 @@
 
 .table-head {
     tr {
-        background-color: $clr9;
+        background-color: $clr1;
 
         td {
             padding-left: 10px;
 
             &:first-child {
                 padding: 10px;
-                // border-radius: 10px 0 0 0;
             }
 
             &:last-child {
-                // border-radius: 0 10px 0 0;
             }
         }
     }
@@ -217,15 +215,10 @@
         height: auto;
         transform: scale(1);
     }
-
-    // &:hover img {
-    //     transform: scale(1.1);
-    // }
 }
 
 .pet-header {
     align-items: center;
-    // background-color: #36b99f99;
     border-radius: 10px 10px 0 0;
     padding-left: 10px;
 
@@ -260,8 +253,7 @@
 
 .table-body {
     tr {
-        border-top: 1px solid #ffffff;
-        // background-color: #d3d3d3;
+        border-top: 1px solid $clr6;
     }
 
     tr:last-of-type {
@@ -285,14 +277,12 @@
     gap: 10px;
 
     & .request-card {
-        // position: absolute;
         max-width: fit-content;
         padding: 10px;
         border-radius: .3125rem;
         border: 1px solid #cac3c3;
         font-size: 13px;
 
-        // width: 600px;
         .main-card-section {
             position: relative;
             height: 100px;

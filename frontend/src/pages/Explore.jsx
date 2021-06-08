@@ -6,6 +6,7 @@ import { PetList } from '../cmps/PetList'
 import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to image
 // import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 
+
 class _Explore extends React.Component {
     state = {
         isFilterShown: false,
@@ -70,6 +71,7 @@ class _Explore extends React.Component {
         )
     }
 
+
     render() {
         console.log('render');
 
@@ -94,13 +96,13 @@ class _Explore extends React.Component {
                     { filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size }  { filterBy.type }s</span>  </h1> }
 
                     <div className="sort-form">
-                        <label >Sort By</label>
-                        <select value={ this.state.sortBy } onChange={ this.handleChange }>
-                            {/* <option value="">Any</option> */ }
+                        <label>Sort By</label>
+                        <select className="select-sort" value={this.state.sortBy} onChange={this.handleChange}>
                             <option value="createdAt">Date</option>
                             <option value="name">Name</option>
                             <option value="likes">Likes</option>
                         </select>
+
                     </div>
                 </div>
                 < PetList pets={ pets } />

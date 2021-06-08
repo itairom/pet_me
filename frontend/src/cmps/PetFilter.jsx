@@ -2,6 +2,7 @@ import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative
 import { withRouter } from 'react-router-dom'
 import React from 'react'
 import { FilterSelect } from './FilterSelect'
+import SearchIcon from '@material-ui/icons/Search';
 
 
 
@@ -109,11 +110,8 @@ class _PetFilter extends React.Component {
                     <label className="location-label">Location</label>
                     <input placeholder="Enter location" className='location-select' value={location} onChange={this.handleChangeInput} name="location"  ></input>
                 </div>
-
-
-
                 <button className="search-btn filter-select" onClick={this.onSubmitFilter}>
-                    <img className="filter-search" src={magnifyingGlass} alt="glass" />
+                    <SearchIcon className="filter-search"/>
                 </button>
             </section>
         )

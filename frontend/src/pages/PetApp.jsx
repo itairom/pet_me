@@ -5,16 +5,12 @@ import { onHome, showSearch, hideSearch } from '../store/actions/userActions'
 import { Link } from 'react-router-dom'
 import { FilterDynamic } from '../cmps/FilterDynamic'
 import { HomepagePreview } from '../cmps/HomepagePreview'
-import contact from '../assets/img/svg/contact.svg'
-import info from '../assets/img/svg/info.svg'
 import rightArrow from '../assets/img/svg/arrow-right.png'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-import { ReactComponent as Loader } from '../assets/img/loaders/loader_3.svg' // relative path to image 
+import { ReactComponent as Loader } from '../assets/img/loaders/loader_3.svg' 
 import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
-
-
+import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 class _PetApp extends React.Component {
 
@@ -83,7 +79,7 @@ class _PetApp extends React.Component {
                         <div>
                             <div className="info-title-icon">
                                 <h2>Dig into the details</h2>
-                                <img className="info-icons" src={info} alt="glass" />
+                                <InfoOutlinedIcon className="info-icons"/>
                             </div>
                             <p> Check out the photos and view pet information.
                                 Next, read user reviews and comments about the pet and its owner.
@@ -94,7 +90,7 @@ class _PetApp extends React.Component {
                             <div className="info-title-icon">
                                 <h2>Contact pet owners</h2>
                                 {/* <img className="info-icons" src={contact} alt="glass" /> */}
-                                <FontAwesomeIcon className="info-icons" icon={faAddressCard} />
+                                <ContactMailOutlinedIcon className="info-icons"/>
                             </div>
                             <p>  Once you have decided which pet you would like to adopt, contact the pet owners and keep your fingers crossed.
                             {/* <img className="arrow-icons" src={rightArrow} alt="" /> */}
