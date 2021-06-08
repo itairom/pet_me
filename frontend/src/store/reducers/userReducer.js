@@ -9,7 +9,7 @@ const initialState = {
   userPets: [] //userId => pets
 }
 if (initialState.loggedInUser) socketService.emit('user-join', initialState.loggedInUser._id)
-else socketService.off('user-join')
+// else socketService.off('user-join')
 
 export function userReducer(state = initialState, action = {}) {
   switch (action.type) {

@@ -1,5 +1,3 @@
-
-
 const asyncLocalStorage = require('./als.service');
 const logger = require('./logger.service');
 
@@ -10,6 +8,7 @@ function connectSockets(http, session) {
     gIo = require('socket.io')(http);
 
     const sharedSession = require('express-socket.io-session');
+    
 
     gIo.use(sharedSession(session, {
         autoSave: true
@@ -21,9 +20,8 @@ function connectSockets(http, session) {
             socket.join(socket.handshake.session.user._id)
             console.log(socket.handshake.session.user._id)
         }
-        // ask hila - why disconnetion
         socket.on('disconnect', socket => {
-            // console.log('Someone disconnected')
+            console.log('Someone disconnected')
             if (socket.handshake) {
                 gSocketBySessionIdMap[socket.handshake.sessionID] = null
             }
@@ -42,7 +40,7 @@ function connectSockets(http, session) {
         })
 
         socket.on('adopt-request', data => {
-            // console.log('im in socket on in backend', data.owner._id, data.newRequest.userId)
+            console.log('im in socket on in backend', data.owner._id, data.newRequest.userId)
 
             //sent to SocketsNotification - msg to owner
             emitToUser({ type: 'adopt-request-owner', data: data.msgToOwner, userId: data.owner._id })
@@ -54,7 +52,7 @@ function connectSockets(http, session) {
             emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
 
             // //sent to header - update localUser everywhere
-            // emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
+            emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
         })
 
         socket.on('update-new-owner', newOwner => {
@@ -81,7 +79,7 @@ function emitToAll({ type, data, room = null }) {
 //here is the problem
 // TODO: Need to test emitToUser feature
 function emitToUser({ type, data, userId }) {
-    // console.log('socket.service.js ~line75~, Message: ' + data, ', To: user-id: ' + userId)
+    console.log('socket.service.js ~line75~, Message: ' + data, ', To: user-id: ' + userId)
     gIo.to(userId).emit(type, data)
 }
 

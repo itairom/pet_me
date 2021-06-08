@@ -36,7 +36,7 @@ async function query(filterBy = {}) {
 }
 
 async function getById(userId) {
-    console.log('userId',userId._id)
+    // console.log('userId', userId)
     try {
         const collection = await dbService.getCollection('user')
         const user = await collection.findOne({ "_id": userId })
@@ -87,8 +87,7 @@ async function updateRequest(request) {
 }
 
 
-async function 
-update(user) {
+async function update(user) {
     try {
         // peek only updatable fields!
         const userToSave = {
