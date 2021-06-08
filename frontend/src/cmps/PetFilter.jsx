@@ -30,8 +30,6 @@ class _PetFilter extends React.Component {
     }
 
     handleChange = (value, name) => {
-
-
         const { filterBy } = this.state
         this.setState({
             filterBy: {
@@ -47,11 +45,10 @@ class _PetFilter extends React.Component {
     }
 
     onToggleSelect = (by) => {
-
         const { toggleSelect } = this.state
         this.setState({
             toggleSelect: {
-                ...toggleSelect,
+                // ...toggleSelect,
                 [by]: !toggleSelect[by]
             }
         })
@@ -60,12 +57,13 @@ class _PetFilter extends React.Component {
     setOptions = () => {
         const options = {
             size: ['small', 'medium', 'big'],
-            type: ['cat', 'dog', 'rabbit', 'dog', 'parrot', 'hamster'],
+            type: ['cat', 'dog', 'rabbit', 'parrot', 'hamster'],
             gender: ['male', 'female'],
             age: ['young', 'adult', 'senior']
         }
         return options
     }
+
 
     render() {
         const options = this.setOptions()
@@ -80,24 +78,21 @@ class _PetFilter extends React.Component {
                     <label >Pet</label>
                     <label onClick={() => this.onToggleSelect('type')} className="select-label">
                         <label >{type}{!type && 'select'}</label>
-                        {toggleSelect.type && <FilterSelect key={type} handleChange={this.handleChange} options={options.type} name="type" />}
+                        {toggleSelect.type && <FilterSelect key={'type'} handleChange={this.handleChange} options={options.type} name="type" />}
                     </label>
-
                 </div>
                 <div className="filter-select gender-select">
                     <label >Gender</label>
                     <label onClick={() => this.onToggleSelect('gender')} className="select-label">
                         <label >{gender}{!gender && 'select'}</label>
-                        {toggleSelect.gender && <FilterSelect key={gender} handleChange={this.handleChange} options={options.gender} name="gender" />}
+                        {toggleSelect.gender && <FilterSelect key={'gender'} handleChange={this.handleChange} options={options.gender} name="gender" />}
                     </label>
-
-
                 </div>
                 <div className="filter-select age-select">
                     <label >Age</label>
                     <label onClick={() => this.onToggleSelect('age')} className="select-label">
                         <label >{age}{!age && 'select'}</label>
-                        {toggleSelect.age && <FilterSelect key={age} handleChange={this.handleChange} options={options.age} name="age" />}
+                        {toggleSelect.age && <FilterSelect key={'age'} handleChange={this.handleChange} options={options.age} name="age" />}
                     </label>
 
                 </div>
@@ -105,11 +100,8 @@ class _PetFilter extends React.Component {
                     <label >Size</label>
                     <label onClick={() => this.onToggleSelect('size')} className="select-label">
                         <label >{size}{!size && 'select'}</label>
-                        {toggleSelect.size && <FilterSelect key={size} handleChange={this.handleChange} options={options.size} name="size" />}
+                        {toggleSelect.size && <FilterSelect key={'size'} handleChange={this.handleChange} options={options.size} name="size" />}
                     </label>
-
-
-
                 </div>
                 <div className="filter-select location-select">
                     <label className="location-label">Location</label>

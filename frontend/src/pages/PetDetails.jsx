@@ -57,12 +57,10 @@ class _PetDetails extends Component {
             })    // socketService.emit('adopt-request', id)
     }
     checkScreenWidth = () => {
-        console.log(window.innerWidth);
         if (window.innerWidth > 500) {
             console.log('> 500',window.innerWidth);
             this.setState({ isMobileScreen: false });
         } else {
-            console.log('< 500',window.innerWidth);
             this.setState({ isMobileScreen: true });
         }
     }
@@ -121,8 +119,7 @@ class _PetDetails extends Component {
 
     render() {
         const { isMobileScreen } = this.state
-        if (!isMobileScreen) return <h1>Loading</h1>
-        console.log("🚀 ~ file: PetDetails.jsx ~ line 129 ~ _PetDetails ~ render ~ isMobileScreen", isMobileScreen)
+        if (isMobileScreen === null) return <h1>Loading</h1>
 
         const id = this.props.match.params.petId
         const pet = this.props.pets.find(pet => pet._id === id)
@@ -238,7 +235,7 @@ class _PetDetails extends Component {
                         </div>
                         <div className="flex align-center">
                             <Paw className="paw" />
-                            <span className="adoption-time adopt-sign paw-last">{pet.name}is waiting for you</span>
+                            <span className="adoption-time adopt-sign paw-last">{pet.name} is waiting for you</span>
                         </div>
                         <button className="adopt-btn el-btn" onClick={() => this.onAdopt()}>{(this.state.isAttend) ? 'Request sent' : 'Adopt Me'}</button>
                         {/* <span><FontAwesomeIcon icon={faEnvelope} /> {pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com'}</span> */}

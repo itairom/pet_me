@@ -2,7 +2,6 @@
     display: flex;
     justify-self: center;
     background-color: white;
-    // z-index: 100;
     margin-right: auto;
     margin-left: auto;
     border-radius: 200px;
@@ -10,18 +9,19 @@
     left: 0;
     right: 0;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    line-height: 1.3;
 
     @include for-mobile-layout {
-        margin-block-end: 175px;
+        justify-content: space-between
     }
 
-    & > a {
+    &>a {
         display: flex;
         background-color: #36baa0;
         margin: 5px 15px 10px 15px;
     }
 
-    & > a:hover {
+    &>a:hover {
         background-color: #36baa0;
         box-shadow: none;
         border-radius: 50px;
@@ -48,22 +48,23 @@
     color: #6b6a6a;
     background-color: rgb(255, 255, 255);
 
-    .location-select{
-        width :65px
+    .location-select {
+        width: 65px
     }
 
     @include for-mobile-layout {
         padding: 6px 0px 6px 0;
     }
-    
+
     @include for-narrow-layout {
         padding: 10px 10px 10px 25px;
+
+        &:hover {
+            box-shadow: 0 0 10px 0 #0000001c;
+            z-index: 10;
+        }
     }
 
-    &:hover {
-        box-shadow: 0 0 10px 0 #0000001c;
-        z-index: 10;
-    }
 }
 
 .main-select {
@@ -78,10 +79,19 @@
 
 .gender-select {
     width: 25%;
+
+    @include for-mobile-layout {
+        padding: 6px px 6px 16px;
+        width: 15%;
+    }
 }
 
 .age-select {
     width: 25%;
+
+    @include for-mobile-layout {
+        width: 15%;
+    }
 }
 
 .pet-select {
@@ -90,11 +100,19 @@
 
     @include for-mobile-layout {
         padding: 6px 0px 6px 16px;
+        margin-inline-end: 10px;
     }
 }
 
 .size-select {
     width: 25%;
+
+    @include for-mobile-layout {
+        width: 15%;
+        // .select-label{
+        //     width: 50.84px;
+        // }
+    }
 }
 
 .location-select {
@@ -105,8 +123,6 @@
     min-width: 86px;
     margin: 3.5px 0;
     margin-left: -2px;
-
-
 
     @include for-mobile-layout {
         display: none;
@@ -124,12 +140,12 @@
     height: 52.5px;
     align-self: center;
     padding-right: 23px;
-    margin-right: 14px;
+    margin-right: 7px;
 
 
     @include for-mobile-layout {
-        width: 49px;
-        height: 40px;
+        width: 45px;
+        height: 44px;
         padding-right: 0;
     }
 }
@@ -143,17 +159,23 @@
     border-radius: 10px;
     right: -43px;
     text-align: center;
-
     animation: toggle-drop 0.1s;
+
     @keyframes toggle-drop {
         0% {
             opacity: 30%;
             margin-top: 0px;
         }
+
         100% {
-            margin-top: 15px;
+            margin-top: 10px;
             opacity: 100%;
         }
+    }
+
+    @include for-mobile-layout {
+        margin-top: 10px;
+
     }
 
     option {
@@ -161,6 +183,11 @@
         font-size: rem(20px);
         text-transform: capitalize;
         border-bottom: 1px solid rgb(244, 244, 244);
+
+        @include for-mobile-layout {
+            padding: 6px 15px;
+
+        }
     }
 
     option:last-of-type {
@@ -169,10 +196,15 @@
 
     option:hover {
         background-color: hsla(0, 0%, 88.6%, 0.363);
+        border-radius: 10px;
     }
+
 }
 
 .select-label {
     position: relative;
     width: 66px;
+    .select-modal {
+       
+    }
 }
