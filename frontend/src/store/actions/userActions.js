@@ -53,10 +53,9 @@ export function getUser(userId) {
   return async dispatch => {
     try {
       const user = await userService.getById(userId)
-      // socketService.emit('user-join', user._id)
       dispatch({ type: 'SET_USER', user })
     } catch (err) {
-      // console.log('UserActions: err in login', err)
+      console.log('UserActions: err in login', err)
     }
   }
 }

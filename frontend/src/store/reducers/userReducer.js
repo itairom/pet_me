@@ -6,18 +6,13 @@ if (sessionStorage.loggedinUser) localLoggedinUser = JSON.parse(sessionStorage.l
 const initialState = {
   loggedInUser: localLoggedinUser,
   users: [],
-  userPets: [], //userId => pets
-  userPetQue: [],//itai take
-  isAddingRequest: false
+  userPets: [] //userId => pets
 }
 if (initialState.loggedInUser) socketService.emit('user-join', initialState.loggedInUser._id)
 else socketService.off('user-join')
 
 export function userReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case 'UPDATING_USER':
-      return  { ...state, isAddingRequest: true } // { ...state, userPetQue: action.user }   
-      
     case 'SET_USER':
       return { ...state, loggedInUser: action.user }
     case 'REMOVE_USER':
@@ -30,12 +25,9 @@ export function userReducer(state = initialState, action = {}) {
       console.log('updating user in the reducer', action.user)
       return {
         ...state,
-        // loggedInUser: action.user
         users: state.users.map(user => {
           if (user._id === action.user._id) {
             if (user._id === state.loggedInUser._id) {
-              // checks if the user is the loggedInUser (to updating the owner(LoggedInUser) Adoption Request)
-              // ask Hila
               state.loggedInUser = action.user
             }
             return action.user; //swap the relevant user with updatedUser (action.user)
@@ -52,7 +44,6 @@ export function userReducer(state = initialState, action = {}) {
 
     case 'SET_SCORE':
       return { ...state, loggedInUser: { ...state.loggedInUser, score: action.score } }
-
     default:
       return state
   }
