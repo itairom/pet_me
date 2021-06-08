@@ -24,6 +24,8 @@ import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'
 // import PetsIcon from '@material-ui/icons/Pets';
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";
+import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to image
+
 
 import Slider from "react-slick";
 // import socket from 'socket.io-client/lib/socket'
@@ -145,7 +147,7 @@ class _PetDetails extends Component {
             slidesToShow: 1,
             slidesToScroll: 1
         };
-        if (!pet) return <h1>Loading</h1>
+        if (!pet) return  <img src={userIcon} alt="loading" />
 
         return (
             <section className="pet-details-section main-container">

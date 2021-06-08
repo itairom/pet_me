@@ -27,6 +27,7 @@ class _Header extends Component {
     }
 
     componentDidMount() {
+        console.log('cdm');
         window.addEventListener('click', this.handleClick)
         window.addEventListener('scroll', this.handleScroll)
         socketService.on('sending-new-owner-to-save', () => {
@@ -66,8 +67,6 @@ class _Header extends Component {
         this.setState({ isFilterShown: !this.state.isFilterShown }
         )
     }
-
-
 
     render() {
 
@@ -112,8 +111,8 @@ class _Header extends Component {
                                         <span>Profile</span>
                                     </Link>}
 
-                                    { (loggedInUser) &&
-                                        <a onClick={ () => this.onLogout() }>Logout</a>
+                                    {(loggedInUser) &&
+                                        <a href="" onClick={() => this.onLogout()}>Logout</a>
                                     }
                                     {(!loggedInUser) && <Link to='/login' >
                                         <span>Login</span>
