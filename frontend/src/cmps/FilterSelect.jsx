@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { PetFilter } from './PetFilter'
+// import { PetFilter } from './PetFilter'
 
 
 export class _FilterSelect extends React.Component {

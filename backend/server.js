@@ -3,9 +3,6 @@ const cors = require('cors')
 const path = require('path')
 const expressSession = require('express-session')
 
-
-
-
 const app = express()
 const http = require('http').createServer(app)
 
@@ -66,7 +63,8 @@ http.listen(port, () => {
     logger.info('Server is running on port: ' + port)
 })
 
-console.log('I am Here!, am I?')
+// console.log('I am Here!, am I?')
+console.log('\n~Server is Up!, Happy coding PetMe Admin!~\n')
 
 
 

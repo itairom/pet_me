@@ -13,11 +13,10 @@ import { LoginSignup } from './pages/LoginSignup'
 
 export function App() {
 
-  
   return (
     <div className="app flex column">
       <Router>
-        {/* <SocketsNotification /> */}
+        <SocketsNotification key={ '2312412' } />
         <Header />
         <main className="main-layout">
           <Switch>

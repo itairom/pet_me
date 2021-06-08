@@ -4,7 +4,7 @@ import { loadPets } from '../store/actions/petActions'
 import { onExplore, showSearch } from '../store/actions/userActions'
 import { PetList } from '../cmps/PetList'
 import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to image
-import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
+// import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 
 class _Explore extends React.Component {
     state = {
@@ -55,9 +55,9 @@ class _Explore extends React.Component {
 
     render() {
         const { pets } = this.props
-        const { isFilterShown, filterBy, sortBy } = this.state
-        if (!pets) return <img src={userIcon} alt="loading" />
-        if (!filterBy) return <img src={userIcon} alt="loading" />
+        const { filterBy } = this.state
+        if (!pets) return <img src={ userIcon } alt="loading" />
+        if (!filterBy) return <img src={ userIcon } alt="loading" />
         return (
             <section className="main-container explore-container">
 
@@ -68,26 +68,26 @@ class _Explore extends React.Component {
                     </div>
                 </div>} */}
 
-                {/* {isFilterShown && <PetFilter />} */}
-                {/* <section className="sort-by"> */}
-                {/* <FormControl className={classes.formControl}> */}
-                {/* </section> */}
+                {/* {isFilterShown && <PetFilter />} */ }
+                {/* <section className="sort-by"> */ }
+                {/* <FormControl className={classes.formControl}> */ }
+                {/* </section> */ }
 
                 <div className="filter-description">
-                    {!filterBy.type && <h1 >Our pets</h1>}
-                    {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span>  </h1>}
+                    { !filterBy.type && <h1 >Our pets</h1> }
+                    { filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size }  { filterBy.type }s</span>  </h1> }
 
                     <div className="sort-form">
                         <label >Sort By</label>
-                        <select value={this.state.sortBy} onChange={this.handleChange}>
-                            {/* <option value="">Any</option> */}
+                        <select value={ this.state.sortBy } onChange={ this.handleChange }>
+                            {/* <option value="">Any</option> */ }
                             <option value="createdAt">Date</option>
                             <option value="name">Name</option>
                             <option value="likes">Likes</option>
                         </select>
                     </div>
                 </div>
-                < PetList pets={pets} />
+                < PetList pets={ pets } />
             </section>
         )
     }

@@ -14,7 +14,8 @@ export const userService = {
   update,
   getLoggedinUser,
   saveNewRequest,
-  saveNewApprove
+  saveNewApprove,
+  updateLoggedInUser
 }
 
 // window.userService = userService p
@@ -32,7 +33,6 @@ function remove(userId) {
 }
 
 async function update(user) {
-  console.log('updating user')
   let updatedUser = await httpService.put(`user/${user._id}`, user)
   return updatedUser
 }
@@ -42,6 +42,7 @@ async function login(userCred) {
   const user = await httpService.post('auth/login', userCred)
   if (user) return _saveLocalUser(user)
 }
+
 async function signup(userCred) {
   const user = await storageService.post('user', userCred)
   // const user = await httpService.post('auth/signup', userCred)
@@ -53,6 +54,11 @@ async function logout() {
   // return await httpService.post('auth/logout')
 }
 
+async function updateLoggedInUser(userId) {
+  const user = await getById(userId);
+  return _saveLocalUser(user);
+}
+
 function _saveLocalUser(user) {
   sessionStorage.setItem('loggedinUser', JSON.stringify(user))
   return user
@@ -62,32 +68,32 @@ function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem('loggedinUser'))
 }
 
+
 async function saveNewRequest(data) {
-  console.log('im in userService (front)')
   const { newRequest, owner, petId } = data
   const petIdx = owner.pets.findIndex(pet => pet._id === petId)
 
-  //finding if the user(owner) already got the request
-  if (owner && owner.pets[petIdx] && owner.pets[petIdx].adoptQue) {
+
+  if (owner.pets[petIdx].adoptQue) {
+    //finding if the user(owner) already got the request
     const isAlreadyRequested = owner.pets[petIdx].adoptQue.some(pet => pet.userId === newRequest.userId)
 
-    // if user(owner) already got the request - do no push the request again.
-    if (!isAlreadyRequested) {
-      const updatedOwner = owner
-
-      //here: we push the new request to the updated user
-      updatedOwner.pets[petIdx].adoptQue.push(newRequest)
-
-      // here: turn on the save in the db (replace the old user with the new data)
-      // return await update(updatedOwner)
-      return owner
-
+    if (!isAlreadyRequested) { // if user(owner) already got the request - do no push the request again.
+      owner.pets[petIdx].adoptQue.push(newRequest)
+      const updatedOwner = await update(owner)
+      socketService.emit('adopt-request', data)
+      return updatedOwner
+      // return owner
     }
-    //future socket - for the requester
-    else {
-      socketService.emit('already-requested', 'You already requested the owner, please wait for him to response')
-      return owner
+    //future socket - for the requester {}
 
+    else {
+      const alreadyReqInfo = {
+        msg: 'You already requested the owner, please wait for him to response',
+        userId: newRequest.userId
+      }
+      socketService.emit('already-requested-msg', alreadyReqInfo)
+      return owner
     }
   }
 }
@@ -105,7 +111,7 @@ async function saveNewApprove(data) {
     formerOwnerId: loggedInUser._id,
     adoptQue: []
   }
-  
+
   //create old pet for the old owner
   const oldOwnerPet = {
     _id: pet._id,

@@ -9,26 +9,31 @@ import { socketService } from '../services/socketService'
 
 export class SocketsNotification extends Component {
   state = {
-
+    location: null
   }
 
   componentDidMount() {
     console.log('SocketsNotification is running')
     socketService.on('adopt-request-owner', (msg) => {
       console.log('messging the owner')
+      this.setState({ location: 'profile' })
       this.adoptNotify(msg)
     });
     socketService.on('adopt-request-requester', (msg) => {
       console.log('messging the requester')
+      this.setState({ location: 'profile' })
       this.adoptNotify(msg)
     });
     socketService.on('already-requested', (msg) => {
       this.alertNotify(msg)
     });
+    socketService.on('alert-to-notify', (msg) => {
+      console.log('alert-to-notify', msg)
+      this.alertNotify(msg)
+    });
   }
 
   componentWillUnmount() {
-    console.log('SocketsNotification - unmount')
     socketService.off('adopt-request-owner')
     socketService.off('adopt-request-requester')
     socketService.off('already-requested')
@@ -52,11 +57,11 @@ export class SocketsNotification extends Component {
   }
   alertNotify = (msg) => {
     store.addNotification({
-      title: "",
-      message: '',
+      title: "Opps!",
+      message: msg,
       type: "info",
       insert: "top",
-      container: "bottom-right",
+      container: "bottom-full",
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
@@ -68,13 +73,16 @@ export class SocketsNotification extends Component {
   render() {
 
     return (
-      // <Link to='/profile' >
-      // <Link>
-      <>
-        <ReactNotification />
-      </>
-      // </Link>
+      this.state.location ? (
+        <Link to={ this.state.location && `/${this.state.location}` } >
+          <ReactNotification />
+        </Link>
+      )
+        :
 
+        <>
+          <ReactNotification />
+        </>
     )
   }
 }

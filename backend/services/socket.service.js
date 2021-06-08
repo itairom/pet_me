@@ -17,7 +17,11 @@ function connectSockets(http, session) {
     gIo.on('connection', socket => {
         // console.log('New socket - socket.handshake.sessionID', socket.handshake.sessionID)
         gSocketBySessionIdMap[socket.handshake.sessionID] = socket
-        if (socket.handshake?.session?.user) socket.join(socket.handshake.session.user._id)
+        if (socket.handshake?.session?.user) {
+            socket.join(socket.handshake.session.user._id)
+            console.log(socket.handshake.session.user._id)
+        }
+        // ask hila - why disconnetion
         socket.on('disconnect', socket => {
             console.log('Someone disconnected')
             if (socket.handshake) {
@@ -38,22 +42,35 @@ function connectSockets(http, session) {
         })
 
         socket.on('adopt-request', data => {
-            console.log('im in socket on in backend', data.owner._id, data.newRequest.userId)
+            // console.log('im in socket on in backend', data.owner._id, data.newRequest.userId)
+
+            //sent to SocketsNotification - msg to owner
             emitToUser({ type: 'adopt-request-owner', data: data.msgToOwner, userId: data.owner._id })
 
-            emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
-            
+            //sent to SocketsNotification - msg to requester
             emitToUser({ type: 'adopt-request-requester', data: data.msgToRequester, userId: data.newRequest.userId })
+
+            //sent to Profile - render live data
+            emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
+
+            // //sent to header - update localUser everywhere
+            // emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
         })
-        
+
         socket.on('update-new-owner', newOwner => {
             console.log('socket recived - newOwner: ', newOwner)
             emitToUser({ type: 'sending-new-owner-to-save', data: newOwner, userId: newOwner._id })
         })
 
-        socket.on('aprove-adopt', data => {
-            console.log('data-from-details', data)
+        socket.on('already-requested-msg', data => {
+            // console.log('data-from-details', data)
+            emitToUser({ type: 'already-requested', data: data.msg, userId: data.userId })
         })
+        socket.on('alert', ((msg) => {
+            gIo.emit('alert-to-notify', msg)
+            console.log('!alerting guess!')
+            // emitToUser({ type: 'alert-to-notify', data: msg, userId: 's104' })
+        }))
     })
 }
 
@@ -64,7 +81,7 @@ function emitToAll({ type, data, room = null }) {
 //here is the problem
 // TODO: Need to test emitToUser feature
 function emitToUser({ type, data, userId }) {
-    console.log(data, userId)
+    // console.log('socket.service.js ~line75~, Message: ' + data, ', To: user-id: ' + userId)
     gIo.to(userId).emit(type, data)
 }
 

@@ -7,7 +7,7 @@ import { FilterDynamic } from '../cmps/FilterDynamic'
 import { HomepagePreview } from '../cmps/HomepagePreview'
 import contact from '../assets/img/svg/contact.svg'
 import info from '../assets/img/svg/info.svg'
-import rightArrow from '../assets/img/svg/arrow-right.png'
+// import rightArrow from '../assets/img/svg/arrow-right.png'
 import paw from '../assets/img/svg/paw.svg'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { ReactComponent as Loader } from '../assets/img/loaders/loader_3.svg' // relative path to image 
