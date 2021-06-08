@@ -31,7 +31,7 @@ class _CommentsCmp extends Component {
             if (!this.props.loggedInUser) return alert('Please login first in order to comment on this pet')
         }
         this.setState({ isCommenting: !this.state.isCommenting })
-        console.log('im submiting', this.state.isCommenting)
+        // console.log('im submiting', this.state.isCommenting)
     }
 
     handleChange = ev => {

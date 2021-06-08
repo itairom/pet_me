@@ -57,13 +57,14 @@ class _LoginSignup extends Component {
       return this.setState({ msg: 'Please enter user/password' })
     }
     const userCreds = { username, password }
-    console.log("🚀 ~ file: LoginSignup.jsx ~ line 57 ~ _LoginSignup ~ userCreds", userCreds)
+    // console.log("🚀 ~ file: LoginSignup.jsx ~ line 57 ~ _LoginSignup ~ userCreds", userCreds)
     try {
       this.props.login(userCreds)
       this.setState({ loginCred: { username: '', password: '' } })
     } catch (err) {
       this.setState({ msg: 'Login failed, try again.' })
     }
+    this.props.history.push(`/`)
   }
 
   doSignup = async ev => {
@@ -138,36 +139,12 @@ class _LoginSignup extends Component {
           <div>
             <h3>
               Welcome {loggedInUser.fullname}
-              <button onClick={() => this.props.logout(loggedInUser)}>Logout</button>
+              <button onClick={() => this.props.logout(loggedInUser._id)}>Logout</button>
             </h3>
           </div>
         )}
         {!loggedInUser && loginSection}
         {!loggedInUser && signupSection}
-
-        {/* <hr /> */}
-        {/* <section className="admin">
-          <details>
-            <summary>Admin</summary>
-            <button onClick={this.props.loadUsers}>Refresh Users</button>
-            {this.props.isLoading && 'Loading...'}
-            {this.props.users && <ul>
-
-              {this.props.users.map(user => (
-                <li key={user._id}>
-                  <pre>{JSON.stringify(user, null, 2)}</pre>
-                  <button
-                    onClick={() => {
-                      this.removeUser(user._id)
-                    }}
-                  >
-                    Remove {user.username}
-                  </button>
-                </li>
-              ))}
-            </ul>}
-          </details>
-        </section> */}
       </div>
     )
   }

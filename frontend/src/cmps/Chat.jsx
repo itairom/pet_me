@@ -17,7 +17,7 @@ class _Chat extends Component {
   }
 
   componentWillUnmount() {
-    socketService.off('chat addMsg', this.addMsg)
+    // socketService.off('chat addMsg', this.addMsg)
     socketService.terminate()
     clearTimeout(this.timeout)
   }

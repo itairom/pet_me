@@ -1,20 +1,19 @@
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
-// import StarRateIcon from '@material-ui/icons/StarRate'
 import React, { Component } from 'react'
-// import { store } from 'react-notifications-component'
 import { connect } from 'react-redux'
+// import StarRateIcon from '@material-ui/icons/StarRate'
+// import { store } from 'react-notifications-component'
+// import { petService } from '../services/petService'
+// import { userService } from '../services/userService'
 import Loader from '../assets/img/loaders/loader_3.svg' // relative path to image 
 import Pin from '../assets/img/svg/pin.svg' // relative path to image 
-import { petService } from '../services/petService'
-
-// import { socketService } from '../services/socketService'
 import { onExplore } from '../store/actions/userActions'
 import Rating from '@material-ui/lab/Rating';
 import { utilService } from '../services/utilService'
 import { loadUsers, login, logout, removeUser, signup, approveAdopt, getUser } from '../store/actions/userActions'
 import { loadPets } from '../store/actions/petActions'
 import { socketService } from '../services/socketService'
-// import { userService } from '../services/userService'
+import { userService } from '../services/userService'
 
 
 class _Profile extends Component {
@@ -26,27 +25,25 @@ class _Profile extends Component {
         reqBtnTxt: '',
         adoptionRequestsInfo: [],
         loggedInUser: null,
-        IncomingLiveData: null
-
+        IncomingLiveData: null,
+        updatedPets: null
     }
 
     componentDidMount() {
-        // console.log('mounted')
         window.scrollTo(0, 0)
-        this.loadLoggedInUser()
         this.onLoadPets()
-        // this.onLoadRequests()
-        this.props.onExplore()
         this.socketListeners()
+        this.loadLoggedInUser()
+        this.props.onExplore()
     }
 
     componentWillUnmount() {
-        console.log('unmount')
     }
 
     loadLoggedInUser = () => {
-        const loggedInUser = this.props.getUser(this.props.loggedInUser)
-        this.setState({ loggedInUser })
+        userService.updateLoggedInUser(this.props.loggedInUser._id);
+        // const loggedInUser = this.props.getUser(this.props.loggedInUser)
+        // this.setState({ loggedInUser: this.props.loggedInUser })
     }
 
     onLoadPets = () => {
@@ -57,20 +54,15 @@ class _Profile extends Component {
                 }).flatMap(e => e)
                 this.setState({ userPets })
             })
+
+
     }
 
     socketListeners = () => {
-        console.log('im listening profile')
         socketService.on('adopt-request-owner-data', (data) => {
-            console.log(data)
-            //1
-            //savedata
-            //render all cmp
-            
+            console.log('im on profile')
             this.setState({ IncomingLiveData: data })
-            //2
-            //rederstate - work render IncomingLiveData? render
-            //savedata
+
         })
     }
 
@@ -90,14 +82,11 @@ class _Profile extends Component {
     }
 
     removeReq = (ev) => {
-        console.log(ev.target.value)
     }
     toggleRemoveReq = () => {
-        console.log('button revealed')
     }
     reqBtnTxt = (txt) => {
         this.setState({ reqBtnTxt: txt })
-        console.log('change to ' + txt)
     }
 
     approveAdopt = (pet, req, loggedInUser, idx) => {
@@ -108,18 +97,19 @@ class _Profile extends Component {
     }
 
     render() {
+        this.loadLoggedInUser()
         const { loggedInUser } = this.props
         const { userPets } = this.state
-        // const userPets = this.props.loggedInUser.pets.map(pet => {
-        //     return this.props.pets.filter(userPet => userPet._id === pet._id)
-        // }).flatMap(e => e)
-        // console.log(userPets)
+        let newRequest1 = null
+        if (this.state.IncomingLiveData) {
+            const { newRequest } = this.state.IncomingLiveData
+            newRequest1 = newRequest
+        }
         if (!loggedInUser) return <img src={ Loader } alt="loadnig" />
         if (!userPets) return <img src={ Loader } alt="loadnig" />
         return (
 
             <section className="main-profile main-container">
-
                 <section className="user-card">
                     <div className="profile-img">
                         {/* <button onClick={() => cloudinaryService.uploadImg()}>U</button> */ }
@@ -137,7 +127,7 @@ class _Profile extends Component {
                             <Rating name="disabled" value={ loggedInUser.rating ? loggedInUser.rating : loggedInUser.reviews[0]?.rate } disabled />
                         </div>
                     </section>
-                    {/* <div><button className="logout">Logout</button></div> */}
+                    {/* <div><button className="logout">Logout</button></div> */ }
                 </section>
 
                 {/* <section className={ this.state.isGotRequests ? 'profile-pets-container flex' : 'profile-pets-container hide' }> */ }
@@ -172,7 +162,7 @@ class _Profile extends Component {
                                                 </tr>
                                             </thead> */}
                                                 <tbody className="table-body" key={ utilService.makeId(6) }>
-                                                    { loggedInUser.pets[idx]
+                                                    { !loggedInUser.pets[idx]
                                                         .adoptQue.map(req => {
                                                             return (<tr key={ utilService.makeId(6) }>
                                                                 <td>{ req.fullname }</td>
@@ -180,15 +170,43 @@ class _Profile extends Component {
                                                                 <td>{ utilService.timeSince(req.date, 'ago') }</td>
                                                                 <td><button onClick={ () => this.approveAdopt(pet, req, loggedInUser, idx) } className="aprove-btn">Aprove</button></td>
                                                             </tr>)
-                                                        }) }
+                                                        })
+                                                    }
+                                                    { newRequest1 &&
+                                                        <tr key={ utilService.makeId(6) }>
+                                                            <td>{ newRequest1.fullname }</td>
+                                                            <td>{ newRequest1.message }</td>
+                                                            <td>{ utilService.timeSince(newRequest1.date, 'ago') }</td>
+                                                            <td><button onClick={ () => this.approveAdopt(pet, newRequest1, loggedInUser, idx) } className="aprove-btn">Aprove</button></td>
+                                                        </tr>
+                                                    }
                                                 </tbody>
 
                                             </table>
+
+                                            <tbody className="table-body" key={ utilService.makeId(6) }>
+                                                { !loggedInUser.pets[idx]
+                                                    .adoptQue.map(req => {
+                                                        return (<tr key={ utilService.makeId(6) }>
+                                                            <td>{ req.fullname }</td>
+                                                            <td>{ req.message }</td>
+                                                            <td>{ utilService.timeSince(req.date, 'ago') }</td>
+                                                            <td><button onClick={ () => this.approveAdopt(pet, req, loggedInUser, idx) } className="aprove-btn">Aprove</button></td>
+                                                        </tr>)
+                                                    }) }
+                                            </tbody>
+
                                         </section>
                                     </div>
                                 </div>
                             )
                         }) }
+
+
+
+
+
+
                     </div>
 
                     <div className="user-requests hide">
@@ -235,7 +253,6 @@ class _Profile extends Component {
                                                 </div>
                                             )
                                         })
-
                                 )
                             }) }
                         </div>
@@ -252,7 +269,7 @@ const mapStateToProps = state => {
         users: state.userModule.users,
         loggedInUser: state.userModule.loggedInUser,
         isLoading: state.systemModule.isLoading,
-        pets: state.petModule.pets
+        pets: state.petModule.pets,
     }
 }
 const mapDispatchToProps = {

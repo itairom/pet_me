@@ -21,7 +21,9 @@ class _PetFilter extends React.Component {
             type: false,
             age: false,
             size: false,
-        }
+        },
+        rand:null
+
     }
 
     handleChangeInput = ({ target }) => {
@@ -42,6 +44,10 @@ class _PetFilter extends React.Component {
 
     onSubmitFilter = () => {
         const query = new URLSearchParams(this.state.filterBy)
+        this.setState({rand:true})
+        if(this.props.loadPets){
+            this.props.loadPets()
+        }
         this.props.history.push(`/explore/?${query.toString()}`)
     }
 
@@ -49,7 +55,6 @@ class _PetFilter extends React.Component {
         const { toggleSelect } = this.state
         this.setState({
             toggleSelect: {
-                // ...toggleSelect,
                 [by]: !toggleSelect[by]
             }
         })
@@ -68,12 +73,11 @@ class _PetFilter extends React.Component {
 
     render() {
         const options = this.setOptions()
-        const sizeOptions = ['small', 'medium', 'big']
+        // const sizeOptions = ['small', 'medium', 'big']
         const { gender, age, type, location, size } = this.state.filterBy
         const { toggleSelect } = this.state
 
         return (
-
             <section className='pet-filter'>
                 <div className="filter-select pet-select">
                     <label >Pet</label>

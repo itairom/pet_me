@@ -1,12 +1,11 @@
 import userIcon from '../assets/img/header/user.svg' // relative path to image 
 import menuIcon from '../assets/img/header/menu.svg' // relative path to image 
-import logo from '../assets/img/logo.png' // relative path to image 
+// import logo from '../assets/img/logo.png' // relative path to image 
 import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../store/actions/userActions'
 import { socketService } from '../services/socketService'
-import { store } from 'react-notifications-component';
 import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { loadPets } from '../store/actions/petActions'
 import { approveAdoptToOwner } from '../store/actions/userActions'
@@ -30,7 +29,6 @@ class _Header extends Component {
     componentDidMount() {
         window.addEventListener('click', this.handleClick)
         window.addEventListener('scroll', this.handleScroll)
-        this.props.loggedInUser && socketService.emit('user-join', this.props.loggedInUser._id)
         socketService.on('sending-new-owner-to-save', () => {
             this.props.approveAdoptToOwner()
         })
@@ -39,7 +37,6 @@ class _Header extends Component {
     componentWillUnmount() {
         window.removeEventListener('click', this.handleClick)
         window.removeEventListener('scroll', this.handleScroll)
-        // socketService.off('user-join')
     }
 
     handleScroll = () => {
@@ -58,7 +55,7 @@ class _Header extends Component {
     }
 
     onLogout = () => {
-        this.props.logout()
+        this.props.logout(this.props.loggedInUser._id)
     }
 
     toggleDropdown = () => {
@@ -115,8 +112,8 @@ class _Header extends Component {
                                         <span>Profile</span>
                                     </Link>}
 
-                                    {(loggedInUser) &&
-                                        <a href="" onClick={() => this.onLogout()}>Logout</a>
+                                    { (loggedInUser) &&
+                                        <a onClick={ () => this.onLogout() }>Logout</a>
                                     }
                                     {(!loggedInUser) && <Link to='/login' >
                                         <span>Login</span>
