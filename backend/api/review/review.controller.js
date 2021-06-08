@@ -34,13 +34,13 @@ async function addReview(req, res) {
         review.byUser = await userService.getById(review.byUserId)
         review.aboutUser = await userService.getById(review.aboutUserId)
 
-        console.log('CTRL SessionId:', req.sessionID);
+        // console.log('CTRL SessionId:', req.sessionID);
         socketService.broadcast({type: 'review-added', data: review})
         socketService.emitToAll({type: 'user-updated', data: review.byUser, room: req.session.user._id})
         res.send(review)
 
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         logger.error('Failed to add review', err)
         res.status(500).send({ err: 'Failed to add review' })
     }

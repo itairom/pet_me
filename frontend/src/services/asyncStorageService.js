@@ -35,7 +35,7 @@ function query(entityType, filterBy = '') {
     if (size) {
         entities = entities.filter(entity => entity.size.toUpperCase().includes(size.toUpperCase()))
     }
-    console.log("🚀 AFTER", entities)
+    // console.log("🚀 AFTER", entities)
 
 
     return Promise.resolve(entities)
@@ -50,7 +50,7 @@ function post(entityType, newEntity) {
     newEntity._id = _makeId()
     return query(entityType)
         .then(entities => {
-            console.log("🚀 ~ file: asyncStorageService.js ~ line 38 ~ query ~ entities", entities)
+            // console.log("🚀 ~ file: asyncStorageService.js ~ line 38 ~ query ~ entities", entities)
             entities.push(newEntity)
             save(entityType, entities)
             return newEntity

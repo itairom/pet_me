@@ -70,7 +70,7 @@ class _PetFilter extends React.Component {
 
     render() {
         const options = this.setOptions()
-        const sizeOptions = ['small', 'medium', 'big']
+        // const sizeOptions = ['small', 'medium', 'big']
         const { gender, age, type, location, size } = this.state.filterBy
         const { toggleSelect } = this.state
 

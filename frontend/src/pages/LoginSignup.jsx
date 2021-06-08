@@ -57,7 +57,7 @@ class _LoginSignup extends Component {
       return this.setState({ msg: 'Please enter user/password' })
     }
     const userCreds = { username, password }
-    console.log("🚀 ~ file: LoginSignup.jsx ~ line 57 ~ _LoginSignup ~ userCreds", userCreds)
+    // console.log("🚀 ~ file: LoginSignup.jsx ~ line 57 ~ _LoginSignup ~ userCreds", userCreds)
     try {
       this.props.login(userCreds)
       this.setState({ loginCred: { username: '', password: '' } })
@@ -139,7 +139,7 @@ class _LoginSignup extends Component {
           <div>
             <h3>
               Welcome {loggedInUser.fullname}
-              <button onClick={() => this.props.logout(loggedInUser)}>Logout</button>
+              <button onClick={() => this.props.logout(loggedInUser._id)}>Logout</button>
             </h3>
           </div>
         )}

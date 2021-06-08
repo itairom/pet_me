@@ -28,6 +28,7 @@ import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to im
 
 
 import Slider from "react-slick";
+// import socket from 'socket.io-client/lib/socket'
 
 
 class _PetDetails extends Component {
@@ -38,11 +39,11 @@ class _PetDetails extends Component {
         isEditMode: false,
         isOpanModal: false,
         isAttend: false,
-        isMobileScreen: null
+        isMobileScreen: false
     }
 
     componentDidMount() {
-        console.log('cdm');
+        // window.addEventListener("resize", this.screenWidth);
         this.checkScreenWidth()
         window.scroll(0, 0)
         this.props.onExplore()
@@ -55,8 +56,14 @@ class _PetDetails extends Component {
                         const user = this.props.users.find(user => user._id === pet.owner._id)
                         this.setState({ pet, owner: user, loggedInUser: this.props.loggedInUser })
                     })
-            })    // socketService.emit('adopt-request', id)
+            })
     }
+
+
+    componentWillUnmount() {
+        //     window.removeEventListener('resize', this.screenWidth)
+    }
+
     checkScreenWidth = () => {
         if (window.innerWidth > 500) {
             this.setState({ isMobileScreen: false });
@@ -65,39 +72,44 @@ class _PetDetails extends Component {
         }
     }
 
+    onShare = () => {
+        //TODO: build the modal.
+        // this.setState({ isOpanModal: !this.state.isOpanModal })
+    }
+
     handleChange = ({ target }) => {
+        //Future TODO: Pet editor for OWNER
         const { name } = target
         const { value } = target
         this.setState({ pet: { ...this.state.pet, [name]: value } })
     }
 
-    onShare = () => {
-        this.setState({ isOpanModal: !this.state.isOpanModal })
-    }
 
-    //owner only btn
     onUpdatePet = () => {
+        //Future TODO: Pet editor for OWNER
         this.props.updatePet(this.state.pet)
         this.toggleEditMode()
     }
 
-    //for owner edit adoption option
     toggleEditMode = () => {
+        //Future TODO: Pet editor for OWNER
         this.setState({ isEditMode: !this.state.isEditMode })
     }
 
     onAdopt = () => {
         const { pet, owner, loggedInUser } = this.state
-        if (!loggedInUser) return console.log('user not loged in')
-           
-        
-        if (loggedInUser.pets.find(loggedInUserPet => loggedInUserPet._id === pet._id)) return alert('You cannot adopt you own pet')
+        if (!this.props.loggedInUser) {
+            return socketService.emit('alert', "Please login in order to adopt this pet")
+        }
+        if (loggedInUser.pets.find(loggedInUserPet => loggedInUserPet._id === pet._id)) {
+            return socketService.emit('alert', "You cannot adopt you own pet")
+        }
         this.setState({ isAttend: true })
         const data = {
             owner: owner,
             petId: pet._id,
-            msgToOwner: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click to view`,
-            msgToRequester: `${loggedInUser.fullname} recived your adopt request \n Click to view`,
+            msgToOwner: `${loggedInUser.fullname} would like to adopt ${pet.name} \n Click here to view`,
+            msgToRequester: `${owner.fullname} recived your adopt request \n Click here to view`,
             newRequest: {
                 date: Date.now(),
                 fullname: loggedInUser.fullname,
@@ -106,8 +118,10 @@ class _PetDetails extends Component {
                 chatId: 'c' + utilService.makeId(7),
             }
         }
+        // socketService.emit('send-new-request-to-owner' ,data)
         this.props.newAdoptRequest(data)
     }
+
 
     //if the user clicked attend let the user reclick to undo
     toggleAdopted = () => {
@@ -139,31 +153,31 @@ class _PetDetails extends Component {
             <section className="pet-details-section main-container">
                 <header className="details-header flex column">
                     <div className="details-title flex column">
-                        <h1 className="pet-name">{pet.name}</h1>
+                        <h1 className="pet-name">{ pet.name }</h1>
                     </div>
                     <div className="details-header-btns">
-                        {/* TODO: add icons +actions btns */}
-                        <HeartLike pet={pet} />
-                        <span className="pet-likes">{pet.likes}</span>
+                        {/* TODO: add icons +actions btns */ }
+                        <HeartLike pet={ pet } />
+                        <span className="pet-likes">{ pet.likes }</span>
 
-                        <span className="share-pet" onClick={() => this.onShare}><ShareIcon />
-                            <div className={'share-modal' + this.state.isOpanModal ? 'hide' : ''}>
+                        <span className="share-pet" onClick={ () => this.onShare }><ShareIcon />
+                            <div className={ 'share-modal' + this.state.isOpanModal ? 'hide' : '' }>
                             </div>
                         </span>
                     </div>
                 </header>
                 {!isMobileScreen &&
                     <div className="details-imgs-container grid">
-                        {pet.imgUrls.map((imgUrl, idx) => {
-                            return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
-                        })}
-                    </div>}
+                        { pet.imgUrls.map((imgUrl, idx) => {
+                            return <img key={ pet._id + idx } src={ imgUrl } alt="skeleton" />
+                        }) }
+                    </div> }
                 {isMobileScreen &&
                     <div className="details-imgs-container grid">
-                        <Slider {...settings}>
-                            {pet.imgUrls.map((imgUrl, idx) => {
-                                return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
-                            })}
+                        <Slider { ...settings }>
+                            { pet.imgUrls.map((imgUrl, idx) => {
+                                return <img key={ pet._id + idx } src={ imgUrl } alt="skeleton" />
+                            }) }
                         </Slider>
                     </div>
                 }
@@ -171,55 +185,55 @@ class _PetDetails extends Component {
 
                     <div className="details-info-container">
                         <div className="info-header flex ">
-                            <img src={pet.owner.imgUrl} alt="" />
+                            <img src={ pet.owner.imgUrl } alt="" />
                             <div className="info-header-txt flex column">
-                                <h3>{pet.name + ', owned by ' + pet.owner.name}</h3>
-                                <span>{pet.title}</span>
+                                <h3>{ pet.name + ', owned by ' + pet.owner.name }</h3>
+                                <span>{ pet.title }</span>
                             </div>
                         </div>
 
                         <div className="info-body">
-                            <LongTxt className="pet-desc" txt={pet.desc} />
-                            {/* <p className="pet-desc">{ pet.desc }</p> */}
+                            <LongTxt className="pet-desc" txt={ pet.desc } />
+                            {/* <p className="pet-desc">{ pet.desc }</p> */ }
                             <ul className="pet-info-list clean-list">
                                 <section className="left-info-list">
                                     <li className="flex align-center">
-                                        <FontAwesomeIcon icon={faCalendar} />
+                                        <FontAwesomeIcon icon={ faCalendar } />
                                         <p>
-                                            {/* Age: {(pet.age === 1) ? pet.age + ' year old' : pet.age + ' years old'} */}
-                                            {pet.age + ' ' + pet.type}
+                                            {/* Age: {(pet.age === 1) ? pet.age + ' year old' : pet.age + ' years old'} */ }
+                                            { pet.age + ' ' + pet.type }
                                         </p>
                                     </li>
                                     <li className="flex align-center">
-                                        <FontAwesomeIcon icon={faVenusMars} />
+                                        <FontAwesomeIcon icon={ faVenusMars } />
                                         <p>
-                                            Gender: {pet.gender}
+                                            Gender: { pet.gender }
                                         </p>
                                     </li>
                                     <li className="flex align-center">
-                                        <FontAwesomeIcon icon={faCat} />
+                                        <FontAwesomeIcon icon={ faCat } />
                                         <p>
-                                            Breed: {pet.breed}
+                                            Breed: { pet.breed }
                                         </p>
                                     </li>
                                 </section>
                                 <section className="right-info-list">
                                     <li className="flex align-center">
-                                        <FontAwesomeIcon icon={faSyringe} />
+                                        <FontAwesomeIcon icon={ faSyringe } />
                                         <p>
-                                            Vaccinated: {pet.vaccine ? 'yes' : 'no'}
+                                            Vaccinated: { pet.vaccine ? 'yes' : 'no' }
                                         </p>
                                     </li>
                                     <li className="flex align-center">
-                                        <FontAwesomeIcon icon={faStethoscope} />
+                                        <FontAwesomeIcon icon={ faStethoscope } />
                                         <p>
-                                            Spayed/Neutered: {pet.neuterSpayed ? 'yes' : 'no'}
+                                            Spayed/Neutered: { pet.neuterSpayed ? 'yes' : 'no' }
                                         </p>
                                     </li>
                                     <li className="flex align-center">
                                         <SportsIcon />
                                         <p>
-                                            Trained: {pet.trained ? 'yes' : 'no'}
+                                            Trained: { pet.trained ? 'yes' : 'no' }
                                         </p>
                                     </li>
                                 </section>
@@ -229,33 +243,33 @@ class _PetDetails extends Component {
                     <div className="adopt-modal-container flex column">
                         <div className="flex align-center">
                             <Binoculars className="binoculars" />
-                            <span className="adoption-time adopt-sign">{'Looking for    a home for ' + utilService.timeSince(pet.addedAt)}</span>
+                            <span className="adoption-time adopt-sign">{ 'Looking for    a home for ' + utilService.timeSince(pet.addedAt) }</span>
                         </div>
                         <div className="flex align-center">
                             <ThumbUpIcon className="thumb-up" />
-                            <span className="adoption-likes adopt-sign">{'Liked by ' + pet.likes + ' people!'}</span>
+                            <span className="adoption-likes adopt-sign">{ 'Liked by ' + pet.likes + ' people!' }</span>
                         </div>
                         <div className="flex align-center">
                             <Paw className="paw" />
                             <span className="adoption-time adopt-sign paw-last">{pet.name} is waiting for you</span>
                         </div>
-                        <button className="adopt-btn el-btn" onClick={() => this.onAdopt()}>{(this.state.isAttend) ? 'Request sent' : 'Adopt Me'}</button>
-                        {/* <span><FontAwesomeIcon icon={faEnvelope} /> {pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com'}</span> */}
-                        {/* <span><FontAwesomeIcon icon={faWhatsapp} /> 054-2312993</span> */}
+                        <button className="adopt-btn el-btn" onClick={ () => this.onAdopt() }>{ (this.state.isAttend) ? 'Request sent' : 'Adopt Me' }</button>
+                        {/* <span><FontAwesomeIcon icon={faEnvelope} /> {pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com'}</span> */ }
+                        {/* <span><FontAwesomeIcon icon={faWhatsapp} /> 054-2312993</span> */ }
                     </div>
                 </div>
                 <div className="comments-section">
-                    <CommentsCmp pet={pet} key={pet._id} />
+                    <CommentsCmp pet={ pet } key={ pet._id } />
                 </div>
-                {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */}
+                {/* <button onClick={ () => this.onRemovePet() }>Delete</button> */ }
                 <section className="google-map section">
                     <h3 className="pet-loc">Where to find me</h3>
                     <div className="pet-location">
                         <RoomOutlinedIcon />
-                        {pet.owner.loc.address}
+                        { pet.owner.loc.address }
                     </div>
-                    {/* <span>{ pet.owner.loc.address }</span> */}
-                    <GoogleMap loc={pet.owner.loc} />
+                    {/* <span>{ pet.owner.loc.address }</span> */ }
+                    <GoogleMap loc={ pet.owner.loc } />
                 </section>
             </section>
         )

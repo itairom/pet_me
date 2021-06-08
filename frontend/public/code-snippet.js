@@ -16,11 +16,7 @@ export class _Header extends React.Component {
     }
 
     handleScroll = () => {
-        if (window.pageYOffset > 50) {
-            this.setState({ isFilterShown: true })
-        } else {
-            this.setState({ isFilterShown: false })
-        }
+        (window.pageYOffset > 50) ? this.setState({ isFilterShown: true }) : this.setState({ isFilterShown: false })
     }
 
     render() {

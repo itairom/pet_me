@@ -3,9 +3,6 @@ const cors = require('cors')
 const path = require('path')
 const expressSession = require('express-session')
 
-
-
-
 const app = express()
 const http = require('http').createServer(app)
 
@@ -34,7 +31,6 @@ const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const reviewRoutes = require('./api/review/review.routes')
 const petRoutes = require('./api/pet/pet.routes')
-
 const { connectSockets } = require('./services/socket.service')
 
 // routes
@@ -70,10 +66,12 @@ const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030; app.get('/**', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
-app.listen(port, () => {
+http.listen(port, () => {
     console.log(`App listening on port ${port}!`)
 });
 
+// console.log('I am Here!, am I?')
+console.log('\n~Server is Up!, Happy coding PetMe Admin!~\n')
 
 
 
