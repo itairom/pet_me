@@ -1,5 +1,5 @@
 .main-footer {
-    background-color: #ececec;
+    background-color: $clr10;
 
     & small {
         align-self: center;
@@ -15,15 +15,15 @@
 
         :hover {
             .fa {
-                fill: #3b5998;
+                fill: $clr11;
             }
 
             .in {
-                fill: #ea4c56;
+                fill: $clr12;
             }
 
             .tw {
-                fill: #1da1f2;
+                fill: $clr13;
             }
         }
 

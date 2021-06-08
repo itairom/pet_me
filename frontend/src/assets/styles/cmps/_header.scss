@@ -5,9 +5,10 @@
 
     &.nav-white {
         transition: 0.2s;
-        background-color: rgb(255, 255, 255);
-        border-bottom: 1px solid #e4e5e7;
+        background-color: $clr6;
+        border-bottom: 1px solid $clr9;
     }
+
     &.nav-transparent {
         transition: 0.3s;
         background-color: transparent;
@@ -22,14 +23,14 @@
 
     & .explore-btn {
         margin-right: 5px;
-        color: $clr5;
+        color: $clr2;
 
         @include for-mobile-layout {
             display: none;
         }
 
         &.black {
-            color: $clr7;
+            color: $clr3;
         }
 
         align-self: center;
@@ -44,9 +45,10 @@
 .header-logo {
     zoom: 70%;
     margin-top: 10px;
+
     ::after {
         content: '.';
-        color: $clr9;
+        color: $clr1;
     }
 }
 
@@ -54,17 +56,27 @@
     position: relative;
     cursor: pointer;
     padding: 10px 10px 3px 10px;
-    border: 1px solid #dadada;
+    border: 1px solid $clr9;
     border-radius: 25px;
     user-select: none;
-    background-color: white;
+    background-color: $clr6;
     z-index: 1001;
 
-    & > img {
+    @include for-mobile-layout {
+        padding: 9px 6px 1px 6px;
+        ;
+    }
+
+    &>img {
         margin-left: 5px;
         height: 20px;
         width: 20px;
         animation: funny 0.5s;
+
+        @include for-mobile-layout {
+            height: 18px;
+            width: 18px;
+        }
 
         @keyframes funny {
             0% {
@@ -86,11 +98,15 @@
     position: absolute;
     top: 50px;
     left: 0;
-    background-color: #fff;
-    border: 1px solid #ebeef5;
+    background-color: $clr6;
+    border: 1px solid $clr9;
     border-radius: 4px;
     z-index: 101;
     animation: toggle-drop 0.2s;
+
+    @include for-mobile-layout {
+        top: 40px;
+    }
 
     @keyframes toggle-drop {
         0% {
@@ -109,15 +125,19 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 77px;
+        width: 70px;
+
+        @include for-mobile-layout {
+            width: 60px;
+        }
 
         & a {
-            // margin: 5px ;
             width: 100%;
             border-radius: 0;
             align-self: center;
             padding: 5px 10px;
             margin: 5px 0;
+            text-align: center;
         }
 
         & a:hover {
@@ -126,10 +146,6 @@
         }
     }
 }
-
-// .header-logo {
-//     font-weight: bolder;
-// }
 
 .right-nav {
     display: flex;
@@ -168,13 +184,13 @@
 
     .logo-title {
         font-size: 30px;
-        color: white;
+        color: $clr6;
         font-family: Fjalla;
         letter-spacing: 1.8px;
         margin-inline-start: 5px;
 
         &.black {
-            color: $clr7;
+            color: $clr3;
         }
 
         @include for-mobile-layout {
@@ -185,14 +201,16 @@
 
 .resize-nav {
     height: 132px;
+
     .header-container {
-        .filter-section{
+        .filter-section {
             position: absolute;
-            top: 29%;  
-            left: 50%; 
-            transform: translate(-50%, -50%); 
+            top: 29%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     }
+
     .pet-filter {
         margin-top: 105px;
     }
