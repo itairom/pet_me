@@ -34,6 +34,7 @@ function remove(userId) {
 async function update(user) {
   console.log('updating user')
   let updatedUser = await httpService.put(`user/${user._id}`, user)
+  console.log("🚀 ~ file: userService.js ~ line 37 ~ update ~ updatedUser", updatedUser)
   return updatedUser
 }
 
@@ -63,33 +64,37 @@ function getLoggedinUser() {
 }
 
 async function saveNewRequest(data) {
-  console.log('im in userService (front)')
+  // console.log('im in userService (front)')
   const { newRequest, owner, petId } = data
   const petIdx = owner.pets.findIndex(pet => pet._id === petId)
 
-  //finding if the user(owner) already got the request
-  if (owner && owner.pets[petIdx] && owner.pets[petIdx].adoptQue) {
-    const isAlreadyRequested = owner.pets[petIdx].adoptQue.some(pet => pet.userId === newRequest.userId)
+  owner.pets[petIdx].adoptQue.push(newRequest)
+  update(owner)
+  
+  // //finding if the user(owner) already got the request
+  // if (owner && owner.pets[petIdx] && owner.pets[petIdx].adoptQue) {
+  //   const isAlreadyRequested = owner.pets[petIdx].adoptQue.some(pet => pet.userId === newRequest.userId)
 
-    // if user(owner) already got the request - do no push the request again.
-    if (!isAlreadyRequested) {
-      const updatedOwner = owner
+  //   // if user(owner) already got the request - do no push the request again.
+  //   if (!isAlreadyRequested) {
+  //     const updatedOwner = owner
 
-      //here: we push the new request to the updated user
-      updatedOwner.pets[petIdx].adoptQue.push(newRequest)
+  //     //here: we push the new request to the updated user
+  //     updatedOwner.pets[petIdx].adoptQue.push(newRequest)
 
-      // here: turn on the save in the db (replace the old user with the new data)
-      // return await update(updatedOwner)
-      return owner
+  //     // here: turn on the save in the db (replace the old user with the new data)
+  //     // return await update(updatedOwner)
+  //     return owner
 
-    }
-    //future socket - for the requester
-    else {
-      socketService.emit('already-requested', 'You already requested the owner, please wait for him to response')
-      return owner
-
-    }
-  }
+  //   }
+  //   //future socket - for the requester
+  //   else {
+  //     socketService.emit('already-requested', 'You already requested the owner, please wait for him to response')
+  //     return owner
+  
+  //   }
+  // }
+      // return owner
 }
 
 async function saveNewApprove(data) {

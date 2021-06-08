@@ -84,23 +84,39 @@ export function logout(userId) {
   }
 }
 
-
 export function newAdoptRequest(data) { // Action Creator
-  return dispatch => {
-    socketService.emit('adopt-request', data)
-    console.log('im in user action before service')
-    return userService.saveNewRequest(data)
-      .then((updatedUser) => {
-        console.log('im in user action after service')
-        const action = {
-          type: 'UPDATE_USER',
-          user: updatedUser
-        }
-        dispatch(action)
-        // getUser()
+  return async dispatch => {
+    try {
+      const updateUser = await userService.saveNewRequest(data)
+      // console.log("🚀 ~ file: userActions.js ~ line 91 ~ newAdoptRequest ~ updateUser", updateUser)
+      socketService.emit('adopt-request', data)
+      dispatch({
+        type: 'UPDATING_USER',
+        user: updateUser
       })
+    }
+    catch (err) {
+      console.log('user update', err)
+    }
   }
 }
+
+// export function newAdoptRequest(data) { // Action Creator
+//   return dispatch => {
+//     // console.log('im in user action before service')
+//     return userService.saveNewRequest(data)
+//       .then((updatedUser) => {
+//         socketService.emit('adopt-request', data)
+//         const action = {
+//           type: 'UPDATING_USER',
+//           user: updatedUser
+//         }
+//         dispatch(action)
+//       })
+//   }
+// }
+
+
 export function approveAdopt(data) { // Action Creator
   return async dispatch => {
     const updatedUsers = await userService.saveNewApprove(data)

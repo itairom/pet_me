@@ -12,7 +12,7 @@
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 
     @include for-mobile-layout {
-        margin-block-end: 175px;
+        // margin-block-end: 175px;
     }
 
     & > a {

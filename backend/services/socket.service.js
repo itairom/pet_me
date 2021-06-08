@@ -19,7 +19,7 @@ function connectSockets(http, session) {
         gSocketBySessionIdMap[socket.handshake.sessionID] = socket
         if (socket.handshake?.session?.user) socket.join(socket.handshake.session.user._id)
         socket.on('disconnect', socket => {
-            console.log('Someone disconnected')
+            // console.log('Someone disconnected')
             if (socket.handshake) {
                 gSocketBySessionIdMap[socket.handshake.sessionID] = null
             }
@@ -38,7 +38,9 @@ function connectSockets(http, session) {
         })
 
         socket.on('adopt-request', data => {
-            console.log('im in socket on in backend', data.owner._id, data.newRequest.userId)
+            
+            console.log('im in socket on in backend')
+            // console.log('im in socket on in backend', data.owner._id, data.newRequest.userId)
             emitToUser({ type: 'adopt-request-owner', data: data.msgToOwner, userId: data.owner._id })
 
             emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
@@ -64,7 +66,7 @@ function emitToAll({ type, data, room = null }) {
 //here is the problem
 // TODO: Need to test emitToUser feature
 function emitToUser({ type, data, userId }) {
-    console.log(data, userId)
+    // console.log(data, userId)
     gIo.to(userId).emit(type, data)
 }
 

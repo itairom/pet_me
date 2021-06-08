@@ -22,7 +22,6 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { ReactComponent as Binoculars } from '../assets/img/svg/binoculars.svg'
 import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'
 // import PetsIcon from '@material-ui/icons/Pets';
-
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";
 
@@ -41,11 +40,11 @@ class _PetDetails extends Component {
     }
 
     componentDidMount() {
+        console.log('cdm');
         this.checkScreenWidth()
         window.scroll(0, 0)
         this.props.onExplore()
         const id = this.props.match.params.petId;
-        // socketService.setup()
         this.props.loadPets()
             .then(() => {
                 const pet = this.props.pets.find(pet => pet._id === id)
@@ -57,12 +56,9 @@ class _PetDetails extends Component {
             })    // socketService.emit('adopt-request', id)
     }
     checkScreenWidth = () => {
-        console.log(window.innerWidth);
         if (window.innerWidth > 500) {
-            console.log('> 500',window.innerWidth);
             this.setState({ isMobileScreen: false });
         } else {
-            console.log('< 500',window.innerWidth);
             this.setState({ isMobileScreen: true });
         }
     }
@@ -90,7 +86,9 @@ class _PetDetails extends Component {
 
     onAdopt = () => {
         const { pet, owner, loggedInUser } = this.state
-        if (!loggedInUser) return alert('Please login in order to adopt this pet ')
+        if (!loggedInUser) return console.log('user not loged in')
+           
+        
         if (loggedInUser.pets.find(loggedInUserPet => loggedInUserPet._id === pet._id)) return alert('You cannot adopt you own pet')
         this.setState({ isAttend: true })
         const data = {
@@ -121,8 +119,7 @@ class _PetDetails extends Component {
 
     render() {
         const { isMobileScreen } = this.state
-        if (!isMobileScreen) return <h1>Loading</h1>
-        console.log("🚀 ~ file: PetDetails.jsx ~ line 129 ~ _PetDetails ~ render ~ isMobileScreen", isMobileScreen)
+        // if (!isMobileScreen) return <h1>Loading</h1>
 
         const id = this.props.match.params.petId
         const pet = this.props.pets.find(pet => pet._id === id)
@@ -134,7 +131,7 @@ class _PetDetails extends Component {
             slidesToShow: 1,
             slidesToScroll: 1
         };
-        if (!pet) return <h1>loading</h1>
+        if (!pet) return <h1>Loading</h1>
 
         return (
             <section className="pet-details-section main-container">
