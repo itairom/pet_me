@@ -17,7 +17,7 @@ export function App() {
   return (
     <div className="app flex column">
       <Router>
-        <SocketsNotification />
+        {/* <SocketsNotification /> */}
         <Header />
         <main className="main-layout">
           <Switch>

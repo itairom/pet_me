@@ -1,7 +1,7 @@
 import { petService } from '../../services/petService.js'
 
 export function loadPets(filterBy = null) { // Action Creator
-    console.log('LOAD_PET');
+    // console.log('LOAD_PET');
     return async dispatch => {
         try {
             const pets = await petService.query(filterBy)
