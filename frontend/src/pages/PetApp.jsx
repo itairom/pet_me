@@ -8,9 +8,12 @@ import { HomepagePreview } from '../cmps/HomepagePreview'
 import contact from '../assets/img/svg/contact.svg'
 import info from '../assets/img/svg/info.svg'
 import rightArrow from '../assets/img/svg/arrow-right.png'
-import paw from '../assets/img/svg/paw.svg'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { ReactComponent as Loader } from '../assets/img/loaders/loader_3.svg' // relative path to image 
+import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+
 
 
 class _PetApp extends React.Component {
@@ -30,6 +33,7 @@ class _PetApp extends React.Component {
                 <section className="hero full">
                     <div className="hero-content">
                         <FilterDynamic />
+
                         <h1>Find your</h1>
                         <h1> best friend</h1>
                     </div>
@@ -89,7 +93,8 @@ class _PetApp extends React.Component {
                         <div>
                             <div className="info-title-icon">
                                 <h2>Contact pet owners</h2>
-                                <img className="info-icons" src={contact} alt="glass" />
+                                {/* <img className="info-icons" src={contact} alt="glass" /> */}
+                                <FontAwesomeIcon className="info-icons" icon={faAddressCard} />
                             </div>
                             <p>  Once you have decided which pet you would like to adopt, contact the pet owners and keep your fingers crossed.
                             {/* <img className="arrow-icons" src={rightArrow} alt="" /> */}
@@ -98,7 +103,8 @@ class _PetApp extends React.Component {
                         <div>
                             <div className="info-title-icon">
                                 <h2>Adopt a friend!</h2>
-                                <img className="info-icons" src={paw} alt="glass" />
+                                {/* <img className="info-icons" src={paw} alt="glass" /> */}
+                                <Paw className="info-icons" />
                             </div>
                             <p> In a quick and easy process you can adopt a pet that will become your new companion for life. Join us for a fun journey! 
                             </p>

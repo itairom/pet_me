@@ -15,13 +15,14 @@ class _PetFilter extends React.Component {
             size: '',
             location: ''
         },
-        isToggleSelect: null,
         toggleSelect: {
             gender: false,
             type: false,
             age: false,
             size: false,
-        }
+        },
+        rand:null
+
     }
 
     handleChangeInput = ({ target }) => {
@@ -40,21 +41,12 @@ class _PetFilter extends React.Component {
         })
     }
 
-    // handleClick = () => {
-    //     if ( this.state.isToggleSelect===true) {
-    //         // console.log(this.state.isToggleSelect);
-    //         console.log('in');
-    //         this.setState({
-    //             isToggleSelect: null,
-    //             toggleSelect: {
-    //             //    size : false
-    //             }
-    //         })
-    //     }
-    // }
-
     onSubmitFilter = () => {
         const query = new URLSearchParams(this.state.filterBy)
+        this.setState({rand:true})
+        if(this.props.loadPets){
+            this.props.loadPets()
+        }
         this.props.history.push(`/explore/?${query.toString()}`)
     }
 
@@ -70,22 +62,21 @@ class _PetFilter extends React.Component {
     setOptions = () => {
         const options = {
             size: ['small', 'medium', 'big'],
-            type: ['cat', 'dog', 'rabbit', 'dog', 'parrot', 'hamster'],
+            type: ['cat', 'dog', 'rabbit', 'parrot', 'hamster'],
             gender: ['male', 'female'],
             age: ['young', 'adult', 'senior']
         }
         return options
     }
 
+
     render() {
         const options = this.setOptions()
         const sizeOptions = ['small', 'medium', 'big']
         const { gender, age, type, location, size } = this.state.filterBy
         const { toggleSelect } = this.state
-        console.log(toggleSelect);
 
         return (
-
             <section className='pet-filter'>
                 <div className="filter-select pet-select">
                     <label >Pet</label>
@@ -93,7 +84,6 @@ class _PetFilter extends React.Component {
                         <label >{type}{!type && 'any'}</label>
                         {toggleSelect.type && <FilterSelect key={type} handleChange={this.handleChange} options={options.type} name="type" />}
                     </label>
-
                 </div>
                 <div className="filter-select gender-select">
                     <label >Gender</label>
@@ -101,8 +91,6 @@ class _PetFilter extends React.Component {
                         <label >{gender}{!gender && 'any'}</label>
                         {toggleSelect.gender && <FilterSelect key={gender} handleChange={this.handleChange} options={options.gender} name="gender" />}
                     </label>
-
-
                 </div>
                 <div className="filter-select age-select">
                     <label >Age</label>
@@ -118,9 +106,6 @@ class _PetFilter extends React.Component {
                         <label >{size}{!size && 'any'}</label>
                         {toggleSelect.size && <FilterSelect key={size} handleChange={this.handleChange} options={options.size} name="size" />}
                     </label>
-
-
-
                 </div>
                 <div className="filter-select location-select">
                     <label className="location-label">Location</label>

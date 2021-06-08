@@ -30,7 +30,7 @@ class _Profile extends Component {
         this.props.onExplore()
         this.socketListeners()
 
-        this.setState({userRequests:this.props.loggedInUser.pets})
+        this.setState({ userRequests: this.props.loggedInUser.pets })
     }
 
     componentWillUnmount() {
@@ -46,7 +46,7 @@ class _Profile extends Component {
                 this.setState({ userPets })
             })
 
-              
+
     }
 
     socketListeners = () => {
@@ -71,7 +71,7 @@ class _Profile extends Component {
     //         ...this.state,
     //         pets: {
     //             ...pets,
-                
+
     //         }
     //     })
     // }
@@ -183,16 +183,16 @@ class _Profile extends Component {
                                             </table>
 
                                             <tbody className="table-body" key={utilService.makeId(6)}>
-                                                    {!loggedInUser.pets[idx]
-                                                        .adoptQue.map(req => {
-                                                            return (<tr key={utilService.makeId(6)}>
-                                                                <td>{req.fullname}</td>
-                                                                <td>{req.message}</td>
-                                                                <td>{utilService.timeSince(req.date, 'ago')}</td>
-                                                                <td><button onClick={() => this.approveAdopt(pet, req, loggedInUser, idx)} className="aprove-btn">Aprove</button></td>
-                                                            </tr>)
-                                                        })}
-                                                </tbody>
+                                                {!loggedInUser.pets[idx]
+                                                    .adoptQue.map(req => {
+                                                        return (<tr key={utilService.makeId(6)}>
+                                                            <td>{req.fullname}</td>
+                                                            <td>{req.message}</td>
+                                                            <td>{utilService.timeSince(req.date, 'ago')}</td>
+                                                            <td><button onClick={() => this.approveAdopt(pet, req, loggedInUser, idx)} className="aprove-btn">Aprove</button></td>
+                                                        </tr>)
+                                                    })}
+                                            </tbody>
 
                                         </section>
                                     </div>

@@ -30,8 +30,8 @@
         justify-content: space-between;
 
         .gender {
-            height: 24px;
-            width: 24px;
+            height: 22px;
+            width: 22px;
         }
     }
 
@@ -46,11 +46,11 @@
     .pet-preview-likes {
         :first-child {
             cursor: pointer;
-            margin-inline-end: 6px;
+            margin-inline-end: 2px;
         }
 
         :last-child {
-            font-size: 1.125rem;
+            font-size: 1.025rem;
         }
     }
 }

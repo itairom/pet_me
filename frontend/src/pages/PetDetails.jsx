@@ -119,7 +119,7 @@ class _PetDetails extends Component {
 
     render() {
         const { isMobileScreen } = this.state
-        // if (!isMobileScreen) return <h1>Loading</h1>
+        if (isMobileScreen === null) return <h1>Loading</h1>
 
         const id = this.props.match.params.petId
         const pet = this.props.pets.find(pet => pet._id === id)
@@ -235,7 +235,7 @@ class _PetDetails extends Component {
                         </div>
                         <div className="flex align-center">
                             <Paw className="paw" />
-                            <span className="adoption-time adopt-sign paw-last">{pet.name}is waiting for you</span>
+                            <span className="adoption-time adopt-sign paw-last">{pet.name} is waiting for you</span>
                         </div>
                         <button className="adopt-btn el-btn" onClick={() => this.onAdopt()}>{(this.state.isAttend) ? 'Request sent' : 'Adopt Me'}</button>
                         {/* <span><FontAwesomeIcon icon={faEnvelope} /> {pet.owner.name.split(' ')[0].toLowerCase() + '@gmail.com'}</span> */}
