@@ -1,7 +1,7 @@
 .pet-filter {
     display: flex;
     justify-self: center;
-    background-color: white;
+    background-color: $clr6;
     margin-right: auto;
     margin-left: auto;
     border-radius: 200px;
@@ -17,12 +17,12 @@
 
     &>a {
         display: flex;
-        background-color: #36baa0;
+        background-color: $clr1;
         margin: 5px 15px 10px 15px;
     }
 
     &>a:hover {
-        background-color: #36baa0;
+        background-color: $clr1;
         box-shadow: none;
         border-radius: 50px;
     }
@@ -46,7 +46,7 @@
     padding: 10px 15px 10px 25px;
     border-radius: 50px;
     color: #6b6a6a;
-    background-color: rgb(255, 255, 255);
+    background-color: $clr6;
 
     .location-select {
         width: 65px
@@ -74,7 +74,7 @@
     outline: none;
     border: none;
     font-size: 1rem;
-    background-color: rgb(255, 255, 255);
+    background-color: $clr6;
 }
 
 .gender-select {
@@ -109,9 +109,6 @@
 
     @include for-mobile-layout {
         width: 15%;
-        // .select-label{
-        //     width: 50.84px;
-        // }
     }
 }
 
@@ -121,7 +118,7 @@
     border: none;
     width: 80%;
     min-width: 86px;
-    margin: 3.5px 0;
+    // margin: 3.5px 0;
     margin-left: -2px;
 
     @include for-mobile-layout {
@@ -129,18 +126,22 @@
     }
 }
 
-// .location-label {
-//     margin-bottom: 5px;
-// }
-
 .search-btn {
-    background-color: #36baa0;
+    background-color: $clr1;
     border-radius: 50%;
     width: 52.5px;
     height: 52.5px;
     align-self: center;
     padding-right: 23px;
     margin-right: 7px;
+
+    .filter-search{
+        fill: aliceblue;
+        font-size: 30px;
+        @include for-mobile-layout {
+            padding-left: 3px;
+        }
+    }
 
 
     @include for-mobile-layout {
@@ -154,39 +155,38 @@
     position: absolute;
     margin-top: 20px;
     margin-right: 20px;
-    background-color: #ffffff;
-    // padding: 10px 15px;
+    background-color: $clr6;
     border-radius: 10px;
     right: -43px;
     text-align: center;
     animation: toggle-drop 0.1s;
-
+    
     @keyframes toggle-drop {
         0% {
             opacity: 30%;
             margin-top: 0px;
         }
-
+        
         100% {
             margin-top: 10px;
             opacity: 100%;
         }
     }
-
+    
     @include for-mobile-layout {
         margin-top: 10px;
-
+        right: -27px;
     }
 
     option {
         padding: 8px 30px;
         font-size: rem(20px);
         text-transform: capitalize;
-        border-bottom: 1px solid rgb(244, 244, 244);
+        border-bottom: 1px solid $clr9;
+        cursor: pointer;
 
         @include for-mobile-layout {
-            padding: 6px 15px;
-
+            padding: 6px 10px;
         }
     }
 
@@ -198,13 +198,11 @@
         background-color: hsla(0, 0%, 88.6%, 0.363);
         border-radius: 10px;
     }
-
 }
 
 .select-label {
     position: relative;
     width: 66px;
-    .select-modal {
-       
-    }
+    color: $clr5;
+    cursor: pointer;
 }

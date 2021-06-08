@@ -7,24 +7,20 @@
 
     .details-header-btns {
         display: flex;
-        // align-items: center;
-        // justify-content: center;
         gap: 0.5em;
         margin-top: 8px;
 
-        &>* {}
-
         & .pet-like-btn {
             cursor: pointer;
-            background-color: #ffffff;
+            background-color: $clr6;
         }
 
         .share-pet {
             cursor: pointer;
-            color: #6b6a6a;
+            color: $clr4;
 
             :hover {
-                color: black;
+                color: $clr3;
             }
         }
     }
@@ -61,12 +57,14 @@
     & :nth-child(5) {
         border-bottom-right-radius: 10px;
     }
-    @include for-mobile-layout{
+
+    @include for-mobile-layout {
         grid-template-columns: 1fr;
         grid-template-rows: 300px;
         grid-gap: 0px;
         gap: 0px;
         margin-bottom: 0px;
+
         & img {
             object-fit: cover;
             width: 400px;
@@ -95,31 +93,34 @@
 
     .details-info-container {
         flex: 1;
+
         @include for-mobile-layout {
             margin-right: 0;
         }
+
         @include for-narrow-layout {
             margin-right: 0;
         }
+
         @include for-normal-layout {
             margin-right: 1rem;
         }
-        // margin-left: auto;
+
         text-align: left;
-        // padding: 0 12px;
+
         & .info-header {
-            // justify-content: space-between;
             margin: 25px 0;
+
             & .info-header-txt h3 {
                 margin-bottom: 5px;
                 margin-left: 10px;
             }
+
             & .info-header-txt span {
                 margin-left: 10px;
                 padding: 5px 0 15px;
-                // margin-bottom: 10px;
             }
-    
+
             & img {
                 width: 60px;
                 height: 60px;
@@ -138,9 +139,7 @@
 
             & .pet-info-list {
                 text-align: left;
-                // padding-bottom: 20px;
                 border-bottom: 1px solid #d3d3d3;
-                // margin-bottom: 15px;
                 color: #1e1e1e;
                 display: flex;
                 justify-content: space-between;
@@ -156,7 +155,6 @@
                 .left-info-list {
                     display: flex;
                     flex-direction: column;
-                    // margin-right: 100px;
                 }
 
                 .right-info-list {
@@ -166,6 +164,7 @@
                     @include for-mobile-layout {
                         margin-inline-start: 20px;
                     }
+
                     @include for-narrow-layout {
                         margin-inline-start: 20px;
                     }
@@ -177,7 +176,7 @@
                     :first-child {
                         width: 24px;
                         height: 24px;
-                        color: $clr9;
+                        color: $clr1;
                     }
                 }
 
@@ -206,7 +205,7 @@
         border-radius: 12px;
         padding: 24px;
         box-shadow: 0 6px 16px #0000001f;
-        background-color: snow;
+        background-color: $clr6;
         color: #1e1e1e;
         justify-content: center;
         height: fit-content;
@@ -215,15 +214,22 @@
         position: sticky;
         top: 70px;
         right: 0;
-        // z-index: 5;
         max-width: 100%;
-        // width: 320px;
 
-        .thumb-up{
+        .binoculars,
+        .thumb-up,
+        .paw {
+            width: 25px;
+            height: 25px;
+            fill: $clr3;
+        }
+
+        .thumb-up {
             margin-inline-start: 0px;
         }
+
         & span {
-            color: #6b6a6a;
+            color: $clr4;
             margin-top: 5px;
         }
 
@@ -237,7 +243,6 @@
             margin-left: 5px;
             border-top-left-radius: 3px;
             border-bottom-left-radius: 3px;
-            // padding: 0px 10px;
         }
 
         & .el-btn {
@@ -245,9 +250,9 @@
             line-height: 1;
             white-space: nowrap;
             cursor: pointer;
-            background: #fff;
-            border: 1px solid #dcdfe6;
-            color: #606266;
+            background: $clr6;
+            border: 1px solid $clr2;
+            color: $clr4;
             -webkit-appearance: none;
             text-align: center;
             box-sizing: border-box;
@@ -263,19 +268,16 @@
         & .adopt-btn {
             font-size: rem(25px);
             padding: 15px 45px;
-            // margin-right: auto;
-            // margin-left: auto;
-            // margin-bottom: 10px;
-            color: snow;
-            background-color: #36b99f;
+            color: $clr6;
+            background-color: $clr1;
             border-radius: 8px;
             transition: 0.3s;
 
             &:hover {
-                background-color: #fff;
-                color: #6b6a6a;
+                background-color: $clr6;
+                color: $clr4;
                 border-radius: 8px;
-                border-color: #36b99f;
+                border-color: $clr1;
             }
         }
 
@@ -304,9 +306,13 @@
 }
 
 .google-map {
+    h3 {
+        margin-bottom: 10px;
+    }
+
     .pet-location {
         display: flex;
-        color: #6b6a6a;
+        color: $clr4;
 
         :first-child {
             width: 0.8em;
@@ -318,28 +324,13 @@
 //some self helpers
 
 .map-pin svg {
-    fill: #36b99fde;
+    fill: $clr1;
     height: 48px;
     width: 48px;
-    color: white;
+    color: $clr6;
     display: inline-flex;
     text-align: center;
     align-items: center;
     justify-content: center;
     transform: translate(-50%, -50%);
-}
-
-.binoculars {
-    width: 25px;
-    height: 25px;
-    // margin-right: 5px;
-}
-
-.paw {
-    width: 25px;
-    height: 25px;
-}
-
-.thumb-up {
-    // margin-right: 5px;
 }
