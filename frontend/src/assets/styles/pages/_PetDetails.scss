@@ -13,9 +13,11 @@
         & .pet-like-btn {
             cursor: pointer;
             background-color: $clr6;
+            user-select: none;
         }
 
         .share-pet {
+            user-select: none;
             cursor: pointer;
             color: $clr4;
 

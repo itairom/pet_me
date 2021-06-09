@@ -39,7 +39,7 @@ class _PetDetails extends Component {
         isEditMode: false,
         isOpanModal: false,
         isAttend: false,
-        isMobileScreen: false
+        isMobileScreen: null
     }
 
     componentDidMount() {

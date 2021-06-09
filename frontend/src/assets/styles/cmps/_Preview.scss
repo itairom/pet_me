@@ -44,6 +44,7 @@
     }
 
     .pet-preview-likes {
+        user-select: none;
         :first-child {
             cursor: pointer;
             margin-inline-end: 2px;
