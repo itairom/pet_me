@@ -9,6 +9,7 @@
         justify-content: flex-end;
 
         & .add-comment-btn{
+            user-select: none;
             border: 1px solid $clr1;
             outline: 0;
             margin: 0;

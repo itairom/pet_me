@@ -11,6 +11,7 @@
         margin-top: 8px;
 
         & .pet-like-btn {
+            user-select: none;
             cursor: pointer;
             background-color: $clr6;
         }
@@ -266,6 +267,7 @@
         }
 
         & .adopt-btn {
+            user-select: none;
             font-size: rem(25px);
             padding: 15px 45px;
             color: $clr6;
