@@ -182,6 +182,36 @@
     min-width: 100%;
     box-shadow: 7px -32px 46px -68px rgba(141, 133, 133, 0.75);
 
+    .adopt-que-card {
+        border-top: 1px solid #d3d3d3;
+        align-items: center;
+        & tr {
+            flex: 1;
+            & .req-name {
+                padding: 10px 10px 0 10px;
+            }
+            .req-msg,.req-time {
+                padding-top: 0;
+                color: #727272;
+                font-size: 0.74rem;
+            }
+        }
+        & button {
+            height: 48px;
+            &:hover {
+                background-color: $clr6;
+                color: $clr4;
+                // border-radius: 8px;
+                border: 0.5px solid $clr1;
+            }
+            &::after {
+                background-color: $clr6;
+                color: $clr4;
+                // border-radius: 8px;
+                border: 0.5px solid $clr1;
+            }
+        }
+    }
 }
 
 .table-head {
@@ -225,6 +255,9 @@
     & .pet-header-txt {
         flex: 1;
 
+        & span {
+            flex: 1;
+        }
         &>* {
             margin-bottom: 5px;
         }

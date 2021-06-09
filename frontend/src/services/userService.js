@@ -80,16 +80,16 @@ async function saveNewRequest(data) {
 
     if (!isAlreadyRequested) { // if user(owner) already got the request - do no push the request again.
       owner.pets[petIdx].adoptQue.push(newRequest)
-      const updatedOwner = await update(owner)
-      socketService.emit('adopt-request', data) 
-      return updatedOwner
-      // return owner
+      // const updatedOwner = await update(owner)
+      socketService.emit('adopt-request', data)
+      // return updatedOwner
+      return owner
     }
     //future socket - for the requester {}
 
     else {
       const alreadyReqInfo = {
-        msg: 'You already requested the owner, please wait for him to response',
+        msg: 'You had already requested the owner, please wait for him to response',
         userId: newRequest.userId
       }
       socketService.emit('already-requested-msg', alreadyReqInfo)
@@ -100,7 +100,7 @@ async function saveNewRequest(data) {
 
 async function saveNewApprove(data) {
   const { pet, req, loggedInUser, idx } = data
-
+  console.log(req)
   let newOwner = await getById(req.userId)
 
   console.log('newOwner', newOwner)
@@ -124,24 +124,26 @@ async function saveNewApprove(data) {
   // creating new owner - the one who got the approve
   newOwner = {
     ...newOwner,
-    pets: [...newOwner.pets, newOwner.pets.push(newOwnerPet)]
+    pets: [...newOwner.pets, newOwnerPet]
   }
 
   //creating old owner - the one who approve the request
+  loggedInUser.pets.splice(idx, 1)
   const newLoggedInUser = {
     ...loggedInUser,
     oldPets: (loggedInUser.oldPets) ?
       (!loggedInUser.oldPets.some(oldPet => oldPet._id === pet._id) ?
-        [...loggedInUser.oldPets, loggedInUser.oldPets.push(oldOwnerPet)] : [...loggedInUser.oldPets])
+        [...loggedInUser.oldPets, oldOwnerPet] : [...loggedInUser.oldPets])
       : [oldOwnerPet],
-    pets: [loggedInUser.pets.splice(idx, 1), ...loggedInUser.pets]
+    pets: [loggedInUser.pets]
   }
 
   console.log(newOwner, newLoggedInUser)
 
   //here: sending new users to backend
   // const updatedOwner = newOwner
-  // // const updatedOwner = await update(newOwner)
-  // const updatedLoggedInUser = await update(newLoggedInUser)
-  // return Promise.resolve({ updatedOwner, updatedLoggedInUser })
+  const updatedOwner = await update(newOwner)
+  const updatedLoggedInUser = await update(newLoggedInUser)
+  const newUsers = { updatedOwner, updatedLoggedInUser }
+  return newUsers
 }
