@@ -18,7 +18,7 @@ function connectSockets(http, session) {
         gSocketBySessionIdMap[socket.handshake.sessionID] = socket
         if (socket.handshake?.session?.user) {
             socket.join(socket.handshake.session.user._id)
-            console.log(socket.handshake.session.user._id)
+            // console.log(socket.handshake.session.user._id)
         }
         socket.on('disconnect', socket => {
             console.log('Someone disconnected')

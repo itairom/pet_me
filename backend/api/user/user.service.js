@@ -106,7 +106,7 @@ async function update(user) {
 }
 
 async function save(user) {
-    console.log(user)
+    // console.log(user)
     let savedUser = { ...user }
     const collection = await dbService.getCollection('user')
     try {
