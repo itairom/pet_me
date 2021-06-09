@@ -18,6 +18,7 @@
     font-size: 1rem;
 
     .select-sort {
+        user-select: none;
         margin-inline-start: 10px;
     }
 
@@ -38,6 +39,7 @@
 }
 
 .explore-search {
+    user-select: none;
     cursor: pointer;
     top: 9px;
     left: 24%;
@@ -57,6 +59,7 @@
     transform: translate(-50%, -50%);
 
     .search-btn-explore {
+        user-select: none;
         background-color: $clr1;
         padding: 4px 8px;
         margin: 1px 6px 1px 19px;
