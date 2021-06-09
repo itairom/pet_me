@@ -82,18 +82,9 @@ class _Explore extends React.Component {
         if (!isLoading) return <img src={userIcon} alt="loading" />
         return (
             <section className="main-container explore-container">
-
-                {/* {!isFilterShown && <div className="explore-search">
-                    <span onClick={() => this.onToggleFilter()} > Start your search</span>
-                    <div className="search-btn-explore">
-                        <img className="filter-search" src={ magnifyingGlass } alt="glass" />
-                    </div>
-                </div>} */}
-
-
                 <div className="filter-description">
                     { !filterBy.type && <h1 >Our pets</h1> }
-                    { filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size }  { filterBy.type }s</span>  </h1> }
+                    { filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size } { filterBy.type }s</span>  </h1> }
 
                     <div className="sort-form">
                         <label>Sort By</label>
