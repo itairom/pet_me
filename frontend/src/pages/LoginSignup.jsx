@@ -57,7 +57,6 @@ class _LoginSignup extends Component {
       return this.setState({ msg: 'Please enter user/password' })
     }
     const userCreds = { username, password }
-    // console.log("🚀 ~ file: LoginSignup.jsx ~ line 57 ~ _LoginSignup ~ userCreds", userCreds)
     try {
       this.props.login(userCreds)
       this.setState({ loginCred: { username: '', password: '' } })
@@ -82,9 +81,6 @@ class _LoginSignup extends Component {
     this.props.removeUser(userId)
   }
   render() {
-
-    // console.log('users',this.props.users);
-
     let signupSection = (
       <form className="frm" onSubmit={this.doSignup}>
         <h2>Signup</h2>

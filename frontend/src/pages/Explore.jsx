@@ -4,16 +4,13 @@ import { loadPets } from '../store/actions/petActions'
 import { onExplore, showSearch } from '../store/actions/userActions'
 import { PetList } from '../cmps/PetList'
 import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to image
-// import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
-
 
 class _Explore extends React.Component {
     state = {
         isFilterShown: false,
         filterBy: null,
         sortBy: '',
-        pets: [],
-        isLoading:false
+        isLoading: false
     }
     async componentDidMount() {
         window.scroll(0, 0)
@@ -21,22 +18,11 @@ class _Explore extends React.Component {
         this.props.showSearch()
         await this.onSetFilter()
         await this.props.loadPets(this.state.filterBy)
-        // this.setState({ pets: this.props.pets })
         this.setState({ isLoading: true })
-
-
     }
 
     async componentDidUpdate() {
-        console.log("componentDidUpdate")
-        console.log(this.state.filterBy);
         const query = new URLSearchParams(this.state.filterBy).toString()
-        // console.log("🚀 ~ file: Explore.jsx ~ line 30 ~ _Explore ~ componentDidUpdate ~ query", query)
-        // if (query === 'gender=&type=cat&age=&size=&location=') {
-        //     console.log('in');
-            // await this.props.loadPets()
-        //     this.setState({ pets: this.props.pets })
-        // }
     }
 
     onSetSort = () => {
@@ -71,29 +57,18 @@ class _Explore extends React.Component {
         )
     }
 
-
     render() {
-        console.log('render');
-
         const { pets } = this.props
-        const { filterBy,isLoading } = this.state
+        const { filterBy, isLoading } = this.state
         if (!pets.length) return <img src={userIcon} alt="loading" />
         if (!filterBy) return <img src={userIcon} alt="loading" />
         if (!isLoading) return <img src={userIcon} alt="loading" />
         return (
             <section className="main-container explore-container">
 
-                {/* {!isFilterShown && <div className="explore-search">
-                    <span onClick={() => this.onToggleFilter()} > Start your search</span>
-                    <div className="search-btn-explore">
-                        <img className="filter-search" src={ magnifyingGlass } alt="glass" />
-                    </div>
-                </div>} */}
-
-
                 <div className="filter-description">
-                    { !filterBy.type && <h1 >Our pets</h1> }
-                    { filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size }  { filterBy.type }s</span>  </h1> }
+                    {!filterBy.type && <h1 >Our pets</h1>}
+                    {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span>  </h1>}
 
                     <div className="sort-form">
                         <label>Sort By</label>
@@ -105,7 +80,7 @@ class _Explore extends React.Component {
 
                     </div>
                 </div>
-                < PetList pets={ pets } />
+                < PetList pets={pets} />
             </section>
         )
     }

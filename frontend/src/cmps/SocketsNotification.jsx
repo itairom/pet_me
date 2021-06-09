@@ -31,7 +31,6 @@ export class SocketsNotification extends Component {
       console.log('alert-to-notify', msg)
       this.alertNotify(msg)
     });
-    // this.setState({ location: undefined })
   }
 
   componentWillUnmount() {

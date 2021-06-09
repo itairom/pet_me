@@ -102,9 +102,6 @@ async function saveNewApprove(data) {
   const { pet, req, loggedInUser, idx } = data
 
   let newOwner = await getById(req.userId)
-
-  console.log('newOwner', newOwner)
-  //create new pet for the new owner
   const newOwnerPet = {
     _id: pet._id,
     isAdopted: true,
@@ -136,12 +133,4 @@ async function saveNewApprove(data) {
       : [oldOwnerPet],
     pets: [loggedInUser.pets.splice(idx, 1), ...loggedInUser.pets]
   }
-
-  console.log(newOwner, newLoggedInUser)
-
-  //here: sending new users to backend
-  // const updatedOwner = newOwner
-  // // const updatedOwner = await update(newOwner)
-  // const updatedLoggedInUser = await update(newLoggedInUser)
-  // return Promise.resolve({ updatedOwner, updatedLoggedInUser })
 }
