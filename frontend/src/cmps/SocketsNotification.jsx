@@ -15,12 +15,15 @@ export class SocketsNotification extends Component {
   componentDidMount() {
     console.log('SocketsNotification is running')
     socketService.on('adopt-request-owner', (msg) => {
-      console.log('messging the owner')
+      this.setState({ location: 'profile' })
+      setTimeout(() => this.adoptNotify(msg), 10000)
+    });
+    socketService.on('adopt-request-requester', (msg) => {
       this.setState({ location: 'profile' })
       this.adoptNotify(msg)
     });
-    socketService.on('adopt-request-requester', (msg) => {
-      console.log('messging the requester')
+    
+    socketService.on('approve-requested-msg', (msg) => {
       this.setState({ location: 'profile' })
       this.adoptNotify(msg)
     });
@@ -28,15 +31,17 @@ export class SocketsNotification extends Component {
       this.alertNotify(msg)
     });
     socketService.on('alert-to-notify', (msg) => {
-      console.log('alert-to-notify', msg)
+      // console.log('alert-to-notify', msg)
       this.alertNotify(msg)
     });
+    this.setState({ location: undefined })
   }
 
   componentWillUnmount() {
     socketService.off('adopt-request-owner')
     socketService.off('adopt-request-requester')
     socketService.off('already-requested')
+    socketService.off('alert-to-notify')
     console.log('SocketsNotification is off')
   }
 
@@ -50,8 +55,9 @@ export class SocketsNotification extends Component {
       animationIn: ["animate__animated", "animate__fadeIn"],
       animationOut: ["animate__animated", "animate__fadeOut"],
       dismiss: {
-        duration: 4000,
-        onScreen: false
+        duration: 7000,
+        onScreen: false,
+        pauseOnHover: true
       }
     });
   }
@@ -79,7 +85,6 @@ export class SocketsNotification extends Component {
         </Link>
       )
         :
-
         <>
           <ReactNotification />
         </>

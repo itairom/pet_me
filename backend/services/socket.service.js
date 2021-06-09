@@ -8,7 +8,7 @@ function connectSockets(http, session) {
     gIo = require('socket.io')(http);
 
     const sharedSession = require('express-socket.io-session');
-    
+
 
     gIo.use(sharedSession(session, {
         autoSave: true
@@ -52,21 +52,24 @@ function connectSockets(http, session) {
             emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
 
             // //sent to header - update localUser everywhere
-            emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
+            // emitToUser({ type: 'adopt-request-owner-data', data: data, userId: data.owner._id })
         })
 
         socket.on('update-new-owner', newOwner => {
-            console.log('socket recived - newOwner: ', newOwner)
             emitToUser({ type: 'sending-new-owner-to-save', data: newOwner, userId: newOwner._id })
         })
 
         socket.on('already-requested-msg', data => {
-            // console.log('data-from-details', data)
             emitToUser({ type: 'already-requested', data: data.msg, userId: data.userId })
         })
+
+        socket.on('approve-requested', data => {
+            emitToUser({ type: 'approve-requested', data: data, userId: data.req.userId })
+            emitToUser({ type: 'approve-requested-msg', data: data.msg, userId: data.req.userId })
+        })
         socket.on('alert', ((msg) => {
-            gIo.emit('alert-to-notify', msg)
             console.log('!alerting guess!')
+            gIo.emit('alert-to-notify', msg)
             // emitToUser({ type: 'alert-to-notify', data: msg, userId: 's104' })
         }))
     })
@@ -79,7 +82,7 @@ function emitToAll({ type, data, room = null }) {
 //here is the problem
 // TODO: Need to test emitToUser feature
 function emitToUser({ type, data, userId }) {
-    console.log('socket.service.js ~line75~, Message: ' + data, ', To: user-id: ' + userId)
+    // console.log('socket.service.js ~line75~, Message: ' + data, ', To: user-id: ' + userId)
     gIo.to(userId).emit(type, data)
 }
 

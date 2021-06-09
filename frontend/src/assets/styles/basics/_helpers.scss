@@ -88,3 +88,7 @@
     @include aspect-ratio(9, 16);
 }
 
+.notification__item--info {
+    background-color: #36b99f !important;
+    border-left: 8px solid lightslategrey !important;
+}
