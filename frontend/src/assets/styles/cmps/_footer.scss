@@ -9,8 +9,13 @@
     .nav-social {
         cursor: pointer;
         user-select: none;
+
         :not(:last-child) {
             padding-right: 8px;
+        }
+
+        .in {
+            padding-top: 0.6px;
         }
 
         :hover {
