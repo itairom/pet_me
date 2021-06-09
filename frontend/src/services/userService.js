@@ -80,10 +80,10 @@ async function saveNewRequest(data) {
 
     if (!isAlreadyRequested) { // if user(owner) already got the request - do no push the request again.
       owner.pets[petIdx].adoptQue.push(newRequest)
-      // const updatedOwner = await update(owner)
-      socketService.emit('adopt-request', data)
-      // return updatedOwner
-      return owner
+      const updatedOwner = await update(owner)
+      socketService.emit('adopt-request', data) //V working
+      return updatedOwner
+      // return owner
     }
     //future socket - for the requester {}
 

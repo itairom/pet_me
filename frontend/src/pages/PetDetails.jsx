@@ -39,7 +39,7 @@ class _PetDetails extends Component {
         isEditMode: false,
         isOpanModal: false,
         isAttend: false,
-        isMobileScreen: false
+        isMobileScreen: null
     }
 
     componentDidMount() {
@@ -135,7 +135,7 @@ class _PetDetails extends Component {
 
     render() {
         const { isMobileScreen } = this.state
-        if (isMobileScreen === null) return <h1>Loading</h1>
+        if (isMobileScreen === null) return <img src={userIcon} alt="loading" />
 
         const id = this.props.match.params.petId
         const pet = this.props.pets.find(pet => pet._id === id)

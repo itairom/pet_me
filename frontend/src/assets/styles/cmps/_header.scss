@@ -43,6 +43,7 @@
 }
 
 .header-logo {
+    user-select: none;
     zoom: 70%;
     margin-top: 10px;
 
@@ -53,6 +54,7 @@
 }
 
 .login-profile {
+    user-select: none;
     position: relative;
     cursor: pointer;
     padding: 10px 10px 3px 10px;
@@ -170,18 +172,19 @@
 }
 
 .profile-icon {
+    user-select: none;
     border-radius: 50%;
     object-fit: cover;
 }
 
 .logo-container {
+    user-select: none;
     align-items: flex-end;
-
     .logo {
         width: 40px;
         height: 40px;
     }
-
+    
     .logo-title {
         font-size: 30px;
         color: $clr6;

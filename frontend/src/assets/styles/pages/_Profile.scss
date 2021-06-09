@@ -20,7 +20,11 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
     @include for-normal-layout {
-        flex-direction: row;
+        width: 50%;
+        margin: 0 auto;
+        margin-block-start: 80px;
+        margin-block-end: 30px;
+        padding: 10px;
     }
 
     .logout {
@@ -133,6 +137,10 @@
     // background-color: rgb(209, 230, 230);
     width: 100%;
     right: 50px;
+    @include for-normal-layout{
+        width: 50%;
+        margin: 0 auto;
+    }
 
     h1 {
         text-align: center;
@@ -142,7 +150,7 @@
 .adopt-card {
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(154, 160, 185, .05), 0 15px 40px rgba(166, 173, 201, .2);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
     img {
         height: 100%;
@@ -225,8 +233,7 @@
                 padding: 10px;
             }
 
-            &:last-child {
-            }
+            &:last-child {}
         }
     }
 }
