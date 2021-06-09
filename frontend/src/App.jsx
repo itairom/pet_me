@@ -16,8 +16,8 @@ export function App() {
   return (
     <div className="app flex column">
       <Router>
-        <SocketsNotification key={ '2312412' } />
         <Header />
+        <SocketsNotification key={ '2312412' } />
         <main className="main-layout">
           <Switch>
             <Route path="/explore" component={ Explore } />

@@ -115,7 +115,7 @@ export function approveAdopt(data) { // Action Creator
     const updatedUsers = await userService.saveNewApprove(data)
     // console.log(updatedUsers)
     console.log('updating oldOwner')
-    socketService.emit('update-new-owner', updatedUsers.updatedOwner)
+    // socketService.emit('update-new-owner', updatedUsers.updatedOwner)
     const action = {
       type: 'UPDATE_USER',
       user: updatedUsers.updatedLoggedInUser
