@@ -18,7 +18,7 @@ function connectSockets(http, session) {
         gSocketBySessionIdMap[socket.handshake.sessionID] = socket
         if (socket.handshake?.session?.user) {
             socket.join(socket.handshake.session.user._id)
-            console.log(socket.handshake.session.user._id)
+            // console.log(socket.handshake.session.user._id)
         }
         socket.on('disconnect', socket => {
             console.log('Someone disconnected')
@@ -67,11 +67,14 @@ function connectSockets(http, session) {
             emitToUser({ type: 'approve-requested', data: data, userId: data.req.userId })
             emitToUser({ type: 'approve-requested-msg', data: data.msg, userId: data.req.userId })
         })
-        socket.on('alert', ((msg) => {
+        socket.on('alert', msg => {
             console.log('!alerting guess!')
             gIo.emit('alert-to-notify', msg)
-            // emitToUser({ type: 'alert-to-notify', data: msg, userId: 's104' })
-        }))
+        })
+        socket.on('alert-user', data => {
+            console.log('!alerting user! userId = ',data.userId)
+            emitToUser({ type: 'alert-to-notify', data: data.msg, userId: data.userId })
+        })
     })
 }
 

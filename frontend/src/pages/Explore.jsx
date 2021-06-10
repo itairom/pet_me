@@ -83,7 +83,12 @@ class _Explore extends React.Component {
             <section className="main-container explore-container">
                 <div className="filter-description">
                     { !filterBy.type && <h1 >Our pets</h1> }
+<<<<<<< HEAD
+                    { filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size } { filterBy.type }s</span>  </h1> }
+
+=======
                     { filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size }  { filterBy.type }s</span>  </h1> }
+>>>>>>> ff92482106ed25149647f240f7fd335871c10482
                     <div className="sort-form">
                         <label>Sort By</label>
                         <select className="select-sort" value={this.state.sortBy} onChange={this.handleChange}>
