@@ -81,7 +81,7 @@ async function saveNewRequest(data) {
     if (!isAlreadyRequested) { // if user(owner) already got the request - do no push the request again.
       owner.pets[petIdx].adoptQue.push(newRequest)
       const updatedOwner = await update(owner)
-      socketService.emit('adopt-request', data) //V working
+      socketService.emit('adopt-request', data) 
       return updatedOwner
       // return owner
     }
@@ -98,10 +98,15 @@ async function saveNewRequest(data) {
   }
 }
 
-async function saveNewApprove(data) {
+async function saveNewApprove(data) { // CREATING NEW USERS 
   const { pet, req, loggedInUser, idx } = data
-  console.log(req)
   let newOwner = await getById(req.userId)
+<<<<<<< HEAD
+=======
+
+  console.log('newOwner', newOwner, 'loggedInUser', loggedInUser)
+  //create new pet for the new owner
+>>>>>>> 967a4f816bb9de05c3c93a4c53a1a7623906df55
   const newOwnerPet = {
     _id: pet._id,
     isAdopted: true,
@@ -121,8 +126,9 @@ async function saveNewApprove(data) {
   // creating new owner - the one who got the approve
   newOwner = {
     ...newOwner,
-    pets: [...newOwner.pets, newOwnerPet]
+    pets: (newOwner.pets > 0) ? [...newOwner.pets, newOwnerPet] : [newOwnerPet]
   }
+
 
   //creating old owner - the one who approve the request
   loggedInUser.pets.splice(idx, 1)
@@ -132,15 +138,14 @@ async function saveNewApprove(data) {
       (!loggedInUser.oldPets.some(oldPet => oldPet._id === pet._id) ?
         [...loggedInUser.oldPets, oldOwnerPet] : [...loggedInUser.oldPets])
       : [oldOwnerPet],
-    pets: [loggedInUser.pets]
   }
+// ON (back-end enable)
+const updatedOwner = await update(newOwner)
+const updatedLoggedInUser = await update(newLoggedInUser)
+const newUsers = { updatedOwner, updatedLoggedInUser }
 
-  console.log(newOwner, newLoggedInUser)
+// OFF (back-end off)
+// const newUsers = { newOwner, newLoggedInUser }
 
-  //here: sending new users to backend
-  // const updatedOwner = newOwner
-  const updatedOwner = await update(newOwner)
-  const updatedLoggedInUser = await update(newLoggedInUser)
-  const newUsers = { updatedOwner, updatedLoggedInUser }
-  return newUsers
+return newUsers
 }

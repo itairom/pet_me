@@ -19,6 +19,10 @@ class _Explore extends React.Component {
         await this.onSetFilter()
         await this.props.loadPets(this.state.filterBy)
         this.setState({ isLoading: true })
+<<<<<<< HEAD
+=======
+
+>>>>>>> 967a4f816bb9de05c3c93a4c53a1a7623906df55
     }
 
     async componentDidUpdate() {
@@ -65,11 +69,21 @@ class _Explore extends React.Component {
         if (!isLoading) return <img src={userIcon} alt="loading" />
         return (
             <section className="main-container explore-container">
+<<<<<<< HEAD
 
                 <div className="filter-description">
                     {!filterBy.type && <h1 >Our pets</h1>}
                     {filterBy.type && <h1>Our <span> {filterBy.gender} {filterBy.size}  {filterBy.type}s</span>  </h1>}
+=======
+                <div className="filter-description">
+                    { !filterBy.type && <h1 >Our pets</h1> }
+<<<<<<< HEAD
+                    { filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size } { filterBy.type }s</span>  </h1> }
+>>>>>>> 967a4f816bb9de05c3c93a4c53a1a7623906df55
 
+=======
+                    { filterBy.type && <h1>Our <span> { filterBy.gender } { filterBy.size }  { filterBy.type }s</span>  </h1> }
+>>>>>>> ff92482106ed25149647f240f7fd335871c10482
                     <div className="sort-form">
                         <label>Sort By</label>
                         <select className="select-sort" value={this.state.sortBy} onChange={this.handleChange}>

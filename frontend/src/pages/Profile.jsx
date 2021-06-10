@@ -111,6 +111,7 @@ class _Profile extends Component {
             const { newRequest } = this.state.newLiveRequest
             newLiveRequest = newRequest
         }
+        
         if (!loggedInUser) return <img src={ Loader } alt="loadnig" />
         if (loggedInUser.pets.legnth > 0 && userPets.length < 1) return <img src={ Loader } alt="loadnig" />
         return (
@@ -138,7 +139,7 @@ class _Profile extends Component {
 
                     <div className="user-pets">
                         <h1>My pets</h1>
-                        { userPets.map((pet, idx) => {
+                        { userPets && userPets.map((pet, idx) => {
                             return (
                                 <div className="adopt-card flex" key={utilService.makeId(6)}>
                                     <div className="adopt-card-info">
@@ -155,7 +156,7 @@ class _Profile extends Component {
                                         <section className="adopt-table">
                                             <table className="pet-table-card">
                                                 <tbody className="table-body" key={ utilService.makeId(6) }>
-                                                    { loggedInUser.pets[idx] && loggedInUser.pets[idx].adoptQue.map(req => {
+                                                    { loggedInUser.pets[idx].adoptQue.map(req => {
                                                         return (
                                                             <div className="adopt-que-card flex space-between" key={ utilService.makeId(6) }>
                                                                 <tr className="flex column">
@@ -166,7 +167,7 @@ class _Profile extends Component {
                                                                 <button onClick={ () => this.approveAdopt(pet, req, loggedInUser, idx) } className="aprove-btn">Approve Adoption</button>
                                                             </div>
                                                         )
-                                                    })
+                                                    }) 
                                                     }
                                                     { newLiveRequest &&
                                                         <tr key={ utilService.makeId(6) }>
