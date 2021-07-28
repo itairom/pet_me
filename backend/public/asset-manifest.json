@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.53a46790.chunk.css",
-    "main.js": "/static/js/main.3fa2783f.chunk.js",
-    "main.js.map": "/static/js/main.3fa2783f.chunk.js.map",
+    "main.css": "/static/css/main.3caa9414.chunk.css",
+    "main.js": "/static/js/main.b545557e.chunk.js",
+    "main.js.map": "/static/js/main.b545557e.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.3910a065.js",
     "runtime-main.js.map": "/static/js/runtime-main.3910a065.js.map",
     "static/css/2.c7a358ca.chunk.css": "/static/css/2.c7a358ca.chunk.css",
@@ -14,7 +14,7 @@
     "service-worker.js": "/service-worker.js",
     "service-worker.js.map": "/service-worker.js.map",
     "static/css/2.c7a358ca.chunk.css.map": "/static/css/2.c7a358ca.chunk.css.map",
-    "static/css/main.53a46790.chunk.css.map": "/static/css/main.53a46790.chunk.css.map",
+    "static/css/main.3caa9414.chunk.css.map": "/static/css/main.3caa9414.chunk.css.map",
     "static/js/2.b949c8e8.chunk.js.LICENSE.txt": "/static/js/2.b949c8e8.chunk.js.LICENSE.txt",
     "static/media/main.scss": "/static/media/FjallaOne-Regular.c674a102.ttf",
     "static/media/binoculars.10ac0a1e.svg": "/static/media/binoculars.10ac0a1e.svg",
@@ -35,7 +35,7 @@
     "static/js/runtime-main.3910a065.js",
     "static/css/2.c7a358ca.chunk.css",
     "static/js/2.b949c8e8.chunk.js",
-    "static/css/main.53a46790.chunk.css",
-    "static/js/main.3fa2783f.chunk.js"
+    "static/css/main.3caa9414.chunk.css",
+    "static/js/main.b545557e.chunk.js"
   ]
 }

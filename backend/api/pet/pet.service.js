@@ -4,11 +4,6 @@ const ObjectId = require('mongodb').ObjectId
 
 
 async function query(filterBy = '') {
-    // console.log("🚀 ~ file: pet.service.js ~ line 7 ~ query ~ filterBy", filterBy)
-    // console.log("🚀 ~ file: pet.service.js ~ line 7 ~ query ~ filterBy", filterBy)
-    // if(filterBy.sort!=='undefined'){
-    //     console.log(filterBy.sort);
-    // }
     let { sortBy } = filterBy
    
     // console.log("🚀 ~ file: pet.service.js ~ line 12 ~ query ~ sortBy", sortBy)

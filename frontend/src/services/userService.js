@@ -101,12 +101,9 @@ async function saveNewRequest(data) {
 async function saveNewApprove(data) { // CREATING NEW USERS 
   const { pet, req, loggedInUser, idx } = data
   let newOwner = await getById(req.userId)
-<<<<<<< HEAD
-=======
 
   console.log('newOwner', newOwner, 'loggedInUser', loggedInUser)
   //create new pet for the new owner
->>>>>>> 967a4f816bb9de05c3c93a4c53a1a7623906df55
   const newOwnerPet = {
     _id: pet._id,
     isAdopted: true,
