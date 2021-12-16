@@ -52,7 +52,7 @@ class _PetDetails extends Component {
                 const pet = this.props.pets.find(pet => pet._id === id)
                 this.props.loadUsers()
                     .then(() => {
-                        const user = this.props.users.find(user => user._id === pet.owner._id)
+                        const user = this.props.users.find(user => user._id === pet?.owner?._id)
                         this.setState({ pet, owner: user, loggedInUser: this.props.loggedInUser })
                     })
             })
@@ -148,14 +148,14 @@ class _PetDetails extends Component {
                 </header>
                 {!isMobileScreen &&
                     <div className="details-imgs-container grid">
-                        {pet.imgUrls.map((imgUrl, idx) => {
+                        {pet.imgUrls?.map((imgUrl, idx) => {
                             return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
                         })}
                     </div>}
                 {isMobileScreen &&
                     <div className="details-imgs-container grid">
                         <Slider {...settings}>
-                            {pet.imgUrls.map((imgUrl, idx) => {
+                            {pet.imgUrls?.map((imgUrl, idx) => {
                                 return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
                             })}
                         </Slider>

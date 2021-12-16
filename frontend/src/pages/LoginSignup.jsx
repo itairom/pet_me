@@ -72,7 +72,27 @@ class _LoginSignup extends Component {
     if (!username || !password || !fullname) {
       return this.setState({ msg: 'All inputs are required' })
     }
-    const signupCreds = { username, password, fullname }
+
+
+    const signupCreds = {
+      username,
+      password,
+      fullname,
+      desc: 'sescription',
+      imgUrl: 'http://innovacos.com/wp-content/uploads/2017/01/profile-silhouette.jpg',
+      isOwner: true,
+      desc: 'sescription',
+      loc: {
+        address: "tel aviv",
+        lat: 21313123123,
+        lng: 23132131221
+      }, oldPets: [],
+      pets: [],
+      title:'title',
+      tags:[],
+      reviews:[],
+
+    }
     this.props.signup(signupCreds)
     this.setState({ signupCred: { username: '', password: '', fullname: '' } })
   }

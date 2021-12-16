@@ -8,6 +8,7 @@ import { PetApp } from './pages/PetApp'
 import { Profile } from './pages/Profile'
 import { Explore } from './pages/Explore'
 import { LoginSignup } from './pages/LoginSignup'
+import { AddPet } from './pages/AddPet'
 
 
 
@@ -21,6 +22,7 @@ export function App() {
         <main className="main-layout">
           <Switch>
             <Route path="/explore" component={ Explore } />
+            <Route path="/add" component={ AddPet } />
             <Route path="/profile" component={ Profile } />
             <Route path="/login" component={ LoginSignup } />
             <Route path="/:petId" component={ PetDetails } />

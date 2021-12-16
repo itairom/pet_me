@@ -24,8 +24,9 @@ export class PetPreview extends React.Component {
             <section className="pet-card-container">
                 <Link key={pet._id} to={`/${pet._id}`}>
                     <Slider {...settings}>
-                        {pet.imgUrls.map(imgUrl => <img className="img-preview" src={imgUrl} alt="" key={pet._id} />)}
+                        {pet.imgUrls?.map(imgUrl => <img className="img-preview" src={imgUrl} alt="pet" key={pet._id} />)}
                     </Slider>
+                    {!pet.imgUrls&&<img className="img-preview" src="http://clipart-library.com/img/1183485.jpg" alt="pet" key={pet._id} />}
                 </Link>
                 <div className="card-info">
                     <div className="pet-name-gender flex">

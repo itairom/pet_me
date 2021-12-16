@@ -1,24 +1,22 @@
-export const cloudinaryService = {
-  uploadImg
-}
-function uploadImg(ev) {
-  const CLOUD_NAME = 'dcwibf9o5'
-  const PRESET_NAME = 'vt0iqgff'
-  const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+function uploadImg(files) {
+    const CLOUD_NAME = 'dhorz8v6v'
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+    const formData = new FormData();
+    // formData.append('file', files[0])
+    formData.append('file', files)
+    formData.append('upload_preset', 'e4caygdi');
 
-  const formData = new FormData();
-  formData.append('file', ev.target.files[0])
-  formData.append('upload_preset', PRESET_NAME);
-
-  return fetch(UPLOAD_URL, {
-    method: 'POST',
-    body: formData
-  })
-    .then(res => res.json())
-    .then(res => {
-      console.log(res)
-
-      return res
+    return fetch(UPLOAD_URL, {
+        method: 'POST',
+        body: formData
     })
-    .catch(err => console.error(err))
+        .then(res => res.json())
+        .then(res => {
+            return res
+        })
+        .catch(err => console.error(err))
+}
+
+export const cloudinaryService = {
+    uploadImg
 }

@@ -12,6 +12,7 @@ import { loadUsers, login, logout, removeUser, signup, approveAdopt, getUser } f
 import { loadPets } from '../store/actions/petActions'
 import { socketService } from '../services/socketService'
 import { userService } from '../services/userService'
+import { Link } from 'react-router-dom'
 
 
 class _Profile extends Component {
@@ -111,9 +112,9 @@ class _Profile extends Component {
             const { newRequest } = this.state.newLiveRequest
             newLiveRequest = newRequest
         }
-        
-        if (!loggedInUser) return <img src={ Loader } alt="loadnig" />
-        if (loggedInUser.pets.legnth > 0 && userPets.length < 1) return <img src={ Loader } alt="loadnig" />
+
+        if (!loggedInUser) return <img src={Loader} alt="loadnig" />
+        if (loggedInUser.pets?.legnth > 0 && userPets.length < 1) return <img src={Loader} alt="loadnig" />
         return (
 
             <section className="main-profile main-container">
@@ -127,7 +128,7 @@ class _Profile extends Component {
                         <h4 className="italic">"{loggedInUser.title}"</h4>
                         <div className="location-info">
                             <img src={Pin} alt="location info" />
-                            <div>{loggedInUser.loc.address}</div>
+                            <div>{loggedInUser?.loc?.address}</div>
                         </div>
                         <div className="user-rate">
                             <Rating name="disabled" value={loggedInUser.rating ? loggedInUser.rating : loggedInUser.reviews[0]?.rate} disabled />
@@ -139,14 +140,14 @@ class _Profile extends Component {
 
                     <div className="user-pets">
                         <h1>My pets</h1>
-                        { userPets && userPets.map((pet, idx) => {
+                        {userPets && userPets.map((pet, idx) => {
                             return (
                                 <div className="adopt-card flex" key={utilService.makeId(6)}>
                                     <div className="adopt-card-info">
                                         <div className="pet-header flex">
                                             <div className="pet-header-txt flex column">
-                                                <h3>{ pet.name }</h3>
-                                                <span>Added: { utilService.timeSince(pet.addedAt, 'ago') }</span>
+                                                <h3>{pet.name}</h3>
+                                                <span>Added: {utilService.timeSince(pet.addedAt, 'ago')}</span>
                                                 <h4>Request Queue: </h4>
                                             </div>
                                             <div className="pet-img-box flex align-center">
@@ -155,35 +156,38 @@ class _Profile extends Component {
                                         </div>
                                         <section className="adopt-table">
                                             <table className="pet-table-card">
-                                                <tbody className="table-body" key={ utilService.makeId(6) }>
-                                                    { loggedInUser.pets[idx].adoptQue.map(req => {
+                                                <tbody className="table-body" key={utilService.makeId(6)}>
+                                                    {loggedInUser.pets[idx].adoptQue.map(req => {
                                                         return (
-                                                            <div className="adopt-que-card flex space-between" key={ utilService.makeId(6) }>
+                                                            <div className="adopt-que-card flex space-between" key={utilService.makeId(6)}>
                                                                 <tr className="flex column">
-                                                                    <td className="req-name">{ req.fullname }</td>
-                                                                    <td className="req-msg">{ req.message }</td>
-                                                                    <td className="req-time">{ utilService.timeSince(req.date, 'ago') }</td>
+                                                                    <td className="req-name">{req.fullname}</td>
+                                                                    <td className="req-msg">{req.message}</td>
+                                                                    <td className="req-time">{utilService.timeSince(req.date, 'ago')}</td>
                                                                 </tr>
-                                                                <button onClick={ () => this.approveAdopt(pet, req, loggedInUser, idx) } className="aprove-btn">Approve Adoption</button>
+                                                                <button onClick={() => this.approveAdopt(pet, req, loggedInUser, idx)} className="aprove-btn">Approve Adoption</button>
                                                             </div>
                                                         )
-                                                    }) 
+                                                    })
                                                     }
-                                                    { newLiveRequest &&
-                                                        <tr key={ utilService.makeId(6) }>
-                                                            <td>{ newLiveRequest.fullname }</td>
-                                                            <td>{ newLiveRequest.message }</td>
-                                                            <td>{ utilService.timeSince(newLiveRequest.date, 'ago') }</td>
-                                                            <td><button onClick={ () => this.approveAdopt(pet, newLiveRequest, loggedInUser, idx) } className="aprove-btn">Aprove</button></td>
+                                                    {newLiveRequest &&
+                                                        <tr key={utilService.makeId(6)}>
+                                                            <td>{newLiveRequest.fullname}</td>
+                                                            <td>{newLiveRequest.message}</td>
+                                                            <td>{utilService.timeSince(newLiveRequest.date, 'ago')}</td>
+                                                            <td><button onClick={() => this.approveAdopt(pet, newLiveRequest, loggedInUser, idx)} className="aprove-btn">Aprove</button></td>
                                                         </tr>
                                                     }
                                                 </tbody>
                                             </table>
                                         </section>
                                     </div>
+
+
+
                                 </div>
                             )
-                        }) }
+                        })}
                     </div>
                     <div className="user-requests hide">
                         <h1>My requests</h1>
@@ -224,6 +228,7 @@ class _Profile extends Component {
                         </div>
                     </div>
                 </section>
+                <Link className='primary-btn' to={'./add'} >Add Pet</Link>
 
             </section >
         )

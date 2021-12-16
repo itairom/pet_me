@@ -44,8 +44,9 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
-  const user = await storageService.post('user', userCred)
-  // const user = await httpService.post('auth/signup', userCred)
+  console.log("🚀 ~ file: userService.js ~ line 47 ~ signup ~ userCred", userCred)
+  const user = storageService.post('user', userCred)
+  await httpService.post('auth/signup', userCred)
   return _saveLocalUser(user)
 }
 
@@ -81,7 +82,7 @@ async function saveNewRequest(data) {
     if (!isAlreadyRequested) { // if user(owner) already got the request - do no push the request again.
       owner.pets[petIdx].adoptQue.push(newRequest)
       const updatedOwner = await update(owner)
-      socketService.emit('adopt-request', data) 
+      socketService.emit('adopt-request', data)
       return updatedOwner
       // return owner
     }
@@ -136,13 +137,13 @@ async function saveNewApprove(data) { // CREATING NEW USERS
         [...loggedInUser.oldPets, oldOwnerPet] : [...loggedInUser.oldPets])
       : [oldOwnerPet],
   }
-// ON (back-end enable)
-const updatedOwner = await update(newOwner)
-const updatedLoggedInUser = await update(newLoggedInUser)
-const newUsers = { updatedOwner, updatedLoggedInUser }
+  // ON (back-end enable)
+  const updatedOwner = await update(newOwner)
+  const updatedLoggedInUser = await update(newLoggedInUser)
+  const newUsers = { updatedOwner, updatedLoggedInUser }
 
-// OFF (back-end off)
-// const newUsers = { newOwner, newLoggedInUser }
+  // OFF (back-end off)
+  // const newUsers = { newOwner, newLoggedInUser }
 
-return newUsers
+  return newUsers
 }
