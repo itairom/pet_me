@@ -29,7 +29,6 @@ class _PetApp extends React.Component {
                 <section className="hero full">
                     <div className="hero-content">
                         <FilterDynamic />
-
                         <h1>Find your</h1>
                         <h1> best friend</h1>
                     </div>

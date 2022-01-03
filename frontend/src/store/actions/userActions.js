@@ -95,7 +95,7 @@ export function updatedLoggedInUser(userId) {
   }
 }
 
-export function newAdoptRequest(data) { // Action Creator
+export function newAdoptRequest(data) { // Action Creator   //ADOPT
   return async dispatch => {
     try {
       const updatedUser = await userService.saveNewRequest(data)
@@ -110,6 +110,20 @@ export function newAdoptRequest(data) { // Action Creator
   }
 }
 
+export function discardAdopt(data) { // Action Creator
+  return async dispatch => {
+    const updatedUsers = await userService.discardAdoption(data)
+    console.log("🚀 ~ file: userActions.js ~ line 116 ~ discardAdopt ~ updatedUsers", updatedUsers)
+    // socketService.emit('update-new-owner', updatedUsers.updatedOwner)
+    
+    const action = {
+      type: 'UPDATE_USER',
+      user: updatedUsers.updatedOwner
+    }
+    // socketService.emit('approve-requested', data)
+    dispatch(action)
+  }
+}
 export function approveAdopt(data) { // Action Creator
   return async dispatch => {
     const updatedUsers = await userService.saveNewApprove(data)

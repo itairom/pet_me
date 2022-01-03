@@ -27,7 +27,6 @@ class _Header extends Component {
     }
 
     componentDidMount() {
-        console.log('cdm');
         window.addEventListener('click', this.handleClick)
         window.addEventListener('scroll', this.handleScroll)
         socketService.on('sending-new-owner-to-save', () => {

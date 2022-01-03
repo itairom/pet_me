@@ -271,7 +271,12 @@ a{
 
     & .pet-header-txt {
         flex: 1;
-
+        a{
+            background-color: transparent !important;
+            margin: none !important;
+            padding: none !important;
+            color: black !important;
+        }
         & span {
             flex: 1;
         }

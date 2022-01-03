@@ -102,7 +102,9 @@ class _PetDetails extends Component {
                 userId: loggedInUser._id,
                 message: `${loggedInUser.fullname} would like to adopt ${pet.name}`,
                 chatId: 'c' + utilService.makeId(7),
-            }
+            },
+            Requester:loggedInUser
+
         }
         this.props.newAdoptRequest(data)
     }

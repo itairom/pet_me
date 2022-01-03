@@ -11,14 +11,10 @@ export const storageService = {
 }
 
 function query(entityType, filterBy = '') {
-
     const { type, age, location, gender, size } = filterBy
-
-
 
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
-    // console.log("🚀 BEFOE", entities)
 
     if (type) {
         entities = entities.filter(entity => entity.type.includes(type))

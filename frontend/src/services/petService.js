@@ -24,19 +24,22 @@ async function query(filterBy = '') {
     }
 }
 
-async function add(pet) {
+async function add(pet) { //SAVE
+    const owner = JSON.parse(sessionStorage.getItem('loggedinUser'))
     if (pet._id) {
+        const updatedPet = await httpService.put(`pet/${pet._id}`, pet)
+        return updatedPet
     }
-    else{
-       const owner = JSON.parse(sessionStorage.getItem('loggedinUser'))
-        
-        const updatedPet =await httpService.post(`pet/`, pet)
-        const petUser={
+    else {
+        console.log(pet);
+        const updatedPet = await httpService.post(`pet/`, pet)
+        console.log("🚀 ~ file: petService.js ~ line 34 ~ add ~ updatedPet", updatedPet)
+        const petUser = {
             _id: updatedPet._id,
             isAdopted: false,
             adoptQue: []
         }
-        owner.pets=[...owner.pets,petUser]
+        owner.pets = [...owner.pets, petUser]
         console.log(`user/${petUser._id}`);
         await httpService.put(`user/${owner._id}`, owner)
     }
@@ -56,7 +59,7 @@ async function addComment(newComment, pet) {
         id: 'c' + utilService.makeId(6),
         txt,
         created: Date.now(),
-        _id:utilService.makeId(),
+        _id: utilService.makeId(),
         by: {
             id: loggedInUser._id,
             fullname: loggedInUser.fullname,

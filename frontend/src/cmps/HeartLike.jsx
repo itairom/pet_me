@@ -44,7 +44,7 @@ class _HeartLike extends Component {
                     onScreen: false
                 }
             });
-            return console.log('You are in guest mode, please logging to like the pet')
+            // return console.log('You are in guest mode, please logging to like the pet')
         }
 
         const userId = pet.likedBy.find(userId => userId === loggedInUser._id)

@@ -10,7 +10,7 @@ export class _FilterSelect extends React.Component {
         const { options, name, handleChange } = this.props
 
         return (
-            <div  className={'select-modal'} >
+            <div  className='select-modal' >
                 {options.map((option,idx) => {
                     return <option key={idx} onClick={() => handleChange(option, name)} >{option}</option>
                 })}

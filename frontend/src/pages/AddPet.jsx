@@ -43,12 +43,12 @@ export function AddPet() {
         setImgUrl([...imgUrl, img])
     }
 
-    const onSubmit = (values) => {
+    const onSubmit = async (values) => {
         const pet = values
         pet.imgUrls = imgUrl
         pet.owner = JSON.parse(sessionStorage.getItem('loggedinUser'))
-        petService.add(pet)
-        // history.push('./explorer')
+       await petService.add(pet)
+        history.push('./profile')
     }
 
     return (

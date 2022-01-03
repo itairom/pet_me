@@ -13,7 +13,6 @@ export class SocketsNotification extends Component {
   }
 
   componentDidMount() {
-    console.log('SocketsNotification is running')
     socketService.on('adopt-request-owner', (msg) => {
       this.setState({ location: 'profile' })
       setTimeout(() => this.adoptNotify(msg), 10000)
@@ -31,7 +30,6 @@ export class SocketsNotification extends Component {
       this.alertNotify(msg)
     });
     socketService.on('alert-to-notify', (msg) => {
-      // console.log('alert-to-notify', msg)
       this.alertNotify(msg)
     });
     this.setState({ location: undefined })
@@ -42,7 +40,6 @@ export class SocketsNotification extends Component {
     socketService.off('adopt-request-requester')
     socketService.off('already-requested')
     socketService.off('alert-to-notify')
-    console.log('SocketsNotification is off')
   }
 
   adoptNotify = (msg) => {

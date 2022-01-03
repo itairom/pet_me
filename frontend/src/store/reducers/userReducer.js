@@ -22,7 +22,6 @@ export function userReducer(state = initialState, action = {}) {
       }
 
     case 'UPDATE_USER':
-      console.log('updating user in the reducer', action.user)
       return {
         ...state,
         users: state.users.map(user => {
