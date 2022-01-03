@@ -5,14 +5,14 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(filterBy = '') {
     let { sortBy } = filterBy
-   
+
     // console.log("🚀 ~ file: pet.service.js ~ line 12 ~ query ~ sortBy", sortBy)
     let sort = {}
     if (sortBy === 'name') {
         sort.name = 1
-    if (sortBy === 'createdAt') {
-        sort.name = -1
-    }
+        if (sortBy === 'createdAt') {
+            sort.name = -1
+        }
     } else if (sortBy === 'likes') {
         sort.likes = -1
     }
@@ -36,7 +36,7 @@ async function save(pet) {
         if (pet._id) {
             //update
             savedPet.updatedAt = Date.now()
-            await collection.updateOne({ _id: pet._id }, { $set: savedPet })
+             await collection.updateOne({ _id: pet._id }, { $set: savedPet })
         } else {
             //create
             savedPet.createdAt = Date.now()
@@ -53,6 +53,18 @@ function get(entityType, entityId) {
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
 }
+
+async function getById(petId) {
+    try {
+        const collection = await dbService.getCollection('pet')
+        const isObjectId = (ObjectId.isValid(petId))
+        return isObjectId ? await collection.findOne({ '_id': ObjectId(petId) }) : await collection.findOne({ '_id': petId })
+    } catch (err) {
+        logger.error(`while finding pet ${petId}`, err)
+        throw err
+    }
+}
+
 
 function _makeId(length = 5) {
     var text = ''
@@ -95,5 +107,5 @@ function _buildCriteria(filterBy) {
 }
 
 module.exports = {
-    query, get, save
+    query, get, save, getById
 }

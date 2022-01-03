@@ -10,7 +10,7 @@ module.exports = {
     getById,
     getByUsername,
     remove,
-    update,
+    // update,
     add,
     updateRequest,
     save
@@ -36,7 +36,6 @@ async function query(filterBy = {}) {
 }
 
 async function getById(userId) {
-    // console.log('userId', userId)
     try {
         const collection = await dbService.getCollection('user')
         const user = await collection.findOne({ "_id": userId })
@@ -87,27 +86,27 @@ async function updateRequest(request) {
 }
 
 
-async function update(user) {
-    try {
-        // peek only updatable fields!
-        const userToSave = {
-            _id: ObjectId(user._id),
-            username: user.username,
-            fullname: user.fullname,
-            score: user.score
-        }
-        const collection = await dbService.getCollection('user')
-        await collection.updateOne({ '_id': userToSave._id }, { $set: userToSave })
-        return userToSave;
-    } catch (err) {
-        logger.error(`cannot update user ${user._id}`, err)
-        throw err
-    }
-}
+// async function update(user) {
+//     try {
+//         // peek only updatable fields!
+//         const userToSave = {
+//             _id: ObjectId(user._id),
+//             username: user.username,
+//             fullname: user.fullname,
+//             score: user.score
+//         }
+//         const collection = await dbService.getCollection('user')
+//         await collection.updateOne({ '_id': userToSave._id }, { $set: userToSave })
+//         return userToSave;
+//     } catch (err) {
+//         logger.error(`cannot update user ${user._id}`, err)
+//         throw err
+//     }
+// }
 
 async function save(user) {
-    // console.log(user)
     let savedUser = { ...user }
+    console.log("🚀 ~ file: user.service.js ~ line 110 ~ save ~ savedUser", savedUser)
     const collection = await dbService.getCollection('user')
     try {
         if (user._id) {
@@ -129,16 +128,10 @@ async function save(user) {
 
 async function add(user) {
     try {
-        // peek only updatable fields!
-        const userToAdd = {
-            username: user.username,
-            password: user.password,
-            fullname: user.fullname,
-            score: user.score || 0
-        }
+        console.log("🚀 ~ file: user.service.js ~ line 130 ~ add ~ user", user)
         const collection = await dbService.getCollection('user')
-        await collection.insertOne(userToAdd)
-        return userToAdd
+        await collection.insertOne(user)
+        return user
     } catch (err) {
         logger.error('cannot insert user', err)
         throw err

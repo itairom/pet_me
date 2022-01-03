@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.3caa9414.chunk.css",
-    "main.js": "/static/js/main.bb89c051.chunk.js",
-    "main.js.map": "/static/js/main.bb89c051.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.3910a065.js",
-    "runtime-main.js.map": "/static/js/runtime-main.3910a065.js.map",
+    "main.css": "/static/css/main.2f2f9db9.chunk.css",
+    "main.js": "/static/js/main.e0de3b37.chunk.js",
+    "main.js.map": "/static/js/main.e0de3b37.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.03f8d96d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.03f8d96d.js.map",
     "static/css/2.c7a358ca.chunk.css": "/static/css/2.c7a358ca.chunk.css",
-    "static/js/2.b949c8e8.chunk.js": "/static/js/2.b949c8e8.chunk.js",
-    "static/js/2.b949c8e8.chunk.js.map": "/static/js/2.b949c8e8.chunk.js.map",
-    "static/js/3.e7491cd3.chunk.js": "/static/js/3.e7491cd3.chunk.js",
-    "static/js/3.e7491cd3.chunk.js.map": "/static/js/3.e7491cd3.chunk.js.map",
+    "static/js/2.9000658d.chunk.js": "/static/js/2.9000658d.chunk.js",
+    "static/js/2.9000658d.chunk.js.map": "/static/js/2.9000658d.chunk.js.map",
+    "static/js/3.af4fc171.chunk.js": "/static/js/3.af4fc171.chunk.js",
+    "static/js/3.af4fc171.chunk.js.map": "/static/js/3.af4fc171.chunk.js.map",
     "index.html": "/index.html",
     "service-worker.js": "/service-worker.js",
     "service-worker.js.map": "/service-worker.js.map",
     "static/css/2.c7a358ca.chunk.css.map": "/static/css/2.c7a358ca.chunk.css.map",
-    "static/css/main.3caa9414.chunk.css.map": "/static/css/main.3caa9414.chunk.css.map",
-    "static/js/2.b949c8e8.chunk.js.LICENSE.txt": "/static/js/2.b949c8e8.chunk.js.LICENSE.txt",
+    "static/css/main.2f2f9db9.chunk.css.map": "/static/css/main.2f2f9db9.chunk.css.map",
+    "static/js/2.9000658d.chunk.js.LICENSE.txt": "/static/js/2.9000658d.chunk.js.LICENSE.txt",
     "static/media/main.scss": "/static/media/FjallaOne-Regular.c674a102.ttf",
     "static/media/binoculars.10ac0a1e.svg": "/static/media/binoculars.10ac0a1e.svg",
     "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.f691f37e.woff",
@@ -32,10 +32,10 @@
     "static/media/venus.e880e541.svg": "/static/media/venus.e880e541.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.3910a065.js",
+    "static/js/runtime-main.03f8d96d.js",
     "static/css/2.c7a358ca.chunk.css",
-    "static/js/2.b949c8e8.chunk.js",
-    "static/css/main.3caa9414.chunk.css",
-    "static/js/main.bb89c051.chunk.js"
+    "static/js/2.9000658d.chunk.js",
+    "static/css/main.2f2f9db9.chunk.css",
+    "static/js/main.e0de3b37.chunk.js"
   ]
 }

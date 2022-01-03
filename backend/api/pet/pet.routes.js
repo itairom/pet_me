@@ -7,6 +7,8 @@ const router = express.Router()
 router.get('/', getPets)
 router.get('/:id', log, getPetByid)
 router.put('/:id', log, updatePet)
+router.post('/', log, updatePet)
+
 // router.delete('/:id', requireAuth, requireAdmin, log, removePet)
 
 module.exports = router
