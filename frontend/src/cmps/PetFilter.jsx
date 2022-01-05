@@ -1,4 +1,3 @@
-import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { withRouter } from 'react-router-dom'
 import React from 'react'
 import { FilterSelect } from './FilterSelect'

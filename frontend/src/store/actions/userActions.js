@@ -95,10 +95,28 @@ export function updatedLoggedInUser(userId) {
   }
 }
 
+export function updateUser(data) { 
+  return async dispatch => {
+    try{
+      const updatedUser = await userService.update(data)
+      console.log("🚀 ~ file: userActions.js ~ line 101 ~ updteUser ~ updatedUser", updatedUser)
+      const action = {
+        type: 'UPDATE_USER',
+        user: updatedUser
+      }
+      dispatch(action)
+    }
+    catch{
+      console.log('faild to update user');
+    }
+  }
+}
+
 export function newAdoptRequest(data) { // Action Creator   //ADOPT
   return async dispatch => {
     try {
       const updatedUser = await userService.saveNewRequest(data)
+      console.log("🚀 ~ file: userActions.js ~ line 114 ~ newAdoptRequest ~ updatedUser", updatedUser)
       const action = {
         type: 'UPDATE_USER',
         user: updatedUser

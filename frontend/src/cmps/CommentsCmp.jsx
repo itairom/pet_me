@@ -4,7 +4,6 @@ import { addComment } from '../store/actions/petActions'
 import { connect } from 'react-redux'
 import { utilService } from '../services/utilService'
 
-
 class _CommentsCmp extends Component {
     state = {
         isCommenting: false,

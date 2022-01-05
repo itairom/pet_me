@@ -73,7 +73,6 @@ class _LoginSignup extends Component {
       return this.setState({ msg: 'All inputs are required' })
     }
 
-
     const signupCreds = {
       username,
       password,
@@ -81,7 +80,6 @@ class _LoginSignup extends Component {
       desc: 'sescription',
       imgUrl: 'http://innovacos.com/wp-content/uploads/2017/01/profile-silhouette.jpg',
       isOwner: true,
-      desc: 'sescription',
       loc: {
         address: "tel aviv",
         lat: 21313123123,
@@ -91,7 +89,8 @@ class _LoginSignup extends Component {
       title:'title',
       tags:[],
       reviews:[],
-
+      requests:[],
+      rating:4
     }
     this.props.signup(signupCreds)
     this.setState({ signupCred: { username: '', password: '', fullname: '' } })

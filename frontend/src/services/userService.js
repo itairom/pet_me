@@ -176,7 +176,7 @@ async function saveNewApprove(data) { // CREATING NEW USERS
   return newUsers
 }
 async function discardAdoption(data) { // CREATING NEW USERS 
-  const { pet, req, loggedInUser, idx } = data
+  const { pet, req, loggedInUser } = data
   let newOwner = await getById(req.userId)
 
   const updatedRequester = { ...newOwner } //NEED TO FIX INCORRECT

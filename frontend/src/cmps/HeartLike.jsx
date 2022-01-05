@@ -4,9 +4,6 @@ import { toggleLike } from '../store/actions/petActions'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { store } from 'react-notifications-component';
 
-
-
-
 class _HeartLike extends Component {
 
     state = {
@@ -16,8 +13,6 @@ class _HeartLike extends Component {
     componentDidMount() {
         this.checkUserLike()
     }
-
-
 
     checkUserLike = () => {
         const { loggedInUser, pet } = this.props
@@ -29,7 +24,6 @@ class _HeartLike extends Component {
 
     onLike = () => {
         const { loggedInUser, pet } = this.props
-
         if (!loggedInUser) {
             store.addNotification({
                 title: 'Alert',
@@ -39,18 +33,16 @@ class _HeartLike extends Component {
                 container: "top-right",
                 animationIn: ["animate__animated", "animate__zoomIn"],
                 animationOut: ["animate__animated", "animate__zoomOut"],
-                dismiss: {  
+                dismiss: {
                     duration: 2000,
                     onScreen: false
                 }
             });
-            // return console.log('You are in guest mode, please logging to like the pet')
         }
 
         const userId = pet.likedBy.find(userId => userId === loggedInUser._id)
         const isAlreadyLiked = userId ? true : false;
         this.setState({ isLiked: !isAlreadyLiked })
-        //add or remove user from likedBy
         const idx = pet.likedBy.findIndex(userId => userId === loggedInUser._id)
         const likeInfo = {
             petId: pet._id,
@@ -65,8 +57,8 @@ class _HeartLike extends Component {
     render() {
         const { isLiked } = this.state
         return (
-            <span className="pet-like-btn" onClick={ () => this.onLike() }>
-                <FavoriteIcon className={ !isLiked ? 'heart heart-empty' : 'heart heartfill' } />
+            <span className="pet-like-btn" onClick={() => this.onLike()}>
+                <FavoriteIcon className={!isLiked ? 'heart heart-empty' : 'heart heartfill'} />
             </span>
         )
     }

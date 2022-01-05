@@ -1,4 +1,3 @@
-// import { addComment } from '../store/actions/petActions';
 import { storageService } from './asyncStorageService'
 import { httpService } from '../services/httpService'
 import { utilService } from './utilService';
@@ -31,16 +30,13 @@ async function add(pet) { //SAVE
         return updatedPet
     }
     else {
-        console.log(pet);
         const updatedPet = await httpService.post(`pet/`, pet)
-        console.log("🚀 ~ file: petService.js ~ line 34 ~ add ~ updatedPet", updatedPet)
         const petUser = {
             _id: updatedPet._id,
             isAdopted: false,
             adoptQue: []
         }
         owner.pets = [...owner.pets, petUser]
-        console.log(`user/${petUser._id}`);
         await httpService.put(`user/${owner._id}`, owner)
     }
     // let addPet = await storageService.post(STORAGE_KEY, pet)
@@ -48,11 +44,10 @@ async function add(pet) { //SAVE
 }
 async function update(pet) {
     let updatedPet = await httpService.put(`pet/${pet._id}`, pet)
-    // return updatedPet
+    return updatedPet
 }
 
 async function addComment(newComment, pet) {
-    console.log(newComment)
     const updatedPet = { ...pet }
     const { loggedInUser, txt } = newComment
     newComment = {

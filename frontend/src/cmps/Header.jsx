@@ -1,12 +1,10 @@
 import userIcon from '../assets/img/header/user.svg' // relative path to image 
 import menuIcon from '../assets/img/header/menu.svg' // relative path to image 
-// import logo from '../assets/img/logo.png' // relative path to image 
 import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../store/actions/userActions'
 import { socketService } from '../services/socketService'
-import magnifyingGlass from '../assets/img/svg/magnifying-glass.svg' // relative path to image 
 import { loadPets } from '../store/actions/petActions'
 import { approveAdoptToOwner } from '../store/actions/userActions'
 import { PetFilter } from './PetFilter'
@@ -111,7 +109,7 @@ class _Header extends Component {
                                     </Link>}
 
                                     {(loggedInUser) &&
-                                        <a href="" onClick={() => this.onLogout()}>Logout</a>
+                                        <span href="" onClick={() => this.onLogout()}>Logout</span>
                                     }
                                     {(!loggedInUser) && <Link to='/login' >
                                         <span>Login</span>

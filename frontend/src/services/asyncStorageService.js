@@ -1,5 +1,3 @@
-
-
 export const storageService = {
     query,
     get,
@@ -12,9 +10,7 @@ export const storageService = {
 
 function query(entityType, filterBy = '') {
     const { type, age, location, gender, size } = filterBy
-
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
-
 
     if (type) {
         entities = entities.filter(entity => entity.type.includes(type))
@@ -31,7 +27,6 @@ function query(entityType, filterBy = '') {
     if (size) {
         entities = entities.filter(entity => entity.size.toUpperCase().includes(size.toUpperCase()))
     }
-    // console.log("🚀 AFTER", entities)
 
 
     return Promise.resolve(entities)
@@ -43,10 +38,8 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity) {
-    // newEntity._id = _makeId()
     return query(entityType)
         .then(entities => {
-            // console.log("🚀 ~ file: asyncStorageService.js ~ line 38 ~ query ~ entities", entities)
             entities.push(newEntity)
             save(entityType, entities)
             return newEntity
@@ -55,7 +48,6 @@ function post(entityType, newEntity) {
 
 function postComment(entityType, newComment) {
     const { txt, petId, loggedInUser } = newComment
-    // console.log('im in storageService')
 
     return query(entityType)
         .then(entities => {
@@ -101,14 +93,4 @@ function remove(entityType, entityId) {
 
 function save(entityType, entities) {
     localStorage.setItem(entityType, JSON.stringify(entities))
-}
-
-
-function _makeId(length = 5) {
-    var text = ''
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-    for (var i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length))
-    }
-    return text
 }

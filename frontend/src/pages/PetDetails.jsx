@@ -11,9 +11,6 @@ import { HeartLike } from '../cmps/HeartLike'
 import { GoogleMap } from '../cmps/GoogleMap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.min.css';
-// import CheckIcon from '@material-ui/icons/Check';
-// import CheckBoxOutlinedIcon from '@material-ui/icons/CheckBoxOutlined';
-// import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
 import { faVenusMars, faCat, faSyringe, faStethoscope, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import SportsIcon from '@material-ui/icons/Sports';
 import ShareIcon from '@material-ui/icons/Share';
@@ -21,15 +18,11 @@ import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { ReactComponent as Binoculars } from '../assets/img/svg/binoculars.svg'
 import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'
-// import PetsIcon from '@material-ui/icons/Pets';
 import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";
-import userIcon from '../assets/img/loaders/loader_2.svg' // relative path to image
-
-
+import userIcon from '../assets/img/loaders/loader_2.svg' 
+import moment from 'moment';
 import Slider from "react-slick";
-// import socket from 'socket.io-client/lib/socket'
-
 
 class _PetDetails extends Component {
     state = {
@@ -84,6 +77,7 @@ class _PetDetails extends Component {
 
     onAdopt = () => {
         const { pet, owner, loggedInUser } = this.state
+        if (!loggedInUser) return
         if (!this.props.loggedInUser) {
             return socketService.emit('alert', "Please login in order to adopt this pet")
         }
@@ -103,7 +97,7 @@ class _PetDetails extends Component {
                 message: `${loggedInUser.fullname} would like to adopt ${pet.name}`,
                 chatId: 'c' + utilService.makeId(7),
             },
-            Requester:loggedInUser
+            Requester: loggedInUser
 
         }
         this.props.newAdoptRequest(data)
@@ -148,27 +142,33 @@ class _PetDetails extends Component {
                         </span>
                     </div>
                 </header>
-                {!isMobileScreen &&
-                    <div className="details-imgs-container grid">
-                        {pet.imgUrls?.map((imgUrl, idx) => {
-                            return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
-                        })}
-                    </div>}
-                {isMobileScreen &&
-                    <div className="details-imgs-container grid">
-                        <Slider {...settings}>
+                {pet.imgUrls.length > 1 && <>
+                    {!isMobileScreen &&
+                        <div className="details-imgs-container grid">
                             {pet.imgUrls?.map((imgUrl, idx) => {
                                 return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
                             })}
-                        </Slider>
-                    </div>
-                }
+                        </div>}
+                    {isMobileScreen &&
+                        <div className="details-imgs-container grid">
+                            <Slider {...settings}>
+                                {pet.imgUrls?.map((imgUrl, idx) => {
+                                    return <img key={pet._id + idx} src={imgUrl} alt="skeleton" />
+                                })}
+                            </Slider>
+                        </div>
+                    }
+                </>}
+                {pet.imgUrls.length === 1 && <>
+                    <img className='single-img' key={pet._id + 'IMG'} src={pet.imgUrls[0]} alt="skeleton" />
+                </>}
                 <div className="details-main-section flex">
                     <div className="details-info-container">
                         <div className="info-header flex ">
                             <img src={pet.owner.imgUrl} alt="" />
                             <div className="info-header-txt flex column">
-                                <h3>{pet.name + ', owned by ' + pet.owner.name}</h3>
+                                {pet.owner.name && <h3>{pet.name + ', owned by ' + pet.owner.name}</h3>}
+                                {!pet.owner.name && <h3>{pet.name + ', owned by ' + pet.owner.fullname}</h3>}
                                 <span>{pet.title}</span>
                             </div>
                         </div>
@@ -222,7 +222,10 @@ class _PetDetails extends Component {
                     <div className="adopt-modal-container flex column">
                         <div className="flex align-center">
                             <Binoculars className="binoculars" />
-                            <span className="adoption-time adopt-sign">{'Looking for    a home for ' + utilService.timeSince(pet.addedAt)}</span>
+                            {/* <span className="adoption-time adopt-sign">{'Looking for a home for ' + utilService.timeSince(pet.addedAt)}</span> */}
+                            <span>Add at:  {moment(pet.addedAt).format('DD.MM.YYYY')}</span>
+
+
                         </div>
                         <div className="flex align-center">
                             <ThumbUpIcon className="thumb-up" />

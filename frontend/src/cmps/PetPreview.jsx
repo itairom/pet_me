@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { ReactComponent as Male } from '../assets/img/svg/mars.svg'
 import { ReactComponent as Female } from '../assets/img/svg/venus.svg'
@@ -20,13 +19,14 @@ export class PetPreview extends React.Component {
         const { pet } = this.props
         if (!pet) <img src={userIcon} alt="loading" />
         const gender = pet?.gender === 'female' ? <Female className="gender" /> : <Male className="gender" />
+        if(pet.isAdopted) return <div style={{display:'none'}} className=""></div>
         return (
             <section className="pet-card-container">
                 <Link key={pet._id} to={`/${pet._id}`}>
-                    <Slider {...settings}>
+                    {pet.imgUrls && <Slider {...settings}>
                         {pet.imgUrls?.map(imgUrl => <img className="img-preview" src={imgUrl} alt="pet" key={pet._id} />)}
-                    </Slider>
-                    {!pet.imgUrls&&<img className="img-preview" src="http://clipart-library.com/img/1183485.jpg" alt="pet" key={pet._id} />}
+                    </Slider>}
+                    {pet.imgUrls.length===0 && <img className="img-preview" src="https://res.cloudinary.com/dhorz8v6v/image/upload/v1641286512/dog-1185460_1280_ogdew3.png" alt="pet" key={pet._id} />}
                 </Link>
                 <div className="card-info">
                     <div className="pet-name-gender flex">

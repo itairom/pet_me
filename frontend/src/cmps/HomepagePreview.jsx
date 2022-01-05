@@ -25,6 +25,7 @@ class _HomepagePreview extends React.Component {
             if (a.likes < b.likes) {
                 return 1
             }
+            return 1
         })
         likedPets.splice(4)
         this.setState({ likedPets })
@@ -39,6 +40,7 @@ class _HomepagePreview extends React.Component {
             if (a.addedAt < b.addedAt) {
                 return 1
             }
+            return 1
         })
         mostWaitingPets.splice(4)
         this.setState({ mostWaitingPets })

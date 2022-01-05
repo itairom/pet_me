@@ -5,7 +5,6 @@ import { onHome, showSearch, hideSearch } from '../store/actions/userActions'
 import { Link } from 'react-router-dom'
 import { FilterDynamic } from '../cmps/FilterDynamic'
 import { HomepagePreview } from '../cmps/HomepagePreview'
-import rightArrow from '../assets/img/svg/arrow-right.png'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { ReactComponent as Loader } from '../assets/img/loaders/loader_3.svg' 
 import { ReactComponent as Paw } from '../assets/img/svg/paw.svg'

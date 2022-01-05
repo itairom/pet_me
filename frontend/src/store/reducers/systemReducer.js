@@ -6,8 +6,8 @@ const initialState = {
 
 export function systemReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case 'SHOW_SEARCH':
-      return { ...state, isShowSearch: true }
+    // case 'SHOW_SEARCH':
+    //   return { ...state, isShowSearch: true }
     case 'NOT_SHOW_SEARCH':
       return { ...state, isShowSearch: false }
     case 'SHOW_SEARCH':

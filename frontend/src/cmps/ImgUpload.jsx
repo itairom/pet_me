@@ -18,7 +18,7 @@ export const ImgUpload = ({ onGetImgUrl }) => {
                 setIsUpload(false)
             }
         })()
-    }, [images])
+    }, [images,onGetImgUrl])
 
 
     const onChange = (imageList, addUpdateIndex) => {

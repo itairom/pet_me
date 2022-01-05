@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { petService } from '../services/petService';
@@ -17,7 +17,7 @@ export function AddPet() {
         breed: '',
         title: '',
         desc: '',
-        gender: '',
+        gender: 'male',
         age: '',
         size: '',
         neuterSpayed: false,
@@ -33,10 +33,14 @@ export function AddPet() {
 
     }
     const validate = Yup.object({
-        // name: Yup.string()
-        //     .required('Required'),
-        // breed: Yup.string()
-        //     .required('Required')
+        name: Yup.string()
+            .required('Required'),
+        breed: Yup.string()
+            .required('Required'),
+        desc: Yup.string()
+            .required('Required'),
+        title: Yup.string()
+            .required('Required')
     })
 
     const onGetImgUrl = (img) => {
@@ -47,13 +51,12 @@ export function AddPet() {
         const pet = values
         pet.imgUrls = imgUrl
         pet.owner = JSON.parse(sessionStorage.getItem('loggedinUser'))
-       await petService.add(pet)
+        await petService.add(pet)
         history.push('./profile')
     }
 
     return (
         <section className="main-container add-pet-container">
-            <h1>Add Pet</h1>
             <div className="add-pet-form">
                 <Formik
                     initialValues={petInfo}
@@ -75,7 +78,15 @@ export function AddPet() {
                             <ErrorMessage name="name" component="p" />
                         </div>
                         <div className="flex">
-                            <Field type="text" placeholder="Enter type" name="type" />
+                            <label >Enter type</label>
+                            <Field as="select" name="type" >
+                                <option selected value="dog">dog</option>
+                                <option value="cat">cat</option>
+                                <option value="rabbit">rabbit</option>
+                                <option value="parrot">parrot</option>
+                                <option value="hamster">hamster</option>
+
+                            </Field>
                             <ErrorMessage name="type" component="p" />
                         </div>
                         <div className="flex">
@@ -85,36 +96,36 @@ export function AddPet() {
                         <div className="flex">
                             <label >Size</label>
                             <Field as="select" name="size" >
-                                <option value="big">Big</option>
-                                <option value="medium">Medium</option>
+                                <option selected value="big">Big</option>
+                                <option  value="medium">Medium</option>
                                 <option value="small">Small</option>
                             </Field>
                         </div>
                         <div className="flex">
                             <label >Gender</label>
                             <Field as="select" name="gender" >
-                                <option value="male">Male</option>
+                                <option selected value="male">Male</option>
                                 <option value="female">Female</option>
                             </Field>
                         </div>
                         <div className="flex">
                             <label >Vaccine</label>
                             <Field as="select" name="vaccine" >
-                                <option value={false}>False</option>
+                                <option selected value={false}>False</option>
                                 <option value={true}>True</option>
                             </Field>
                         </div>
                         <div className="flex">
                             <label htmlFor="neuterSpayed">Neuter / Spayed</label>
                             <Field as="select" name="neuterSpayed" >
-                                <option value={false}>False</option>
+                                <option selected value={false}>False</option>
                                 <option value={true}>True</option>
                             </Field>
                         </div>
                         <div className="flex">
                             <label htmlFor="trained">Trained</label>
                             <Field as="select" name="trained" >
-                                <option value={false}>False</option>
+                                <option selected value={false}>False</option>
                                 <option value={true}>True</option>
                             </Field>
                         </div>
